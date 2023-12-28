@@ -1,14 +1,11 @@
-import viteLogo from '/vite.svg'
-import './App.css'
-import Navbar from './components/Navbar'
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
-
   return (
     <>
-      <Navbar/>
+      <Navbar />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
