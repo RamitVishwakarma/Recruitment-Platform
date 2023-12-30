@@ -8,10 +8,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 export default function Navbar() {
-  const [isHovered, setIsHovered] = useState(false);
   return (
     <>
-      <div className="flex">
+      <div className="flex font-ProductSans">
         <div className="border-t-[6px] border-red w-[25vw]"></div>
         <div className="border-t-[6px] border-purple w-[25vw]"></div>
         <div className="border-t-[6px] border-lime w-[25vw]"></div>
@@ -45,12 +44,9 @@ export default function Navbar() {
         </div>
         <div>
           <button
-            className="flex items-center justify-center w-[10rem] h-[5.5vh] bg-lime rounded-[2.125rem]"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}>
-            <div className="p-2">Let's Go</div>
+            className="flex items-center justify-center w-[10rem] h-[5.5vh] bg-lime rounded-[2.125rem]">
+            <div className="p-2">Let's go</div>
             <img
-              className={isHovered ? "button-hover" : ""}
               src={`${arrRight}`}
             />
           </button>
