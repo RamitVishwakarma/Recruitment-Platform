@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* @font-face {
+  font-family: "Product";
+  src: url("./assets/Fonts/Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Product-B";
+  src: url("./assets/Fonts/Zodiak-Bold.woff2") format(".woff2");
+} */

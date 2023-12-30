@@ -11,13 +11,13 @@ export default function Domains() {
       <Navbar />
       {/* Margin left and right */}
       <div className="mx-[10rem]">
-        <div className="h-[87vh]">
+        <div className="h-[87vh] ">
           <div className="flex my-[3rem] justify-between">
             <img src={Logo} alt="Logo" />
             <h1 className="text-6xl">Domains</h1>
           </div>
           <div className="flex justify-center mt-[14rem]">
-            <p className="text-5xl text-para-blue text-center w-[70%]">
+            <p className="text-5xl text-para-blue text-center font-prod-bold w-[70%]">
               There are 5 domains in GDSC, with each of their speciality,
               discover what’s the fit for you and get a chance to hone your
               skills in the domain of your preference.
@@ -28,7 +28,7 @@ export default function Domains() {
         <div className="flex h-screen items-center justify-between ">
           <div className="w-[60%]">
             <h1 className="text-9xl text-left text-purple">Programming</h1>
-            <p className="text-4xl text-left text-grey w-[100%] mt-[5%]">
+            <p className="text-4xl text-left text-grey w-[100%] mt-[2rem]">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
               finibus lectus, ut malesuada libero. Donec suscipit libero sed
               lorem cursus, ac ultrices purus consequat. Aliquam et tincidunt
@@ -48,7 +48,7 @@ export default function Domains() {
           </div>
           <div className="w-[60%]">
             <h1 className="text-9xl text-right text-red ">Web Club</h1>
-            <p className="text-4xl text-right text-grey w-[100%] mt-[5%]">
+            <p className="text-4xl text-right text-grey w-[100%] mt-[2rem]">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
               finibus lectus, ut malesuada libero. Donec suscipit libero sed
               lorem cursus, ac ultrices purus consequat. Aliquam et tincidunt
@@ -62,7 +62,7 @@ export default function Domains() {
         <div className="flex h-screen items-center justify-between ">
           <div className="w-[60%]">
             <h1 className="text-9xl text-left text-lime">Android</h1>
-            <p className="text-4xl text-left text-grey w-[100%] mt-[5%]">
+            <p className="text-4xl text-left text-grey w-[100%] mt-[2rem]">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
               finibus lectus, ut malesuada libero. Donec suscipit libero sed
               lorem cursus, ac ultrices purus consequat. Aliquam et tincidunt
@@ -82,7 +82,7 @@ export default function Domains() {
           </div>
           <div className="w-[60%]">
             <h1 className="text-9xl text-right text-light-blue ">Design</h1>
-            <p className="text-4xl text-right text-grey w-[100%] mt-[5%]">
+            <p className="text-4xl text-right text-grey w-[100%] mt-[2rem]">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
               finibus lectus, ut malesuada libero. Donec suscipit libero sed
               lorem cursus, ac ultrices purus consequat. Aliquam et tincidunt
@@ -98,7 +98,7 @@ export default function Domains() {
             <h1 className="text-9xl text-left text-light-purple">
               Machine Learning
             </h1>
-            <p className="text-4xl text-left text-grey w-[100%] mt-[5%]">
+            <p className="text-4xl text-left text-grey w-[100%] mt-[2rem]">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
               finibus lectus, ut malesuada libero. Donec suscipit libero sed
               lorem cursus, ac ultrices purus consequat. Aliquam et tincidunt
