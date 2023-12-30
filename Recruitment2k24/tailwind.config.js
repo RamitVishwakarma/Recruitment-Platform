@@ -2,10 +2,9 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    // fontFamily: {
-    //   prod: ["Product", "sans"],
-    //   "prod-bold": ["Product-B", "sans"],
-    // },
+    fontFamily: {
+      'ProductSans': ['ProductSans', "sans"],
+    },
     colors: {
       hr: "#00000066",
       grey: "#353535",

@@ -2,12 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @font-face {
-  font-family: "Product";
-  src: url("./assets/Fonts/Regular.ttf") format("truetype");
+@layer base {
+  @font-face {
+    font-family: ProductSans;
+    font-weight: 400;
+    src: url(./assets/Fonts/ProductSans-Regular.woff2) format("woff2");
+  }
+  @font-face {
+    font-family: ProductSans;
+    font-weight: 700;
+    src: url(./assets/Fonts/ProductSans-Bold.woff2) format("woff2");
+  }
 }
 
-@font-face {
-  font-family: "Product-B";
-  src: url("./assets/Fonts/Zodiak-Bold.woff2") format(".woff2");
-} */
+* {
+  font-family: ProductSans, sans-serif;
+}
