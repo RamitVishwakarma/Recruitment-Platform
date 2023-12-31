@@ -16,8 +16,8 @@ export default function Domains() {
             <img src={Logo} alt="Logo" />
             <h1 className="text-6xl text-grey font-bold">Domains</h1>
           </div>
-          <div className="flex justify-center mt-[14rem]">
-            <p className="text-5xl text-para-blue text-center font-prod-bold w-[70%]">
+          <div className="flex justify-center mt-[8rem]">
+            <p className="text-5xl text-para-blue text-center w-[70%]">
               There are 5 domains in GDSC, with each of their speciality,
               discover what’s the fit for you and get a chance to hone your
               skills in the domain of your preference.
