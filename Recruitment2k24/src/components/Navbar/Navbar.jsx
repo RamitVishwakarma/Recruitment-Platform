@@ -1,12 +1,9 @@
 import logo from "../../assets/logo.svg";
 import domainButton from "../../assets/domainButton.svg";
 import webButton from "../../assets/websiteButton.svg";
-import timeline from "../../assets/timeline.svg";
 import result from "../../assets/result.svg";
 import arrRight from "../../assets/arrRight.svg";
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css";
 export default function Navbar() {
   return (
     <>
@@ -20,7 +17,7 @@ export default function Navbar() {
         <div className="flex w-[50%] justify-between">
           <Link to="/" className="flex items-center gap-2 justify-center">
             <img src={`${logo}`} alt="Logo" />
-            <div className="text-grey">GDSC JSSATEN</div>
+            <div className="text-grey">GDSC&nbsp;JSSATEN</div>
           </Link>
           <Link
             to="/domains"
