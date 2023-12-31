@@ -2,6 +2,7 @@
   "name": "recruitment2k24",
   "private": true,
   "version": "0.0.0",
+  "author": "Ramit Vishwakarma",
   "type": "module",
   "scripts": {
     "dev": "vite",

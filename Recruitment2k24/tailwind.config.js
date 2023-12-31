@@ -3,7 +3,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      'ProductSans': ['ProductSans', "sans"],
+      ProductSans: ["ProductSans", "sans"],
     },
     colors: {
       hr: "#00000066",
@@ -16,6 +16,7 @@ export default {
       "light-blue": "#6B83FF",
       "light-purple": "#E570D2",
       "para-blue": "#111B52",
+      "light-red": "#EB6B6B",
     },
     extend: {},
   },

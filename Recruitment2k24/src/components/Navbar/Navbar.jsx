@@ -28,28 +28,27 @@ export default function Navbar() {
             <img src={`${domainButton}`} alt="Domains" />
             <div className="text-blue">Domains</div>
           </Link>
-          <a
-            href="https://gdscjss.in/"
+          <Link
+            to="https://gdscjss.in/"
             target="_blank"
             className="flex items-center gap-2 rounded-[2.9375rem] hover:bg-nav-hover w-[6.5vw] justify-center">
             <img src={`${webButton}`} alt="Website" />
             <div className="text-blue">Website</div>
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            href="/"
             className="flex items-center gap-2 rounded-[2.9375rem] hover:bg-nav-hover w-[6.5vw] justify-center">
             <img src={`${result}`} alt="result" />
             <div className="text-blue">Results</div>
-          </a>
+          </Link>
         </div>
         <div>
-          <button
-            className="flex items-center justify-center w-[10rem] h-[5.5vh] bg-lime rounded-[2.125rem]">
-            <div className="p-2">Let's go</div>
-            <img
-              src={`${arrRight}`}
-            />
-          </button>
+          <Link to="/register">
+            <button className="flex items-center justify-center w-[10rem] h-[5.5vh] bg-lime rounded-[2.125rem]">
+              <div className="p-2">Let's go</div>
+              <img src={`${arrRight}`} />
+            </button>
+          </Link>
         </div>
       </div>
     </>
