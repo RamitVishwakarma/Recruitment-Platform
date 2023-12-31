@@ -5,11 +5,11 @@ export default function Homepage() {
   return (
     <>
       <div className="h-screen">
-        <Navbar></Navbar>
+        <Navbar/>
         <img
-          className="mt-[15vh] w-[55%] mx-auto"
+          className="mt-[20vh] w-[55%] mx-auto"
           src={`${Recruitments}`}></img>
-        <img className="mt-[10vh] w-[70vw] mx-auto" src={`${Timeline}`} />
+        <img className="mt-[20vh] w-[70vw] mx-auto" src={`${Timeline}`} />
       </div>
     </>
   );
