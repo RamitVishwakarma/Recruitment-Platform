@@ -4,6 +4,7 @@ import AdminLogin from "./components/admin/login";
 import Dashboard from "./components/admin/dashboard";
 import AllUsers from "./components/admin/allusers";
 import RegistrationForm from "./components/RegistrationForm";
+import AdminLogin from "./components/admin/login";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
