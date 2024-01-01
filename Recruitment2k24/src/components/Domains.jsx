@@ -14,7 +14,7 @@ export default function Domains() {
         <div className="h-[87vh] ">
           <div className="flex my-[3rem] justify-between">
             <img src={Logo} alt="Logo" />
-            <h1 className="text-6xl">Domains</h1>
+            <h1 className="text-6xl text-grey font-bold">Domains</h1>
           </div>
           <div className="flex justify-center mt-[8rem]">
             <p className="text-5xl text-para-blue text-center w-[70%]">
