@@ -5,8 +5,8 @@ const AdminLogin = () => {
     return ( 
         <>
         <Navbar/>
-        <div className="mx-[10rem]">
-            <div className="flex my-[3rem] justify-between">
+        <div className="mx-40">
+            <div className="flex my-6 justify-between">
                 <img src={Logo} alt="Logo" />
                 <h1 className="text-6xl font-bold text-grey">Admin Login</h1>
             </div>
@@ -19,7 +19,7 @@ const AdminLogin = () => {
                     <label className="text-grey text-xl">Password</label>
                     <input type="password" className="w-full h-12 px-4 rounded-lg border border-grey hover:border-2 focus:outline-none focus:border-2 focus:border-light-blue" placeholder="" />
                 </div>
-                <button className="mx-auto mt-10 font-bold text-4xl bg-lime rounded-lg hover:bg-button-hover px-14 py-4">Log In</button>
+                <button className="mx-auto mt-10 font-bold text-4xl text-button-text bg-lime rounded-lg hover:bg-button-hover px-14 py-4">Log In</button>
             </div>
         </div>
         </>
