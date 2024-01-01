@@ -15,6 +15,10 @@
   }
 }
 
+button img {
+  transition: all 0.2s ease-in-out;
+}
+
 button:hover img {
   transform: translateX(10px);
 }
@@ -23,12 +27,8 @@ body {
   background-color: #f5f5f5;
 }
 
-input {
-  transition: all 0.2s ease-in-out;
-}
 
 * {
-  transition: all 0.2s ease-in-out;
   font-family: ProductSans, sans-serif;
   box-sizing: border-box;
 }

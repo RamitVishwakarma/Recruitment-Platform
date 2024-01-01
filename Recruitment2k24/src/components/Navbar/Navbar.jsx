@@ -17,7 +17,7 @@ export default function Navbar() {
         <div className="flex w-[50%] justify-between">
           <Link to="/" className="flex items-center gap-2 justify-center">
             <img src={`${logo}`} alt="Logo" />
-            <div className="text-grey">GDSC&nbsp;JSSATEN</div>
+            <div className="text-grey font-bold">GDSC&nbsp;JSSATEN</div>
           </Link>
           <Link
             to="/domains"
@@ -42,7 +42,7 @@ export default function Navbar() {
         <div>
           <Link to="/register">
             <button className="flex items-center justify-center w-[10rem] h-[5.5vh] bg-lime rounded-[2.125rem]">
-              <div className="p-2">Let's go</div>
+              <div className="p-2 font-bold">Let's go</div>
               <img src={`${arrRight}`} />
             </button>
           </Link>
