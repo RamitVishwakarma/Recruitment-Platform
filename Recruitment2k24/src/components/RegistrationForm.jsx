@@ -171,7 +171,7 @@ export default function RegistrationForm() {
           </div>
         </div>
         <div className="flex justify-center">
-          <button className="mx-auto mt-10  text-grey font-bold text-2xl rounded-lg bg-lime  hover:bg-button-hover px-10 py-4">
+          <button className="mx-auto mt-10  text-button-text font-bold text-2xl rounded-lg bg-lime  hover:bg-button-hover px-10 py-4">
             {activeBtn === "register" ? "Register" : "Log In"}
           </button>
         </div>
