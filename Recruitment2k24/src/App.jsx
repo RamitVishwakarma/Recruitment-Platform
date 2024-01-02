@@ -22,6 +22,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/home" element={<UserHome />} />
         <Route path="/project" element={<ProjectSubmission />} />
+        {/* <Route path="/user-profile" element={<UserProfile />} /> */}
       </Routes>
     </BrowserRouter>
   );

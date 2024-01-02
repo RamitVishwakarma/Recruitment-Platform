@@ -14,7 +14,7 @@ export default function Navbar() {
         <div className="border-t-[6px] border-lime w-[25vw]"></div>
         <div className="border-t-[6px] border-light-blue w-[25vw]"></div>
       </div>
-      <div className="h-[8vh] text-lg mx-40 flex items-center justify-between">
+      <div className="h-[10vh] text-lg mx-40 flex items-center justify-between">
         <div className="flex">
           <Link to="/" className="flex items-center gap-2">
             <img src={`${logo}`} alt="Logo" />
