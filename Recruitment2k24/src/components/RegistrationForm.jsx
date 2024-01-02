@@ -23,9 +23,9 @@ export default function RegistrationForm() {
   return (
     <>
       <Navbar />
-      <div className="mx-[10rem]"> 
+      <div className="mx-40"> 
       {/* //change mx to mx-40 */}
-        <div className="flex my-[3rem] justify-between">
+        <div className="flex my-6 justify-between">
           {/* change my to my-6 */}
           <img src={Logo} alt="Logo" />
           <div>
@@ -45,7 +45,7 @@ export default function RegistrationForm() {
         </div>
       </div>
 
-      <h1 className="text-grey text-5xl font-bold text-center m-[2rem]">
+      <h1 className="text-grey text-5xl font-bold text-center m-8">
         {activeBtn === "register"
           ? "Fill your details correctly!"
           : "Welcome back!"}
@@ -65,7 +65,7 @@ export default function RegistrationForm() {
             <div className="flex gap-3 items-center">
               <img className="w-8" src={Name} />
               <input
-                className="border p-3 w-[18rem] rounded-lg hover:duration-0 border-grey focus:text-input-blue hover:border-2 focus:outline-2 focus:outline-light-blue"
+                className="border p-3 w-72 rounded-lg hover:duration-0 border-grey focus:text-input-blue hover:border-2 focus:outline-2 focus:outline-light-blue"
                 type="text"
                 id="name"
                 name="name"
@@ -81,7 +81,7 @@ export default function RegistrationForm() {
             <div className="flex gap-3 items-center">
               <img className="w-8" src={Admission} />
               <input
-                className="border p-3 w-[18rem] rounded-lg hover:duration-0 border-grey focus:text-input-blue hover:border-2 focus:outline-2 focus:outline-light-blue"
+                className="border p-3 w-72 rounded-lg hover:duration-0 border-grey focus:text-input-blue hover:border-2 focus:outline-2 focus:outline-light-blue"
                 type="text"
                 id="admission number"
                 name="admission number"
@@ -97,7 +97,7 @@ export default function RegistrationForm() {
             <div className="flex gap-3 items-center">
               <img className="w-8" src={Year} />
               <select
-                className="w-[18rem] h-[3.1rem] border p-3 rounded-lg hover:duration-0 text-grey border-grey hover:border-2 focus:outline-2 focus:outline-light-blue focus:bg-[#FBFBFB]"
+                className="w-72 h-[3.1rem] border p-3 rounded-lg hover:duration-0 text-grey border-grey hover:border-2 focus:outline-2 focus:outline-light-blue focus:bg-[#FBFBFB]"
                 name="Year">
                 <option value="" disabled selected>
                   Select Year
@@ -123,7 +123,7 @@ export default function RegistrationForm() {
             <div className="flex gap-3 items-center">
               <img className="w-8" src={Domain} />
               <select
-                className="w-[18rem] h-[3.1rem] border p-3 rounded-lg hover:duration-0 text-grey border-grey hover:border-2 focus:outline-2 focus:outline-light-blue focus:bg-[#FBFBFB]"
+                className="w-72 h-[3.1rem] border p-3 rounded-lg hover:duration-0 text-grey border-grey hover:border-2 focus:outline-2 focus:outline-light-blue focus:bg-[#FBFBFB]"
                 name="Domain">
                 <option value="" disabled selected>
                   Select your preferred domain
@@ -148,7 +148,7 @@ export default function RegistrationForm() {
             <div className="flex gap-3 items-center">
               <img className="w-8" src={Email} />
               <input
-                className="border p-3 w-[18rem] rounded-lg hover:duration-0 border-grey focus:text-input-blue hover:border-2 focus:outline-2 focus:outline-light-blue"
+                className="border p-3 w-72 rounded-lg hover:duration-0 border-grey focus:text-input-blue hover:border-2 focus:outline-2 focus:outline-light-blue"
                 type="email"
                 id="email"
                 name="email"
@@ -164,7 +164,7 @@ export default function RegistrationForm() {
             <div className="flex gap-3 items-center">
               <img className="w-8" src={Password} />
               <input
-                className="border p-3 w-[18rem] rounded-lg hover:duration-0 border-grey focus:text-input-blue hover:border-2 focus:outline-2 focus:outline-light-blue"
+                className="border p-3 w-72 rounded-lg hover:duration-0 border-grey focus:text-input-blue hover:border-2 focus:outline-2 focus:outline-light-blue"
                 type="psasword"
                 id="password"
                 name="password"

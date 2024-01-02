@@ -15,11 +15,11 @@
   }
 }
 
-button img {
+#login img {
   transition: all 0.2s ease-in-out;
 }
 
-button:hover img {
+#login:hover img {
   transform: translateX(10px);
 }
 
