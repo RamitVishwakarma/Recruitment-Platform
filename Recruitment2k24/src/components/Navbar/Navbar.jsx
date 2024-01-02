@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
     <>
-      <div className="flex font-ProductSans">
+      <div className="flex">
         <div className="border-t-[6px] border-red w-[25vw]"></div>
         <div className="border-t-[6px] border-purple w-[25vw]"></div>
         <div className="border-t-[6px] border-lime w-[25vw]"></div>
