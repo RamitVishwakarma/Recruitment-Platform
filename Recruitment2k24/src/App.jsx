@@ -13,16 +13,18 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* user routes */}
         <Route exact path="/" element={<Homepage />} />
         <Route path="/domains" element={<Domains />} />
         <Route path="/register" element={<RegistrationForm />} />
+        <Route path="/home" element={<UserHome />} />
+        <Route path="/project" element={<ProjectSubmission />} />
+        {/* <Route path="/user-profile" element={<UserProfile />} />   */}
+        {/* admin routes */}
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/allusers" element={<AllUsers />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/home" element={<UserHome />} />
-        <Route path="/project" element={<ProjectSubmission />} />
-        {/* <Route path="/user-profile" element={<UserProfile />} /> */}
       </Routes>
     </BrowserRouter>
   );

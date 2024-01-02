@@ -45,7 +45,8 @@ export default function ProjectSubmission() {
               Paste your project link here
             </div>
             <div className="flex items-center gap-6">
-              <img className="hello" src={Project} />
+              {/* Need to check how to do svg fill */}
+              <img src={Project} />
               {/* form action to be changed */}
               <form id="projectLink" action="/home">
                 <input
