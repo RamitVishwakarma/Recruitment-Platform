@@ -22,6 +22,7 @@ export default {
       "light-red": "#EB6B6B",
       white: "#F5F5F5",
       "input-blue": "#6B83FF",
+      footer: "#E5E5E5",
     },
     extend: {},
   },

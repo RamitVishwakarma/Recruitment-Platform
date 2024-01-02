@@ -5,6 +5,7 @@ import WebCLub from "../assets/webclub.svg";
 import Android from "../assets/android.svg";
 import Design from "../assets/design.svg";
 import MachineLearning from "../assets/MachineLearning.svg";
+import Footer from "./Footer";
 export default function Domains() {
   return (
     <>
@@ -112,6 +113,7 @@ export default function Domains() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
