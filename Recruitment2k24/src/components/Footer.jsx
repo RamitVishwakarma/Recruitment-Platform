@@ -28,6 +28,8 @@ const Footer = () => {
             </div>
           </div>
           {/* right */}
+
+          {/* NEED TO FIX THE HOVER STATE */}
           <div className="mr-40 flex gap-6 mt-[12.5vh]">
             <a
               href="https://www.linkedin.com/company/dsc-jssaten/"
