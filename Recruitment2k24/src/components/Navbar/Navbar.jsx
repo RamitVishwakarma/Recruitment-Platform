@@ -16,13 +16,12 @@ export default function Navbar() {
       </div>
       <div className="h-[8vh] text-lg mx-40 flex items-center justify-between">
         <div className="flex">
-
           <Link to="/" className="flex items-center gap-2">
             <img src={`${logo}`} alt="Logo" />
             <div className="text-grey font-bold">GDSC&nbsp;JSSATEN</div>
           </Link>
 
-          <img src={separator} alt="separator" className="ml-6 mr-3"/>
+          <img src={separator} alt="separator" className="ml-6 mr-3" />
 
           <Link
             to="/domains"
@@ -45,12 +44,12 @@ export default function Navbar() {
             <img src={`${result}`} alt="result" />
             <div className="text-blue">Results</div>
           </Link>
-
         </div>
         <div>
-
           <Link to="/register">
-            <button id="login" className="flex items-center justify-center px-6 py-1 bg-lime rounded-full">
+            <button
+              id="login"
+              className="flex items-center justify-center px-6 py-1 bg-lime rounded-full">
               <div className="p-2 font-bold">Let's go</div>
               <img src={`${arrRight}`} />
             </button>

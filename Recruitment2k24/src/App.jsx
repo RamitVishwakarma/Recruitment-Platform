@@ -7,6 +7,7 @@ import RegistrationForm from "./components/RegistrationForm";
 import Profile from "./components/admin/profile";
 import UserHome from "./components/UserHome";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ProjectSubmission from "./components/ProjectSubmission";
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/allusers" element={<AllUsers />} />
-        <Route path="/profile" element={<Profile/>}/>
-        <Route path="/userhome" element={<UserHome />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/home" element={<UserHome />} />
+        <Route path="/project" element={<ProjectSubmission />} />
       </Routes>
     </BrowserRouter>
   );
