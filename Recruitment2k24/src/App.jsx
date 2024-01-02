@@ -4,7 +4,7 @@ import AdminLogin from "./components/admin/login";
 import Dashboard from "./components/admin/dashboard";
 import AllUsers from "./components/admin/allusers";
 import RegistrationForm from "./components/RegistrationForm";
-import LoggedIn from "./components/LoggedIn";
+import UserHome from "./components/UserHome";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/allusers" element={<AllUsers />} />
-        <Route path="/loggedin" element={<LoggedIn />} />
+        <Route path="/userhome" element={<UserHome />} />
       </Routes>
     </BrowserRouter>
   );
