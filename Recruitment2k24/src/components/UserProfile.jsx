@@ -67,7 +67,7 @@ export default function UserProfile() {
             </div>
             {/* Form div */}
             <div>
-              <form action="/profile">
+              <form action="/user-profile">
                 <div className="flex flex-wrap gap-x-12 w-[48vw] items-center justify-center">
                   {/* input start */}
                   <div className="flex flex-col">

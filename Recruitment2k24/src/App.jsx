@@ -21,6 +21,8 @@ function App() {
         <Route path="/home" element={<UserHome />} />
         <Route path="/project" element={<ProjectSubmission />} />
         <Route path="/user-profile" element={<UserProfile />} />
+        {/* <Route path="/quizhome" element={<QuizHome/>} />
+        <Route path="/quiz" element={<Quiz/>} /> */}
         {/* admin routes */}
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/dashboard" element={<Dashboard />} />
