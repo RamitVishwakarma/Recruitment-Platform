@@ -179,7 +179,7 @@ export default function RegistrationForm() {
                 <img className="w-8" src={Password} />
                 <input
                   className="border p-3 w-[18rem] rounded-lg hover:duration-0 border-grey focus:text-input-blue hover:border-2 focus:outline-2 focus:outline-light-blue"
-                  type="psasword"
+                  type="password"
                   id="password"
                   name="password"
                 />
