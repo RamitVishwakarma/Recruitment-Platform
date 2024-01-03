@@ -21,6 +21,7 @@ export default {
       "para-blue": "#111B52",
       "light-red": "#EB6B6B",
       white: "#F5F5F5",
+      "text-green": '#579C00',
       "input-blue": "#6B83FF",
       footer: "#E5E5E5",
     },

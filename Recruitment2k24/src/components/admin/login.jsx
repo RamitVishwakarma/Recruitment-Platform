@@ -17,7 +17,7 @@ const AdminLogin = () => {
               <label className="text-grey text-xl">Username</label>
               <input
                 type="text"
-                className="w-full h-12 px-4 rounded-lg border border-grey hover:border-2 focus:outline-none focus:border-2 focus:border-light-blue"
+                className="w-full h-12 px-4 rounded-lg border border-grey"
                 placeholder=""
               />
             </div>
@@ -25,7 +25,7 @@ const AdminLogin = () => {
               <label className="text-grey text-xl">Password</label>
               <input
                 type="password"
-                className="w-full h-12 px-4 rounded-lg border border-grey hover:border-2 focus:outline-none focus:border-2 focus:border-light-blue"
+                className="w-full h-12 px-4 rounded-lg border border-grey"
                 placeholder=""
               />
             </div>

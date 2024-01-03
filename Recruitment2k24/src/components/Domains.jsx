@@ -11,14 +11,14 @@ export default function Domains() {
     <>
       <Navbar />
       {/* Margin left and right */}
-      <div className="mx-[10rem]">
-        <div className="h-[87vh] ">
-          <div className="flex my-[3rem] justify-between">
+      <div className="mx-40">
+        <div className="h-[50vh]">
+          <div className="flex my-6 justify-between">
             <img src={Logo} alt="Logo" />
             <h1 className="text-6xl text-grey font-bold">Domains</h1>
           </div>
-          <div className="flex justify-center mt-[8rem]">
-            <p className="text-5xl text-para-blue text-center w-[70%]">
+          <div className="flex justify-center mt-48">
+            <p className="text-5xl text-para-blue text-center w-8/12">
               There are 5 domains in GDSC, with each of their speciality,
               discover what’s the fit for you and get a chance to hone your
               skills in the domain of your preference.
@@ -26,91 +26,79 @@ export default function Domains() {
           </div>
         </div>
         {/* programming */}
-        <div className="flex h-screen items-center justify-between ">
-          <div className="w-[60%]">
-            <h1 className="text-9xl text-left text-purple">Programming</h1>
-            <p className="text-4xl text-left text-grey w-[100%] mt-[2rem]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
-              finibus lectus, ut malesuada libero. Donec suscipit libero sed
-              lorem cursus, ac ultrices purus consequat. Aliquam et tincidunt
-              neque. Integer id auctor risus, eu finibus tellus. Nullam mauris
-              massa, dictum ut libero vel, congue venenatis est. Maecenas eu mi
-              id risus egestas accumsan.
+        <div className="flex items-center justify-between mt-48">
+          <div className="flex flex-col content-normal">
+            <h1 className="text-8xl text-grey font-bold mt-10">Programming</h1>
+            <p className="text-para-blue text-xl w-8/12 mt-5">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, dolore, 
+              quibusdam aperiam ab omnis accusantium tenetur laboriosam repudiandae officia nihil
+              possimus reiciendis iste architecto iure facere dignissimos eligendi veritatis maiores?
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem 
+              maxime vero incidunt harum? Deserunt reiciendis architecto totam eum 
+              facere nobis nemo est vero nisi, iusto minus omnis veritatis earum tenetur.
             </p>
           </div>
-          <div className="w-[40%] flex justify-center mt-[5rem]">
-            <img className="w-[60%] " src={Programming} />
-          </div>
+          <img src={Programming} alt="Programming" />
         </div>
-        {/* Web Club */}
-        <div className="flex h-screen items-center justify-between ">
-          <div className="w-[40%] flex justify-center mt-[5rem]">
-            <img className="w-[60%]" src={WebCLub} />
-          </div>
-          <div className="w-[60%]">
-            <h1 className="text-9xl text-right text-red ">Web Club</h1>
-            <p className="text-4xl text-right text-grey w-[100%] mt-[2rem]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
-              finibus lectus, ut malesuada libero. Donec suscipit libero sed
-              lorem cursus, ac ultrices purus consequat. Aliquam et tincidunt
-              neque. Integer id auctor risus, eu finibus tellus. Nullam mauris
-              massa, dictum ut libero vel, congue venenatis est. Maecenas eu mi
-              id risus egestas accumsan.
+        {/* webclub */}
+        <div className="flex items-center justify-between mt-48">
+          <img src={WebCLub} alt="WebCLub" />
+          <div className="flex flex-col items-end">
+            <h1 className="text-8xl text-grey font-bold mt-10">Web Club</h1>
+            <p className="text-para-blue text-right text-xl w-8/12 mt-5">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, dolore, 
+              quibusdam aperiam ab omnis accusantium tenetur laboriosam repudiandae officia nihil
+              possimus reiciendis iste architecto iure facere dignissimos eligendi veritatis maiores?
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem 
+              maxime vero incidunt harum? Deserunt reiciendis architecto totam eum 
+              facere nobis nemo est vero nisi, iusto minus omnis veritatis earum tenetur.
             </p>
           </div>
         </div>
         {/* android */}
-        <div className="flex h-screen items-center justify-between ">
-          <div className="w-[60%]">
-            <h1 className="text-9xl text-left text-lime">Android</h1>
-            <p className="text-4xl text-left text-grey w-[100%] mt-[2rem]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
-              finibus lectus, ut malesuada libero. Donec suscipit libero sed
-              lorem cursus, ac ultrices purus consequat. Aliquam et tincidunt
-              neque. Integer id auctor risus, eu finibus tellus. Nullam mauris
-              massa, dictum ut libero vel, congue venenatis est. Maecenas eu mi
-              id risus egestas accumsan.
+        <div className="flex items-center justify-between mt-48">
+          <div>
+            <h1 className="text-8xl text-grey font-bold mt-10">Android</h1>
+            <p className="text-para-blue text-xl w-8/12 mt-5">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, dolore, 
+              quibusdam aperiam ab omnis accusantium tenetur laboriosam repudiandae officia nihil
+              possimus reiciendis iste architecto iure facere dignissimos eligendi veritatis maiores?
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem 
+              maxime vero incidunt harum? Deserunt reiciendis architecto totam eum 
+              facere nobis nemo est vero nisi, iusto minus omnis veritatis earum tenetur.
             </p>
           </div>
-          <div className="w-[40%] flex justify-center mt-[5rem]">
-            <img className="w-[60%] " src={Android} />
-          </div>
+          <img src={Android} alt="Android" />
         </div>
-        {/* design */}
-        <div className="flex h-screen items-center justify-between ">
-          <div className="w-[40%] flex justify-center mt-[5rem]">
-            <img className="w-[60%]" src={Design} />
-          </div>
-          <div className="w-[60%]">
-            <h1 className="text-9xl text-right text-light-blue ">Design</h1>
-            <p className="text-4xl text-right text-grey w-[100%] mt-[2rem]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
-              finibus lectus, ut malesuada libero. Donec suscipit libero sed
-              lorem cursus, ac ultrices purus consequat. Aliquam et tincidunt
-              neque. Integer id auctor risus, eu finibus tellus. Nullam mauris
-              massa, dictum ut libero vel, congue venenatis est. Maecenas eu mi
-              id risus egestas accumsan.
+        {/* Design */}
+        <div className="flex items-center justify-between mt-48">
+          <img src={Design} alt="Design" />
+          <div className="flex flex-col items-end">
+            <h1 className="text-8xl text-grey font-bold mt-10">Design</h1>
+            <p className="text-para-blue text-right text-xl w-8/12 mt-5">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, dolore, 
+              quibusdam aperiam ab omnis accusantium tenetur laboriosam repudiandae officia nihil
+              possimus reiciendis iste architecto iure facere dignissimos eligendi veritatis maiores?
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem 
+              maxime vero incidunt harum? Deserunt reiciendis architecto totam eum 
+              facere nobis nemo est vero nisi, iusto minus omnis veritatis earum tenetur.
             </p>
           </div>
         </div>
-        {/* machine learning */}
-        <div className="flex h-screen items-center justify-between ">
-          <div className="w-[60%]">
-            <h1 className="text-9xl text-left text-light-purple">
-              Machine Learning
-            </h1>
-            <p className="text-4xl text-left text-grey w-[100%] mt-[2rem]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
-              finibus lectus, ut malesuada libero. Donec suscipit libero sed
-              lorem cursus, ac ultrices purus consequat. Aliquam et tincidunt
-              neque. Integer id auctor risus, eu finibus tellus. Nullam mauris
-              massa, dictum ut libero vel, congue venenatis est. Maecenas eu mi
-              id risus egestas accumsan.
+        {/* MachineLearning */}
+        <div className="flex items-center justify-between mt-48">
+          <div>
+            <h1 className="text-8xl text-grey font-bold mt-10">Machine Learning</h1>
+            <p className="text-para-blue text-xl w-8/12 mt-5">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, dolore, 
+              quibusdam aperiam ab omnis accusantium tenetur laboriosam repudiandae officia nihil
+              possimus reiciendis iste architecto iure facere dignissimos eligendi veritatis maiores?
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem 
+              maxime vero incidunt harum? Deserunt reiciendis architecto totam eum 
+              facere nobis nemo est vero nisi, iusto minus omnis veritatis earum tenetur.
             </p>
           </div>
-          <div className="w-[40%] flex justify-center mt-[5rem]">
-            <img className="w-[60%] " src={MachineLearning} />
-          </div>
+          <img src={MachineLearning} alt="MachineLearning" />
         </div>
       </div>
       <Footer />

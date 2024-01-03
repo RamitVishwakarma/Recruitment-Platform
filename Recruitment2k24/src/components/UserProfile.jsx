@@ -35,7 +35,7 @@ export default function UserProfile() {
             </div>
           </div>
           {/* whole form wrapper */}
-          <div className="flex gap-7 justify-center items-center">
+          <div className="flex gap-7 mt-32 justify-center items-center">
             {/* wrapper div */}
             <div className="flex flex-col gap-7">
               {/* Upload Pic */}
@@ -75,13 +75,13 @@ export default function UserProfile() {
                       Github Profile
                     </label>
                     <input
-                      className="border p-2 pl-10 w-80 rounded-lg hover:duration-0 border-grey focus:text-input-blue hover:border-2 focus:outline-2 focus:outline-light-blue"
+                      className="border p-2 pl-10 w-80 h-12 rounded-lg border-grey"
                       type="url"
                       id="Github"
                       name="Github"
                     />
                     <img
-                      className="w-6 h-6 relative bottom-8 left-2 "
+                      className="w-6 h-6 relative bottom-9 left-3 "
                       src={Github}
                     />
                   </div>
@@ -92,13 +92,13 @@ export default function UserProfile() {
                       HackerRank Profile
                     </label>
                     <input
-                      className="border p-2 pl-10 w-80 rounded-lg hover:duration-0 border-grey focus:text-input-blue hover:border-2 focus:outline-2 focus:outline-light-blue"
+                      className="border p-2 pl-10 w-80 h-12 rounded-lg border-grey"
                       type="url"
                       id="Hackerrank"
                       name="Hackerrank"
                     />
                     <img
-                      className="w-6 h-6 relative bottom-8 left-2 "
+                      className="w-6 h-6 relative bottom-9 left-3 "
                       src={Hackerrank}
                     />
                   </div>
@@ -109,13 +109,13 @@ export default function UserProfile() {
                       LinkedIn Profile
                     </label>
                     <input
-                      className="border p-2 pl-10 w-80 rounded-lg hover:duration-0 border-grey focus:text-input-blue hover:border-2 focus:outline-2 focus:outline-light-blue"
+                      className="border p-2 pl-10 w-80 h-12 rounded-lg border-grey"
                       type="url"
                       id="Linkedin"
                       name="Linkedin"
                     />
                     <img
-                      className="w-6 h-6 relative bottom-8 left-2 "
+                      className="w-6 h-6 relative bottom-9 left-3"
                       src={Linkedin}
                     />
                   </div>
@@ -126,13 +126,13 @@ export default function UserProfile() {
                       Dribble Profile
                     </label>
                     <input
-                      className="border p-2 pl-10 w-80 rounded-lg hover:duration-0 border-grey focus:text-input-blue hover:border-2 focus:outline-2 focus:outline-light-blue"
+                      className="border p-2 pl-10 w-80 h-12 rounded-lg border-grey"
                       type="url"
                       id="Dribble"
                       name="Dribble"
                     />
                     <img
-                      className="w-6 h-6 relative bottom-8 left-2 "
+                      className="w-6 h-6 relative bottom-9 left-3"
                       src={Dribble}
                     />
                   </div>
@@ -143,13 +143,13 @@ export default function UserProfile() {
                       Behance Profile
                     </label>
                     <input
-                      className="border p-2 pl-10 w-80 rounded-lg hover:duration-0 border-grey focus:text-input-blue hover:border-2 focus:outline-2 focus:outline-light-blue"
+                      className="border p-2 pl-10 w-80 h-12 rounded-lg border-grey"
                       type="url"
                       id="Behance"
                       name="Behance"
                     />
                     <img
-                      className="w-6 h-6 relative bottom-8 left-2 "
+                      className="w-6 h-6 relative bottom-9 left-3"
                       src={Behance}
                     />
                   </div>
@@ -160,13 +160,13 @@ export default function UserProfile() {
                       Portfolio Profile
                     </label>
                     <input
-                      className="border p-2 pl-10 w-80 rounded-lg hover:duration-0 border-grey focus:text-input-blue hover:border-2 focus:outline-2 focus:outline-light-blue"
+                      className="border p-2 pl-10 w-80 h-12 rounded-lg border-grey"
                       type="url"
                       id="Portfolio"
                       name="Portfolio"
                     />
                     <img
-                      className="w-6 h-6 relative bottom-8 left-2 "
+                      className="w-6 h-6 relative bottom-9 left-3"
                       src={Link}
                     />
                   </div>

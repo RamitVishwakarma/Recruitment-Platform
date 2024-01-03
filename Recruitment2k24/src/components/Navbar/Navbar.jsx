@@ -50,7 +50,7 @@ export default function Navbar() {
             <button
               id="login"
               className="flex items-center justify-center px-6 py-1 bg-lime rounded-full">
-              <div className="p-1 font-bold">Let's go</div>
+              <div className="p-1 font-bold">Let's&nbsp;go</div>
               <img src={`${arrRight}`} />
             </button>
           </Link>

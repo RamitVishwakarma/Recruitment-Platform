@@ -48,7 +48,7 @@ const AllUsers = () => {
                 </Link>
             {/* searchbar */}
                 <div className="relative">
-                    <input className="w-full pl-10 pr-3 py-2 text-sm rounded-full border border-grey hover:outline-2 focus:outline-2 focus:outline-light-blue" type="text" />
+                    <input className="w-1/2 pl-10 pr-3 py-2 text-sm rounded-full border border-grey focus:w-full" type="text" />
                     <img src={search} className="absolute left-2 top-1/2 transform -translate-y-1/2 text-grey" alt="" />
                 </div>
             </div>
@@ -69,12 +69,12 @@ const AllUsers = () => {
                     <span className="font-bold">34</span>
                 </button>
 
-                <button onClick={toggleShortlist} className={`flex items-center px-5 py-1 gap-2 border-2 rounded-full border-lime text-lime ${shortlist ? 'bg-lime/10' : ''}`}>
+                <button onClick={toggleShortlist} className={`flex items-center px-5 py-1 gap-2 border-2 rounded-full border-text-green text-text-green ${shortlist ? 'bg-text-green/10' : ''}`}>
                     {shortlist ? <img src={close} alt="" /> : ''}
                     <p>Shortlisted&nbsp;Users:&nbsp;</p>
                     <span className="font-bold">16</span>
                 </button>
-                <p>Total Users: <span className="font-bold">{users.length}</span></p>
+                <p className="text-grey text-xl">Total Users: <span className="font-bold">{users.length}</span></p>
             </div>
         </div>
 
@@ -90,7 +90,7 @@ const AllUsers = () => {
                     <th className="w-1/12">Shortlisted</th>
                 </tr>
                 {users.map((user, index) => (
-                    <tr key={index} className={(index)%2 == 0 ? "bg-light-blue/5" : "bg-light-blue/15"}>
+                    <tr key={index} className={`text-grey ${(index)%2 == 0 ? "bg-light-blue/5" : "bg-light-blue/15"}`}>
                         <td className="py-4">{index+1}</td>
                         <td className="text-left">{user.name}</td>
                         <td>{user.year}</td>

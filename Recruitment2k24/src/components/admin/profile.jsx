@@ -97,7 +97,7 @@ const Profile = () => {
                         }
                     </div>
                     <div className="text-grey flex flex-col items-end">
-                        <p>Submitted Links</p>
+                        <p className="text-xl">Submitted Links</p>
                         <div className="flex gap-6 items-center">
                             {
                                 users.github ?
