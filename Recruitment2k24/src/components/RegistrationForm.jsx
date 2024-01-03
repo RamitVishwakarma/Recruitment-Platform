@@ -26,17 +26,17 @@ export default function RegistrationForm() {
       <div className="h-screen">
         <Navbar />
         <div className="mx-40">
-          <div className="flex my-6 justify-between">
+          <div className="flex my-6 flex-wrap justify-between">
             <img src={Logo} alt="Logo" />
             <div>
               <button
-                className={`w-[10rem] font-ProductSans duration-300 ease-in-out pr-[0.5rem] h-[3rem] rounded-[2.3125rem]  text-white bg-light-red relative left-[1.21rem]
+                className={`w-40 font-ProductSans duration-300 ease-in-out pr-2 h-12 rounded-full  text-white bg-light-red relative left-5
               ${activeBtn === "register" ? "font-bold" : "opacity-60 "}`}
                 onClick={() => setactiveBtn("register")}>
                 Register
               </button>
               <button
-                className={`w-[10rem] font-ProductSans duration-300 ease-in-out h-[3rem] rounded-[2.3125rem] text-white bg-light-red relative right-[1.21rem]
+                className={`w-40 font-ProductSans duration-300 ease-in-out h-12 rounded-full text-white bg-light-red relative right-5
               ${activeBtn === "login" ? "font-bold" : "opacity-60"}`}
                 onClick={() => setactiveBtn("login")}>
                 Log in
@@ -53,21 +53,20 @@ export default function RegistrationForm() {
 
         <form action="/register">
           <div
-            className={`flex w-[61rem] m-auto flex-wrap gap-4 items-center justify-center
-          ${activeBtn === "login" ? "flex-col" : ""}
-        `}>
+            className={`flex w-1/2 m-auto flex-wrap gap-4 items-center justify-center
+          ${activeBtn === "login" ? "flex-col" : ""}`}>
             {/* NAME */}
             <div
-              className={`w-[23rem] ${
+              className={`w-96 ${
                 activeBtn === "register" ? "" : "hidden"
               }`}>
-              <label className="ml-[3.1rem]" htmlFor="name">
+              <label className="ml-12" htmlFor="name">
                 Name
               </label>
               <div className="flex gap-3 items-center">
                 <img className="w-8" src={Name} />
                 <input
-                  className="border p-3 w-[18rem] rounded-lg hover:duration-0 border-grey focus:text-input-blue hover:border-2 focus:outline-2 focus:outline-light-blue"
+                  className="border p-3 w-72 rounded-lg border-grey"
                   type="text"
                   id="name"
                   name="name"
@@ -76,16 +75,16 @@ export default function RegistrationForm() {
             </div>
             {/* Admission number */}
             <div
-              className={`w-[23rem] ${
+              className={`w-96 ${
                 activeBtn === "register" ? "" : "hidden"
               }`}>
-              <label className="ml-[3.1rem]" htmlFor="admission number">
+              <label className="ml-12" htmlFor="admission number">
                 Admission Number
               </label>
               <div className="flex gap-3 items-center">
                 <img className="w-8" src={Admission} />
                 <input
-                  className="border p-3 w-[18rem] rounded-lg hover:duration-0 border-grey focus:text-input-blue hover:border-2 focus:outline-2 focus:outline-light-blue"
+                  className="border p-3 w-72 rounded-lg border-grey"
                   type="text"
                   id="admission number"
                   name="admission number"
@@ -94,16 +93,16 @@ export default function RegistrationForm() {
             </div>
             {/* Year */}
             <div
-              className={`w-[23rem] ${
+              className={`w-96 ${
                 activeBtn === "register" ? "" : "hidden"
               }`}>
-              <label className="ml-[3.1rem]" htmlFor="Year">
+              <label className="ml-12" htmlFor="Year">
                 Year
               </label>
               <div className="flex gap-3 items-center">
                 <img className="w-8" src={Year} />
                 <select
-                  className="w-[18rem] h-[3.1rem] border p-3 rounded-lg hover:duration-0 text-grey border-grey hover:border-2 focus:outline-2 focus:outline-light-blue focus:bg-[#FBFBFB]"
+                  className="w-72 h-12 border p-3 bg-white rounded-lg text-grey border-grey"
                   name="Year">
                   <option value="" disabled selected>
                     Select Year
@@ -125,16 +124,16 @@ export default function RegistrationForm() {
             </div>
             {/* Domain */}
             <div
-              className={`w-[23rem] ${
+              className={`w-96 ${
                 activeBtn === "register" ? "" : "hidden"
               }`}>
-              <label className="ml-[3.1rem]" htmlFor="Domain">
+              <label className="ml-12" htmlFor="Domain">
                 Domain
               </label>
               <div className="flex gap-3 items-center">
                 <img className="w-8" src={Domain} />
                 <select
-                  className="w-[18rem] h-[3.1rem] border p-3 rounded-lg hover:duration-0 text-grey border-grey hover:border-2 focus:outline-2 focus:outline-light-blue focus:bg-[#FBFBFB]"
+                  className="w-72 h-12 border p-3 rounded-lg bg-white text-grey border-grey"
                   name="Domain">
                   <option value="" disabled selected>
                     Select your preferred domain
@@ -155,14 +154,14 @@ export default function RegistrationForm() {
             </div>
 
             {/* Email */}
-            <div className="w-[23rem]">
-              <label className="ml-[3.1rem]" htmlFor="email">
+            <div className="w-96">
+              <label className="ml-12" htmlFor="email">
                 Email
               </label>
               <div className="flex gap-3 items-center">
                 <img className="w-8" src={Email} />
                 <input
-                  className="border p-3 w-[18rem] rounded-lg hover:duration-0 border-grey focus:text-input-blue hover:border-2 focus:outline-2 focus:outline-light-blue"
+                  className="border p-3 w-72 rounded-lg border-grey"
                   type="email"
                   id="email"
                   name="email"
@@ -171,14 +170,14 @@ export default function RegistrationForm() {
             </div>
 
             {/* Password */}
-            <div className="w-[23rem]">
-              <label className="ml-[3.1rem]" htmlFor="password">
+            <div className="w-96">
+              <label className="ml-12" htmlFor="password">
                 Set password
               </label>
               <div className="flex gap-3 items-center">
                 <img className="w-8" src={Password} />
                 <input
-                  className="border p-3 w-[18rem] rounded-lg hover:duration-0 border-grey focus:text-input-blue hover:border-2 focus:outline-2 focus:outline-light-blue"
+                  className="border p-3 w-72 rounded-lg border-grey"
                   type="password"
                   id="password"
                   name="password"

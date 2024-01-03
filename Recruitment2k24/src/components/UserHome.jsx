@@ -32,7 +32,7 @@ export default function UserHome() {
               </div>
               {/* conditional if the profile is not completed */}
               <Link to="/user-profile">
-                <div className="flex ml-[7.8rem] mt-1 border-b-2 border-red">
+                <div className="flex ml-32 mt-1 border-b-2 border-red">
                   <span className=" text-red text-lg">
                     Complete Profile &nbsp;
                   </span>

@@ -29,7 +29,7 @@ export default function ProjectSubmission() {
               </div>
               {/* conditional if the profile is not completed */}
               <Link to="/user-profile">
-                <div className="flex ml-[7.8rem] mt-1 border-b-2 border-red">
+                <div className="flex ml-32 mt-1 border-b-2 border-red">
                   <span className=" text-red text-lg">
                     Complete Profile &nbsp;
                   </span>
@@ -40,7 +40,7 @@ export default function ProjectSubmission() {
           </div>
         </div>
         <div className="flex justify-center items-center">
-          <div className="w-[50rem] h-60 bg-purple/20 flex flex-col justify-center items-center">
+          <div className="w-1/2 h-60 rounded-full bg-purple/20  border-2 border-purple/30 flex flex-col justify-center items-center">
             <div className="text-purple text-4xl mb-6 ml-14 font-bold">
               Paste your project link here
             </div>
@@ -50,7 +50,7 @@ export default function ProjectSubmission() {
               {/* form action to be changed */}
               <form id="projectLink" action="/home">
                 <input
-                  className="w-[35rem] h-12 border rounded-lg p-3 hover:duration-0 border-grey focus:text-input-blue hover:border-2 focus:outline-2 focus:outline-light-blue"
+                  className="w-[35rem] h-12 border rounded-lg p-3 border-grey"
                   type="text"
                 />
               </form>
