@@ -1,4 +1,4 @@
-import Logo from "../assets/logo.svg";
+import Logo from "../assets/complete-logo.svg";
 import Li from "../assets/footer-li.svg";
 import Insta from "../assets/footer-insta.svg";
 import X from "../assets/footer-X.svg";
@@ -14,17 +14,9 @@ const Footer = () => {
         {/* left */}
         <div className="flex justify-between items-center ">
           <div className="ml-40 mt-[10vh]">
-            <div className="mx-2 mb-1 text-grey">Created with ❤️ by</div>
-            <div className="flex items-center">
-              <img src={Logo} />
-              <div className="flex flex-col">
-                <span className="text-grey text-lg">
-                  Google Developer Student Clubs
-                </span>
-                <span className="text-grey text-xs m-0.5">
-                  JSS Academy of Technical Education
-                </span>
-              </div>
+            <div className="mx-2 text-grey">
+              <p>Created with ❤️ by</p>
+              <img className="mt-4" src={Logo} alt="" />
             </div>
           </div>
           {/* right */}
