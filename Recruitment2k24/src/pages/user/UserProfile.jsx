@@ -1,15 +1,15 @@
-import Footer from "./Footer";
-import Navbar from "./Navbar/Navbar";
-import Logo from "../assets/header-logo.svg";
-import Profile from "../assets/prof.svg";
-import Pfp from "../assets/userprofile-pfp.svg";
-import Upload from "../assets/userprofile-upload.svg";
-import Github from "../assets/github.svg";
-import Hackerrank from "../assets/hackerrank.svg";
-import Dribble from "../assets/dribble.svg";
-import Behance from "../assets/behance.svg";
-import Link from "../assets/link.svg";
-import Linkedin from "../assets/footer-li.svg";
+import Footer from "../../components/Footer";
+import Navbar from "../../components/Navbar";
+import Logo from "../../assets/header-logo.svg";
+import Profile from "../../assets/prof.svg";
+import Pfp from "../../assets/userprofile-pfp.svg";
+import Upload from "../../assets/userprofile-upload.svg";
+import Github from "../../assets/github.svg";
+import Hackerrank from "../../assets/hackerrank.svg";
+import Dribble from "../../assets/dribble.svg";
+import Behance from "../../assets/behance.svg";
+import Link from "../../assets/link.svg";
+import Linkedin from "../../assets/footer-li.svg";
 
 export default function UserProfile() {
   return (
@@ -35,7 +35,7 @@ export default function UserProfile() {
             </div>
           </div>
           {/* whole form wrapper */}
-          <div className="flex gap-7 mt-32 justify-center items-center">
+          <div className="flex gap-7 justify-center items-center">
             {/* wrapper div */}
             <div className="flex flex-col gap-7">
               {/* Upload Pic */}

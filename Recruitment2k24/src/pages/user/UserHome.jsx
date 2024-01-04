@@ -1,21 +1,20 @@
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+import Logo from "../../assets/header-logo.svg";
+import arrow from "../../assets/arw-circle-right.svg";
+import Profile from "../../assets/prof.svg";
+import Quiz from "../../assets/userhome-quiz.svg";
+import Project from "../../assets/userhome-project.svg";
+import Hourglass from "../../assets/hourglass.svg";
+import Check from "../../assets/greencheck.svg";
 import { Link } from "react-router-dom";
-import Navbar from "./Navbar/Navbar";
-import Logo from "../assets/header-logo.svg";
-import arrow from "../assets/arw-circle-right.svg";
-import Profile from "../assets/prof.svg";
-import Quiz from "../assets/userhome-quiz.svg";
-import Project from "../assets/userhome-project.svg";
-import Footer from "./Footer";
-import Hourglass from "../assets/hourglass.svg";
-import Check from "../assets/greencheck.svg";
-
 export default function UserHome() {
   return (
     <>
       <div className="h-screen">
         <Navbar />
         <div className="mx-40">
-          <div className="flex my-[3rem] justify-between">
+          <div className="flex my-12 justify-between">
             <img src={Logo} alt="Logo" />
 
             <div className="flex flex-col">
@@ -42,9 +41,9 @@ export default function UserHome() {
             </div>
           </div>
           {/* Quiz and project  */}
-          <div className="flex justify-center mt-24 gap-32">
+          <div className="flex justify-center mt-20 gap-32">
             <div className="flex flex-col">
-              <div className=" w-[15rem] h-[15rem] bg-red items-center gap-5 justify-center rounded-2xl flex flex-col">
+              <div className=" w-60 h-60 bg-red items-center gap-5 justify-center rounded-2xl flex flex-col">
                 <img src={Quiz} />
                 <span className="text-2xl text-white font-bold opacity-50">
                   QUIZ
@@ -59,7 +58,7 @@ export default function UserHome() {
             {/* There needs to be a condition for the project thing if submitted it will be checked if not a it would be clickable and will be redirected to another page to submit the link */}
             <div className="flex flex-col">
               <Link to="/project">
-                <div className="w-[15rem] h-[15rem] bg-purple items-center gap-5 justify-center rounded-2xl flex flex-col">
+                <div className="w-60 h-60 bg-purple items-center gap-5 justify-center rounded-2xl flex flex-col">
                   <img src={Project} />
                   <span className="text-2xl text-white font-bold">PROJECT</span>
                 </div>

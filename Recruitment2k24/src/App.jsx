@@ -1,14 +1,14 @@
-import Domains from "./components/Domains";
-import Homepage from "./components/Homepage";
+import Domains from "./pages/user/Domains";
+import Homepage from "./pages/user/Homepage";
 import AdminLogin from "./components/admin/login";
 import Dashboard from "./components/admin/dashboard";
 import AllUsers from "./components/admin/allusers";
-import RegistrationForm from "./components/RegistrationForm";
+import RegistrationForm from "./pages/user/RegistrationForm";
 import Profile from "./components/admin/profile";
-import UserHome from "./components/UserHome";
+import UserHome from "./pages/user/UserHome";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ProjectSubmission from "./components/ProjectSubmission";
-import UserProfile from "./components/UserProfile";
+import ProjectSubmission from "./pages/user/ProjectSubmission";
+import UserProfile from "./pages/user/UserProfile";
 
 function App() {
   return (

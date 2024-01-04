@@ -1,9 +1,9 @@
-import logo from "../../assets/logo.svg";
-import domainButton from "../../assets/domainButton.svg";
-import webButton from "../../assets/websiteButton.svg";
-import result from "../../assets/result.svg";
-import separator from "../../assets/separator.svg";
-import arrRight from "../../assets/arrRight.svg";
+import logo from "../assets/logo.svg";
+import domainButton from "../assets/domainButton.svg";
+import webButton from "../assets/websiteButton.svg";
+import result from "../assets/result.svg";
+import separator from "../assets/separator.svg";
+import arrRight from "../assets/arrRight.svg";
 import { Link } from "react-router-dom";
 export default function Navbar() {
   return (

@@ -1,7 +1,7 @@
-import Navbar from "./Navbar/Navbar.jsx";
-import Footer from "./Footer.jsx";
-import Recruitments from "../../src/assets/recruitments-text.svg";
-import Timeline from "../../src/assets/timeline-home.svg";
+import Navbar from "../../components/Navbar.jsx";
+import Footer from "../../components/Footer.jsx";
+import Recruitments from "../../../src/assets/recruitments-text.svg";
+import Timeline from "../../../src/assets/timeline-home.svg";
 export default function Homepage() {
   return (
     <>

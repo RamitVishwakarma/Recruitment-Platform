@@ -32,19 +32,27 @@ body {
   box-sizing: border-box;
 }
 
-input {
+input,
+select {
   outline: none;
 }
 
-input:active {
+input:active,
+select:active {
   outline: none;
 }
 
-input:hover {
+input:hover,
+select:hover {
   outline: 2px solid #353535;
 }
 
-input:focus {
-  outline: solid 2px #6B83FF;
-  border: 1px solid #6B83FF;
+input:focus,
+select:focus {
+  outline: solid 2px #6b83ff;
+  border: 1px solid #6b83ff;
+}
+
+.project-icon-svg path {
+  fill: #ba75da;
 }

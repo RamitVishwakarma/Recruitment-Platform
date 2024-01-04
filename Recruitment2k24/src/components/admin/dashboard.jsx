@@ -1,4 +1,4 @@
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../Navbar";
 import Logo from "../../assets/header-logo.svg";
 import ProjectIcon from "../../assets/project.svg";
 import QuizIcon from "../../assets/quiz.svg";

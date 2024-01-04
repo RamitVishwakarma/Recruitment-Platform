@@ -1,4 +1,4 @@
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../Navbar";
 import Logo from "../../assets/header-logo.svg";
 import Footer from "../Footer";
 

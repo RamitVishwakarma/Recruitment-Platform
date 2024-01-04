@@ -1,13 +1,14 @@
-import Navbar from "../components/Navbar/Navbar.jsx";
-import Logo from "../assets/header-logo.svg";
-import Name from "../assets/input-name.svg";
-import Admission from "../assets/input-admission.svg";
-import Year from "../assets/input-year.svg";
-import Domain from "../assets/input-domain.svg";
-import Email from "../assets/input-email.svg";
-import Password from "../assets/input-password.svg";
+import Navbar from "../../components/Navbar.jsx";
+import Footer from "../../components/Footer.jsx";
+import Logo from "../../assets/header-logo.svg";
+import Name from "../../assets/input-name.svg";
+import Admission from "../../assets/input-admission.svg";
+import Year from "../../assets/input-year.svg";
+import Domain from "../../assets/input-domain.svg";
+import Email from "../../assets/input-email.svg";
+import Password from "../../assets/input-password.svg";
 import { useState } from "react";
-import Footer from "./Footer.jsx";
+
 export default function RegistrationForm() {
   const [activeBtn, setactiveBtn] = useState("register");
   const yearOptions = ["1st", "2nd"];
@@ -45,7 +46,7 @@ export default function RegistrationForm() {
           </div>
         </div>
 
-        <h1 className="text-grey text-5xl font-bold text-center m-8 mt-20">
+        <h1 className="text-grey text-5xl font-bold text-center m-8 mt-16">
           {activeBtn === "register"
             ? "Fill your details correctly!"
             : "Welcome back!"}
@@ -53,20 +54,17 @@ export default function RegistrationForm() {
 
         <form action="/register">
           <div
-            className={`flex w-1/2 m-auto flex-wrap gap-4 items-center justify-center
+            className={`flex w-3/4 m-auto flex-wrap gap-4 items-center justify-center
           ${activeBtn === "login" ? "flex-col" : ""}`}>
             {/* NAME */}
-            <div
-              className={`w-96 ${
-                activeBtn === "register" ? "" : "hidden"
-              }`}>
+            <div className={`w-96 ${activeBtn === "register" ? "" : "hidden"}`}>
               <label className="ml-12" htmlFor="name">
                 Name
               </label>
               <div className="flex gap-3 items-center">
                 <img className="w-8" src={Name} />
                 <input
-                  className="border p-3 w-72 rounded-lg border-grey"
+                  className="border p-3 w-80 rounded-lg border-grey"
                   type="text"
                   id="name"
                   name="name"
@@ -74,17 +72,14 @@ export default function RegistrationForm() {
               </div>
             </div>
             {/* Admission number */}
-            <div
-              className={`w-96 ${
-                activeBtn === "register" ? "" : "hidden"
-              }`}>
+            <div className={`w-96 ${activeBtn === "register" ? "" : "hidden"}`}>
               <label className="ml-12" htmlFor="admission number">
                 Admission Number
               </label>
               <div className="flex gap-3 items-center">
                 <img className="w-8" src={Admission} />
                 <input
-                  className="border p-3 w-72 rounded-lg border-grey"
+                  className="border p-3 w-80 rounded-lg border-grey"
                   type="text"
                   id="admission number"
                   name="admission number"
@@ -92,17 +87,14 @@ export default function RegistrationForm() {
               </div>
             </div>
             {/* Year */}
-            <div
-              className={`w-96 ${
-                activeBtn === "register" ? "" : "hidden"
-              }`}>
+            <div className={`w-96 ${activeBtn === "register" ? "" : "hidden"}`}>
               <label className="ml-12" htmlFor="Year">
                 Year
               </label>
               <div className="flex gap-3 items-center">
                 <img className="w-8" src={Year} />
                 <select
-                  className="w-72 h-12 border p-3 bg-white rounded-lg text-grey border-grey"
+                  className="w-80 h-12 border p-3 bg-white rounded-lg text-grey border-grey"
                   name="Year">
                   <option value="" disabled selected>
                     Select Year
@@ -123,17 +115,14 @@ export default function RegistrationForm() {
               </div>
             </div>
             {/* Domain */}
-            <div
-              className={`w-96 ${
-                activeBtn === "register" ? "" : "hidden"
-              }`}>
+            <div className={`w-96 ${activeBtn === "register" ? "" : "hidden"}`}>
               <label className="ml-12" htmlFor="Domain">
                 Domain
               </label>
               <div className="flex gap-3 items-center">
                 <img className="w-8" src={Domain} />
                 <select
-                  className="w-72 h-12 border p-3 rounded-lg bg-white text-grey border-grey"
+                  className="w-80 h-12 border p-3 rounded-lg bg-white text-grey border-grey"
                   name="Domain">
                   <option value="" disabled selected>
                     Select your preferred domain
@@ -161,7 +150,7 @@ export default function RegistrationForm() {
               <div className="flex gap-3 items-center">
                 <img className="w-8" src={Email} />
                 <input
-                  className="border p-3 w-72 rounded-lg border-grey"
+                  className="border p-3 w-80 rounded-lg border-grey"
                   type="email"
                   id="email"
                   name="email"
@@ -177,7 +166,7 @@ export default function RegistrationForm() {
               <div className="flex gap-3 items-center">
                 <img className="w-8" src={Password} />
                 <input
-                  className="border p-3 w-72 rounded-lg border-grey"
+                  className="border p-3 w-80 rounded-lg border-grey"
                   type="password"
                   id="password"
                   name="password"
@@ -186,7 +175,7 @@ export default function RegistrationForm() {
             </div>
           </div>
           <div className="flex justify-center">
-            <button className="mx-auto mt-10  text-button-text font-bold text-2xl rounded-lg bg-lime  hover:bg-button-hover px-10 py-4">
+            <button className="mt-10  text-button-text font-bold text-2xl rounded-lg bg-lime  hover:bg-button-hover px-10 py-4">
               {activeBtn === "register" ? "Register" : "Log In"}
             </button>
           </div>
