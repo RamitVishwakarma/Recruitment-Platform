@@ -1,6 +1,6 @@
-import Navbar from "../Navbar";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import Logo from "../../assets/header-logo.svg";
-import Footer from "../Footer";
 
 const AdminLogin = () => {
   return (

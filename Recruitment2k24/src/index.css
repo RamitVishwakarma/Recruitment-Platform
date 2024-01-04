@@ -56,3 +56,7 @@ select:focus {
 .project-icon-svg path {
   fill: #ba75da;
 }
+/* agar svg par hover toh sare svg ke andar paths ko fill */
+.nav-icons-svg:hover path {
+  fill: #6b83ff;
+}

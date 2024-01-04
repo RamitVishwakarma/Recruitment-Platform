@@ -1,4 +1,5 @@
-import Navbar from "../Navbar";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import Logo from "../../assets/header-logo.svg";
 import back from "../../assets/arrRight.svg";
 import close from "../../assets/close.svg";
@@ -146,6 +147,7 @@ const AllUsers = () => {
           ))}
         </table>
       </div>
+      <Footer />
     </>
   );
 };

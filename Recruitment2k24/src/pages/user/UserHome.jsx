@@ -55,6 +55,7 @@ export default function UserHome() {
               </div>
             </div>
             {/* Project Section */}
+            {/* need to change styles too on submitted and not submitted */}
             {/* There needs to be a condition for the project thing if submitted it will be checked if not a it would be clickable and will be redirected to another page to submit the link */}
             <div className="flex flex-col">
               <Link to="/project">

@@ -1,5 +1,5 @@
-import Navbar from "../Navbar";
-import Footer from "../Footer";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import Logo from "../../assets/header-logo.svg";
 import add from "../../assets/add.svg";
 import avatar from "../../assets/avatar.svg";

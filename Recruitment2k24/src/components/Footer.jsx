@@ -1,11 +1,12 @@
 import Logo from "../assets/complete-logo.svg";
-import Li from "../assets/footer-li.svg";
-import Insta from "../assets/footer-insta.svg";
-import X from "../assets/footer-X.svg";
-import Med from "../assets/footer-medium.svg";
-import Git from "../assets/footer-git.svg";
-import Ytb from "../assets/footer-ytb.svg";
+// footer svgs
 import Copy from "../assets/copyright.svg";
+import Li from "../assets/footer-li.svg?react";
+import Insta from "../assets/footer-insta.svg?react";
+import X from "../assets/footer-X.svg?react";
+import Med from "../assets/footer-medium.svg?react";
+import Git from "../assets/footer-git.svg?react";
+import Ytb from "../assets/footer-ytb.svg?react";
 
 const Footer = () => {
   return (
@@ -20,30 +21,29 @@ const Footer = () => {
             </div>
           </div>
           {/* right */}
-
           {/* NEED TO FIX THE HOVER STATE */}
           <div className="mr-40 flex gap-6 mt-[12.5vh]">
             <a
               href="https://www.linkedin.com/company/dsc-jssaten/"
               target="__blank">
-              <img className="w-8" src={Li} />
+              <Li className="w-8 nav-icons-svg" />
             </a>
             <a href="https://www.instagram.com/gdscjssaten/" target="__blank">
-              <img className="w-8" src={Insta} />
+              <Insta className="w-8 nav-icons-svg" />
             </a>
             <a href="https://twitter.com/GDSCJSSATEN" target="__blank">
-              <img className="w-8" src={X} />
+              <X className="w-8 nav-icons-svg" />
             </a>
             <a href="https://medium.com/dsc-jss-noida" target="__blank">
-              <img className="w-8" src={Med} />
+              <Med className="w-8 nav-icons-svg" />
             </a>
             <a href="https://github.com/DSC-JSS-NOIDA" target="__blank">
-              <img className="w-8" src={Git} />
+              <Git className="w-8 nav-icons-svg" />
             </a>
             <a
               href="https://m.youtube.com/channel/UCkELk5JFDceaSf8pBa19kDQ"
               target="__blank">
-              <img className="w-8" src={Ytb} />
+              <Ytb className="w-8 nav-icons-svg" />
             </a>
           </div>
         </div>

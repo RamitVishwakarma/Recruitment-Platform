@@ -1,11 +1,11 @@
-import Navbar from "../Navbar";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import Logo from "../../assets/header-logo.svg";
 import ProjectIcon from "../../assets/project.svg";
 import QuizIcon from "../../assets/quiz.svg";
 import UserIcon from "../../assets/users.svg";
 import CheckBox from "../../assets/shortlist.svg";
 import { Link } from "react-router-dom";
-import Footer from "../Footer";
 
 const Dashboard = () => {
   return (
