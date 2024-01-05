@@ -49,7 +49,7 @@ export default function Navbar() {
           <Link to="/register">
             <button
               id="login"
-              className="flex items-center justify-center px-6 py-1 bg-lime rounded-full">
+              className="flex items-center justify-center px-8 py-2 rounded-full text-grey">
               <div className="p-1 font-bold">Let's&nbsp;go</div>
               <img src={`${arrRight}`} />
             </button>

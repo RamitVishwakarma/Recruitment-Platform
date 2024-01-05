@@ -1,40 +1,44 @@
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Logo from "../../assets/header-logo.svg";
-import add from "../../assets/add.svg";
+import Add from "../../assets/add.svg?react";
 import avatar from "../../assets/avatar.svg";
 import back from "../../assets/arrRight.svg";
-import checked from "../../assets/checked.svg";
+import Checked from "../../assets/checked.svg?react";
 import error from "../../assets/error.svg";
-import extlink from "../../assets/extlink.svg";
-import Github from "../../assets/footer-git.svg";
-import hackerrank from "../../assets/hackerrank.svg";
-import linkedin from "../../assets/footer-li.svg";
-import dribbble from "../../assets/dribbble.svg";
-import behance from "../../assets/behance.svg";
-import custom from "../../assets/customlink.svg";
+import Extlink from "../../assets/extlink.svg?react";
+import Github from "../../assets/footer-git.svg?react";
+import Hackerrank from "../../assets/hackerrank.svg?react";
+import Linkedin from "../../assets/footer-li.svg?react";
+import Dribbble from "../../assets/dribbble.svg?react";
+import Behance from "../../assets/behance.svg?react";
+import Customlink from "../../assets/customlink.svg?react";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
+import validator from 'validator'
 
 const Profile = () => {
-  var users = {
+  const [users, setUser] = useState({
     name: "Lorem Ipsum",
     year: "1st",
     admNumber: "23AIML069",
-    project: "https://github.com/funinkina/manjaro-minimal-bootsplash",
+    project: "https://something.com",
     quizResults: "18/20",
     interviewStatus: "Scheduled",
-    shortlisted: false,
+    shortlisted: true,
     github: "https://something.com",
     hackerrank: "",
     linkedin: "https://linkedin.com",
     dribble: "https://dribble.com",
     behance: "https://behance.com",
     custom: "https://custom.com",
-  };
+  });
 
   const toggleShortlisted = () => {
-    users[shortlisted] = !users.shortlisted;
+    setUser({
+      ...users,
+      shortlisted: !users.shortlisted,
+    });
   };
 
   return (
@@ -77,11 +81,11 @@ const Profile = () => {
         <div className="flex flex-col gap-10 justify-between items-end">
           <button
             onClick={toggleShortlisted}
-            className={`flex py-2 px-6 rounded-lg ${
-              users.shortlisted ? "bg-light-blue/20" : "bg-lime"
+            className={`flex items-center py-2 px-6 rounded-lg ${
+              users.shortlisted ? "bg-light-blue/20 text-para-blue" : "bg-lime text-button-text"
             } `}>
-            <img src={users.shortlisted ? checked : add} />
-            <div className="p-2 text-4xl text-grey">
+            {users.shortlisted ? <Checked id='shortlist-checkmark'/> : <Add />}
+            <div className="p-2 text-4xl">
               {users.shortlisted ? "Shortlisted" : "Shortlist"}
             </div>
           </button>
@@ -94,15 +98,15 @@ const Profile = () => {
 
             <div>
               <p className="text-xl text-right">Project Status</p>
-              {users.project ? (
-                <div className="flex">
+              {validator.isURL(users.project) ? (
+                <div className="flex items-center gap-4 nav-icons-svg">
                   <a
                     className="text-light-blue text-right overflow-hidden line-clamp-1 text-ellipsis text-4xl w-[30vw] hover:underline"
                     target="_blank"
                     href={users.project}>
                     {users.project}
                   </a>
-                  <img src={extlink} alt="" />
+                  <Extlink/>
                 </div>
               ) : (
                 <p className="text-4xl flex text-red">
@@ -116,32 +120,32 @@ const Profile = () => {
               <div className="flex gap-6 items-center">
                 {users.github ? (
                   <a target="_blank" href={users.github}>
-                    <img src={Github} alt="" />
+                    <Github className='nav-icons-svg'/>
                   </a>
                 ) : null}
                 {users.hackerrank ? (
                   <a target="_blank" href={users.hackerrank}>
-                    <img src={hackerrank} alt="" />
+                    <Hackerrank className='nav-icons-svg'/> 
                   </a>
                 ) : null}
                 {users.linkedin ? (
                   <a target="_blank" href={users.linkedin}>
-                    <img src={linkedin} alt="" />
+                    <Linkedin className='nav-icons-svg'/>
                   </a>
                 ) : null}
                 {users.dribble ? (
                   <a target="_blank" href={users.dribble}>
-                    <img src={dribbble} alt="" />
+                    <Dribbble className='nav-icons-svg'/>
                   </a>
                 ) : null}
                 {users.behance ? (
                   <a target="_blank" href={users.behance}>
-                    <img src={behance} alt="" />
+                    <Behance className='nav-icons-svg'/>
                   </a>
                 ) : null}
                 {users.custom ? (
                   <a target="_blank" href={users.custom}>
-                    <img src={custom} alt="" />
+                    <Customlink className='nav-icons-svg'/>
                   </a>
                 ) : null}
               </div>

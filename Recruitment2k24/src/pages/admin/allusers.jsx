@@ -2,7 +2,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Logo from "../../assets/header-logo.svg";
 import back from "../../assets/arrRight.svg";
-import close from "../../assets/close.svg";
+import Close from "../../assets/close.svg?react";
 import search from "../../assets/search.svg";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
@@ -89,7 +89,7 @@ const AllUsers = () => {
             className={`flex items-center px-5 py-1 gap-2 border-2 rounded-full border-purple text-purple ${
               project ? "bg-purple/10" : ""
             }`}>
-            {project ? <img src={close} alt="" /> : ""}
+            {project ? <Close id="project-filter-close"/> : ""}
             <p>Projects&nbsp;Submitted:&nbsp;</p>
             <span className="font-bold">38</span>
           </button>
@@ -99,7 +99,7 @@ const AllUsers = () => {
             className={`flex items-center px-5 py-1 gap-2 border-2 rounded-full border-red text-red ${
               interviewed ? "bg-red/10" : ""
             }`}>
-            {interviewed ? <img src={close} alt="" /> : ""}
+            {interviewed ? <Close id="interview-filter-close"/> : ""}
             <p>Interviewed:&nbsp;</p>
             <span className="font-bold">34</span>
           </button>
@@ -109,7 +109,7 @@ const AllUsers = () => {
             className={`flex items-center px-5 py-1 gap-2 border-2 rounded-full border-text-green text-text-green ${
               shortlist ? "bg-text-green/10" : ""
             }`}>
-            {shortlist ? <img src={close} alt="" /> : ""}
+            {shortlist ? <Close id="shortlist-filter-close" /> : ""}
             <p>Shortlisted&nbsp;Users:&nbsp;</p>
             <span className="font-bold">16</span>
           </button>
@@ -119,7 +119,7 @@ const AllUsers = () => {
         </div>
       </div>
 
-      <div className="mx-40 mt-5 text-2xl">
+      <div className="mx-40 mt-5 text-2xl mb-20">
         <table className="w-full text-center">
           <tr className="bg-light-blue text-text-box">
             <th className="py-4">#</th>
