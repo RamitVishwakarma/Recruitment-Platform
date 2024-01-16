@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: ProductSans;
+    font-weight: 400;
+    src: url(./assets/Fonts/ProductSans-Regular.woff2) format("woff2");
+  }
+  @font-face {
+    font-family: ProductSans;
+    font-weight: 700;
+    src: url(./assets/Fonts/ProductSans-Bold.woff2) format("woff2");
+  }
+}
+
+:root {
+  --color-hr: #00000066;
+  --color-grey: #353535;
+  --color-nav-hover: #cdd5ff;
+  --color-text-box: #fbfbfb;
+  --color-button-text: #2f3b00;
+  --color-button-hover: #d4f74c;
+  --color-blue: #000c49;
+  --color-red: #eb6b6b;
+  --color-purple: #ba75da;
+  --color-lime: #abd700;
+  --color-light-blue: #6b83ff;
+  --color-light-purple: #e570d2;
+  --color-para-blue: #111b52;
+  --color-light-red: #eb6b6b;
+  --color-white: #f5f5f5;
+  --color-text-green: #579c00;
+  --color-footer: #e5e5e5;
+}
+
+#login {
+  background: linear-gradient(90deg, #abd700 0%, #dcff56 100%);
+  transition: all 0.2s ease-in-out;
+}
+
+#login:hover {
+  background: linear-gradient(99deg, #abd700 6.8%, #dcff56 69.2%);
+}
+
+#login img {
+  fill: white;
+  transition: all 0.2s ease-in-out;
+}
+
+#login:hover img {
+  transform: translateX(10px);
+}
+
+body {
+  background-color: var(--color-white);
+}
+
+* {
+  font-family: ProductSans, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+input,
+select {
+  outline: none;
+}
+
+input:active,
+select:active {
+  outline: none;
+}
+
+input:hover,
+select:hover {
+  outline: 2px solid var(--color-grey);
+}
+
+input:focus,
+select:focus {
+  outline: solid 2px var(--color-light-blue);
+  border: 1px solid var(--color-light-blue);
+}
+
+.project-icon-svg path {
+  fill: var(--color-purple);
+}
+/* agar svg par hover toh sare svg ke andar paths ko fill */
+.nav-icons-svg:hover path {
+  fill: var(--color-light-blue);
+}
+
+#shortlist-checkmark path {
+  fill: var(--color-para-blue);
+}
+
+#shortlist-filter-close path {
+  fill: var(--color-text-green);
+}
+
+#interview-filter-close path {
+  fill: var(--color-red);
+}
+
+#project-filter-close path {
+  fill: var(--color-purple);
+}
