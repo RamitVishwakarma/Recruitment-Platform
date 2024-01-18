@@ -51,7 +51,7 @@ export default function Navbar() {
               id="login"
               className="flex items-center justify-center px-8 py-2 rounded-full text-grey">
               <div className="p-1 font-bold">Let's&nbsp;go</div>
-              <img src={`${arrRight}`} />
+              <img className="w-6" src={arrRight} />
             </button>
           </Link>
         </div>

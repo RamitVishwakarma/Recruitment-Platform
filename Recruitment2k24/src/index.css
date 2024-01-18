@@ -108,3 +108,12 @@ select:focus {
 #project-filter-close path {
   fill: var(--color-purple);
 }
+
+
+.dashboard-card .ml-auto {
+  transition: all 0.1s ease-in-out;
+}
+
+.dashboard-card:hover .ml-auto {
+  transform: translateX(10px);
+}
