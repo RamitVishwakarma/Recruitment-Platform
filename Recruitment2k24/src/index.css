@@ -93,21 +93,9 @@ select:focus {
   fill: var(--color-light-blue);
 }
 
-#shortlist-checkmark path {
+/* #shortlist-checkmark path {
   fill: var(--color-para-blue);
-}
-
-#shortlist-filter-close path {
-  fill: var(--color-text-green);
-}
-
-#interview-filter-close path {
-  fill: var(--color-red);
-}
-
-#project-filter-close path {
-  fill: var(--color-purple);
-}
+}*/
 
 
 .dashboard-card .ml-auto {

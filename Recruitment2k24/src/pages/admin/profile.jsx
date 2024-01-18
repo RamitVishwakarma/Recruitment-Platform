@@ -1,6 +1,5 @@
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import Logo from "../../assets/header-logo.svg";
 import Header from "../../components/Header";
 import Add from "../../assets/add.svg?react";
 import avatar from "../../assets/avatar.svg";
@@ -15,7 +14,7 @@ import Dribbble from "../../assets/dribbble.svg?react";
 import Behance from "../../assets/behance.svg?react";
 import Customlink from "../../assets/customlink.svg?react";
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import { useState } from "react";
 import validator from "validator";
 
 const Profile = () => {
@@ -102,7 +101,7 @@ const Profile = () => {
               <p className="text-xl text-right">Project Status</p>
               {validator.isURL(users.project) ? (
                 <div className="flex items-center gap-4 nav-icons-svg">
-                  <a
+                  <a rel='noreferrer'
                     className="text-light-blue text-right overflow-hidden line-clamp-1 text-ellipsis text-4xl w-[30vw] hover:underline"
                     target="_blank"
                     href={users.project}>
@@ -121,32 +120,32 @@ const Profile = () => {
               <p className="text-xl">Submitted Links</p>
               <div className="flex gap-6 items-center">
                 {users.github ? (
-                  <a target="_blank" href={users.github}>
+                  <a rel="noreferrer" target="_blank" href={users.github}>
                     <Github className="nav-icons-svg" />
                   </a>
                 ) : null}
                 {users.hackerrank ? (
-                  <a target="_blank" href={users.hackerrank}>
+                  <a rel="noreferrer" target="_blank" href={users.hackerrank}>
                     <Hackerrank className="nav-icons-svg" />
                   </a>
                 ) : null}
                 {users.linkedin ? (
-                  <a target="_blank" href={users.linkedin}>
+                  <a rel="noreferrer" target="_blank" href={users.linkedin}>
                     <Linkedin className="nav-icons-svg" />
                   </a>
                 ) : null}
                 {users.dribble ? (
-                  <a target="_blank" href={users.dribble}>
+                  <a rel="noreferrer" target="_blank" href={users.dribble}>
                     <Dribbble className="nav-icons-svg" />
                   </a>
                 ) : null}
                 {users.behance ? (
-                  <a target="_blank" href={users.behance}>
+                  <a rel="noreferrer" target="_blank" href={users.behance}>
                     <Behance className="nav-icons-svg" />
                   </a>
                 ) : null}
                 {users.custom ? (
-                  <a target="_blank" href={users.custom}>
+                  <a rel="noreferrer" target="_blank" href={users.custom}>
                     <Customlink className="nav-icons-svg" />
                   </a>
                 ) : null}

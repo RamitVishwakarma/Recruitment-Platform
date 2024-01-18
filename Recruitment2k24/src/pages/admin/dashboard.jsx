@@ -48,18 +48,20 @@ const Dashboard = () => {
           {/* cards */}
           <div className="flex flex-col gap-4 content-stretch">
             {/* users card */}
-            <div className="dashboard-card flex bg-text-box items-center gap-8 px-10 rounded-2xl py-6">
-              {/* icon */}
-              <div className="bg-light-blue/30 w-16 h-16 flex items-center flex-shrink-0 justify-center rounded-full">
-                <img className="w-9" src={UserIcon} alt="" />
+            <Link to="/allusers">
+              <div className="dashboard-card flex bg-text-box items-center gap-8 px-10 rounded-2xl py-6">
+                {/* icon */}
+                <div className="bg-light-blue/30 w-16 h-16 flex items-center flex-shrink-0 justify-center rounded-full">
+                  <img className="w-9" src={UserIcon} alt="" />
+                </div>
+                {/* info */}
+                <div>
+                  <p className="text-4xl text-light-blue font-bold">{admininfo.total_users}</p>
+                  <p className="text-2xl text-grey">Registered&nbsp;Users</p>
+                </div>
+                <img className="ml-auto" src={Arrow_right} alt="" />
               </div>
-              {/* info */}
-              <div>
-                <p className="text-4xl text-light-blue font-bold">{admininfo.total_users}</p>
-                <p className="text-2xl text-grey">Registered&nbsp;Users</p>
-              </div>
-              <img className="ml-auto" src={Arrow_right} alt="" />
-            </div>
+            </Link>
             {/* projects card */}
             <div className="dashboard-card flex bg-text-box items-center gap-8 px-10 rounded-2xl py-6">
               {/* icon */}
