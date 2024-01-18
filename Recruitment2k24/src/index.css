@@ -64,7 +64,7 @@ body {
   box-sizing: border-box;
 }
 
-input,
+/* input,
 select {
   outline: none;
 }
@@ -83,7 +83,7 @@ input:focus,
 select:focus {
   outline: solid 2px var(--color-light-blue);
   border: 1px solid var(--color-light-blue);
-}
+} */
 
 .project-icon-svg path {
   fill: var(--color-purple);
