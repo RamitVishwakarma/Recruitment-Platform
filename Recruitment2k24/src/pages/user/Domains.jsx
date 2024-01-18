@@ -5,7 +5,7 @@ import Programming from "../../assets/programming.svg";
 import WebCLub from "../../assets/webclub.svg";
 import Android from "../../assets/android.svg";
 import Design from "../../assets/design.svg";
-import MachineLearning from "../../assets/svgs/machinelearning.svg";
+import MachineLearning from "../../assets/machinelearning.svg";
 
 export default function Domains() {
   return (

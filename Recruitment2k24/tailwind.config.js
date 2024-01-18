@@ -24,7 +24,12 @@ export default {
       "text-green": '#579C00',
       footer: "#E5E5E5",
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "admin-bg": "url('/src/assets/admin-bg-svg.svg')",
+        "admin-dashboard-bg": "url('/src/assets/admin-dashboard-bg.svg')",
+      }
+    },
   },
   plugins: [],
 };
