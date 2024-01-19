@@ -6,7 +6,7 @@ import Edit_icon from "../../assets/edit-icon.svg";
 import UserIcon from "../../assets/users.svg";
 import ProjectIcon from "../../assets/project.svg";
 import QuizIcon from "../../assets/quiz.svg";
-import CheckBox from "../../assets/shortlist.svg";
+import Shortlist from "../../assets/shortlist.svg";
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {
@@ -79,7 +79,7 @@ const Dashboard = () => {
             <div className="dashboard-card flex bg-text-box items-center gap-8 px-10 rounded-2xl py-6">
               {/* icon */}
               <div className="bg-lime/30 w-16 h-16 flex items-center flex-shrink-0 justify-center rounded-full">
-                <img className="w-9" src={CheckBox} alt="" />
+                <img className="w-9" src={Shortlist} alt="" />
               </div>
               {/* info */}
               <div>

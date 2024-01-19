@@ -93,6 +93,18 @@ select:focus {
   fill: var(--color-light-blue);
 }
 
+.shortlist_profile {
+  fill: var(--color-para-blue);
+}
+
+.project_icon_profile path{
+  fill: white; 
+}
+
+.profile_links svg path {
+  fill: var(--color-white);
+}
+
 /* #shortlist-checkmark path {
   fill: var(--color-para-blue);
 }*/
