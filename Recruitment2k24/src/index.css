@@ -35,24 +35,6 @@
   --color-footer: #e5e5e5;
 }
 
-#login {
-  background: linear-gradient(90deg, #abd700 0%, #dcff56 100%);
-  transition: all 0.2s ease-in-out;
-}
-
-#login:hover {
-  background: linear-gradient(99deg, #abd700 6.8%, #dcff56 69.2%);
-}
-
-#login img {
-  fill: white;
-  transition: all 0.2s ease-in-out;
-}
-
-#login:hover img {
-  transform: translateX(10px);
-}
-
 body {
   background-color: var(--color-white);
 }
@@ -62,6 +44,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
+}
+
+.cta svg {
+  transition: all 0.2s ease-in-out;
+}
+
+.cta:hover svg {
+  transform: translateX(10px);
 }
 
 /* input,
