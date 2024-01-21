@@ -16,19 +16,58 @@ import Design from "../../../src/assets/design.svg"
 import ML from "../../../src/assets/machinelearning.svg"
 
 import Lenis from '@studio-freight/lenis'
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect } from "react";
 
 export default function Homepage() {
   const lenis = new Lenis({
-    larp: 0.1,
-    //duration: 0.7,
+    lerp: 0.3,
     easing: (t) => 1 - Math.pow(1 - t, 5),
-  });
-  function raf(time) {
-    lenis.raf(time)
-    requestAnimationFrame(raf)
-  }
+    //duration: 0.2,
+  })
 
-  requestAnimationFrame(raf)
+  lenis.on('scroll', ScrollTrigger.update)
+
+  gsap.ticker.add((time)=>{
+    lenis.raf(time * 1000)
+  })
+
+  gsap.ticker.lagSmoothing(0)
+
+  
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.set(".gdsclogo", { opacity: 0 });
+    gsap.to(".text1", {
+      scrollTrigger: {
+        trigger: ".text1",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true,
+      },
+      y: -120,
+    });
+    gsap.to(".text2", {
+      scrollTrigger: {
+        trigger: ".text2",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true,
+      },
+      y: -120,
+    });
+    gsap.to(".gdsclogo", {
+      scrollTrigger: {
+        duration: 1,
+        trigger: ".gdsclogo",
+        start: "top 50%",
+        end: "bottom 90%",
+        scrub: false,
+      },
+      opacity: 1,
+    });
+  })
 
   return (
     <>
@@ -48,13 +87,13 @@ export default function Homepage() {
         {/* flame */}
         <div className="mt-36 text-center relative">
           <img src={Flame} alt="" />
-          <p className="text-7xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 whitespace-nowrap">Every talent is precious to us</p>
+          <p className="text1 text-7xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 whitespace-nowrap">Every talent is precious to us</p>
         </div>
 
         {/* sapling */}
         <div className="mt-48 text-center mb-4 relative">
           <img src={Sapling} alt="" />
-          <p className="text-7xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 whitespace-nowrap">A place to hone your skills and grow</p>
+          <p className="text2 text-7xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 whitespace-nowrap">A place to hone your skills and grow</p>
         </div>
 
         <svg xmlns="http://www.w3.org/2000/svg" width="6" height="204" viewBox="0 0 3 204" fill="none">
@@ -66,7 +105,7 @@ export default function Homepage() {
           <h3 className="text-5xl">Welcome to</h3>
           <div className="relative">
             <img src={Homebg} className="w-screen" alt="" />
-            <img className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" src={GDSClogo} alt="" />
+            <img className="gdsclogo absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" src={GDSClogo} alt="" />
           </div>
           <h3 className="text-5xl">and find a place in our domains</h3>
         </div>

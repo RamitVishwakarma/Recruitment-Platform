@@ -132,10 +132,6 @@ select:focus {
   aspect-ratio: 1 / 1;
   flex-shrink: 0;
   gap: 1rem;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -148,7 +144,7 @@ select:focus {
 
 .card h2 {
   position: absolute;
-  top: 60%;
+  top: 59%;
   left: 50%;
   line-height: 2.2rem;
   text-align: center;
@@ -163,7 +159,7 @@ select:focus {
 
 .card img {
   position: absolute;
-  top: 40%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 5rem;
@@ -171,13 +167,13 @@ select:focus {
 .card:hover img {
   width: 2rem;
   top: 8%;
-  left: 10%;
+  left: 8%;
 }
 
 .card p {
   position: absolute;
   text-align: center;
-  width: 80%;
+  width: 78%;
   bottom: -100%;
   left: 0;
   right: 0;
@@ -185,7 +181,7 @@ select:focus {
 }
 
 .card:hover p{
-  bottom: 15%;
+  bottom: 13%;
 }
 
 .card:hover {
