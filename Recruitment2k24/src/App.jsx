@@ -1,6 +1,6 @@
 // User pages import
 import Homepage from "./pages/user/Homepage";
-import Domains from "./pages/user/Domains";
+// import Domains from "./pages/user/Domains";
 import RegistrationForm from "./pages/user/RegistrationForm";
 import UserHome from "./pages/user/UserHome";
 import ProjectSubmission from "./pages/user/ProjectSubmission";
@@ -21,7 +21,7 @@ function App() {
       <Routes>
         {/* user routes */}
         <Route exact path="/" element={<Homepage />} />
-        <Route path="/domains" element={<Domains />} />
+        {/* <Route path="/domains" element={<Domains />} /> */}
         <Route path="/register" element={<RegistrationForm />} />
         <Route path="/home" element={<UserHome />} />
         <Route path="/project" element={<ProjectSubmission />} />
@@ -29,10 +29,10 @@ function App() {
         <Route path="/quizhome" element={<QuizHome />} />
         <Route path="/quiz" element={<QuizPage />} />
         {/* admin routes */}
-        <Route path="/admin-login" element={<AdminLogin />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/allusers" element={<AllUsers />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/dashboard" element={<Dashboard />} />
+        <Route path="/admin/users" element={<AllUsers />} />
+        <Route path="/admin/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );

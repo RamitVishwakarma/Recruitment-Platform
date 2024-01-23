@@ -21,14 +21,16 @@ export default {
       "para-blue": "#111B52",
       "light-red": "#EB6B6B",
       white: "#F5F5F5",
-      "text-green": '#579C00',
+      "text-green": "#579C00",
       footer: "#E5E5E5",
     },
     extend: {
       backgroundImage: {
         "admin-bg": "url('/src/assets/admin-bg-svg.svg')",
         "admin-dashboard-bg": "url('/src/assets/admin-dashboard-bg.svg')",
-      }
+        "reg-bg": "url('/src/assets/registration-bg.svg')",
+        "login-bg": "url('/src/assets/login-bg.svg')",
+      },
     },
   },
   plugins: [],

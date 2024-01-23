@@ -10,7 +10,7 @@ import Ytb from "../assets/footer-ytb.svg?react";
 
 const Footer = () => {
   return (
-    <>
+    <div className="flex flex-col">
       <div className="bg-footer h-[30vh] ">
         {/* left */}
         <div className="flex justify-between items-center ">
@@ -21,7 +21,6 @@ const Footer = () => {
             </div>
           </div>
           {/* right */}
-          {/* NEED TO FIX THE HOVER STATE */}
           <div className="mr-40 flex gap-6 mt-[12.5vh]">
             <a
               href="https://www.linkedin.com/company/dsc-jssaten/"
@@ -60,7 +59,7 @@ const Footer = () => {
         <div className="border-t-[6px] border-lime w-[25vw]"></div>
         <div className="border-t-[6px] border-light-blue w-[25vw]"></div>
       </div>
-    </>
+    </div>
   );
 };
 

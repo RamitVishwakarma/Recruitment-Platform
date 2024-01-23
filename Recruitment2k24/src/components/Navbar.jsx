@@ -19,14 +19,14 @@ export default function Navbar() {
             </Link>
             <img src={separator} alt="separator" className="ml-6 mr-3" />
             <Link
-              to="/domains"
+              to="/#domains"
               className="text-blue flex items-center gap-2 px-6 rounded-full hover:bg-nav-hover">
               <span className="material-symbols-rounded">cards</span>
               <div>Domains</div>
             </Link>
             <Link
-            to="/tasks"
-            className="flex items-center gap-2 px-6 rounded-full hover:bg-nav-hover">
+              to="/tasks"
+              className="text-blue flex items-center gap-2 px-6 rounded-full hover:bg-nav-hover">
               <span className="material-symbols-rounded">editor_choice</span>
               <div>Tasks</div>
             </Link>
@@ -45,11 +45,11 @@ export default function Navbar() {
             </Link>
           </div>
           <div>
-            <Link to="/register">
+            <Link to="/register#login">
               <button
                 id="login"
-                className="flex items-center justify-center px-10 py-2 rounded-lg bg-lime text-grey hover:bg-button-hover">
-                <div className="p-1 text-xl font-bold">Login</div>
+                className="flex items-center justify-center px-8 py rounded-lg bg-lime text-grey hover:bg-button-hover">
+                <div className="p-1 text-lg">Login</div>
               </button>
             </Link>
           </div>

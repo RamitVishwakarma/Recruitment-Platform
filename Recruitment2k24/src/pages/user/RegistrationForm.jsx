@@ -9,10 +9,14 @@ import Email from "../../assets/input-email.svg";
 import Password from "../../assets/input-password.svg";
 import { z } from "zod";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function RegistrationForm() {
   const [activeBtn, setactiveBtn] = useState("register");
+
+  useEffect(() => {
+    console.log();
+  });
   const yearOptions = ["1", "2"];
   const domainOptions = [
     "Programmming",
@@ -22,6 +26,7 @@ export default function RegistrationForm() {
     "Design Club",
     "ML Club",
   ];
+
   const [name, SetName] = useState("");
   const [admissionNumber, SetAdmissionNumber] = useState("");
   const [year, SetYear] = useState("");
@@ -155,7 +160,7 @@ export default function RegistrationForm() {
           withCredentials: true,
         })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status == 200) {
             localStorage.setItem("Authorization", res.headers["authorization"]);
           }
@@ -179,7 +184,12 @@ export default function RegistrationForm() {
   // And the error message handling
   return (
     <>
-      <div className="h-screen">
+      <div
+        className={`h-screen bg-no-repeat  ${
+          activeBtn === "register"
+            ? "bg-reg-bg bg-right-bottom"
+            : "bg-login-bg bg-left-bottom"
+        }`}>
         <Navbar />
         <div className="mx-40">
           <Header>
@@ -199,7 +209,10 @@ export default function RegistrationForm() {
             </div>
           </Header>
 
-          <h1 className="text-grey text-5xl font-bold text-center m-8 mt-16">
+          <h1
+            className={`text-grey text-5xl font-bold text-center m-8 mt-16 ${
+              activeBtn === "login" ? "" : ""
+            }`}>
             {activeBtn === "register"
               ? "Fill your details correctly!"
               : "Welcome back!"}
@@ -366,7 +379,7 @@ function Select({
         <select
           className={`${
             errorHandler ? "outline outline-2 outline-red border-red" : ""
-          } w-80 h-12 border p-3 bg-white rounded-lg text-grey border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}
+          } w-80 h-12 border p-3  rounded-lg text-grey border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}
           name={id}
           onChange={onChangeHandler}
           defaultValue={selected}>
