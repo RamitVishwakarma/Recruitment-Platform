@@ -1,5 +1,5 @@
 import logo from "../assets/logo.svg";
-import Hamburger from "../assets/hamburger.svg";
+import Hamburger from "../assets/hamburger-menu.svg";
 import separator from "../assets/separator.svg";
 import { Link } from "react-router-dom";
 export default function Navbar() {
