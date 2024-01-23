@@ -10,9 +10,17 @@ import Password from "../../assets/input-password.svg";
 import { z } from "zod";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function RegistrationForm() {
   const [activeBtn, setactiveBtn] = useState("register");
+
+  const location = useLocation();
+  useEffect(() => {
+    if (location.hash == "#l") {
+      setactiveBtn("login");
+    }
+  }, [location]);
 
   useEffect(() => {
     console.log();
@@ -57,7 +65,7 @@ export default function RegistrationForm() {
     password: passwordSchema,
   });
 
-  const handleName = async (e) => {
+  const handleName = (e) => {
     SetName(e.target.value);
     nameSchema.safeParse(name).success
       ? setNameError(false)
@@ -178,22 +186,18 @@ export default function RegistrationForm() {
         });
     }
   };
-  // Need to do transitions
-  // need to change the dropdown menu styles
-  // Handle the input and send it to the backend for saving purposes
-  // And the error message handling
   return (
     <>
       <div
-        className={`h-screen bg-no-repeat  ${
+        className={`lg:h-screen max-lg:bg-none bg-no-repeat ${
           activeBtn === "register"
             ? "bg-reg-bg bg-right-bottom"
             : "bg-login-bg bg-left-bottom"
         }`}>
         <Navbar />
-        <div className="mx-40">
+        <div className="mx-5 md:mx-20 xl:mx-40">
           <Header>
-            <div>
+            <div className="min-w-80 max-md:mt-10">
               <button
                 className={`w-40 font-ProductSans duration-300 ease-in-out pr-2 h-12 rounded-full  text-white bg-light-red relative left-5
               ${activeBtn === "register" ? "font-bold" : "opacity-60 "}`}
@@ -210,7 +214,7 @@ export default function RegistrationForm() {
           </Header>
 
           <h1
-            className={`text-grey text-5xl font-bold text-center m-8 mt-16 ${
+            className={`text-grey text-3xl md:text-4xl lg:text-5xl font-bold text-center m-8 md:mt-10 lg:mt-16 ${
               activeBtn === "login" ? "" : ""
             }`}>
             {activeBtn === "register"
@@ -222,7 +226,7 @@ export default function RegistrationForm() {
           {/* Turned off autocomplete coz it was causing issues with the onchange handler if i get time i will fix it */}
           <form onSubmit={formSubmitHandler} autoComplete="off">
             <div
-              className={`flex w-3/4 m-auto flex-wrap gap-4 items-center justify-center
+              className={`flex m-auto flex-wrap gap-4 items-center justify-center
               ${activeBtn === "login" ? "flex-col" : ""}`}>
               {/* NAME */}
               <Input
@@ -300,7 +304,7 @@ export default function RegistrationForm() {
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="mt-10 text-button-text font-bold text-2xl rounded-lg bg-lime  hover:bg-button-hover px-16 py-4">
+                className="my-14 text-button-text font-bold text-2xl rounded-lg bg-lime  hover:bg-button-hover px-16 py-4">
                 {activeBtn === "register" ? "Register" : "Log In"}
               </button>
             </div>
@@ -325,7 +329,7 @@ function Input({
   errorMessage,
 }) {
   return (
-    <div className={`w-96 ${hide ? "hidden" : ""}`}>
+    <div className={`w-96 2xl:w-4/12 ${hide ? "hidden" : ""}`}>
       <div className="flex justify-between ">
         <label className="ml-12" htmlFor={id}>
           {label}
@@ -343,7 +347,7 @@ function Input({
               ? "outline outline-2 outline-red border-red"
               : ""
           }
-            border p-3 w-80 rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
+            border p-3 w-80 2xl:w-11/12 rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
           type={type}
           id={id}
           name={id}
@@ -367,7 +371,7 @@ function Select({
   errorMessage,
 }) {
   return (
-    <div className={`w-96 ${hide ? "hidden" : ""}`}>
+    <div className={`w-96 2xl:w-4/12 ${hide ? "hidden" : ""}`}>
       <div className="flex justify-between ">
         <label className="ml-12" htmlFor={id}>
           {label}
@@ -379,7 +383,7 @@ function Select({
         <select
           className={`${
             errorHandler ? "outline outline-2 outline-red border-red" : ""
-          } w-80 h-12 border p-3  rounded-lg text-grey border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}
+          } w-80 2xl:w-11/12 h-12 border p-3  rounded-lg text-grey border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}
           name={id}
           onChange={onChangeHandler}
           defaultValue={selected}>

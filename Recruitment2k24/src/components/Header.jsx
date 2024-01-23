@@ -3,8 +3,12 @@ import Logo from "../assets/header-logo.svg";
 export default function Header({ children }) {
   return (
     <>
-      <div className="flex my-6 justify-between">
-        <img src={Logo} alt="Logo" />
+      <div className="flex my-6 max-md:flex-col items-center justify-between">
+        <img
+          className="max-w-sm max-h-sm md:max-w-md md:max-h-md lg:max-w-lg lg-max-h-lg"
+          src={Logo}
+          alt="Logo"
+        />
         {children}
       </div>
     </>
