@@ -89,7 +89,9 @@ export default function Homepage() {
             <button
               id="login"
               className="flex items-center justify-center px-8 py-1 rounded-lg bg-lime text-grey hover:bg-button-hover">
-              <div className="p-1 text-xl font-bold">Login</div>
+              <div className="p-1 text-xl text-button-text font-bold">
+                Login
+              </div>
             </button>
           </Link>
         </div>

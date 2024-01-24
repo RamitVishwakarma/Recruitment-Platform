@@ -52,6 +52,14 @@ export default function Navbar({ children }) {
             </Link>
           </div>
           {children}
+          {/* <div>
+            <Link to="/auth" state={"login"}>
+              <button
+                className="flex items-center justify-center px-8 py-1 rounded-lg bg-lime text-grey hover:bg-button-hover">
+                <div className="p-1 text-xl text-button-text font-bold">Login</div>
+              </button>
+            </Link>
+          </div> */}
         </div>
       </div>
     </>

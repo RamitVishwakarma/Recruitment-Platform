@@ -10,6 +10,7 @@ export default function Header({ children }) {
           alt="Logo"
         />
         {children}
+        {/* <h1 className="text-6xl text-grey font-bold">Domains</h1> */}
       </div>
     </>
   );

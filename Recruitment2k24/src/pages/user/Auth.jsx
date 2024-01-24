@@ -1,16 +1,22 @@
 import Navbar from "../../components/Navbar.jsx";
 import Footer from "../../components/Footer.jsx";
 import Header from "../../components/Header.jsx";
+
 import Name from "../../assets/input-name.svg";
 import Admission from "../../assets/input-admission.svg";
 import Year from "../../assets/input-year.svg";
 import DomainIco from "../../assets/input-domain.svg";
 import Email from "../../assets/input-email.svg";
 import Password from "../../assets/input-password.svg";
+import ArrLeft from "../../assets/arrleft.svg";
+import Google from "../../assets/google-logo.svg";
+import separator from "../../assets/separator.svg";
 import { z } from "zod";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
+import app from "../../utils/firebase.js";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
 export default function RegistrationForm() {
   const [activeBtn, setactiveBtn] = useState("register");
@@ -31,7 +37,21 @@ export default function RegistrationForm() {
             ? "bg-reg-bg bg-right-bottom"
             : "bg-login-bg bg-left-bottom"
         }`}>
-        <Navbar />
+        <Navbar>
+          <div>
+            <Link to="/">
+              <button className="flex items-center justify-center px-8 py-1 rounded-lg bg-lime text-grey hover:bg-button-hover">
+                <span>
+                  <img src={ArrLeft} />
+                </span>
+                <div className="p-1 text-xl text-button-text font-bold">
+                  Back
+                </div>
+              </button>
+            </Link>
+          </div>
+        </Navbar>
+
         <div className="mx-5 md:mx-20 xl:mx-40">
           <Header>
             <div className="min-w-80 max-md:mt-10">
@@ -49,6 +69,7 @@ export default function RegistrationForm() {
               </button>
             </div>
           </Header>
+          {/* Register and Login Section */}
           {activeBtn === "register" ? <Registration /> : <Login />}
         </div>
       </div>
@@ -67,6 +88,7 @@ function Registration() {
     "Design Club",
     "ML Club",
   ];
+
   const [name, SetName] = useState("");
   const [admissionNumber, SetAdmissionNumber] = useState("");
   const [year, SetYear] = useState("");
@@ -144,8 +166,10 @@ function Registration() {
       year,
       Domain,
     };
+    // On click of submit button, check if any of the fields are empty, if yes, set the error state to true, else false.
     year === "" ? setYearError(true) : setYearError(false);
     Domain === "" ? setDomainError(true) : setDomainError(false);
+    // Validation of form data
     const validate = registrationSchema.safeParse(registrationData);
     if (!validate.success) {
       validate.error.errors.forEach((error) => {
@@ -180,11 +204,10 @@ function Registration() {
           }
         })
         .catch((e) => {
-          if (e.response.status === 409) {
-            alert("User already exists");
-          } else {
-            alert("Something went wrong");
-          }
+          console.log(e);
+          e.response.status === 409
+            ? alert("User already exists")
+            : alert("Something went wrong");
         });
     }
   };
@@ -266,13 +289,21 @@ function Registration() {
           />
         </div>
         <div className="flex justify-center">
-          <button
-            type="submit"
-            className="my-14 text-button-text font-bold text-2xl rounded-lg bg-lime  hover:bg-button-hover px-16 py-4">
-            Register
-          </button>
+          <div className="mt-16">
+            <GoogleAuthentication text="Sign Up with Google" />
+          </div>
+          {/* Add in separator */}
+          <img src={separator} className="ml-8 mr-3 max-md:hidden" />
+          <div>
+            <button
+              type="submit"
+              className="my-14 text-button-text font-bold text-2xl rounded-lg bg-lime  hover:bg-button-hover px-16 py-4">
+              Register
+            </button>
+          </div>
         </div>
       </form>
+      {/* <GoogleAuthentication text="Sign Up with Google" /> */}
     </>
   );
 }
@@ -280,7 +311,6 @@ function Registration() {
 function Login() {
   const [email, SetEmail] = useState("");
   const [password, SetPassword] = useState("");
-
   const [emailError, setEmailError] = useState(false);
 
   const emailSchema = z.string().email();
@@ -296,30 +326,39 @@ function Login() {
   };
 
   const formSubmitHandler = async (e) => {
+    e.preventDefault();
     const loginData = {
       email,
       password,
     };
-    axios
-      .post(`${import.meta.env.VITE_URL}user/auth/login`, loginData, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        if (res.status == 200) {
-          localStorage.setItem("Authorization", res.headers["authorization"]);
-        }
-      })
-      .catch((e) => {
-        if (
-          e.response.status === 401 ||
-          e.response.status === 404 ||
-          e.response.status === 400
-        ) {
-          alert("Invalid Credentials");
-        } else {
-          alert("Something went wrong");
-        }
-      });
+
+    // Validation of form data
+    const validate = emailSchema.safeParse(loginData.email);
+    if (!validate.success) {
+      setEmailError(true);
+    } else {
+      axios
+        .post(`${import.meta.env.VITE_URL}user/auth/login`, loginData, {
+          withCredentials: true,
+        })
+        .then((res) => {
+          if (res.status == 200) {
+            localStorage.setItem("Authorization", res.headers["authorization"]);
+            // alert("Successfull Login");
+          }
+        })
+        .catch((e) => {
+          if (
+            e.response.status === 401 ||
+            e.response.status === 404 ||
+            e.response.status === 400
+          ) {
+            alert("Invalid Credentials");
+          } else {
+            alert("Something went wrong");
+          }
+        });
+    }
   };
   return (
     <>
@@ -386,8 +425,9 @@ function Input({
         <img className="w-8" src={icon} />
         <input
           className={`
-          ${errorHandler ? "outline outline-2 outline-red border-red" : ""}
-            border p-3 w-80 2xl:w-11/12 rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
+          ${
+            errorHandler ? "outline outline-2 outline-red border-red" : ""
+          } bg-text-box border p-3 w-80 2xl:w-11/12 rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
           type={type}
           id={id}
           name={id}
@@ -444,5 +484,50 @@ function Select({
         </select>
       </div>
     </div>
+  );
+}
+
+function GoogleAuthentication({ text }) {
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        const Data = {
+          name: user.displayName,
+          email: user.email,
+          photo: user.photoURL,
+        };
+        axios
+          .post(`${import.meta.env.VITE_URL}user/auth/google`, Data)
+          .then((res) => {
+            console.log(res);
+            if (res.status == 200) {
+              localStorage.setItem(
+                "Authorization",
+                res.headers["authorization"]
+              );
+            }
+          })
+          .catch((e) => {
+            console.log(e);
+            alert("Something went wrong with Google Authentication");
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Cannot sign in with google error");
+      });
+  };
+
+  return (
+    <button
+      onClick={signInWithGoogle}
+      className="px-4 py-3 flex gap-4 items-center justify-center rounded-lg shadow-sm">
+      <img src={Google} />
+      <span className="text-grey/60">{text}</span>
+    </button>
   );
 }

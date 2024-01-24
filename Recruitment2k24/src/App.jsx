@@ -1,7 +1,7 @@
 // User pages import
 import Homepage from "./pages/user/Homepage";
-// import Domains from "./pages/user/Domains";
-import RegistrationForm from "./pages/user/RegistrationForm";
+import Auth from "./pages/user/Auth";
+import ResetPass from "./pages/user/ResetPass";
 import UserHome from "./pages/user/UserHome";
 import ProjectSubmission from "./pages/user/ProjectSubmission";
 import UserProfile from "./pages/user/UserProfile";
@@ -21,8 +21,8 @@ function App() {
       <Routes>
         {/* user routes */}
         <Route exact path="/" element={<Homepage />} />
-        {/* <Route path="/domains" element={<Domains />} /> */}
-        <Route path="/auth" element={<RegistrationForm />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/reset-password" element={<ResetPass />} />
         <Route path="/home" element={<UserHome />} />
         <Route path="/project" element={<ProjectSubmission />} />
         <Route path="/user-profile" element={<UserProfile />} />
