@@ -18,7 +18,7 @@ import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 export default function Homepage() {
   const lenis = new Lenis({
@@ -83,13 +83,23 @@ export default function Homepage() {
 
   return (
     <>
-      <Navbar />
+      <Navbar>
+        <div>
+          <Link to="/auth" state={"login"}>
+            <button
+              id="login"
+              className="flex items-center justify-center px-8 py-1 rounded-lg bg-lime text-grey hover:bg-button-hover">
+              <div className="p-1 text-xl font-bold">Login</div>
+            </button>
+          </Link>
+        </div>
+      </Navbar>
       <div className="flex flex-col gap-20 items-center mb-20 text-grey">
         <img className="mt-52 mx-auto" src={Recruitments}></img>
 
         <div className="flex items-center gap-12">
           <h2 className="font-bold text-5xl">Register Here</h2>
-          <a href="/register">
+          <Link to="/auth">
             <button className="cta flex items-center gap-6 bg-lime px-10 rounded-xl py-4">
               <h5 className="text-2xl">Let&apos;s Go</h5>
               <svg
@@ -104,7 +114,7 @@ export default function Homepage() {
                 />
               </svg>
             </button>
-          </a>
+          </Link>
         </div>
         {/* flame */}
         <div className="mt-36 text-center relative">
@@ -282,12 +292,12 @@ export default function Homepage() {
         </div>
 
         {/* admin login */}
-        <a href="/admin-login">
+        <Link href="/admin/login">
           <button className="flex gap-4 rounded-full bg-text-box py-1 px-4 hover:bg-grey/5">
             <p>Admin Login</p>
             <span className="material-symbols-rounded">arrow_circle_right</span>
           </button>
-        </a>
+        </Link>
       </div>
       <Footer />
     </>

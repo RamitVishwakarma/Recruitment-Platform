@@ -17,7 +17,7 @@ const Footer = () => {
           <div className="mx-5 md:mx-20 xl:mx-40 mt-8 md:mt-[10vh]">
             <div className="mx-2 text-grey max-md:flex max-md:flex-col max-md:items-center max-md:justify-center ">
               <p>Created with ❤️ by</p>
-              <img className="mt-4 " src={Logo} alt="" />
+              <img className="mt-4 max-sm:max-w-80" src={Logo} alt="" />
             </div>
           </div>
           {/* right */}

@@ -22,7 +22,7 @@ function App() {
         {/* user routes */}
         <Route exact path="/" element={<Homepage />} />
         {/* <Route path="/domains" element={<Domains />} /> */}
-        <Route path="/register" element={<RegistrationForm />} />
+        <Route path="/auth" element={<RegistrationForm />} />
         <Route path="/home" element={<UserHome />} />
         <Route path="/project" element={<ProjectSubmission />} />
         <Route path="/user-profile" element={<UserProfile />} />

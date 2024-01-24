@@ -2,7 +2,7 @@ import logo from "../assets/logo.svg";
 import Hamburger from "../assets/hamburger-menu.svg";
 import separator from "../assets/separator.svg";
 import { Link } from "react-router-dom";
-export default function Navbar() {
+export default function Navbar({ children }) {
   return (
     <>
       <div className="sticky z-50 top-0 bg-white/70 backdrop-blur-lg">
@@ -51,15 +51,7 @@ export default function Navbar() {
               <div>Results</div>
             </Link>
           </div>
-          <div>
-            <Link to="/register#l">
-              <button
-                id="login"
-                className="flex items-center justify-center px-8 py-1 rounded-lg bg-lime text-grey hover:bg-button-hover">
-                <div className="p-1 text-xl font-bold">Login</div>
-              </button>
-            </Link>
-          </div>
+          {children}
         </div>
       </div>
     </>

@@ -15,16 +15,49 @@ import { useLocation } from "react-router-dom";
 export default function RegistrationForm() {
   const [activeBtn, setactiveBtn] = useState("register");
 
-  const location = useLocation();
+  let { state } = useLocation();
   useEffect(() => {
-    if (location.hash == "#l") {
-      setactiveBtn("login");
+    if (state) {
+      setactiveBtn(state);
     }
-  }, [location]);
+  }, [state]);
 
-  useEffect(() => {
-    console.log();
-  });
+  return (
+    <>
+      {/* Header section */}
+      <div
+        className={`lg:h-screen max-lg:bg-none bg-no-repeat ${
+          activeBtn === "register"
+            ? "bg-reg-bg bg-right-bottom"
+            : "bg-login-bg bg-left-bottom"
+        }`}>
+        <Navbar />
+        <div className="mx-5 md:mx-20 xl:mx-40">
+          <Header>
+            <div className="min-w-80 max-md:mt-10">
+              <button
+                className={`w-40 font-ProductSans duration-300 ease-in-out pr-2 h-12 rounded-full  text-white bg-light-red relative left-5
+              ${activeBtn === "register" ? "font-bold" : "opacity-60 "}`}
+                onClick={() => setactiveBtn("register")}>
+                Register
+              </button>
+              <button
+                className={`w-40 font-ProductSans duration-300 ease-in-out h-12 rounded-full text-white bg-light-red relative right-5
+              ${activeBtn === "login" ? "font-bold" : "opacity-60"}`}
+                onClick={() => setactiveBtn("login")}>
+                Log in
+              </button>
+            </div>
+          </Header>
+          {activeBtn === "register" ? <Registration /> : <Login />}
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
+}
+
+function Registration() {
   const yearOptions = ["1", "2"];
   const domainOptions = [
     "Programmming",
@@ -34,7 +67,6 @@ export default function RegistrationForm() {
     "Design Club",
     "ML Club",
   ];
-
   const [name, SetName] = useState("");
   const [admissionNumber, SetAdmissionNumber] = useState("");
   const [year, SetYear] = useState("");
@@ -55,15 +87,6 @@ export default function RegistrationForm() {
   const domainSchema = z.string();
   const emailSchema = z.string().email();
   const passwordSchema = z.string().min(6);
-
-  const registrationSchema = z.object({
-    name: nameSchema,
-    admissionNumber: admissionNumberSchema,
-    year: yearSchema,
-    Domain: domainSchema,
-    email: emailSchema,
-    password: passwordSchema,
-  });
 
   const handleName = (e) => {
     SetName(e.target.value);
@@ -102,84 +125,63 @@ export default function RegistrationForm() {
       : setPasswordError(true);
   };
 
+  const registrationSchema = z.object({
+    name: nameSchema,
+    admissionNumber: admissionNumberSchema,
+    year: yearSchema,
+    Domain: domainSchema,
+    email: emailSchema,
+    password: passwordSchema,
+  });
+
   const formSubmitHandler = async (e) => {
     e.preventDefault();
-    if (activeBtn === "register") {
-      const registrationData = {
-        name,
-        email,
-        password,
-        admissionNumber,
-        year,
-        Domain,
-      };
-      year === "" ? setYearError(true) : setYearError(false);
-      Domain === "" ? setDomainError(true) : setDomainError(false);
-      const validate = registrationSchema.safeParse(registrationData);
-      if (!validate.success) {
-        validate.error.errors.forEach((error) => {
-          switch (error.path[0]) {
-            case "name":
-              setNameError(true);
-              break;
-            case "admissionNumber":
-              setAdmissionNumberError(true);
-              break;
-            case "year":
-              setYearError(true);
-              break;
-            case "Domain":
-              setDomainError(true);
-              break;
-            case "email":
-              setEmailError(true);
-              break;
-            case "password":
-              setPasswordError(true);
-              break;
-          }
-        });
-      } else {
-        axios
-          .post(`${import.meta.env.VITE_URL}user/auth/signup`, registrationData)
-          .then((res) => {
-            if (res.status === 201) {
-              alert("Successfull Signup kindly login");
-              setactiveBtn("login");
-            }
-          })
-          .catch((e) => {
-            if (e.response.status === 409) {
-              alert("User already exists");
-            } else {
-              alert("Something went wrong");
-            }
-          });
-      }
-    }
-    if (activeBtn === "login") {
-      const loginData = {
-        email,
-        password,
-      };
-      // console.log(loginData);
+    const registrationData = {
+      name,
+      email,
+      password,
+      admissionNumber,
+      year,
+      Domain,
+    };
+    year === "" ? setYearError(true) : setYearError(false);
+    Domain === "" ? setDomainError(true) : setDomainError(false);
+    const validate = registrationSchema.safeParse(registrationData);
+    if (!validate.success) {
+      validate.error.errors.forEach((error) => {
+        switch (error.path[0]) {
+          case "name":
+            setNameError(true);
+            break;
+          case "admissionNumber":
+            setAdmissionNumberError(true);
+            break;
+          case "year":
+            setYearError(true);
+            break;
+          case "Domain":
+            setDomainError(true);
+            break;
+          case "email":
+            setEmailError(true);
+            break;
+          case "password":
+            setPasswordError(true);
+            break;
+        }
+      });
+    } else {
       axios
-        .post(`${import.meta.env.VITE_URL}user/auth/login`, loginData, {
-          withCredentials: true,
-        })
+        .post(`${import.meta.env.VITE_URL}user/auth/signup`, registrationData)
         .then((res) => {
-          // console.log(res);
-          if (res.status == 200) {
-            localStorage.setItem("Authorization", res.headers["authorization"]);
+          if (res.status === 201) {
+            alert("Successfull Signup kindly login");
+            setactiveBtn("login");
           }
         })
         .catch((e) => {
-          if (
-            e.response.status === 401 ||
-            e.response.status === 404 ||
-            e.response.status === 400
-          ) {
-            alert("Invalid Credentials");
+          if (e.response.status === 409) {
+            alert("User already exists");
           } else {
             alert("Something went wrong");
           }
@@ -188,137 +190,181 @@ export default function RegistrationForm() {
   };
   return (
     <>
-      <div
-        className={`lg:h-screen max-lg:bg-none bg-no-repeat ${
-          activeBtn === "register"
-            ? "bg-reg-bg bg-right-bottom"
-            : "bg-login-bg bg-left-bottom"
-        }`}>
-        <Navbar />
-        <div className="mx-5 md:mx-20 xl:mx-40">
-          <Header>
-            <div className="min-w-80 max-md:mt-10">
-              <button
-                className={`w-40 font-ProductSans duration-300 ease-in-out pr-2 h-12 rounded-full  text-white bg-light-red relative left-5
-              ${activeBtn === "register" ? "font-bold" : "opacity-60 "}`}
-                onClick={() => setactiveBtn("register")}>
-                Register
-              </button>
-              <button
-                className={`w-40 font-ProductSans duration-300 ease-in-out h-12 rounded-full text-white bg-light-red relative right-5
-              ${activeBtn === "login" ? "font-bold" : "opacity-60"}`}
-                onClick={() => setactiveBtn("login")}>
-                Log in
-              </button>
-            </div>
-          </Header>
+      <h1
+        className={`text-grey text-3xl font-bold text-center md:text-4xl lg:text-5xl m-8 md:mt-10 lg:mt-16`}>
+        Fill your details correctly!
+      </h1>
 
-          <h1
-            className={`text-grey text-3xl md:text-4xl lg:text-5xl font-bold text-center m-8 md:mt-10 lg:mt-16 ${
-              activeBtn === "login" ? "" : ""
-            }`}>
-            {activeBtn === "register"
-              ? "Fill your details correctly!"
-              : "Welcome back!"}
-          </h1>
-
-          {/* Form */}
-          {/* Turned off autocomplete coz it was causing issues with the onchange handler if i get time i will fix it */}
-          <form onSubmit={formSubmitHandler} autoComplete="off">
-            <div
-              className={`flex m-auto flex-wrap gap-4 items-center justify-center
-              ${activeBtn === "login" ? "flex-col" : ""}`}>
-              {/* NAME */}
-              <Input
-                hide={activeBtn === "login" ? true : false}
-                id="name"
-                label="Name"
-                icon={Name}
-                type="text"
-                placeholder="Ramit Vishwakarma"
-                onChangeHandler={handleName}
-                errorHandler={nameError}
-                errorMessage={"Name is required"}
-              />
-              {/* Admission number */}
-              <Input
-                hide={activeBtn === "login" ? true : false}
-                id="admission number"
-                label="Admission Number"
-                icon={Admission}
-                type="text"
-                placeholder="22CSDS064"
-                onChangeHandler={handleAdmissionNumber}
-                errorHandler={admissionNumberError}
-                errorMessage={"Invalid Number"}
-              />
-              {/* Year */}
-              <Select
-                hide={activeBtn === "login" ? true : false}
-                id="year"
-                label="Year"
-                icon={Year}
-                selected="Select your year"
-                data={yearOptions}
-                onChangeHandler={handleYear}
-                errorHandler={yearError}
-                errorMessage={"Select an Year"}
-              />
-              {/* Domain */}
-              <Select
-                hide={activeBtn === "login" ? true : false}
-                id="Domain"
-                label="Domain"
-                icon={DomainIco}
-                onChangeHandler={handleDomain}
-                selected="Select your preferred domain"
-                data={domainOptions}
-                errorHandler={domainError}
-                errorMessage={"Select a Domain"}
-              />
-              {/* Email */}
-              <Input
-                errorDisplay={false}
-                id="email"
-                label="Email ID"
-                icon={Email}
-                type="email"
-                placeholder="vishwakarmaramit@gmail.com"
-                onChangeHandler={handleEmail}
-                errorHandler={emailError}
-                errorMessage={"Invalid Email"}
-              />
-              {/* Password */}
-              <Input
-                errorDisplay={false}
-                id="password"
-                label="Password"
-                icon={Password}
-                type="password"
-                placeholder="6 characters or more"
-                onChangeHandler={handlePassword}
-                errorHandler={passwordError}
-                errorMessage={"Password must be strong"}
-              />
-            </div>
-            <div className="flex justify-center">
-              <button
-                type="submit"
-                className="my-14 text-button-text font-bold text-2xl rounded-lg bg-lime  hover:bg-button-hover px-16 py-4">
-                {activeBtn === "register" ? "Register" : "Log In"}
-              </button>
-            </div>
-          </form>
+      <form onSubmit={formSubmitHandler} autoComplete="off">
+        <div
+          className={`flex m-auto flex-wrap gap-4 items-center justify-center`}>
+          {/* NAME */}
+          <Input
+            id="name"
+            label="Name"
+            icon={Name}
+            type="text"
+            placeholder="Ramit Vishwakarma"
+            onChangeHandler={handleName}
+            errorHandler={nameError}
+            errorMessage={"Name is required"}
+          />
+          {/* Admission number */}
+          <Input
+            id="admission number"
+            label="Admission Number"
+            icon={Admission}
+            type="text"
+            placeholder="22CSDS064"
+            onChangeHandler={handleAdmissionNumber}
+            errorHandler={admissionNumberError}
+            errorMessage={"Invalid Number"}
+          />
+          {/* Year */}
+          <Select
+            id="year"
+            label="Year"
+            icon={Year}
+            selected="Select your year"
+            data={yearOptions}
+            onChangeHandler={handleYear}
+            errorHandler={yearError}
+            errorMessage={"Select an Year"}
+          />
+          {/* Domain */}
+          <Select
+            id="Domain"
+            label="Domain"
+            icon={DomainIco}
+            onChangeHandler={handleDomain}
+            selected="Select your preferred domain"
+            data={domainOptions}
+            errorHandler={domainError}
+            errorMessage={"Select a Domain"}
+          />
+          {/* Email */}
+          <Input
+            id="email"
+            label="Email ID"
+            icon={Email}
+            type="text"
+            placeholder="someone@gmail.com"
+            onChangeHandler={handleEmail}
+            errorHandler={emailError}
+            errorMessage={"Invalid Email"}
+          />
+          {/* Password */}
+          <Input
+            id="password"
+            label="Set Password"
+            icon={Password}
+            type="password"
+            placeholder="6 characters or more"
+            onChangeHandler={handlePassword}
+            errorHandler={passwordError}
+            errorMessage={"Password must be strong"}
+          />
         </div>
-      </div>
-      <Footer />
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            className="my-14 text-button-text font-bold text-2xl rounded-lg bg-lime  hover:bg-button-hover px-16 py-4">
+            Register
+          </button>
+        </div>
+      </form>
+    </>
+  );
+}
+
+function Login() {
+  const [email, SetEmail] = useState("");
+  const [password, SetPassword] = useState("");
+
+  const [emailError, setEmailError] = useState(false);
+
+  const emailSchema = z.string().email();
+
+  const handleEmail = (e) => {
+    SetEmail(e.target.value);
+    emailSchema.safeParse(email).success
+      ? setEmailError(false)
+      : setEmailError(true);
+  };
+  const handlePassword = (e) => {
+    SetPassword(e.target.value);
+  };
+
+  const formSubmitHandler = async (e) => {
+    const loginData = {
+      email,
+      password,
+    };
+    axios
+      .post(`${import.meta.env.VITE_URL}user/auth/login`, loginData, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        if (res.status == 200) {
+          localStorage.setItem("Authorization", res.headers["authorization"]);
+        }
+      })
+      .catch((e) => {
+        if (
+          e.response.status === 401 ||
+          e.response.status === 404 ||
+          e.response.status === 400
+        ) {
+          alert("Invalid Credentials");
+        } else {
+          alert("Something went wrong");
+        }
+      });
+  };
+  return (
+    <>
+      <h1
+        className={`text-grey text-3xl font-bold text-center md:text-4xl lg:text-5xl m-8 md:mt-10 lg:mt-16`}>
+        Welcome back!
+      </h1>
+
+      <form onSubmit={formSubmitHandler} autoComplete="off">
+        <div
+          className={`flex m-auto flex-wrap gap-4 items-center justify-center`}>
+          {/* Email */}
+          <Input
+            id="email"
+            label="Email ID"
+            icon={Email}
+            type="text"
+            placeholder="someone@gmail.com"
+            onChangeHandler={handleEmail}
+            errorHandler={emailError}
+            errorMessage={"Invalid Email"}
+          />
+          {/* Password */}
+          <Input
+            id="password"
+            label="Password"
+            icon={Password}
+            type="password"
+            placeholder="6 characters or more"
+            onChangeHandler={handlePassword}
+          />
+        </div>
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            className="my-14 text-button-text font-bold text-2xl rounded-lg bg-lime  hover:bg-button-hover px-16 py-4">
+            Log In
+          </button>
+        </div>
+      </form>
     </>
   );
 }
 
 function Input({
-  errorDisplay = true,
-  hide = false,
   id,
   label,
   icon,
@@ -329,24 +375,18 @@ function Input({
   errorMessage,
 }) {
   return (
-    <div className={`w-96 2xl:w-4/12 ${hide ? "hidden" : ""}`}>
+    <div className="w-96 2xl:w-4/12 ">
       <div className="flex justify-between ">
         <label className="ml-12" htmlFor={id}>
           {label}
         </label>
-        {errorHandler && errorDisplay && (
-          <div className="text-red mr-6 ">{errorMessage}</div>
-        )}
+        {errorHandler && <div className="text-red mr-6 ">{errorMessage}</div>}
       </div>
       <div className="flex gap-3 items-center">
         <img className="w-8" src={icon} />
         <input
           className={`
-          ${
-            errorHandler && errorDisplay
-              ? "outline outline-2 outline-red border-red"
-              : ""
-          }
+          ${errorHandler ? "outline outline-2 outline-red border-red" : ""}
             border p-3 w-80 2xl:w-11/12 rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
           type={type}
           id={id}
@@ -360,7 +400,6 @@ function Input({
 }
 
 function Select({
-  hide,
   id,
   label,
   icon,
@@ -371,7 +410,7 @@ function Select({
   errorMessage,
 }) {
   return (
-    <div className={`w-96 2xl:w-4/12 ${hide ? "hidden" : ""}`}>
+    <div className={"w-96 2xl:w-4/12 "}>
       <div className="flex justify-between ">
         <label className="ml-12" htmlFor={id}>
           {label}
@@ -393,6 +432,7 @@ function Select({
           {data.map((option) => {
             return (
               //cant figure out how to change he border styles
+              // Need to use map and filter and create my own one.
               <option
                 className="text-grey bg-white border-light-blue"
                 key={option}
