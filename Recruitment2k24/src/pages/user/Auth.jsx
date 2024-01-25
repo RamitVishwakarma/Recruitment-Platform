@@ -1,7 +1,8 @@
 import Navbar from "../../components/Navbar.jsx";
 import Footer from "../../components/Footer.jsx";
 import Header from "../../components/Header.jsx";
-
+import app from "../../utils/firebase.js";
+// Svgs
 import Name from "../../assets/input-name.svg";
 import Admission from "../../assets/input-admission.svg";
 import Year from "../../assets/input-year.svg";
@@ -10,25 +11,23 @@ import Email from "../../assets/input-email.svg";
 import Password from "../../assets/input-password.svg";
 import ArrLeft from "../../assets/arrleft.svg";
 import Google from "../../assets/google-logo.svg";
-import separator from "../../assets/separator.svg";
+import Close from "../../assets/close.svg";
+
 import { z } from "zod";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
-import app from "../../utils/firebase.js";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
 function Auth() {
   const [activeBtn, setactiveBtn] = useState("register");
 
   let { state } = useLocation();
-  useEffect(() => {
-    console.log(state);
-    if (state) {
+  if (state) {
+    useEffect(() => {
       setactiveBtn(state);
-    }
-  }, []);
-
+    }, []);
+  }
   return (
     <>
       {/* Header section */}
@@ -70,6 +69,17 @@ function Auth() {
               </button>
             </div>
           </Header>
+          {/* ToolTip */}
+          <div className="max-lg:hidden absolute lg:right-10 top-[9.45rem] xl:right-28 flex justify-between items-center w-44 px-4 py-2 bg-light-blue/30 rounded-lg z-10">
+            <div className="absolute bottom-14 w-0 h-0 border-l-[12px] border-l-white/0 border-b-[12px] border-b-light-blue/30 border-r-[12px] border-r-white/0"></div>
+            <div className="text-grey text-sm">
+              Already registered?
+              <br /> Log in here
+            </div>
+            <button>
+              <img className="w-3" src={Close} />
+            </button>
+          </div>
           {/* Register and Login Section */}
           {activeBtn === "register" ? <Registration /> : <Login />}
         </div>
