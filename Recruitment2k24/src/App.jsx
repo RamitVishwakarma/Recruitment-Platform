@@ -1,6 +1,6 @@
 // User pages import
 import Homepage from "./pages/user/Homepage";
-import Auth from "./pages/user/Auth";
+import { Auth } from "./pages/user/Auth";
 import ResetPass from "./pages/user/ResetPass";
 import UserHome from "./pages/user/UserHome";
 import ProjectSubmission from "./pages/user/ProjectSubmission";

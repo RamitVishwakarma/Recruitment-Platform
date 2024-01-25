@@ -18,15 +18,16 @@ import { useLocation, Link } from "react-router-dom";
 import app from "../../utils/firebase.js";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
-export default function RegistrationForm() {
+function Auth() {
   const [activeBtn, setactiveBtn] = useState("register");
 
   let { state } = useLocation();
   useEffect(() => {
+    console.log(state);
     if (state) {
       setactiveBtn(state);
     }
-  }, [state]);
+  }, []);
 
   return (
     <>
@@ -288,19 +289,25 @@ function Registration() {
             errorMessage={"Password must be strong"}
           />
         </div>
-        <div className="flex justify-center">
-          <div className="mt-16">
-            <GoogleAuthentication text="Sign Up with Google" />
+        <div className="flex max-md:flex-col-reverse justify-center items-center my-10">
+          <GoogleAuthentication
+            text="Sign Up with Google"
+            btnStyle={
+              "px-10 py-3 flex gap-4 items-center justify-center rounded-lg shadow-sm hover:shadow-md"
+            }
+          />
+
+          <hr className="md:hidden w-52 mt-3 mb-6 border-grey/40" />
+          <div className="md:hidden relative top-5 text-grey/60 px-3 bg-white">
+            OR
           </div>
-          {/* Add in separator */}
-          <img src={separator} className="ml-8 mr-3 max-md:hidden" />
-          <div>
-            <button
-              type="submit"
-              className="my-14 text-button-text font-bold text-2xl rounded-lg bg-lime  hover:bg-button-hover px-16 py-4">
-              Register
-            </button>
-          </div>
+
+          <hr className="max-md:hidden w-16 rotate-90 mr-2 ml-8 border-grey/40" />
+          <button
+            type="submit"
+            className="px-20 py-4 text-button-text font-bold text-2xl rounded-lg bg-lime hover:bg-button-hover">
+            Register
+          </button>
         </div>
       </form>
       {/* <GoogleAuthentication text="Sign Up with Google" /> */}
@@ -362,43 +369,68 @@ function Login() {
   };
   return (
     <>
-      <h1
-        className={`text-grey text-3xl font-bold text-center md:text-4xl lg:text-5xl m-8 md:mt-10 lg:mt-16`}>
-        Welcome back!
-      </h1>
-
-      <form onSubmit={formSubmitHandler} autoComplete="off">
+      <div className="lg:flex lg:justify-between">
         <div
-          className={`flex m-auto flex-wrap gap-4 items-center justify-center`}>
-          {/* Email */}
-          <Input
-            id="email"
-            label="Email ID"
-            icon={Email}
-            type="text"
-            placeholder="someone@gmail.com"
-            onChangeHandler={handleEmail}
-            errorHandler={emailError}
-            errorMessage={"Invalid Email"}
-          />
-          {/* Password */}
-          <Input
-            id="password"
-            label="Password"
-            icon={Password}
-            type="password"
-            placeholder="6 characters or more"
-            onChangeHandler={handlePassword}
-          />
+          className={`text-grey text-3xl lg:mt-40 font-bold text-center md:text-5xl lg:text-8xl xl:text-9xl`}>
+          Welcome back!
         </div>
-        <div className="flex justify-center">
-          <button
-            type="submit"
-            className="my-14 text-button-text font-bold text-2xl rounded-lg bg-lime  hover:bg-button-hover px-16 py-4">
-            Log In
-          </button>
+        <div>
+          <form
+            className="w-96 mx-auto flex flex-wrap mt-5 lg:mt-20 gap-4 items-center justify-center"
+            onSubmit={formSubmitHandler}
+            autoComplete="off">
+            {/* Email */}
+            <Input
+              id="email"
+              label="Email ID"
+              icon={Email}
+              type="text"
+              placeholder="someone@gmail.com"
+              onChangeHandler={handleEmail}
+              errorHandler={emailError}
+              errorMessage={"Invalid Email"}
+            />
+            {/* Password */}
+            <Input
+              id="password"
+              label="Password"
+              icon={Password}
+              type="password"
+              placeholder="6 characters or more"
+              onChangeHandler={handlePassword}
+            />
+            <div className="max-lg:hidden flex mr-5 mt-2 items-center justify-end">
+              <button className=" text-light-blue text-sm ">
+                Forgot Password?
+              </button>
+            </div>
+            <div className="flex flex-col justify-center items-center my-8">
+              <button
+                type="submit"
+                className="px-24 py-4 text-button-text font-bold text-2xl rounded-lg bg-lime hover:bg-button-hover">
+                Log In
+              </button>
+
+              <div className="lg:hidden flex mt-5 items-center justify-center">
+                <button className=" text-light-blue text-sm ">
+                  Forgot Password?
+                </button>
+              </div>
+
+              <hr className="w-52 mt-6 mb-3 border-grey/40" />
+              <div className="relative bottom-6 text-grey/60 px-3 bg-white">
+                OR
+              </div>
+              <GoogleAuthentication
+                text="Log in with Google"
+                btnStyle={
+                  " relative bottom-4 px-10 py-3 flex gap-4 items-center justify-center rounded-lg shadow-sm hover:shadow-md"
+                }
+              />
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </>
   );
 }
@@ -421,13 +453,13 @@ function Input({
         </label>
         {errorHandler && <div className="text-red mr-6 ">{errorMessage}</div>}
       </div>
-      <div className="flex gap-3 items-center">
+      <div className="flex gap-3 flex-auto items-center">
         <img className="w-8" src={icon} />
         <input
           className={`
           ${
             errorHandler ? "outline outline-2 outline-red border-red" : ""
-          } bg-text-box border p-3 w-80 2xl:w-11/12 rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
+          } bg-text-box border p-3 min-w-80 2xl:w-11/12 rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
           type={type}
           id={id}
           name={id}
@@ -487,7 +519,7 @@ function Select({
   );
 }
 
-function GoogleAuthentication({ text }) {
+function GoogleAuthentication({ text, btnStyle }) {
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
 
@@ -503,7 +535,6 @@ function GoogleAuthentication({ text }) {
         axios
           .post(`${import.meta.env.VITE_URL}user/auth/google`, Data)
           .then((res) => {
-            console.log(res);
             if (res.status == 200) {
               localStorage.setItem(
                 "Authorization",
@@ -518,16 +549,16 @@ function GoogleAuthentication({ text }) {
       })
       .catch((error) => {
         console.log(error);
-        alert("Cannot sign in with google error");
+        alert("Cannot sign in with google try again later");
       });
   };
 
   return (
-    <button
-      onClick={signInWithGoogle}
-      className="px-4 py-3 flex gap-4 items-center justify-center rounded-lg shadow-sm">
+    <button onClick={signInWithGoogle} className={btnStyle}>
       <img src={Google} />
       <span className="text-grey/60">{text}</span>
     </button>
   );
 }
+
+export { Auth, Input };
