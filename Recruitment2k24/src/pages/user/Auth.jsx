@@ -371,8 +371,9 @@ function Login() {
     <>
       <div className="lg:flex lg:justify-between">
         <div
-          className={`text-grey text-3xl lg:mt-40 font-bold text-center md:text-5xl lg:text-8xl xl:text-9xl`}>
-          Welcome back!
+          className={`text-grey text-3xl lg:mt-32 font-bold text-center md:text-5xl lg:text-8xl xl:text-9xl`}>
+          Welcome
+          <br className="max-lg:hidden" /> back!
         </div>
         <div>
           <form
@@ -381,6 +382,7 @@ function Login() {
             autoComplete="off">
             {/* Email */}
             <Input
+              grow={false}
               id="email"
               label="Email ID"
               icon={Email}
@@ -392,6 +394,7 @@ function Login() {
             />
             {/* Password */}
             <Input
+              grow={false}
               id="password"
               label="Password"
               icon={Password}
@@ -436,6 +439,7 @@ function Login() {
 }
 
 function Input({
+  grow = true,
   id,
   label,
   icon,
@@ -446,7 +450,7 @@ function Input({
   errorMessage,
 }) {
   return (
-    <div className="w-96 2xl:w-4/12 ">
+    <div className={`w-96 ${grow ? "xl:w-4/12" : ""} `}>
       <div className="flex justify-between ">
         <label className="ml-12" htmlFor={id}>
           {label}
@@ -459,7 +463,9 @@ function Input({
           className={`
           ${
             errorHandler ? "outline outline-2 outline-red border-red" : ""
-          } bg-text-box border p-3 min-w-80 2xl:w-11/12 rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
+          } bg-text-box border p-3 w-80 ${
+            grow ? " xl:w-11/12" : ""
+          } rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
           type={type}
           id={id}
           name={id}
@@ -482,7 +488,7 @@ function Select({
   errorMessage,
 }) {
   return (
-    <div className={"w-96 2xl:w-4/12 "}>
+    <div className={"w-96 xl:w-4/12 "}>
       <div className="flex justify-between ">
         <label className="ml-12" htmlFor={id}>
           {label}
@@ -494,7 +500,7 @@ function Select({
         <select
           className={`${
             errorHandler ? "outline outline-2 outline-red border-red" : ""
-          } w-80 2xl:w-11/12 h-12 border p-3  rounded-lg text-grey border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}
+          } w-80 xl:w-11/12 h-12 border p-3  rounded-lg text-grey border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}
           name={id}
           onChange={onChangeHandler}
           defaultValue={selected}>
