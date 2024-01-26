@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Navbar({ children }) {
   return (
     <>
-      <div className="sticky z-50 top-0 bg-white/70 backdrop-blur-lg">
+      <div className="sticky z-40 top-0 bg-white/70 backdrop-blur-lg">
         <div className="flex">
           <div className="border-t-[6px] border-red w-[25vw]"></div>
           <div className="border-t-[6px] border-purple w-[25vw]"></div>

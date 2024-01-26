@@ -93,7 +93,6 @@ function Auth() {
           )}
           {/* Register and Login Section */}
           {activeBtn === "register" ? <Registration /> : <Login />}
-          <Toast text="Your project has been submitted successfully" />
         </div>
       </div>
       <Footer />
@@ -102,6 +101,8 @@ function Auth() {
 }
 
 function Registration() {
+  const [toast, setToast] = useState(false);
+
   const yearOptions = ["1", "2"];
   const domainOptions = [
     "Programmming",
@@ -181,6 +182,7 @@ function Registration() {
 
   const formSubmitHandler = async (e) => {
     e.preventDefault();
+    setToast(false);
     const registrationData = {
       name,
       email,
@@ -222,8 +224,11 @@ function Registration() {
         .post(`${import.meta.env.VITE_URL}user/auth/signup`, registrationData)
         .then((res) => {
           if (res.status === 201) {
-            alert("Successfull Signup kindly login");
-            setactiveBtn("login");
+            // alert("Successfull Signup kindly login");
+            setToast(true);
+            setTimeout(() => {
+              setactiveBtn("login");
+            }, 5000);
           }
         })
         .catch((e) => {
@@ -240,6 +245,8 @@ function Registration() {
         className={`text-grey text-3xl font-bold text-center md:text-4xl lg:text-5xl m-8 md:mt-10 lg:mt-16`}>
         Fill your details correctly!
       </h1>
+
+      {toast && <Toast text="Successfully registered!  You can login now." />}
 
       <form onSubmit={formSubmitHandler} autoComplete="off">
         <div
@@ -582,7 +589,7 @@ function GoogleAuthentication({ text, btnStyle }) {
   };
 
   return (
-    <button onClick={signInWithGoogle} className={btnStyle}>
+    <button type="button" onClick={signInWithGoogle} className={btnStyle}>
       <img src={Google} />
       <span className="text-grey/60">{text}</span>
     </button>
