@@ -1,6 +1,7 @@
 import Navbar from "../../components/Navbar.jsx";
 import Footer from "../../components/Footer.jsx";
 import Header from "../../components/Header.jsx";
+import Toast from "../../components/Toast.jsx";
 import app from "../../utils/firebase.js";
 // Svgs
 import Name from "../../assets/input-name.svg";
@@ -21,6 +22,7 @@ import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
 function Auth() {
   const [activeBtn, setactiveBtn] = useState("register");
+  const [toolTip, setToolTip] = useState(true);
 
   let { state } = useLocation();
   if (state) {
@@ -70,18 +72,28 @@ function Auth() {
             </div>
           </Header>
           {/* ToolTip */}
-          <div className="max-lg:hidden absolute lg:right-10 top-[9.45rem] xl:right-28 flex justify-between items-center w-44 px-4 py-2 bg-light-blue/30 rounded-lg z-10">
-            <div className="absolute bottom-14 w-0 h-0 border-l-[12px] border-l-white/0 border-b-[12px] border-b-light-blue/30 border-r-[12px] border-r-white/0"></div>
-            <div className="text-grey text-sm">
-              Already registered?
-              <br /> Log in here
+          {activeBtn === "register" && toolTip ? (
+            // ToolTip Start
+            <div className="max-lg:hidden absolute lg:right-10 top-[9.45rem] xl:right-28 flex justify-between items-center w-44 px-4 py-2 bg-light-blue/30 rounded-lg z-10">
+              <div className="absolute bottom-14 w-0 h-0 border-l-[12px] border-l-white/0 border-b-[12px] border-b-light-blue/30 border-r-[12px] border-r-white/0"></div>
+              <div className="text-grey text-sm">
+                Already registered?
+                <br /> Log in here
+              </div>
+              <button
+                onClick={() => {
+                  setToolTip(false);
+                }}>
+                <img className="w-3" src={Close} />
+              </button>
             </div>
-            <button>
-              <img className="w-3" src={Close} />
-            </button>
-          </div>
+          ) : (
+            // ToolTip End
+            ""
+          )}
           {/* Register and Login Section */}
           {activeBtn === "register" ? <Registration /> : <Login />}
+          <Toast text="Your project has been submitted successfully" />
         </div>
       </div>
       <Footer />
