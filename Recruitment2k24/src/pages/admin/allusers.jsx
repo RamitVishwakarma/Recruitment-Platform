@@ -107,7 +107,7 @@ const AllUsers = () => {
           <div className="relative">
             <input
               className={`pl-10 pr-3 py-2 text-sm rounded-full border border-grey ${
-                searchValue ? "w-full" : "w-1/2"
+                searchValue ? "w-full" : "w-1/6"
               }`}
               type="text"
               value={searchValue}
@@ -168,7 +168,7 @@ const AllUsers = () => {
             <span className="font-bold">16</span>
           </button>
           <p className="text-grey text-xl">
-            Total Users: <span className="font-bold">{users.length}</span>
+            Total&nbsp;Users:&nbsp;<span className="font-bold">{users.length}</span>
           </p>
         </div>
       </div>
@@ -179,7 +179,7 @@ const AllUsers = () => {
             <th className="py-4 px-2">#</th>
             <th className=" text-left">Name</th>
             <th className="w-12">Year</th>
-            <th className="w-96">Project Status</th>
+            <th>Project Status</th>
             <th>Quiz Results</th>
             <th>Interview Status</th>
             <th className="w-1/12">Shortlisted</th>
@@ -196,13 +196,13 @@ const AllUsers = () => {
               {/* <td className="overflow-hidden line-clamp-1 text-ellipsis w-[15vw]">{user.project}</td> */}
               <td>
                 {validator.isURL(user.project) ? (
-                  <td className="overflow-hidden line-clamp-1 text-ellipsis w-96">
+                  <td className="overflow-hidden line-clamp-1 text-ellipsis">
                     <a
                       target="_blank"
                       rel="noreferrer"
                       className="underline"
                       href={user.project}>
-                      {user.project}
+                      Submitted<span className="ml-2 material-symbols-rounded">open_in_new</span>
                     </a>
                   </td>
                 ) : (
