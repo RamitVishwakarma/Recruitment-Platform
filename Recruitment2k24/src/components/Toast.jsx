@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { set } from "zod";
 export default function Toast({ text }) {
   const [move, setMove] = useState("-top-16");
   const [loading, setLoading] = useState("w-0");
@@ -15,7 +14,7 @@ export default function Toast({ text }) {
 
   setTimeout(() => {
     setShow("hidden");
-  }, 4500);
+  }, 4100);
 
   return (
     <>

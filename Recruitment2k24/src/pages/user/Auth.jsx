@@ -2,6 +2,7 @@ import Navbar from "../../components/Navbar.jsx";
 import Footer from "../../components/Footer.jsx";
 import Header from "../../components/Header.jsx";
 import Toast from "../../components/Toast.jsx";
+import Popup from "../../components/Popup.jsx";
 import app from "../../utils/firebase.js";
 // Svgs
 import Name from "../../assets/input-name.svg";
@@ -13,6 +14,7 @@ import Password from "../../assets/input-password.svg";
 import ArrLeft from "../../assets/arrleft.svg";
 import Google from "../../assets/google-logo.svg";
 import Close from "../../assets/close.svg";
+import ForgotEmail from "../../assets/forgot-email.svg?react";
 
 import { z } from "zod";
 import axios from "axios";
@@ -102,6 +104,7 @@ function Auth() {
 
 function Registration() {
   const [toast, setToast] = useState(false);
+  const [toastText, setToastText] = useState(false);
 
   const yearOptions = ["1", "2"];
   const domainOptions = [
@@ -226,16 +229,27 @@ function Registration() {
           if (res.status === 201) {
             // alert("Successfull Signup kindly login");
             setToast(true);
+            setToastText("Successfully registered!  You can login now.");
             setTimeout(() => {
-              setactiveBtn("login");
-            }, 5000);
+              setToast("false");
+            }, 4500);
           }
         })
         .catch((e) => {
-          console.log(e);
-          e.response.status === 409
-            ? alert("User already exists")
-            : alert("Something went wrong");
+          // console.log(e);
+          if (e.response.status === 409) {
+            setToast(true);
+            setToastText("User already exists!  Please login.");
+            setTimeout(() => {
+              setToast("false");
+            }, 4500);
+          } else {
+            setToast(true);
+            setToastText("Something went wrong!  Please try again.");
+            setTimeout(() => {
+              setToast("false");
+            }, 4500);
+          }
         });
     }
   };
@@ -246,7 +260,7 @@ function Registration() {
         Fill your details correctly!
       </h1>
 
-      {toast && <Toast text="Successfully registered!  You can login now." />}
+      {toast && <Toast text={toastText} />}
 
       <form onSubmit={formSubmitHandler} autoComplete="off">
         <div
@@ -345,11 +359,24 @@ function Registration() {
 }
 
 function Login() {
+  const [toast, setToast] = useState(false);
+  const [toastText, setToastText] = useState(false);
+  const [popup, setPopup] = useState(false);
+
   const [email, SetEmail] = useState("");
+  const [popupEmail, setPopupEmail] = useState("");
   const [password, SetPassword] = useState("");
   const [emailError, setEmailError] = useState(false);
+  const [popupEmailError, setPopupEmailError] = useState(false);
 
   const emailSchema = z.string().email();
+
+  const handlePopupEmail = (e) => {
+    setPopupEmail(e.target.value);
+    emailSchema.safeParse(popupEmail).success
+      ? setPopupEmailError(false)
+      : setPopupEmailError(true);
+  };
 
   const handleEmail = (e) => {
     SetEmail(e.target.value);
@@ -389,9 +416,17 @@ function Login() {
             e.response.status === 404 ||
             e.response.status === 400
           ) {
-            alert("Invalid Credentials");
+            setToast(true);
+            setToastText("Invalid Credentials! Please try again.");
+            setTimeout(() => {
+              setToast("false");
+            }, 4500);
           } else {
-            alert("Something went wrong");
+            setToast(true);
+            setToastText("Something went wrong! Please Try again. ");
+            setTimeout(() => {
+              setToast("false");
+            }, 4500);
           }
         });
     }
@@ -399,6 +434,7 @@ function Login() {
   return (
     <>
       <div className="lg:flex lg:justify-between">
+        {toast && <Toast text={toastText} />}
         <div
           className={`text-grey text-3xl lg:mt-32 font-bold text-center md:text-5xl lg:text-8xl xl:text-9xl`}>
           Welcome
@@ -432,7 +468,10 @@ function Login() {
               onChangeHandler={handlePassword}
             />
             <div className="max-lg:hidden flex mr-5 mt-2 items-center justify-end">
-              <button className=" text-light-blue text-sm ">
+              <button
+                onClick={() => setPopup(true)}
+                type="button"
+                className=" text-light-blue text-sm ">
                 Forgot Password?
               </button>
             </div>
@@ -444,10 +483,50 @@ function Login() {
               </button>
 
               <div className="lg:hidden flex mt-5 items-center justify-center">
-                <button className=" text-light-blue text-sm ">
+                <button
+                  type="button"
+                  onClick={() => setPopup(true)}
+                  className=" text-light-blue text-sm ">
                   Forgot Password?
                 </button>
               </div>
+              {/* When button is clicked this will appear */}
+              {popup && (
+                <Popup>
+                  <div className="text-grey font-bold text-center text-2xl py-10">
+                    Reset your password
+                  </div>
+                  <div className="text-light-blue  font-bold text-center text-4xl py-10">
+                    Enter your registered email ID
+                  </div>
+                  {/* icon */}
+                  {handlePopupEmail && (
+                    <div className="text-red mr-6 ">Invalid Email</div>
+                  )}
+                  <div className="absolute mt-2 mx-1 w-9 h-9 bg-light-blue/30 rounded-full flex items-center justify-center">
+                    <ForgotEmail className="w-6" />
+                  </div>
+                  <input
+                    className={`${
+                      popupEmailError
+                        ? "outline outline-2 outline-red border-red"
+                        : ""
+                    } bg-text-box border p-3 pl-14 w-9/12 rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
+                    type="text"
+                    id="email"
+                    name="email"
+                    placeholder="someone@@gmail.com"
+                    onInput={handlePopupEmail}
+                  />
+                  <div className="text-md">
+                    A password reset link will be sent to this email ID
+                  </div>
+                  <button className="px-14 py-4 text-button-text font-bold text-2xl rounded-lg bg-lime hover:bg-button-hover">
+                    Send
+                  </button>
+                </Popup>
+              )}
+              {/* Popup end */}
 
               <hr className="w-52 mt-6 mb-3 border-grey/40" />
               <div className="relative bottom-6 text-grey/60 px-3 bg-white">

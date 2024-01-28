@@ -2,6 +2,8 @@ import React from "react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import Popup from "../../components/Popup";
+import { Input } from "./Auth";
 
 const ResetPass = () => {
   return (
