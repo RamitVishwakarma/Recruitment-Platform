@@ -23,8 +23,8 @@ export default function Toast({ text }) {
         className={`${show} absolute ${move} transition-all duration-700 ease-in-out z-50 left-1/2 -ml-52 bg-lime flex gap-3 px-5 py-3 text-lg text-grey items-center rounded-md`}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
+          width="20"
+          height="20"
           viewBox="0 0 30 30"
           fill="none">
           <path

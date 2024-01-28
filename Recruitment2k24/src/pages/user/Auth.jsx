@@ -76,8 +76,8 @@ function Auth() {
           {/* ToolTip */}
           {activeBtn === "register" && toolTip ? (
             // ToolTip Start
-            <div className="max-lg:hidden absolute lg:right-10 top-[9.45rem] xl:right-28 flex justify-between items-center w-44 px-4 py-2 bg-light-blue/30 rounded-lg z-10">
-              <div className="absolute bottom-14 w-0 h-0 border-l-[12px] border-l-white/0 border-b-[12px] border-b-light-blue/30 border-r-[12px] border-r-white/0"></div>
+            <div className="max-lg:hidden absolute lg:right-10 top-[9.45rem] xl:right-28 flex justify-between items-center w-44 px-4 py-2 bg-nav-hover rounded-lg z-10">
+              <div className="absolute bottom-14 w-0 h-0 border-l-[12px] border-l-white/0 border-b-[12px] border-b-nav-hover border-r-[12px] border-r-white/0"></div>
               <div className="text-grey text-sm">
                 Already registered?
                 <br /> Log in here
@@ -256,7 +256,7 @@ function Registration() {
   return (
     <>
       <h1
-        className={`text-grey text-3xl font-bold text-center md:text-4xl lg:text-5xl m-8 md:mt-10 lg:mt-16`}>
+        className={`text-grey text-3xl font-bold text-center md:text-4xl lg:text-5xl m-8 md:mt-10 lg:mt-16 xl:mt-[8vh]`}>
         Fill your details correctly!
       </h1>
 
@@ -332,20 +332,20 @@ function Registration() {
             errorMessage={"Password must be strong"}
           />
         </div>
-        <div className="flex max-md:flex-col-reverse justify-center items-center my-10">
+        <div className="flex max-lg:flex-col-reverse justify-center items-center my-10">
           <GoogleAuthentication
             text="Sign Up with Google"
             btnStyle={
-              "px-10 py-3 flex gap-4 items-center justify-center rounded-lg shadow-sm hover:shadow-md"
+              "px-10 py-3 bg-[#fff] flex gap-4 items-center justify-center rounded-lg shadow-sm hover:shadow-md"
             }
           />
 
-          <hr className="md:hidden w-52 mt-3 mb-6 border-grey/40" />
-          <div className="md:hidden relative top-5 text-grey/60 px-3 bg-white">
+          <hr className="lg:hidden w-52 mt-3 mb-6 border-grey/40" />
+          <div className="lg:hidden relative top-5 text-grey/60 px-3 bg-white">
             OR
           </div>
 
-          <hr className="max-md:hidden w-16 rotate-90 mr-2 ml-8 border-grey/40" />
+          <hr className="max-lg:hidden w-16 rotate-90 mr-2 ml-8 border-grey/40" />
           <button
             type="submit"
             className="px-20 py-4 text-button-text font-bold text-2xl rounded-lg bg-lime hover:bg-button-hover">
@@ -361,23 +361,50 @@ function Registration() {
 function Login() {
   const [toast, setToast] = useState(false);
   const [toastText, setToastText] = useState(false);
+  // forget Pass states
   const [popup, setPopup] = useState(false);
+  const [popupEmailError, setPopupEmailError] = useState(false);
 
   const [email, SetEmail] = useState("");
   const [popupEmail, setPopupEmail] = useState("");
   const [password, SetPassword] = useState("");
   const [emailError, setEmailError] = useState(false);
-  const [popupEmailError, setPopupEmailError] = useState(false);
 
   const emailSchema = z.string().email();
 
+  // Forgot password
   const handlePopupEmail = (e) => {
     setPopupEmail(e.target.value);
-    emailSchema.safeParse(popupEmail).success
-      ? setPopupEmailError(false)
-      : setPopupEmailError(true);
   };
 
+  const handleForgotPassword = (e) => {
+    const forgetPassData = {
+      email: popupEmail,
+    };
+    axios
+      .post(
+        `${import.meta.env.VITE_URL}user/auth/forget-password`,
+        forgetPassData
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          setToastText("Reset link sent to your email ID");
+          setToast(true);
+          if (Toast) {
+            setTimeout(() => {
+              setToast("false");
+            }, 4500);
+          }
+        }
+      })
+      .catch((e) => {
+        if (e.response.status === 404) {
+          setPopupEmailError(true);
+        }
+        console.log(e);
+      });
+  };
+  // normal login
   const handleEmail = (e) => {
     SetEmail(e.target.value);
     emailSchema.safeParse(email).success
@@ -434,9 +461,10 @@ function Login() {
   return (
     <>
       <div className="lg:flex lg:justify-between">
+        {/* Toast */}
         {toast && <Toast text={toastText} />}
         <div
-          className={`text-grey text-3xl lg:mt-32 font-bold text-center md:text-5xl lg:text-8xl xl:text-9xl`}>
+          className={`text-grey font-bold text-center mt-8 md:mt-10 lg:mt-32 text-3xl md:text-4xl lg:ml-10 lg:text-8xl xl:text-8xl 2xl:text-9xl`}>
           Welcome
           <br className="max-lg:hidden" /> back!
         </div>
@@ -471,7 +499,7 @@ function Login() {
               <button
                 onClick={() => setPopup(true)}
                 type="button"
-                className=" text-light-blue text-sm ">
+                className=" text-light-blue text-sm ml-8">
                 Forgot Password?
               </button>
             </div>
@@ -486,42 +514,62 @@ function Login() {
                 <button
                   type="button"
                   onClick={() => setPopup(true)}
-                  className=" text-light-blue text-sm ">
+                  className="lg:mr-8 text-light-blue text-sm">
                   Forgot Password?
                 </button>
               </div>
               {/* When button is clicked this will appear */}
               {popup && (
                 <Popup>
-                  <div className="text-grey font-bold text-center text-2xl py-10">
+                  <button
+                    type="button"
+                    onClick={() => setPopup(false)}
+                    className="absolute w-6 right-5 top-5">
+                    <img className="w-full" src={Close} />
+                  </button>
+                  <div className="text-grey mt-5 max-md:w-8/12 font-bold text-center text-4xl">
                     Reset your password
                   </div>
-                  <div className="text-light-blue  font-bold text-center text-4xl py-10">
-                    Enter your registered email ID
+                  <div className="text-light-blue mt-5 font-bold text-center text-2xl">
+                    Enter your registered Email ID
                   </div>
-                  {/* icon */}
-                  {handlePopupEmail && (
-                    <div className="text-red mr-6 ">Invalid Email</div>
-                  )}
-                  <div className="absolute mt-2 mx-1 w-9 h-9 bg-light-blue/30 rounded-full flex items-center justify-center">
-                    <ForgotEmail className="w-6" />
+                  {/* Input box */}
+                  <div className=" relative w-11/12 mt-5 flex items-center justify-center">
+                    <div className="absolute left-6 lg:left-8 xl:left-10 2xl:left-11 mx-2 2xl:mx-3 w-9 h-9 bg-light-blue/30 rounded-full flex items-center justify-center">
+                      <ForgotEmail className="w-6" />
+                    </div>
+                    <input
+                      className={` bg-text-box border p-3 pl-16 w-11/12 rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
+                      type="text"
+                      id="email"
+                      name="email"
+                      placeholder="someone@gmail.com"
+                      onInput={handlePopupEmail}
+                    />
                   </div>
-                  <input
-                    className={`${
-                      popupEmailError
-                        ? "outline outline-2 outline-red border-red"
-                        : ""
-                    } bg-text-box border p-3 pl-14 w-9/12 rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
-                    type="text"
-                    id="email"
-                    name="email"
-                    placeholder="someone@@gmail.com"
-                    onInput={handlePopupEmail}
-                  />
-                  <div className="text-md">
+                  <div className="text-md text-grey/60">
                     A password reset link will be sent to this email ID
                   </div>
-                  <button className="px-14 py-4 text-button-text font-bold text-2xl rounded-lg bg-lime hover:bg-button-hover">
+                  <div
+                    className={`${
+                      popupEmailError ? "" : "hidden"
+                    } text-red text-lg flex  gap-2 items-center justify-center`}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 30 30"
+                      fill="none">
+                      <path
+                        d="M15.0011 22.125C15.2257 22.125 15.4136 22.0491 15.5648 21.8974C15.7161 21.7457 15.7917 21.5576 15.7917 21.3333V14.2083C15.7917 13.984 15.7157 13.796 15.5637 13.6443C15.4118 13.4925 15.2236 13.4167 14.9989 13.4167C14.7743 13.4167 14.5864 13.4925 14.4352 13.6443C14.284 13.796 14.2083 13.984 14.2083 14.2083V21.3333C14.2083 21.5576 14.2843 21.7457 14.4363 21.8974C14.5882 22.0491 14.7764 22.125 15.0011 22.125ZM15 11.1635C15.2761 11.1635 15.5075 11.0701 15.6943 10.8833C15.881 10.6966 15.9743 10.4652 15.9743 10.1891C15.9743 9.91303 15.881 9.68162 15.6943 9.49487C15.5075 9.30811 15.2761 9.21474 15 9.21474C14.7239 9.21474 14.4925 9.30811 14.3057 9.49487C14.119 9.68162 14.0257 9.91303 14.0257 10.1891C14.0257 10.4652 14.119 10.6966 14.3057 10.8833C14.4925 11.0701 14.7239 11.1635 15 11.1635ZM15.0053 29.25C13.0348 29.25 11.1821 28.8761 9.44741 28.1282C7.71268 27.3804 6.2037 26.3654 4.92046 25.0834C3.63725 23.8014 2.62137 22.2938 1.87282 20.5607C1.12427 18.8276 0.75 16.9758 0.75 15.0053C0.75 13.0348 1.12392 11.1821 1.87175 9.44741C2.61961 7.71268 3.63456 6.2037 4.91658 4.92046C6.19861 3.63725 7.70616 2.62137 9.43925 1.87282C11.1724 1.12427 13.0242 0.75 14.9947 0.75C16.9652 0.75 18.8179 1.12392 20.5526 1.87175C22.2873 2.61961 23.7963 3.63456 25.0795 4.91658C26.3628 6.19861 27.3786 7.70616 28.1272 9.43925C28.8757 11.1724 29.25 13.0242 29.25 14.9947C29.25 16.9652 28.8761 18.8179 28.1282 20.5526C27.3804 22.2873 26.3654 23.7963 25.0834 25.0795C23.8014 26.3628 22.2938 27.3786 20.5607 28.1272C18.8276 28.8757 16.9758 29.25 15.0053 29.25ZM15 27.6667C18.5361 27.6667 21.5312 26.4396 23.9854 23.9854C26.4396 21.5312 27.6667 18.5361 27.6667 15C27.6667 11.4639 26.4396 8.46875 23.9854 6.01458C21.5312 3.56042 18.5361 2.33333 15 2.33333C11.4639 2.33333 8.46875 3.56042 6.01458 6.01458C3.56042 8.46875 2.33333 11.4639 2.33333 15C2.33333 18.5361 3.56042 21.5312 6.01458 23.9854C8.46875 26.4396 11.4639 27.6667 15 27.6667Z"
+                        fill="#EB6B6B"
+                      />
+                    </svg>
+                    This Email is not registered
+                  </div>
+                  <button
+                    onClick={handleForgotPassword}
+                    className="px-14 py-4 text-button-text font-bold text-2xl rounded-lg bg-lime hover:bg-button-hover">
                     Send
                   </button>
                 </Popup>
@@ -535,7 +583,7 @@ function Login() {
               <GoogleAuthentication
                 text="Log in with Google"
                 btnStyle={
-                  " relative bottom-4 px-10 py-3 flex gap-4 items-center justify-center rounded-lg shadow-sm hover:shadow-md"
+                  "relative bg-[#fff] bottom-4 px-10 py-3 flex gap-4 items-center justify-center rounded-lg shadow-sm hover:shadow-md"
                 }
               />
             </div>
@@ -558,12 +606,16 @@ function Input({
   errorMessage,
 }) {
   return (
-    <div className={`w-96 ${grow ? "xl:w-4/12" : ""} `}>
-      <div className="flex justify-between ">
+    <div className={`min-w-96 ${grow ? "xl:w-4/12" : ""} `}>
+      <div className="flex justify-between">
         <label className="ml-12" htmlFor={id}>
           {label}
         </label>
-        {errorHandler && <div className="text-red mr-6 ">{errorMessage}</div>}
+        {errorHandler && (
+          <div className="text-red sm:mr-6 xl:mr-2 2xl:mr-4">
+            {errorMessage}
+          </div>
+        )}
       </div>
       <div className="flex gap-3 flex-auto items-center">
         <img className="w-8" src={icon} />
@@ -571,7 +623,7 @@ function Input({
           className={`
           ${
             errorHandler ? "outline outline-2 outline-red border-red" : ""
-          } bg-text-box border p-3 w-80 ${
+          } bg-text-box border p-3 min-w-80 ${
             grow ? " xl:w-11/12" : ""
           } rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
           type={type}
@@ -596,19 +648,21 @@ function Select({
   errorMessage,
 }) {
   return (
-    <div className={"w-96 xl:w-4/12 "}>
+    <div className={"min-w-96 xl:w-4/12 "}>
       <div className="flex justify-between ">
         <label className="ml-12" htmlFor={id}>
           {label}
         </label>
-        {errorHandler && <div className="text-red mr-6 ">{errorMessage}</div>}
+        {errorHandler && (
+          <div className="text-red lg:mr-6 ">{errorMessage}</div>
+        )}
       </div>
       <div className="flex gap-3 items-center">
         <img className="w-8" src={icon} />
         <select
           className={`${
             errorHandler ? "outline outline-2 outline-red border-red" : ""
-          } w-80 xl:w-11/12 h-12 border p-3  rounded-lg text-grey border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}
+          } min-w-80 xl:w-11/12 h-12 border p-3  rounded-lg text-grey border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}
           name={id}
           onChange={onChangeHandler}
           defaultValue={selected}>

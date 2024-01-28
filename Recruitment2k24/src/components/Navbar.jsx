@@ -23,24 +23,24 @@ export default function Navbar({ children }) {
             <img
               src={separator}
               alt="separator"
-              className="ml-6 mr-3 max-md:hidden"
+              className="ml-6 mr-3 max-lg:hidden"
             />
             <Link
               to="/#domains"
-              className="text-blue flex items-center gap-2 px-6 rounded-full hover:bg-nav-hover max-md:hidden">
+              className="text-blue flex items-center gap-2 px-6 rounded-full hover:bg-nav-hover max-lg:hidden">
               <span className="material-symbols-rounded">cards</span>
               <div>Domains</div>
             </Link>
             <Link
               to="/tasks"
-              className="text-blue flex items-center gap-2 px-6 rounded-full hover:bg-nav-hover max-md:hidden">
+              className="text-blue flex items-center gap-2 px-6 rounded-full hover:bg-nav-hover max-lg:hidden">
               <span className="material-symbols-rounded">editor_choice</span>
               <div>Tasks</div>
             </Link>
             <Link
               to="https://gdscjss.in/"
               target="_blank"
-              className="text-blue flex items-center gap-2 px-6 rounded-full hover:bg-nav-hover max-md:hidden">
+              className="text-blue flex items-center gap-2 px-6 rounded-full hover:bg-nav-hover max-lg:hidden">
               <span className="material-symbols-rounded">language</span>
               <div>Website</div>
             </Link>
