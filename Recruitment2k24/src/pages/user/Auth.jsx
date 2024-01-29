@@ -139,37 +139,37 @@ function Registration() {
 
   const handleName = (e) => {
     SetName(e.target.value);
-    nameSchema.safeParse(name).success
+    nameSchema.safeParse(e.target.value).success
       ? setNameError(false)
       : setNameError(true);
   };
   const handleAdmissionNumber = (e) => {
     SetAdmissionNumber(e.target.value);
-    admissionNumberSchema.safeParse(admissionNumber).success
+    admissionNumberSchema.safeParse(e.target.value).success
       ? setAdmissionNumberError(false)
       : setAdmissionNumberError(true);
   };
   const handleYear = (e) => {
     SetYear(e.target.value);
-    yearSchema.safeParse(year).success
+    yearSchema.safeParse(e.target.value).success
       ? setYearError(false)
       : setYearError(true);
   };
   const handleDomain = (e) => {
     SetDomain(e.target.value);
-    domainSchema.safeParse(Domain).success
+    domainSchema.safeParse(e.target.value).success
       ? setDomainError(false)
       : setDomainError(true);
   };
   const handleEmail = (e) => {
     SetEmail(e.target.value);
-    emailSchema.safeParse(email).success
+    emailSchema.safeParse(e.target.value).success
       ? setEmailError(false)
       : setEmailError(true);
   };
   const handlePassword = (e) => {
     SetPassword(e.target.value);
-    passwordSchema.safeParse(password).success
+    passwordSchema.safeParse(e.target.value).success
       ? setPasswordError(false)
       : setPasswordError(true);
   };
@@ -262,7 +262,7 @@ function Registration() {
 
       {toast && <Toast text={toastText} />}
 
-      <form onSubmit={formSubmitHandler} autoComplete="off">
+      <form onSubmit={formSubmitHandler}>
         <div
           className={`flex m-auto flex-wrap gap-4 items-center justify-center`}>
           {/* NAME */}
@@ -407,7 +407,7 @@ function Login() {
   // normal login
   const handleEmail = (e) => {
     SetEmail(e.target.value);
-    emailSchema.safeParse(email).success
+    emailSchema.safeParse(e.target.value).success
       ? setEmailError(false)
       : setEmailError(true);
   };
@@ -471,8 +471,7 @@ function Login() {
         <div>
           <form
             className="w-96 mx-auto flex flex-wrap mt-5 lg:mt-20 gap-4 items-center justify-center"
-            onSubmit={formSubmitHandler}
-            autoComplete="off">
+            onSubmit={formSubmitHandler}>
             {/* Email */}
             <Input
               grow={false}

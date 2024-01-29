@@ -6,40 +6,66 @@ import Toast from "../../components/Toast";
 import Password from "../../assets/input-password.svg";
 import { useState } from "react";
 import { Input } from "./Auth";
+import { useNavigate } from "react-router-dom";
+import { z } from "zod";
+import axios from "axios";
 
 const ResetPass = () => {
   const [toast, setToast] = useState(false);
   const [toastText, setToastText] = useState(false);
-  const [newPassword, setNewPassword] = useState("");
+
   const [passwordError, setPasswordError] = useState(false);
+  const [passwordErrorText, setPasswordErrorText] =
+    useState("Invalid Password");
+
+  const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const passwordSchema = z.string().min(6);
+
+  const navigate = useNavigate();
 
   const handlenNewPassword = (e) => {
     setNewPassword(e.target.value);
+    if (passwordSchema.safeParse(e.target.value).success) {
+      setPasswordError(false);
+    } else {
+      setPasswordErrorText("Invalid Password");
+      setPasswordError(true);
+    }
   };
 
   const handleConfirmNewPassword = (e) => {
     setConfirmPassword(e.target.value);
   };
 
-  const passError = (e) => {
-    setPasswordError(e);
-  };
-
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    if (newPassword !== confirmPassword) {
-      setToast(true);
-      setToastText("Passwords do not match");
-      setTimeout(() => {
-        setToast(false);
-      }, 4000);
+    if (newPassword === confirmPassword) {
+      const passwordResetData = { newPassword, confirmPassword };
+      setPasswordError(false);
+      axios
+        .put(
+          `${import.meta.env.VITE_URL}user/auth/reset_password`,
+          passwordResetData
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            setToast(true);
+            setToastText("Password reset successful");
+            setTimeout(() => {
+              navigate("/auth", { state: "login" });
+            }, 4100);
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+          setToast(true);
+          setToastText("Token expired please get new reset link.");
+        });
     } else {
-      setToast(true);
-      setToastText("Password Changed Successfully");
-      setTimeout(() => {
-        setToast(false);
-      }, 4000);
+      setPasswordErrorText("Passwords does not match");
+      setPasswordError(true);
     }
   };
 
@@ -58,7 +84,7 @@ const ResetPass = () => {
             {/* Toast */}
             {toast && <Toast text={toastText} />}
             <div
-              className={`text-grey font-bold text-center mt-8 md:mt-10 lg:mt-32 text-3xl md:text-4xl lg:ml-10 lg:text-8xl xl:text-8xl 2xl:text-9xl`}>
+              className={`text-grey font-bold max-lg:text-center mt-8 md:mt-10 lg:mt-32 text-3xl md:text-4xl lg:text-8xl xl:text-8xl 2xl:text-9xl`}>
               Set a new
               <br className="max-lg:hidden" /> password now
             </div>
@@ -69,18 +95,18 @@ const ResetPass = () => {
                 autoComplete="off">
                 {/* New Password */}
                 <Input
-                  id="email"
+                  id="newPassword"
                   label="Enter new password"
                   icon={Password}
                   type="password"
                   placeholder="6 characters or more"
                   onChangeHandler={handlenNewPassword}
-                  errorHandler={passError}
-                  errorMessage={"Invalid Password"}
+                  errorHandler={passwordError}
+                  errorMessage={passwordErrorText}
                 />
                 {/* Password */}
                 <Input
-                  id="password"
+                  id="confNewPassword"
                   label="Confirm new Password"
                   icon={Password}
                   type="text"

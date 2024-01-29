@@ -2,25 +2,25 @@ import { useState } from "react";
 export default function Toast({ text }) {
   const [move, setMove] = useState("-top-16");
   const [loading, setLoading] = useState("w-0");
-  const [show, setShow] = useState("");
 
   setTimeout(() => {
-    setMove("top-36");
+    setMove("top-36 transition-all duration-700 ease-in-out");
   }, 300);
 
   setTimeout(() => {
-    setLoading("w-full");
+    setLoading("w-full transition-all duration-[4000ms] ease-in-out");
   }, 100);
 
   setTimeout(() => {
-    setShow("hidden");
+    setMove("-top-16");
+    setLoading("w-0");
   }, 4100);
 
   return (
     <>
       {/* NEED TO MAKE IT RESPONSIVE */}
       <div
-        className={`${show} absolute ${move} transition-all duration-700 ease-in-out z-50 left-1/2 -ml-52 bg-lime flex gap-3 px-5 py-3 text-lg text-grey items-center rounded-md`}>
+        className={`absolute ${move} z-50 left-1/2 -ml-52 bg-lime flex gap-3 px-5 py-3 text-lg text-grey items-center rounded-md`}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -34,7 +34,7 @@ export default function Toast({ text }) {
         </svg>
         <span>{text}</span>
         <div
-          className={`absolute ${loading} transition-all duration-[4000ms] ease-in-out -ml-5 px-6 rounded-b-md bottom-0 border-t-4 border-button-text`}></div>
+          className={`absolute ${loading} -ml-5 px-6 rounded-b-md bottom-0 border-t-4 border-button-text`}></div>
       </div>
     </>
   );
