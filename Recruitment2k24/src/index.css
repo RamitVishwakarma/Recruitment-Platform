@@ -53,7 +53,13 @@ body {
 .cta:hover svg {
   transform: translateX(10px);
 }
+.ctaback svg {
+  transition: all 0.2s ease-in-out;
+}
 
+.ctaback:hover svg {
+  transform: translateX(-10px);
+}
 /* input,
 select {
   outline: none;
@@ -87,8 +93,8 @@ select:focus {
   fill: var(--color-para-blue);
 }
 
-.project_icon_profile path{
-  fill: white; 
+.project_icon_profile path {
+  fill: white;
 }
 
 .profile_links svg path {
@@ -98,7 +104,6 @@ select:focus {
 /* #shortlist-checkmark path {
   fill: var(--color-para-blue);
 }*/
-
 
 .dashboard-card .ml-auto {
   transition: all 0.1s ease-in-out;
@@ -116,7 +121,8 @@ select:focus {
   gap: 2.25rem;
 }
 
-.row1, .row2 {
+.row1,
+.row2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -137,10 +143,10 @@ select:focus {
   overflow: hidden;
 }
 
-.card, .card * {
-  transition: all 0.4s cubic-bezier(.68,-0.55,.27,1.55)
+.card,
+.card * {
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
-
 
 .card h2 {
   position: absolute;
@@ -180,14 +186,13 @@ select:focus {
   margin: auto;
 }
 
-.card:hover p{
+.card:hover p {
   bottom: 13%;
 }
 
 .card:hover {
   justify-content: flex-start;
 }
-
 
 .card span {
   position: absolute;
@@ -197,7 +202,6 @@ select:focus {
   margin-right: 0.6rem;
   margin-bottom: 0.3rem;
 }
-
 
 .row1 > :nth-child(1) {
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300" fill="none"><path d="M291.683 172.442L291.629 172.506C284.807 180.444 281.965 191.056 283.91 201.343L283.917 201.379C287.081 218.123 277.524 234.664 261.434 240.278C251.526 243.735 243.735 251.526 240.277 261.434C234.66 277.521 218.12 287.082 201.379 283.917L201.343 283.91C191.056 281.965 180.444 284.807 172.506 291.63L172.442 291.683C159.538 302.775 140.466 302.775 127.558 291.683L127.493 291.63C119.556 284.807 108.943 281.965 98.6566 283.91L98.6209 283.917C81.8765 287.082 65.336 277.524 59.7224 261.434C56.2648 251.526 48.4737 243.735 38.5658 240.278C22.4794 234.66 12.9183 218.12 16.0827 201.379L16.0898 201.343C18.0349 191.056 15.1924 180.444 8.37021 172.506L8.31658 172.442C-2.7748 159.538 -2.7748 140.466 8.31658 127.558L8.37021 127.494C15.1924 119.556 18.0349 108.944 16.0898 98.6569L16.0827 98.6211C12.9183 81.8768 22.4758 65.3362 38.5658 59.7226C48.4737 56.265 56.2648 48.4739 59.7224 38.566C65.3396 22.4796 81.8801 12.9186 98.6209 16.0829L98.6566 16.0901C108.943 18.0352 119.556 15.1926 127.493 8.37046L127.558 8.31682C140.462 -2.77455 159.534 -2.77455 172.442 8.31682L172.506 8.37046C180.444 15.1926 191.056 18.0352 201.343 16.0901L201.379 16.0829C218.123 12.9186 234.664 22.476 240.277 38.566C243.735 48.4739 251.526 56.265 261.434 59.7226C277.52 65.3398 287.081 81.8803 283.917 98.6211L283.91 98.6569C281.965 108.944 284.807 119.556 291.629 127.494L291.683 127.558C302.774 140.462 302.774 159.534 291.683 172.442Z" fill="white"/></svg>');
@@ -217,4 +221,11 @@ select:focus {
 
 .row2 > :nth-child(2) {
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300" fill="none"><path d="M300 150C300 168.605 275 182.558 268.023 198.837C261.047 215.698 268.605 243.023 255.814 255.814C243.023 268.605 215.698 261.047 198.837 268.023C182.558 275 168.605 300 150 300C131.395 300 117.442 275 101.163 268.023C84.3023 261.047 56.9768 268.605 44.1861 255.814C31.3954 243.023 38.9535 215.698 31.9767 198.837C25 182.558 0 168.605 0 150C0 131.395 25 117.442 31.9767 101.163C38.9535 84.3023 31.3954 56.9768 44.1861 44.1861C56.9768 31.3954 84.3023 38.9535 101.163 31.9767C117.442 25 131.395 0 150 0C168.605 0 182.558 25 198.837 31.9767C215.698 38.9535 243.023 31.3954 255.814 44.1861C268.605 56.9768 261.047 84.3023 268.023 101.163C275 117.442 300 131.395 300 150Z" fill="%23FBFBFB"/></svg>');
+}
+
+/* User Home */
+
+.homePageComponent:hover button {
+  transition: all 0.2s ease-in-out;
+  transform: translateX(1.5rem);
 }

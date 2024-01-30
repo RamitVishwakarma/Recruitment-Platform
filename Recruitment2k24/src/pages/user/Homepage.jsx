@@ -83,19 +83,6 @@ export default function Homepage() {
 
   return (
     <>
-      <Navbar>
-        <div>
-          <Link to="/auth" state={"login"}>
-            <button
-              id="login"
-              className="flex items-center justify-center px-8 py-1 rounded-lg bg-lime text-grey hover:bg-button-hover">
-              <div className="p-1 text-xl text-button-text font-bold">
-                Login
-              </div>
-            </button>
-          </Link>
-        </div>
-      </Navbar>
       <div className="flex flex-col gap-20 items-center mb-20 text-grey">
         <img className="mt-52 mx-auto" src={Recruitments}></img>
 
@@ -301,7 +288,6 @@ export default function Homepage() {
           </button>
         </Link>
       </div>
-      <Footer />
     </>
   );
 }

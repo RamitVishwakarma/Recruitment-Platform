@@ -15,7 +15,6 @@ export default function UserProfile() {
   return (
     <>
       <div className="h-screen">
-        <Navbar />
         <div className="mx-40">
           <Header>
             {/* REMOVE THE COMPLETE PROFILE TAG FROM HERE */}
@@ -171,7 +170,6 @@ export default function UserProfile() {
           {/* margin div*/}
         </div>
       </div>
-      <Footer />
     </>
   );
 }

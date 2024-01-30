@@ -2,53 +2,83 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import HeaderProfile from "../../components/HeaderProfile";
-import Quiz from "../../assets/userhome-quiz.svg";
-import Project from "../../assets/userhome-project.svg";
-import Hourglass from "../../assets/hourglass.svg";
-import Check from "../../assets/greencheck.svg";
-import { Link } from "react-router-dom";
+import {
+  ProfileNotComplete,
+  ProfileCompleted,
+  QuizYetToStart,
+  QuizTakeTheQiz,
+  QuizCompleted,
+  ProjectSubmitted,
+  ProjectNotSubmitted,
+} from "../../data/UserHome.jsx";
+
+// Images
+import profile from "../../assets/User_Home/ProfileIco.svg";
+import quiz from "../../assets/quiz.svg";
+import project from "../../assets/project.svg";
+
+import arrRight from "../../assets/arrRight.svg";
+// imports
+import { useState } from "react";
+
 export default function UserHome() {
+  // State manager
+  const [profileState, setProfileState] = useState(ProfileNotComplete);
+  const [quizState, setQuizState] = useState(QuizYetToStart);
+  const [projectState, setProjectState] = useState(ProjectNotSubmitted);
+
   return (
     <>
       <div className="h-screen">
-        <Navbar />
-        <div className="mx-40">
+        <div className="mx-40mx-5 md:mx-20 xl:mx-40">
           <Header>
-            <HeaderProfile />
+            <div className="min-w-80 max-md:mt-10">
+              <HeaderProfile />
+            </div>
           </Header>
-          {/* Quiz and project  */}
-          <div className="flex justify-center mt-20 gap-32">
-            <div className="flex flex-col">
-              <div className=" w-60 h-60 bg-red items-center gap-5 justify-center rounded-2xl flex flex-col">
-                <img src={Quiz} />
-                <span className="text-2xl text-white font-bold opacity-50">
-                  QUIZ
-                </span>
-              </div>
-              <div className="text-grey flex justify-center mt-2 text-lg">
-                <img src={Hourglass} />
-                <span>Yet to start</span>
-              </div>
-            </div>
-            {/* Project Section */}
-            {/* need to change styles too on submitted and not submitted */}
-            {/* There needs to be a condition for the project thing if submitted it will be checked if not a it would be clickable and will be redirected to another page to submit the link */}
-            <div className="flex flex-col">
-              <Link to="/project">
-                <div className="w-60 h-60 bg-purple items-center gap-5 justify-center rounded-2xl flex flex-col">
-                  <img src={Project} />
-                  <span className="text-2xl text-white font-bold">PROJECT</span>
-                </div>
-              </Link>
-              <div className="text-grey flex justify-center mt-2 text-lg">
-                <img src={Check} />
-                <span className="text-lime">Submitted</span>
-              </div>
-            </div>
+          <div className="flex gap-6 flex-col">
+            <HomePageComponents
+              img={profile}
+              imgBgColor={"bg-light-blue/30"}
+              text="Profile"
+              state={profileState}
+            />
+            <HomePageComponents
+              img={quiz}
+              imgBgColor={"bg-light-red/30"}
+              text="Quiz"
+              state={quizState}
+            />
+            <HomePageComponents
+              img={project}
+              imgBgColor={"bg-light-purple/30"}
+              text="Project"
+              state={projectState}
+            />
           </div>
         </div>
       </div>
-      <Footer />
     </>
+  );
+}
+
+function HomePageComponents({ img, imgBgColor, text, state }) {
+  return (
+    <div className="flex gap-4 cursor-pointer homePageComponent">
+      <div
+        className={`w-12 h-12 rounded-full ${imgBgColor} flex items-center justify-center`}>
+        <img className="w-6 h-6" src={img} />
+      </div>
+      <div className="flex-col w-40">
+        <div>{text}</div>
+        <div className="flex gap-1 items-center text-sm">
+          <div>{state.img}</div>
+          <div className={`${state.textColor}`}>{state.text}</div>
+        </div>
+      </div>
+      <button className="pl-5 flex items-center cursor-pointer ">
+        <img className="w-6" src={arrRight} />
+      </button>
+    </div>
   );
 }
