@@ -1,5 +1,3 @@
-import Navbar from "../../components/Navbar.jsx";
-import Footer from "../../components/Footer.jsx";
 import Flame from "../../../src/assets/flame.svg";
 import Sapling from "../../../src/assets/sapling.svg";
 import GDSClogo from "../../../src/assets/gdsc_logo_centered.svg";

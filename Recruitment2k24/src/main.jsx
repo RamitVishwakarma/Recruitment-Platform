@@ -19,7 +19,7 @@ import AdminLogin from "./pages/admin/login";
 import Dashboard from "./pages/admin/dashboard";
 import AllUsers from "./pages/admin/allusers";
 import Profile from "./pages/admin/profile";
-
+// Lazy loading
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>

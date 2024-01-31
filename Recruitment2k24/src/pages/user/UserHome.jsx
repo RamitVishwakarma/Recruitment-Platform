@@ -1,5 +1,3 @@
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import HeaderProfile from "../../components/HeaderProfile";
 import {
@@ -29,32 +27,38 @@ export default function UserHome() {
 
   return (
     <>
-      <div className="h-screen">
+      <div className="h-[88vh] bg-home-bg bg-no-repeat bg-left-bottom">
         <div className="mx-40mx-5 md:mx-20 xl:mx-40">
           <Header>
             <div className="min-w-80 max-md:mt-10">
               <HeaderProfile />
             </div>
           </Header>
-          <div className="flex gap-6 flex-col">
-            <HomePageComponents
-              img={profile}
-              imgBgColor={"bg-light-blue/30"}
-              text="Profile"
-              state={profileState}
-            />
-            <HomePageComponents
-              img={quiz}
-              imgBgColor={"bg-light-red/30"}
-              text="Quiz"
-              state={quizState}
-            />
-            <HomePageComponents
-              img={project}
-              imgBgColor={"bg-light-purple/30"}
-              text="Project"
-              state={projectState}
-            />
+          <div className="flex justify-center items-center">
+            <div
+              className={`w-1/2 text-grey font-bold  mt-8 md:mt-10 lg:mt-32 text-3xl md:text-4xl lg:ml-10 lg:text-8xl xl:text-8xl 2xl:text-9xl`}>
+              Your <br /> Dasboard
+            </div>
+            <div className="w-1/2 flex gap-6 flex-col items-center">
+              <HomePageComponents
+                img={profile}
+                imgBgColor={"bg-light-blue/30"}
+                text="Profile"
+                state={profileState}
+              />
+              <HomePageComponents
+                img={quiz}
+                imgBgColor={"bg-light-red/30"}
+                text="Quiz"
+                state={quizState}
+              />
+              <HomePageComponents
+                img={project}
+                imgBgColor={"bg-light-purple/30"}
+                text="Project"
+                state={projectState}
+              />
+            </div>
           </div>
         </div>
       </div>
