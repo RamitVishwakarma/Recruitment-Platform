@@ -10,11 +10,12 @@ import {
   ProjectNotSubmitted,
 } from "../../data/UserHome.jsx";
 
+import { Link } from "react-router-dom";
+
 // Images
 import profile from "../../assets/User_Home/ProfileIco.svg";
 import quiz from "../../assets/quiz.svg";
 import project from "../../assets/project.svg";
-
 import arrRight from "../../assets/arrRight.svg";
 // imports
 import { useState } from "react";
@@ -46,12 +47,14 @@ export default function UserHome() {
                 text="Profile"
                 state={profileState}
               />
-              <HomePageComponents
-                img={quiz}
-                imgBgColor={"bg-light-red/30"}
-                text="Quiz"
-                state={quizState}
-              />
+              <Link to="/user/quizes">
+                <HomePageComponents
+                  img={quiz}
+                  imgBgColor={"bg-light-red/30"}
+                  text="Quiz"
+                  state={quizState}
+                />
+              </Link>
               <HomePageComponents
                 img={project}
                 imgBgColor={"bg-light-purple/30"}

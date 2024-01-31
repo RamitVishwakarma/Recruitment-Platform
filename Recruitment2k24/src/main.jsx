@@ -16,6 +16,7 @@ const ProjectSubmission = loadable(() =>
   import("./pages/user/ProjectSubmission")
 );
 const UserProfile = loadable(() => import("./pages/user/UserProfile"));
+const Quizes = loadable(() => import("./pages/user/Quizes"));
 const QuizHome = loadable(() => import("./pages/user/QuizHome"));
 const QuizPage = loadable(() => import("./pages/user/QuizPage"));
 const ProtectedRoute = loadable(() => import("./utils/ProtectedRoute"));
@@ -44,9 +45,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/" element={<ProtectedRoute />}>
           <Route path="user/" element={<Layout NavButtonType={"logout"} />}>
             <Route path="home" element={<UserHome />} />
-            <Route path="project" element={<ProjectSubmission />} />
             <Route path="profile" element={<UserProfile />} />
-            <Route path="quizhome" element={<QuizHome />} />
+            <Route path="project" element={<ProjectSubmission />} />
+            <Route path="quizes" element={<Quizes />} />
+            <Route path="quiz_guidelines" element={<QuizHome />} />
             <Route path="quiz" element={<QuizPage />} />
           </Route>
         </Route>

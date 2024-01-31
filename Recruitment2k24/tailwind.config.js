@@ -20,6 +20,7 @@ export default {
       "light-purple": "#E570D2",
       "para-blue": "#111B52",
       "light-red": "#EB6B6B",
+      "light-yellow": "#ECCD2A",
       white: "#F5F5F5",
       "text-green": "#579C00",
       footer: "#E5E5E5",

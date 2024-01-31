@@ -60,6 +60,10 @@ body {
 .ctaback:hover svg {
   transform: translateX(-10px);
 }
+/* User home  */
+.shadowCard {
+  box-shadow: 3px 3px 5px 2px #6b83ff80, -3px -3px 5px 2px #6b83ff80;
+}
 /* input,
 select {
   outline: none;
