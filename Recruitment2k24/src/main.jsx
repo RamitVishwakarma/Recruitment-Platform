@@ -1,25 +1,30 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
 import "./index.css";
-import Homepage from "./pages/user/Homepage";
-import Layout from "./components/Layout";
-import { Auth } from "./pages/user/Auth";
-import Tasks from "./pages/user/Tasks";
-import ResetPass from "./pages/user/ResetPass";
-import UserHome from "./pages/user/UserHome";
-import ProjectSubmission from "./pages/user/ProjectSubmission";
-import UserProfile from "./pages/user/UserProfile";
-import QuizHome from "./pages/user/QuizHome";
-import QuizPage from "./pages/user/QuizPage";
-import ProtectedRoute from "./utils/ProtectedRoute";
+import loadable from "@loadable/component";
+
+const Homepage = loadable(() => import("./pages/user/Homepage"));
+const Layout = loadable(() => import("./components/Layout"));
+const Auth = loadable(() => import("./pages/user/Auth"), {
+  resolveComponent: (component) => component.Auth,
+});
+const Tasks = loadable(() => import("./pages/user/Tasks"));
+const ResetPass = loadable(() => import("./pages/user/ResetPass"));
+const UserHome = loadable(() => import("./pages/user/UserHome"));
+const ProjectSubmission = loadable(() =>
+  import("./pages/user/ProjectSubmission")
+);
+const UserProfile = loadable(() => import("./pages/user/UserProfile"));
+const QuizHome = loadable(() => import("./pages/user/QuizHome"));
+const QuizPage = loadable(() => import("./pages/user/QuizPage"));
+const ProtectedRoute = loadable(() => import("./utils/ProtectedRoute"));
 // Admin pages import
-import AdminLogin from "./pages/admin/login";
-import Dashboard from "./pages/admin/dashboard";
-import AllUsers from "./pages/admin/allusers";
-import Profile from "./pages/admin/profile";
-// Lazy loading
+const AdminLogin = loadable(() => import("./pages/admin/login"));
+const Dashboard = loadable(() => import("./pages/admin/dashboard"));
+const AllUsers = loadable(() => import("./pages/admin/allusers"));
+const Profile = loadable(() => import("./pages/admin/profile"));
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>

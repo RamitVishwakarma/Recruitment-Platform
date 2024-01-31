@@ -20,7 +20,7 @@ export default function Navbar({ buttonType }) {
 
   return (
     <>
-      <header className="sticky z-40 top-0 bg-white/70 backdrop-blur-lg">
+      <div className="sticky z-40 top-0 bg-white/70 backdrop-blur-lg">
         <div className="flex">
           <div className="border-t-[6px] border-red w-[25vw]"></div>
           <div className="border-t-[6px] border-purple w-[25vw]"></div>
@@ -79,7 +79,7 @@ export default function Navbar({ buttonType }) {
             </Link>
           </div>
         </div>
-      </header>
+      </div>
     </>
   );
 }

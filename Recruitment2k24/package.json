@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@loadable/component": "^5.16.3",
     "@studio-freight/lenis": "^1.0.33",
     "axios": "^1.6.5",
     "firebase": "^10.7.2",
