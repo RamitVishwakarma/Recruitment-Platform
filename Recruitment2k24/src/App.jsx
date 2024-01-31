@@ -23,16 +23,17 @@ function App() {
         <Route exact path="/" element={<Homepage />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/reset-password" element={<ResetPass />} />
-        <Route path="/home" element={<UserHome />} />
-        <Route path="/project" element={<ProjectSubmission />} />
-        <Route path="/user-profile" element={<UserProfile />} />
-        <Route path="/quizhome" element={<QuizHome />} />
-        <Route path="/quiz" element={<QuizPage />} />
+        <Route path="/user/home" element={<UserHome />} />
+        <Route path="/user/project" element={<ProjectSubmission />} />
+        <Route path="/user/profile" element={<UserProfile />} />
+        <Route path="/user/quizhome" element={<QuizHome />} />
+        <Route path="/user/quiz" element={<QuizPage />} />
         {/* admin routes */}
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/users" element={<AllUsers />} />
         <Route path="/admin/profile" element={<Profile />} />
+        <Route path="*" />
       </Routes>
     </BrowserRouter>
   );

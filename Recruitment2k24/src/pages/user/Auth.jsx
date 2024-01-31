@@ -19,7 +19,7 @@ import ForgotEmail from "../../assets/forgot-email.svg?react";
 import { z } from "zod";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, Navigate, useNavigate } from "react-router-dom";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
 function Auth() {
@@ -27,7 +27,7 @@ function Auth() {
   const [toolTip, setToolTip] = useState(true);
 
   let { state } = useLocation();
-  if (state) {
+  if (state === "login") {
     useEffect(() => {
       setactiveBtn(state);
     }, []);
@@ -41,21 +41,6 @@ function Auth() {
             ? "bg-reg-bg bg-right-bottom"
             : "bg-login-bg bg-left-bottom"
         }`}>
-        <Navbar>
-          <div>
-            <Link to="/">
-              <button className="flex items-center justify-center px-8 py-1 rounded-lg bg-lime text-grey hover:bg-button-hover">
-                <span>
-                  <img src={ArrLeft} />
-                </span>
-                <div className="p-1 text-xl text-button-text font-bold">
-                  Back
-                </div>
-              </button>
-            </Link>
-          </div>
-        </Navbar>
-
         <div className="mx-5 md:mx-20 xl:mx-40">
           <Header>
             <div className="min-w-80 max-md:mt-10">
@@ -97,7 +82,6 @@ function Auth() {
           {activeBtn === "register" ? <Registration /> : <Login />}
         </div>
       </div>
-      <Footer />
     </>
   );
 }
@@ -372,6 +356,8 @@ function Login() {
 
   const emailSchema = z.string().email();
 
+  const navigate = useNavigate();
+
   // Forgot password
   const handlePopupEmail = (e) => {
     setPopupEmail(e.target.value);
@@ -415,13 +401,13 @@ function Login() {
     SetPassword(e.target.value);
   };
 
+  // Login
   const formSubmitHandler = async (e) => {
     e.preventDefault();
     const loginData = {
       email,
       password,
     };
-
     // Validation of form data
     const validate = emailSchema.safeParse(loginData.email);
     if (!validate.success) {
@@ -432,9 +418,12 @@ function Login() {
           withCredentials: true,
         })
         .then((res) => {
+          console.log(res);
           if (res.status == 200) {
             localStorage.setItem("Authorization", res.headers["authorization"]);
-            // alert("Successfull Login");
+            localStorage.setItem("Name", res.data.name);
+            localStorage.setItem("Photo", res.data.photo);
+            navigate("/user/home");
           }
         })
         .catch((e) => {

@@ -1,5 +1,3 @@
-import Navbar from "../../components/Navbar.jsx";
-import Footer from "../../components/Footer.jsx";
 import Flame from "../../../src/assets/flame.svg";
 import Sapling from "../../../src/assets/sapling.svg";
 import GDSClogo from "../../../src/assets/gdsc_logo_centered.svg";
@@ -83,19 +81,6 @@ export default function Homepage() {
 
   return (
     <>
-      <Navbar>
-        <div>
-          <Link to="/auth" state={"login"}>
-            <button
-              id="login"
-              className="flex items-center justify-center px-8 py-1 rounded-lg bg-lime text-grey hover:bg-button-hover">
-              <div className="p-1 text-xl text-button-text font-bold">
-                Login
-              </div>
-            </button>
-          </Link>
-        </div>
-      </Navbar>
       <div className="flex flex-col gap-20 items-center mb-20 text-grey">
         <img className="mt-52 mx-auto" src={Recruitments}></img>
 
@@ -301,7 +286,6 @@ export default function Homepage() {
           </button>
         </Link>
       </div>
-      <Footer />
     </>
   );
 }

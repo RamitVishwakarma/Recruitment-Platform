@@ -7,7 +7,6 @@ export default function ProjectSubmission() {
   return (
     <>
       <div className="h-screen">
-        <Navbar />
         <div className="mx-40">
           <Header>
             <HeaderProfile />
@@ -41,7 +40,6 @@ export default function ProjectSubmission() {
           </button>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

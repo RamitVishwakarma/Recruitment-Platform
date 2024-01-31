@@ -72,7 +72,6 @@ const ResetPass = () => {
   return (
     <>
       <div className="lg:h-screen max-lg:bg-none bg-login-bg bg-left-bottom bg-no-repeat">
-        <Navbar />
         <div className="mx-5 md:mx-20 xl:mx-40">
           <Header>
             <h1 className="text-6xl text-grey font-bold max-md:mt-10">
@@ -125,7 +124,6 @@ const ResetPass = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

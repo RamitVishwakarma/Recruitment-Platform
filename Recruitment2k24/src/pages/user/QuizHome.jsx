@@ -1,6 +1,4 @@
-import Navbar from "../../components/Navbar";
 import Header from "../../components/Header";
-import Footer from "../../components/Footer";
 import HeaderProfile from "../../components/HeaderProfile";
 import { Link } from "react-router-dom";
 
@@ -8,7 +6,6 @@ export default function QuizHome() {
   return (
     <>
       <div className="h-full">
-        <Navbar />
         <div className="mx-40">
           <Header>
             {/* REMOVE THE COMPLETE PROFILE LINK FROM HERE */}
@@ -48,7 +45,6 @@ export default function QuizHome() {
           </Link>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

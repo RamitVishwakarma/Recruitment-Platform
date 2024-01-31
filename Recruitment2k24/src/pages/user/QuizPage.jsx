@@ -226,7 +226,6 @@ export default function QuizPage() {
   return (
     <>
       <div className="h-screen">
-        <Navbar />
         <div className="mx-40">
           <Header>
             {/* REMOVE THE COMPLETE PROFILE FROM HERE */}

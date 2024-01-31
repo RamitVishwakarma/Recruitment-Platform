@@ -1,8 +1,23 @@
 import logo from "../assets/logo.svg";
-import Hamburger from "../assets/hamburger-menu.svg";
 import separator from "../assets/separator.svg";
 import { Link } from "react-router-dom";
-export default function Navbar({ children }) {
+import { Login, Logout, LetsGo, Back } from "../data/Navbar";
+
+export default function Navbar({ buttonType }) {
+  let buttonState;
+  if (buttonType === "back") {
+    buttonState = Back;
+  }
+  if (buttonType === "login") {
+    buttonState = Login;
+  }
+  if (buttonType === "logout") {
+    buttonState = Logout;
+  }
+  if (buttonType === "letsgo") {
+    buttonState = LetsGo;
+  }
+
   return (
     <>
       <div className="sticky z-40 top-0 bg-white/70 backdrop-blur-lg">
@@ -51,15 +66,18 @@ export default function Navbar({ children }) {
               <div>Results</div>
             </Link>
           </div>
-          {children}
-          {/* <div>
-            <Link to="/auth" state={"login"}>
+          <div>
+            <Link to={buttonState.link} state={buttonState.useNavigateState}>
               <button
-                className="flex items-center justify-center px-8 py-1 rounded-lg bg-lime text-grey hover:bg-button-hover">
-                <div className="p-1 text-xl text-button-text font-bold">Login</div>
+                className={`${
+                  buttonType === "back" ? "ctaback" : "cta"
+                } flex items-center justify-center px-8 py-1 rounded-lg bg-lime text-grey hover:bg-button-hover`}>
+                <div className="p-1 text-xl flex items-center justify-center gap-4 text-button-text">
+                  {buttonState.style}
+                </div>
               </button>
             </Link>
-          </div> */}
+          </div>
         </div>
       </div>
     </>
