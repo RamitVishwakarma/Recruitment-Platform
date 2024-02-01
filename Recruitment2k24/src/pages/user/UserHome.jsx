@@ -41,12 +41,14 @@ export default function UserHome() {
               Your <br /> Dasboard
             </div>
             <div className="w-1/2 flex gap-6 flex-col items-center">
-              <HomePageComponents
-                img={profile}
-                imgBgColor={"bg-light-blue/30"}
-                text="Profile"
-                state={profileState}
-              />
+              <Link to="/user/profile">
+                <HomePageComponents
+                  img={profile}
+                  imgBgColor={"bg-light-blue/30"}
+                  text="Profile"
+                  state={profileState}
+                />
+              </Link>
               <Link to="/user/quizes">
                 <HomePageComponents
                   img={quiz}
