@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
 import loadable from "@loadable/component";
 
+// User pages import
 const Homepage = loadable(() => import("./pages/user/Homepage"));
 const Layout = loadable(() => import("./components/Layout"));
 const Auth = loadable(() => import("./pages/user/Auth"), {
@@ -15,7 +16,7 @@ const UserHome = loadable(() => import("./pages/user/UserHome"));
 const ProjectSubmission = loadable(() =>
   import("./pages/user/ProjectSubmission")
 );
-const UserProfile = loadable(() => import("./pages/user/UserProfile"));
+const Profile = loadable(() => import("./pages/user/Profile"));
 const Quizes = loadable(() => import("./pages/user/Quizes"));
 const QuizHome = loadable(() => import("./pages/user/QuizHome"));
 const QuizPage = loadable(() => import("./pages/user/QuizPage"));
@@ -24,7 +25,7 @@ const ProtectedRoute = loadable(() => import("./utils/ProtectedRoute"));
 const AdminLogin = loadable(() => import("./pages/admin/login"));
 const Dashboard = loadable(() => import("./pages/admin/dashboard"));
 const AllUsers = loadable(() => import("./pages/admin/allusers"));
-const Profile = loadable(() => import("./pages/admin/profile"));
+const AdminProfile = loadable(() => import("./pages/admin/profile"));
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -45,7 +46,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/" element={<ProtectedRoute />}>
           <Route path="user/" element={<Layout NavButtonType={"logout"} />}>
             <Route path="home" element={<UserHome />} />
-            <Route path="profile" element={<UserProfile />} />
+            <Route path="profile" element={<Profile />} />
             <Route path="project" element={<ProjectSubmission />} />
             <Route path="quizes" element={<Quizes />} />
             <Route path="quiz_guidelines" element={<QuizHome />} />
@@ -57,8 +58,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/users" element={<AllUsers />} />
-        <Route path="/admin/profile" element={<Profile />} />
-        <Route path="*" />
+        <Route path="/admin/profile" element={<AdminProfile />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

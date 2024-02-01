@@ -14,7 +14,7 @@ export default function QuizHome() {
           <h1 className="text-5xl font-bold text-center pb-2">
             Lets start the Quiz!
           </h1>
-          <div className="mx-auto mt-2 bg-red/20 w-3/5 h-2/5 flex flex-col justify-center items-center rounded-2xl">
+          <div className="mx-auto mt-2 w-3/5 h-2/5 flex flex-col justify-center items-center rounded-2xl">
             <div className="text-red font-bold text-[1.7em] text-center p-5">
               Guidelines
             </div>
@@ -36,7 +36,7 @@ export default function QuizHome() {
               </li>
             </ul>
           </div>
-          <Link to="/quiz">
+          <Link to="/user/quiz">
             <div className="flex justify-center">
               <button className="mx-auto my-4 font-bold text-xl text-button-text bg-lime rounded-lg hover:bg-button-hover px-10 py-3">
                 Begin

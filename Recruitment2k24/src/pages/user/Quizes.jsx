@@ -72,7 +72,7 @@ const Quizes = () => {
                   <img className="w-20 h-20" src={design} />
                 </div>
                 <div className="font-bold text-4xl p-4">Design</div>
-                <Link to="/quiz_guidelines">
+                <Link to="/user/quiz_guidelines">
                   <button className="rounded-full bg-light-blue p-1 px-7 text-white">
                     Start now
                   </button>
