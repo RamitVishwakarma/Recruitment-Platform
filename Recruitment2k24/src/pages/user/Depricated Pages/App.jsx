@@ -1,17 +1,17 @@
 // User pages import
-import Homepage from "./pages/user/Homepage";
-import { Auth } from "./pages/user/Auth";
-import ResetPass from "./pages/user/ResetPass";
-import UserHome from "./pages/user/UserHome";
-import ProjectSubmission from "./pages/user/ProjectSubmission";
+import Homepage from "../Homepage";
+import { Auth } from "../Auth";
+import ResetPass from "../ResetPass";
+import UserHome from "../UserHome";
+import ProjectSubmission from "../ProjectSubmission";
 import UserProfile from "./pages/user/UserProfile";
-import QuizHome from "./pages/user/QuizHome";
-import QuizPage from "./pages/user/QuizPage";
+import QuizHome from "../QuizHome";
+import QuizPage from "../QuizPage";
 // Admin pages import
-import AdminLogin from "./pages/admin/login";
-import Dashboard from "./pages/admin/dashboard";
-import AllUsers from "./pages/admin/allusers";
-import Profile from "./pages/admin/profile";
+import AdminLogin from "../../admin/login";
+import Dashboard from "../../admin/dashboard";
+import AllUsers from "../../admin/allusers";
+import Profile from "../../admin/profile";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 

@@ -57,12 +57,14 @@ export default function UserHome() {
                   state={quizState}
                 />
               </Link>
-              <HomePageComponents
-                img={project}
-                imgBgColor={"bg-light-purple/30"}
-                text="Project"
-                state={projectState}
-              />
+              <Link to="/user/project">
+                <HomePageComponents
+                  img={project}
+                  imgBgColor={"bg-light-purple/30"}
+                  text="Project"
+                  state={projectState}
+                />
+              </Link>
             </div>
           </div>
         </div>
