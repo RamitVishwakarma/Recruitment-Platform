@@ -1,5 +1,3 @@
-import Navbar from "../../components/Navbar.jsx";
-import Footer from "../../components/Footer.jsx";
 import Header from "../../components/Header.jsx";
 import Toast from "../../components/Toast.jsx";
 import Popup from "../../components/Popup.jsx";
@@ -11,7 +9,6 @@ import Year from "../../assets/input-year.svg";
 import DomainIco from "../../assets/input-domain.svg";
 import Email from "../../assets/input-email.svg";
 import Password from "../../assets/input-password.svg";
-import ArrLeft from "../../assets/arrleft.svg";
 import Google from "../../assets/google-logo.svg";
 import Close from "../../assets/close.svg";
 import ForgotEmail from "../../assets/forgot-email.svg?react";
@@ -19,7 +16,7 @@ import ForgotEmail from "../../assets/forgot-email.svg?react";
 import { z } from "zod";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useLocation, Link, Navigate, useNavigate } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
 function Auth() {
@@ -255,7 +252,7 @@ function Registration() {
             label="Name"
             icon={Name}
             type="text"
-            placeholder="Ramit Vishwakarma"
+            placeholder="Enter Your Name"
             onChangeHandler={handleName}
             errorHandler={nameError}
             errorMessage={"Name is required"}
@@ -266,7 +263,7 @@ function Registration() {
             label="Admission Number"
             icon={Admission}
             type="text"
-            placeholder="22CSDS064"
+            placeholder="Enter Your Admission Number"
             onChangeHandler={handleAdmissionNumber}
             errorHandler={admissionNumberError}
             errorMessage={"Invalid Number"}
@@ -358,6 +355,8 @@ function Login() {
 
   const navigate = useNavigate();
 
+  // Saving the data coming from the backend into the recoil state
+  const [user, setUser] = useRecoilState(userAtom);
   // Forgot password
   const handlePopupEmail = (e) => {
     setPopupEmail(e.target.value);
@@ -423,7 +422,7 @@ function Login() {
             localStorage.setItem("Authorization", res.headers["authorization"]);
             localStorage.setItem("Name", res.data.name);
             localStorage.setItem("Photo", res.data.photo);
-            navigate("/user/home");
+            navigate("/user");
           }
         })
         .catch((e) => {
@@ -676,6 +675,7 @@ function Select({
 }
 
 function GoogleAuthentication({ text, btnStyle }) {
+  const navigate = useNavigate();
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
 
@@ -696,6 +696,8 @@ function GoogleAuthentication({ text, btnStyle }) {
                 "Authorization",
                 res.headers["authorization"]
               );
+              navigate("/user");
+              // Also change the global atom state's photo and name
             }
           })
           .catch((e) => {

@@ -1,6 +1,7 @@
 import Header from "../../components/Header";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+
 import link from "../../assets/link.svg";
 import linkedIN from "../../assets/footer-li.svg";
 import behance from "../../assets/behance.svg";
@@ -19,7 +20,7 @@ export default function Profile() {
             <div className="text-6xl font-bold">Your Profile</div>
           </div>
         </Header>
-        <Link to="/user/home">
+        <Link to="/user">
           <button className="ctaback flex gap-2 items-center text-grey">
             <svg
               xmlns="http://www.w3.org/2000/svg"
