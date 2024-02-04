@@ -16,8 +16,10 @@ import ForgotEmail from "../../assets/forgot-email.svg?react";
 import { z } from "zod";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useLocation, Link, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { userAtom } from "./Store/user.jsx";
+import { useRecoilValue } from "recoil";
 
 function Auth() {
   const [activeBtn, setactiveBtn] = useState("register");
@@ -356,7 +358,11 @@ function Login() {
   const navigate = useNavigate();
 
   // Saving the data coming from the backend into the recoil state
-  const [user, setUser] = useRecoilState(userAtom);
+  const user = useRecoilValue(userAtom);
+  // const userName = useRecoilValue(userNameAtom);
+
+  console.log(user.name.userNameAtom);
+
   // Forgot password
   const handlePopupEmail = (e) => {
     setPopupEmail(e.target.value);

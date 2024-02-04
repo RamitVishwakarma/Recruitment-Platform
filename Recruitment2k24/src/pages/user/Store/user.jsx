@@ -3,7 +3,7 @@ import { atom, atomFamily } from "recoil";
 // Atom for individual user fields
 export const userNameAtom = atom({
   key: "userNameAtom",
-  default: "",
+  default: "bla bla ",
 });
 
 export const userEmailAtom = atom({
@@ -30,6 +30,10 @@ export const userYearAtom = atom({
   key: "userYearAtom",
   default: "",
 });
+export const userAdmissionNumberAtom = atom({
+  key: "userAdmissionNumberAtom",
+  default: "",
+});
 
 // Atom Family for social links
 export const socialLinksAtomFamily = atomFamily({
@@ -53,7 +57,7 @@ export const userAtom = atom({
     photo: userPhotoAtom,
     domain: userDomainAtom,
     year: userYearAtom,
-    admissionNumber: "",
+    admissionNumber: userAdmissionNumberAtom,
     resume: "",
     socialLinks: {
       github: socialLinksAtomFamily(""),
