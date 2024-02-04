@@ -1,9 +1,9 @@
-import { atom, atomFamily } from "recoil";
+import { atom, atomFamily, useRecoilValue } from "recoil";
 
 // Atom for individual user fields
 export const userNameAtom = atom({
   key: "userNameAtom",
-  default: "bla bla ",
+  default: "",
 });
 
 export const userEmailAtom = atom({
@@ -34,6 +34,10 @@ export const userAdmissionNumberAtom = atom({
   key: "userAdmissionNumberAtom",
   default: "",
 });
+export const resumeAtom = atom({
+  key: "resumeAtom",
+  default: "",
+});
 
 // Atom Family for social links
 export const socialLinksAtomFamily = atomFamily({
@@ -47,7 +51,7 @@ export const quizzesTakenAtom = atom({
   default: [],
 });
 
-// Atom for the entire user
+//  Atom for the entire user
 export const userAtom = atom({
   key: "userAtom",
   default: {

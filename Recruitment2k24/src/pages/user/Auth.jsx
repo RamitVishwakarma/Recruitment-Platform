@@ -18,8 +18,20 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
-import { userAtom } from "./Store/user.jsx";
-import { useRecoilValue } from "recoil";
+import {
+  userNameAtom,
+  userEmailAtom,
+  userPhotoAtom,
+  userPhoneNumberAtom,
+  userDomainAtom,
+  userYearAtom,
+  userAdmissionNumberAtom,
+  resumeAtom,
+  socialLinksAtomFamily,
+  quizzesTakenAtom,
+  userAtom,
+} from "./Store/user";
+import { useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
 
 function Auth() {
   const [activeBtn, setactiveBtn] = useState("register");
@@ -214,7 +226,7 @@ function Registration() {
             setToast(true);
             setToastText("Successfully registered!  You can login now.");
             setTimeout(() => {
-              setToast("false");
+              setToast(false);
             }, 4500);
           }
         })
@@ -224,13 +236,13 @@ function Registration() {
             setToast(true);
             setToastText("User already exists!  Please login.");
             setTimeout(() => {
-              setToast("false");
+              setToast(false);
             }, 4500);
           } else {
             setToast(true);
             setToastText("Something went wrong!  Please try again.");
             setTimeout(() => {
-              setToast("false");
+              setToast(false);
             }, 4500);
           }
         });
@@ -358,10 +370,6 @@ function Login() {
   const navigate = useNavigate();
 
   // Saving the data coming from the backend into the recoil state
-  const user = useRecoilValue(userAtom);
-  // const userName = useRecoilValue(userNameAtom);
-
-  console.log(user.name.userNameAtom);
 
   // Forgot password
   const handlePopupEmail = (e) => {
@@ -383,7 +391,7 @@ function Login() {
           setToast(true);
           if (Toast) {
             setTimeout(() => {
-              setToast("false");
+              setToast(false);
             }, 4500);
           }
         }
@@ -405,7 +413,21 @@ function Login() {
   const handlePassword = (e) => {
     SetPassword(e.target.value);
   };
+  // User States
+  const [userName, setUserName] = useRecoilState(userNameAtom);
+  const [userEmail, setUserEmail] = useRecoilState(userEmailAtom);
+  const [userPhoneNumber, setUserPhoneNumber] =
+    useRecoilState(userPhoneNumberAtom);
+  const [userPhoto, setUserPhoto] = useRecoilState(userPhotoAtom);
+  const [userDomain, setUserDomain] = useRecoilState(userDomainAtom);
+  const [userYear, setUserYear] = useRecoilState(userYearAtom);
+  const [userAdmissionNumber, setUserAdmissionNumber] = useRecoilState(
+    userAdmissionNumberAtom
+  );
+  const [resume, setResume] = useRecoilState(resumeAtom);
+  const setQuizzesTaken = useSetRecoilState(quizzesTakenAtom);
 
+  const user = useRecoilValue(userAtom);
   // Login
   const formSubmitHandler = async (e) => {
     e.preventDefault();
@@ -413,6 +435,7 @@ function Login() {
       email,
       password,
     };
+
     // Validation of form data
     const validate = emailSchema.safeParse(loginData.email);
     if (!validate.success) {
@@ -423,7 +446,18 @@ function Login() {
           withCredentials: true,
         })
         .then((res) => {
-          console.log(res);
+          console.log(res.data);
+          setUserName(res.data.name);
+          setUserEmail(res.data.email);
+          setUserPhoneNumber(res.data.phone);
+          setUserPhoto(res.data.photo);
+          setUserDomain(res.data.domain);
+          setUserYear(res.data.year);
+          setUserAdmissionNumber(res.data.admissionNumber);
+          setResume(res.data.resume);
+          setQuizzesTaken(res.data.quizzesTaken);
+          console.log(user);
+
           if (res.status == 200) {
             localStorage.setItem("Authorization", res.headers["authorization"]);
             localStorage.setItem("Name", res.data.name);
@@ -440,13 +474,13 @@ function Login() {
             setToast(true);
             setToastText("Invalid Credentials! Please try again.");
             setTimeout(() => {
-              setToast("false");
+              setToast(false);
             }, 4500);
           } else {
             setToast(true);
             setToastText("Something went wrong! Please Try again. ");
             setTimeout(() => {
-              setToast("false");
+              setToast(false);
             }, 4500);
           }
         });
