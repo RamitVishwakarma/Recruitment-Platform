@@ -29,7 +29,7 @@ export default function UserHome() {
   const user = JSON.parse(sessionStorage.getItem("user"));
   // console.log(user);
   // Managing states here
-  // ? Profile
+  // * Profile
   useEffect(() => {
     if (
       user.socialLinks.length === undefined ||
@@ -47,6 +47,28 @@ export default function UserHome() {
     user.admissionNumber,
     user.domain,
   ]);
+  // * Quiz
+  const date = new Date();
+  useEffect(() => {
+    //If the array is not empty then quiz is completed
+    if (user.quizzesTaken.length > 0) {
+      setQuizState(QuizCompleted);
+    }
+    // 3 march 2024 is hardcoded here
+    if (
+      date.getFullYear() == "2024" &&
+      date.getMonth() == "2" &&
+      date.getDate() == "3"
+    ) {
+      setQuizState(QuizTakeTheQiz);
+    }
+  }, [date]);
+  // * Project
+  useEffect(() => {
+    if (user.projectStatus) {
+      setProjectState(ProjectSubmitted);
+    }
+  }, [user.projectStatus]);
 
   return (
     <>
