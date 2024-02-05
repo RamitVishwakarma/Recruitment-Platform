@@ -18,19 +18,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
-import {
-  userNameAtom,
-  userEmailAtom,
-  userPhotoAtom,
-  userPhoneNumberAtom,
-  userDomainAtom,
-  userYearAtom,
-  userAdmissionNumberAtom,
-  resumeAtom,
-  socialLinksAtomFamily,
-  quizzesTakenAtom,
-  userAtom,
-} from "./Store/user";
+import { userAtom } from "./Store/atoms/user.js";
 import { useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
 
 function Auth() {
@@ -354,28 +342,25 @@ function Registration() {
 }
 
 function Login() {
+  // Toast states
   const [toast, setToast] = useState(false);
   const [toastText, setToastText] = useState(false);
   // forget Pass states
   const [popup, setPopup] = useState(false);
   const [popupEmailError, setPopupEmailError] = useState(false);
-
+  // Email and password states
   const [email, SetEmail] = useState("");
   const [popupEmail, setPopupEmail] = useState("");
   const [password, SetPassword] = useState("");
   const [emailError, setEmailError] = useState(false);
-
+  // email schema for validation
   const emailSchema = z.string().email();
-
+  // navigate to change pages
   const navigate = useNavigate();
-
-  // Saving the data coming from the backend into the recoil state
-
   // Forgot password
   const handlePopupEmail = (e) => {
     setPopupEmail(e.target.value);
   };
-
   const handleForgotPassword = (e) => {
     const forgetPassData = {
       email: popupEmail,
@@ -403,7 +388,7 @@ function Login() {
         console.log(e);
       });
   };
-  // normal login
+  // login logic
   const handleEmail = (e) => {
     SetEmail(e.target.value);
     emailSchema.safeParse(e.target.value).success
@@ -413,21 +398,8 @@ function Login() {
   const handlePassword = (e) => {
     SetPassword(e.target.value);
   };
-  // User States
-  const [userName, setUserName] = useRecoilState(userNameAtom);
-  const [userEmail, setUserEmail] = useRecoilState(userEmailAtom);
-  const [userPhoneNumber, setUserPhoneNumber] =
-    useRecoilState(userPhoneNumberAtom);
-  const [userPhoto, setUserPhoto] = useRecoilState(userPhotoAtom);
-  const [userDomain, setUserDomain] = useRecoilState(userDomainAtom);
-  const [userYear, setUserYear] = useRecoilState(userYearAtom);
-  const [userAdmissionNumber, setUserAdmissionNumber] = useRecoilState(
-    userAdmissionNumberAtom
-  );
-  const [resume, setResume] = useRecoilState(resumeAtom);
-  const setQuizzesTaken = useSetRecoilState(quizzesTakenAtom);
-
-  const user = useRecoilValue(userAtom);
+  // User Global State
+  const [user, setUser] = useRecoilState(userAtom);
   // Login
   const formSubmitHandler = async (e) => {
     e.preventDefault();
@@ -435,56 +407,43 @@ function Login() {
       email,
       password,
     };
-
     // Validation of form data
     const validate = emailSchema.safeParse(loginData.email);
     if (!validate.success) {
       setEmailError(true);
-    } else {
-      axios
-        .post(`${import.meta.env.VITE_URL}user/auth/login`, loginData, {
-          withCredentials: true,
-        })
-        .then((res) => {
-          console.log(res.data);
-          setUserName(res.data.name);
-          setUserEmail(res.data.email);
-          setUserPhoneNumber(res.data.phone);
-          setUserPhoto(res.data.photo);
-          setUserDomain(res.data.domain);
-          setUserYear(res.data.year);
-          setUserAdmissionNumber(res.data.admissionNumber);
-          setResume(res.data.resume);
-          setQuizzesTaken(res.data.quizzesTaken);
-          console.log(user);
-
-          if (res.status == 200) {
-            localStorage.setItem("Authorization", res.headers["authorization"]);
-            localStorage.setItem("Name", res.data.name);
-            localStorage.setItem("Photo", res.data.photo);
-            navigate("/user");
-          }
-        })
-        .catch((e) => {
-          if (
-            e.response.status === 401 ||
-            e.response.status === 404 ||
-            e.response.status === 400
-          ) {
-            setToast(true);
-            setToastText("Invalid Credentials! Please try again.");
-            setTimeout(() => {
-              setToast(false);
-            }, 4500);
-          } else {
-            setToast(true);
-            setToastText("Something went wrong! Please Try again. ");
-            setTimeout(() => {
-              setToast(false);
-            }, 4500);
-          }
-        });
+      return;
     }
+    axios
+      .post(`${import.meta.env.VITE_URL}user/auth/login`, loginData, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        // saving res.data into global user state
+        setUser(res.data);
+        if (res.status == 200) {
+          localStorage.setItem("Authorization", res.headers["authorization"]);
+          navigate("/user");
+        }
+      })
+      .catch((e) => {
+        if (
+          e.response.status === 401 ||
+          e.response.status === 404 ||
+          e.response.status === 400
+        ) {
+          setToast(true);
+          setToastText("Invalid Credentials! Please try again.");
+          setTimeout(() => {
+            setToast(false);
+          }, 4500);
+        } else {
+          setToast(true);
+          setToastText("Something went wrong! Please Try again. ");
+          setTimeout(() => {
+            setToast(false);
+          }, 4500);
+        }
+      });
   };
   return (
     <>

@@ -1,6 +1,4 @@
-export default function HeaderProfile() {
-  const name = localStorage.getItem("Name");
-  const profile = localStorage.getItem("Photo");
+export default function HeaderProfile({ name, photo }) {
   return (
     <div className="flex flex-col">
       <div className="flex text-right gap-3">
@@ -9,7 +7,7 @@ export default function HeaderProfile() {
           <span className="text-grey text-2xl font-bold">{name}</span>
         </div>
         <div>
-          <img className="w-16 h-16 min-w-16 min-h-16" src={profile} />
+          <img className="w-16 h-16 min-w-16 min-h-16" src={photo} />
         </div>
       </div>
     </div>

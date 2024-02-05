@@ -19,6 +19,8 @@ import project from "../../assets/project.svg";
 import arrRight from "../../assets/arrRight.svg";
 // imports
 import { useState } from "react";
+import { userAtom } from "./Store/atoms/user.js";
+import { useRecoilValue } from "recoil";
 
 export default function UserHome() {
   // State manager
@@ -32,7 +34,7 @@ export default function UserHome() {
         <div className="mx-40mx-5 md:mx-20 xl:mx-40">
           <Header>
             <div className="min-w-80 max-md:mt-10">
-              <HeaderProfile />
+              <HeaderProfile name={user.name} photo={user.photo} />
             </div>
           </Header>
           <div className="flex justify-center items-center">
