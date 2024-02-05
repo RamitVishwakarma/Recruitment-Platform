@@ -1,9 +1,57 @@
-import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar";
 import HeaderProfile from "../../components/HeaderProfile";
 import Header from "../../components/Header";
-import Project from "../../assets/userhome-project.svg?react";
+import Project from "../../assets/projectLink.svg?react";
+import { z } from "zod";
+import axios from "axios";
+
+import { useState } from "react";
+import { Input } from "./Auth";
 export default function ProjectSubmission() {
+  const [projectLink, setProjectLink] = useState("");
+  const [projectLinkError, setProjectLinkError] = useState(false);
+  const linkSchema = z.string().url();
+  // getting user data  from session storage
+  const user = JSON.parse(sessionStorage.getItem("user"));
+
+  const projectLinkOnChangeHandler = (e) => {
+    setProjectLink(e.target.value);
+  };
+  // Handelling project link submission
+  const projectSubmissionHandler = (e) => {
+    e.preventDefault();
+    if (linkSchema.safeParse(projectLink).success) {
+      setProjectLinkError(false);
+      // * API call to submit the project
+      const projectData = {
+        submissionLink: projectLink,
+      };
+      axios
+        .post(
+          `${import.meta.env.VITE_URL}api/user/project/submission/${user._id}`,
+          projectData,
+          {
+            headers: { Authorization: sessionStorage.getItem("Authorization") },
+          }
+        )
+        .then((res) => {
+          //? add toast in here
+          alert("Project link submitted successfully");
+          console.log(res);
+        })
+        .catch((e) => {
+          if (e.response.status === 400) {
+            //? add toast in here
+            alert("You already submitted a project link");
+          } else {
+            //? Add toast in here
+            alert("Something went wrong, please try again later");
+          }
+        });
+    } else {
+      setProjectLinkError(true);
+    }
+  };
+
   return (
     <>
       <div className="h-screen">
@@ -18,14 +66,16 @@ export default function ProjectSubmission() {
               Paste your project link here
             </div>
             <div className="flex items-center gap-6">
-              {/* Need to check how to do svg fill */}
-              {/* <img src={Project} /> */}
-              <Project className="project-icon-svg" />
+              <Project />
               {/* form action to be changed */}
-              <form id="projectLink" action="/home">
-                <input
-                  className="w-[35rem] h-12 border-2 rounded-lg p-3 border-purple hover:outline-purple"
+              <form id="projectLink" onSubmit={projectSubmissionHandler}>
+                <Input
+                  id={"projectLink"}
                   type="text"
+                  placeholder="Paste your project link here"
+                  onChangeHandler={projectLinkOnChangeHandler}
+                  errorHandler={projectLinkError}
+                  errorMessage={"Invalid link"}
                 />
               </form>
             </div>

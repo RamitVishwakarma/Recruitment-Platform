@@ -100,7 +100,7 @@ function Registration() {
   const [name, SetName] = useState("");
   const [admissionNumber, SetAdmissionNumber] = useState("");
   const [year, SetYear] = useState("");
-  const [Domain, SetDomain] = useState("");
+  const [domain, SetDomain] = useState("");
   const [email, SetEmail] = useState("");
   const [password, SetPassword] = useState("");
 
@@ -159,7 +159,7 @@ function Registration() {
     name: nameSchema,
     admissionNumber: admissionNumberSchema,
     year: yearSchema,
-    Domain: domainSchema,
+    domain: domainSchema,
     email: emailSchema,
     password: passwordSchema,
   });
@@ -173,11 +173,11 @@ function Registration() {
       password,
       admissionNumber,
       year,
-      Domain,
+      domain,
     };
     // On click of submit button, check if any of the fields are empty, if yes, set the error state to true, else false.
     year === "" ? setYearError(true) : setYearError(false);
-    Domain === "" ? setDomainError(true) : setDomainError(false);
+    domain === "" ? setDomainError(true) : setDomainError(false);
     // Validation of form data
     const validate = registrationSchema.safeParse(registrationData);
     if (!validate.success) {
@@ -192,7 +192,7 @@ function Registration() {
           case "year":
             setYearError(true);
             break;
-          case "Domain":
+          case "domain":
             setDomainError(true);
             break;
           case "email":
@@ -205,7 +205,10 @@ function Registration() {
       });
     } else {
       axios
-        .post(`${import.meta.env.VITE_URL}user/auth/signup`, registrationData)
+        .post(
+          `${import.meta.env.VITE_URL}api/user/auth/signup`,
+          registrationData
+        )
         .then((res) => {
           if (res.status === 201) {
             // alert("Successfull Signup kindly login");
@@ -281,7 +284,7 @@ function Registration() {
           />
           {/* Domain */}
           <Select
-            id="Domain"
+            id="domain"
             label="Domain"
             icon={DomainIco}
             onChangeHandler={handleDomain}
@@ -365,7 +368,7 @@ function Login() {
     };
     axios
       .post(
-        `${import.meta.env.VITE_URL}user/auth/forget-password`,
+        `${import.meta.env.VITE_URL}api/user/auth/forget-password`,
         forgetPassData
       )
       .then((res) => {
@@ -410,7 +413,7 @@ function Login() {
       return;
     }
     axios
-      .post(`${import.meta.env.VITE_URL}user/auth/login`, loginData, {
+      .post(`${import.meta.env.VITE_URL}api/user/auth/login`, loginData, {
         withCredentials: true,
       })
       .then((res) => {
@@ -611,7 +614,7 @@ function Input({
           id={id}
           name={id}
           placeholder={placeholder}
-          onInput={onChangeHandler}
+          onChange={onChangeHandler}
         />
       </div>
     </div>
@@ -683,7 +686,7 @@ function GoogleAuthentication({ text, btnStyle }) {
           photo: user.photoURL,
         };
         axios
-          .post(`${import.meta.env.VITE_URL}user/auth/google`, Data)
+          .post(`${import.meta.env.VITE_URL}api/user/auth/google`, Data)
           .then((res) => {
             if (res.status == 200) {
               sessionStorage.setItem(

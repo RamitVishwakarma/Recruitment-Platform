@@ -46,7 +46,7 @@ const ResetPass = () => {
       setPasswordError(false);
       axios
         .put(
-          `${import.meta.env.VITE_URL}user/auth/reset_password`,
+          `${import.meta.env.VITE_URL}api/user/auth/reset_password`,
           passwordResetData
         )
         .then((res) => {

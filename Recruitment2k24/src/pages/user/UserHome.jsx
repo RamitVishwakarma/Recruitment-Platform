@@ -18,7 +18,7 @@ import quiz from "../../assets/quiz.svg";
 import project from "../../assets/project.svg";
 import arrRight from "../../assets/arrRight.svg";
 // imports
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function UserHome() {
   // State manager
@@ -27,10 +27,26 @@ export default function UserHome() {
   const [projectState, setProjectState] = useState(ProjectNotSubmitted);
   // * fetching user from session storage
   const user = JSON.parse(sessionStorage.getItem("user"));
-  console.log(user);
+  // console.log(user);
   // Managing states here
   // ? Profile
-  // if(user.socialLinks.length === undefined||){
+  useEffect(() => {
+    if (
+      user.socialLinks.length === undefined ||
+      user.projectStatus === false ||
+      user.resume === undefined ||
+      user.admissionNumber === undefined ||
+      user.domain === undefined
+    ) {
+      setProfileState(ProfileNotComplete);
+    }
+  }, [
+    user.socialLinks,
+    user.projectStatus,
+    user.resume,
+    user.admissionNumber,
+    user.domain,
+  ]);
 
   return (
     <>
