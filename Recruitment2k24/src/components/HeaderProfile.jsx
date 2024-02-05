@@ -7,7 +7,10 @@ export default function HeaderProfile({ name, photo }) {
           <span className="text-grey text-2xl font-bold">{name}</span>
         </div>
         <div>
-          <img className="w-16 h-16 min-w-16 min-h-16" src={photo} />
+          <img
+            className="w-16 h-16 min-w-16 min-h-16 rounded-full"
+            src={photo}
+          />
         </div>
       </div>
     </div>

@@ -363,6 +363,7 @@ function Login() {
     setPopupEmail(e.target.value);
   };
   const handleForgotPassword = (e) => {
+    e.preventDefault();
     const forgetPassData = {
       email: popupEmail,
     };
@@ -505,6 +506,7 @@ function Login() {
               {/* When button is clicked this will appear */}
               {popup && (
                 <Popup>
+                  {/* close button */}
                   <button
                     type="button"
                     onClick={() => setPopup(false)}
@@ -588,6 +590,7 @@ function Input({
   onChangeHandler,
   errorHandler,
   errorMessage,
+  value,
 }) {
   return (
     <div className={`min-w-96 ${grow ? "xl:w-4/12" : ""} `}>
@@ -615,6 +618,7 @@ function Input({
           name={id}
           placeholder={placeholder}
           onChange={onChangeHandler}
+          value={value}
         />
       </div>
     </div>
@@ -630,6 +634,7 @@ function Select({
   data,
   errorHandler,
   errorMessage,
+  selectedValue,
 }) {
   return (
     <div className={"min-w-96 xl:w-4/12 "}>
@@ -649,7 +654,7 @@ function Select({
           } min-w-80 xl:w-11/12 h-12 border p-3  rounded-lg text-grey border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}
           name={id}
           onChange={onChangeHandler}
-          defaultValue={selected}>
+          defaultValue={selectedValue}>
           <option value={selected} disabled>
             {selected}
           </option>
@@ -716,4 +721,4 @@ function GoogleAuthentication({ text, btnStyle }) {
   );
 }
 
-export { Auth, Input };
+export { Auth, Input, Select };

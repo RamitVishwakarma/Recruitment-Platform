@@ -31,7 +31,7 @@ export default function App() {
         </Route>
         <Route path="/" element={<Layout NavButtonType={"back"} />}>
           <Route path="auth" element={<Auth />} />
-          <Route path="reset_password" element={<ResetPass />} />
+          <Route path="reset_password/:id" element={<ResetPass />} />
         </Route>
         {/* User Protected Route */}
         <Route path="/" element={<ProtectedRoute />}>

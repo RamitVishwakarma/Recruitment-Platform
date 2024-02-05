@@ -39,6 +39,8 @@ export default function UserHome() {
       user.domain === undefined
     ) {
       setProfileState(ProfileNotComplete);
+    } else {
+      setProfileState(ProfileCompleted);
     }
   }, [
     user.socialLinks,

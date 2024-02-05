@@ -1,12 +1,10 @@
 import React from "react";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Toast from "../../components/Toast";
 import Password from "../../assets/input-password.svg";
 import { useState } from "react";
 import { Input } from "./Auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { z } from "zod";
 import axios from "axios";
 
@@ -24,6 +22,8 @@ const ResetPass = () => {
   const passwordSchema = z.string().min(6);
 
   const navigate = useNavigate();
+
+  const params = useParams();
 
   const handlenNewPassword = (e) => {
     setNewPassword(e.target.value);
@@ -46,7 +46,9 @@ const ResetPass = () => {
       setPasswordError(false);
       axios
         .put(
-          `${import.meta.env.VITE_URL}api/user/auth/reset_password`,
+          `${import.meta.env.VITE_URL}api/user/auth/reset_password/${
+            params.id
+          }`,
           passwordResetData
         )
         .then((res) => {
@@ -59,9 +61,13 @@ const ResetPass = () => {
           }
         })
         .catch((e) => {
+          console.log(e.response);
           console.log(e);
           setToast(true);
           setToastText("Token expired please get new reset link.");
+          setTimeout(() => {
+            setToast(false);
+          }, 4100);
         });
     } else {
       setPasswordErrorText("Passwords does not match");

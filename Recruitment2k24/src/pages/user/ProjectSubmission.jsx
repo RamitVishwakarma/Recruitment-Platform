@@ -37,6 +37,8 @@ export default function ProjectSubmission() {
           //? add toast in here
           alert("Project link submitted successfully");
           console.log(res);
+          // * Redirect to the dashboard ????
+          // ? save the data in session storage as well if the link needs to be used somewhere
         })
         .catch((e) => {
           if (e.response.status === 400) {

@@ -168,7 +168,8 @@ const AllUsers = () => {
             <span className="font-bold">16</span>
           </button>
           <p className="text-grey text-xl">
-            Total&nbsp;Users:&nbsp;<span className="font-bold">{users.length}</span>
+            Total&nbsp;Users:&nbsp;
+            <span className="font-bold">{users.length}</span>
           </p>
         </div>
       </div>
@@ -202,7 +203,10 @@ const AllUsers = () => {
                       rel="noreferrer"
                       className="underline"
                       href={user.project}>
-                      Submitted<span className="ml-2 material-symbols-rounded">open_in_new</span>
+                      Submitted
+                      <span className="ml-2 material-symbols-rounded">
+                        open_in_new
+                      </span>
                     </a>
                   </td>
                 ) : (
