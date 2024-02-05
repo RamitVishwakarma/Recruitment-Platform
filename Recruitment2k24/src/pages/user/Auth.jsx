@@ -18,8 +18,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
-import { userAtom } from "./Store/atoms/user.js";
-import { useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
 
 function Auth() {
   const [activeBtn, setactiveBtn] = useState("register");
@@ -398,8 +396,6 @@ function Login() {
   const handlePassword = (e) => {
     SetPassword(e.target.value);
   };
-  // User Global State
-  const [user, setUser] = useRecoilState(userAtom);
   // Login
   const formSubmitHandler = async (e) => {
     e.preventDefault();
@@ -418,10 +414,9 @@ function Login() {
         withCredentials: true,
       })
       .then((res) => {
-        // saving res.data into global user state
-        setUser(res.data);
         if (res.status == 200) {
-          localStorage.setItem("Authorization", res.headers["authorization"]);
+          sessionStorage.setItem("Authorization", res.headers["authorization"]);
+          sessionStorage.setItem("user", JSON.stringify(res.data));
           navigate("/user");
         }
       })
@@ -691,12 +686,12 @@ function GoogleAuthentication({ text, btnStyle }) {
           .post(`${import.meta.env.VITE_URL}user/auth/google`, Data)
           .then((res) => {
             if (res.status == 200) {
-              localStorage.setItem(
+              sessionStorage.setItem(
                 "Authorization",
                 res.headers["authorization"]
               );
-              navigate("/user");
-              // Also change the global atom state's photo and name
+              sessionStorage.setItem("user", JSON.stringify(res.data));
+              navigate("/user/");
             }
           })
           .catch((e) => {

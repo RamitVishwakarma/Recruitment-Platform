@@ -19,18 +19,22 @@ import project from "../../assets/project.svg";
 import arrRight from "../../assets/arrRight.svg";
 // imports
 import { useState } from "react";
-import { userAtom } from "./Store/atoms/user.js";
-import { useRecoilValue } from "recoil";
 
 export default function UserHome() {
   // State manager
   const [profileState, setProfileState] = useState(ProfileNotComplete);
   const [quizState, setQuizState] = useState(QuizYetToStart);
   const [projectState, setProjectState] = useState(ProjectNotSubmitted);
+  // * fetching user from session storage
+  const user = JSON.parse(sessionStorage.getItem("user"));
+  console.log(user);
+  // Managing states here
+  // ? Profile
+  // if(user.socialLinks.length === undefined||){
 
   return (
     <>
-      <div className="h-[88vh] bg-home-bg bg-no-repeat bg-left-bottom">
+      <div className="h-[88vh]">
         <div className="mx-40mx-5 md:mx-20 xl:mx-40">
           <Header>
             <div className="min-w-80 max-md:mt-10">
@@ -40,7 +44,7 @@ export default function UserHome() {
           <div className="flex justify-center items-center">
             <div
               className={`w-1/2 text-grey font-bold  mt-8 md:mt-10 lg:mt-32 text-3xl md:text-4xl lg:ml-10 lg:text-8xl xl:text-8xl 2xl:text-9xl`}>
-              Your <br /> Dasboard
+              Your <br /> Dashboard
             </div>
             <div className="w-1/2 flex gap-6 flex-col items-center">
               <Link to="/user/profile">

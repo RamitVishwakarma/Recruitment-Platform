@@ -1,6 +1,6 @@
 import logo from "../assets/logo.svg";
 import separator from "../assets/separator.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Login, Logout, LetsGo, Back } from "../data/Navbar";
 
 export default function Navbar({ buttonType }) {
@@ -17,6 +17,13 @@ export default function Navbar({ buttonType }) {
   if (buttonType === "letsgo") {
     buttonState = LetsGo;
   }
+
+  const navigate = useNavigate();
+  const logoutHandler = (e) => {
+    sessionStorage.removeItem("Authorization");
+    sessionStorage.removeItem("user");
+    navigate("/");
+  };
 
   return (
     <>
@@ -67,16 +74,27 @@ export default function Navbar({ buttonType }) {
             </Link>
           </div>
           <div>
-            <Link to={buttonState.link} state={buttonState.useNavigateState}>
+            {buttonType != "logout" && (
+              <Link to={buttonState.link} state={buttonState.useNavigateState}>
+                <button
+                  className={`${
+                    buttonType === "back" ? "ctaback" : "cta"
+                  } flex items-center justify-center px-8 py-1 rounded-lg bg-lime text-grey hover:bg-button-hover`}>
+                  <div className="p-1 text-xl flex items-center justify-center gap-4 text-button-text">
+                    {buttonState.style}
+                  </div>
+                </button>
+              </Link>
+            )}
+            {buttonType === "logout" && (
               <button
-                className={`${
-                  buttonType === "back" ? "ctaback" : "cta"
-                } flex items-center justify-center px-8 py-1 rounded-lg bg-lime text-grey hover:bg-button-hover`}>
+                onClick={logoutHandler}
+                className="cta flex items-center justify-center px-8 py-1 rounded-lg bg-lime text-grey hover:bg-button-hover">
                 <div className="p-1 text-xl flex items-center justify-center gap-4 text-button-text">
                   {buttonState.style}
                 </div>
               </button>
-            </Link>
+            )}
           </div>
         </div>
       </div>
