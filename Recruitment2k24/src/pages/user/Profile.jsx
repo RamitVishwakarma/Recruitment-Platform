@@ -20,6 +20,7 @@ import Popup from "../../components/Popup";
 import Close from "../../assets/close.svg";
 import Password from "../../assets/input-password.svg";
 
+// ? Haven't added any client side validations in this page will do it If we have to
 export default function Profile() {
   const user = JSON.parse(sessionStorage.getItem("user"));
   // Updating user prof
@@ -331,6 +332,7 @@ function EditProfile({ user, changeActiveButtonToPass }) {
   ];
 
   // deleting the user's account
+  // ? Thinking about a comfirmation popup
   const handleDeleteAccount = () => {
     axios
       .delete(
