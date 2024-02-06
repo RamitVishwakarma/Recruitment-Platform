@@ -1,14 +1,17 @@
-import Navbar from "../../components/Navbar";
+// import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import Back from "../../assets/arrRight.svg";
-import Close from "../../assets/close.svg?react";
-import search from "../../assets/search.svg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import validator from "validator";
 
 const AllUsers = () => {
+  const domain = {
+    domain: "Machine Learning",
+    total: 120,
+    projects: 18,
+    shortlisted: 10,
+    interviewed: 25,
+  }
   const users = [
     {
       name: "Bodhan Kapoor",
@@ -62,6 +65,87 @@ const AllUsers = () => {
       interviewStatus: "PR Scheduled",
       shortlisted: false,
     },
+    {
+      name: "Elakshi Gandhi",
+      year: "1st",
+      project:
+        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
+      quizResults: "17/20",
+      interviewStatus: "PR Scheduled",
+      shortlisted: false,
+    },
+    {
+      name: "Elakshi Gandhi",
+      year: "1st",
+      project:
+        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
+      quizResults: "17/20",
+      interviewStatus: "PR Scheduled",
+      shortlisted: false,
+    },
+    {
+      name: "Elakshi Gandhi",
+      year: "1st",
+      project:
+        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
+      quizResults: "17/20",
+      interviewStatus: "PR Scheduled",
+      shortlisted: false,
+    },
+    {
+      name: "Elakshi Gandhi",
+      year: "1st",
+      project:
+        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
+      quizResults: "17/20",
+      interviewStatus: "PR Scheduled",
+      shortlisted: false,
+    },
+    {
+      name: "Elakshi Gandhi",
+      year: "1st",
+      project:
+        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
+      quizResults: "17/20",
+      interviewStatus: "PR Scheduled",
+      shortlisted: false,
+    },
+    {
+      name: "Elakshi Gandhi",
+      year: "1st",
+      project:
+        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
+      quizResults: "17/20",
+      interviewStatus: "PR Scheduled",
+      shortlisted: false,
+    },
+    {
+      name: "Elakshi Gandhi",
+      year: "1st",
+      project:
+        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
+      quizResults: "17/20",
+      interviewStatus: "PR Scheduled",
+      shortlisted: false,
+    },
+    {
+      name: "Elakshi Gandhi",
+      year: "1st",
+      project:
+        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
+      quizResults: "17/20",
+      interviewStatus: "PR Scheduled",
+      shortlisted: false,
+    },
+    {
+      name: "Elakshi Gandhi",
+      year: "1st",
+      project:
+        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
+      quizResults: "17/20",
+      interviewStatus: "PR Scheduled",
+      shortlisted: false,
+    },
   ];
 
   const [shortlist, setshortlist] = useState(false);
@@ -88,36 +172,29 @@ const AllUsers = () => {
 
   return (
     <>
-      <Navbar />
-      <div className="mx-40">
-        <Header>
-          <h1 className="text-6xl font-bold text-grey">Design Candidates</h1>
-        </Header>
+      {/* <Navbar /> */}
+      <div className="mx-40 flex my-6 justify-between">
+        <Link to="/admin/dashboard">
+            <div className="flex items-center hover:underline">
+              <span className="material-symbols-rounded text-xl">arrow_back_ios</span>
+              <p className="text-2xl">Dashboard</p>
+            </div>
+          </Link>
+          <h2 className="text-4xl">{domain.domain} Candidates</h2>
       </div>
 
       <div className="flex justify-between mx-40">
         <div className="flex items-center gap-5 text-button-text text-2xl">
-          <Link to="/admin/dashboard">
-            <div className="flex items-center hover:underline">
-              <img className="rotate-180 w-6" src={Back} alt="" />
-              <div>Dashboard</div>
-            </div>
-          </Link>
+
           {/* searchbar */}
           <div className="relative">
             <input
-              className={`pl-10 pr-3 py-2 text-sm rounded-full border border-grey ${
-                searchValue ? "w-full" : "w-1/6"
-              }`}
+              className={"pl-10 pr-3 py-2 text-sm rounded-full border border-grey"}
               type="text"
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
             />
-            <img
-              src={search}
-              className="absolute left-2 top-1/2 transform -translate-y-1/2 text-grey"
-              alt=""
-            />
+            <span className="material-symbols-rounded icon absolute left-2 top-1/2 transform -translate-y-1/2 text-grey">search</span>
           </div>
         </div>
 
@@ -143,9 +220,9 @@ const AllUsers = () => {
             className={`flex items-center px-5 py-1 gap-2 border rounded-full border-grey ${
               project ? "bg-purple/30" : ""
             }`}>
-            {project ? <Close id="project-filter-close" /> : ""}
+            {project ? <span className="material-symbols-rounded">close</span> : ""}
             <p>Projects&nbsp;Submitted:&nbsp;</p>
-            <span className="font-bold">38</span>
+            <span className="font-bold">{domain.projects}</span>
           </button>
           {/* interview filter */}
           <button
@@ -153,9 +230,9 @@ const AllUsers = () => {
             className={`flex items-center px-5 py-1 gap-2 border rounded-full border-grey ${
               interviewed ? "bg-red/30" : ""
             }`}>
-            {interviewed ? <Close id="interview-filter-close" /> : ""}
+            {interviewed ? <span className="material-symbols-rounded">close</span> : ""}
             <p>Interviewed:&nbsp;</p>
-            <span className="font-bold">34</span>
+            <span className="font-bold">{domain.interviewed}</span>
           </button>
           {/* shortlist filter */}
           <button
@@ -163,13 +240,13 @@ const AllUsers = () => {
             className={`flex items-center px-5 py-1 gap-2 border rounded-full border-grey ${
               shortlist ? "bg-text-green/10" : ""
             }`}>
-            {shortlist ? <Close id="shortlist-filter-close" /> : ""}
+            {shortlist ? <span className="material-symbols-rounded">close</span> : ""}
             <p>Shortlisted&nbsp;Users:&nbsp;</p>
-            <span className="font-bold">16</span>
+            <span className="font-bold">{domain.shortlisted}</span>
           </button>
           <p className="text-grey text-xl">
             Total&nbsp;Users:&nbsp;
-            <span className="font-bold">{users.length}</span>
+            <span className="font-bold">{domain.total}</span>
           </p>
         </div>
       </div>
@@ -183,7 +260,7 @@ const AllUsers = () => {
             <th>Project Status</th>
             <th>Quiz Results</th>
             <th>Interview Status</th>
-            <th className="w-1/12">Shortlisted</th>
+            <th className="w-1/12 pr-4">Shortlisted</th>
           </tr>
           {users.map((user, index) => (
             <tr

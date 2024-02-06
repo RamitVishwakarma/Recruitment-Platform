@@ -1,13 +1,9 @@
-import Navbar from "../../components/Navbar";
+// import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import Arrow_right from "../../assets/arrRight.svg";
-import Edit_icon from "../../assets/edit-icon.svg";
 import UserIcon from "../../assets/users.svg";
 import ProjectIcon from "../../assets/project.svg";
 import QuizIcon from "../../assets/quiz.svg";
 import Shortlist from "../../assets/shortlist.svg";
-import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const admininfo = {
@@ -22,103 +18,49 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="h-screen bg-admin-dashboard-bg bg-no-repeat bg-left-bottom">
-        <Navbar />
-        <div className="mx-40">
-          <Header>
-            <div className="flex items-center gap-4">
-              <div className="flex flex-col items-end">
-                <p className="text-4xl font-bold">{admininfo.domain} Lead</p>
-                <div className="flex gap-4 font-3xl text-purple">
-                  <img src={Edit_icon} alt="" />
-                  <p>Edit&nbsp;Profile</p>
-                </div>
-              </div>
-              <div>
-                <img src={admininfo.photo} alt="" className="w-16" />
-              </div>
-            </div>
-          </Header>
-        </div>
-        <div className="mx-60 mt-20 flex items-center justify-between">
-          {/* side text */}
-          <div>
-            <h1 className="text-8xl font-bold text-grey leading-normal">
-              {admininfo.domain}
-              <br />
-              Dashboard
-            </h1>
-          </div>
+      {/* navbar */}
+      <div className="bg-cover bg-background">
+        <div className="h-[95vh] mx-40 mt-10 ">
+          <h2 className="text-4xl">{admininfo.domain} Dashboard</h2>
+
           {/* cards */}
-          <div className="flex flex-col gap-4 content-stretch">
-            {/* users card */}
-            <Link to="/admin/users">
-              <div className="dashboard-card flex bg-text-box items-center gap-8 px-10 rounded-2xl py-6">
-                {/* icon */}
-                <div className="bg-light-blue/30 w-16 h-16 flex items-center flex-shrink-0 justify-center rounded-full">
-                  <img className="w-9" src={UserIcon} alt="" />
+          <div className="bg-text-box relative overflow-hidden w-fit mt-28 mx-auto px-16 py-16 rounded-3xl">
+            <div className="grid grid-cols-2 grid-rows-2 place-content-center gap-16">
+
+              <a href="/admin/users">
+                <div className="flex z-10 justify-center items-center gap-8 bg-white w-80 py-6 rounded-2xl">
+                  <div className="w-16 h-16 rounded-full grid place-items-center bg-light-blue/30"><img className="w-10" src={UserIcon} alt="" /></div>
+                  <div>
+                    <h2 className="text-3xl">{admininfo.total_users}</h2>
+                    <h3 className="text-xl opacity-60">Registered Users</h3>
+                  </div>
                 </div>
-                {/* info */}
+              </a>
+
+              <div className="flex z-10 justify-center items-center gap-8 bg-white w-80 py-6 rounded-2xl">
+                <div className="w-16 h-16 rounded-full grid place-items-center bg-purple/30"><img className="w-8" src={ProjectIcon} alt="" /></div>
                 <div>
-                  <p className="text-4xl text-light-blue font-bold">
-                    {admininfo.total_users}
-                  </p>
-                  <p className="text-2xl text-grey">Registered&nbsp;Users</p>
+                  <h2 className="text-3xl">{admininfo.total_projects}</h2>
+                  <h3 className="text-xl opacity-60">Projects Submitted</h3>
                 </div>
-                <img className="ml-auto" src={Arrow_right} alt="" />
               </div>
-            </Link>
-            {/* projects card */}
-            <div className="dashboard-card flex bg-text-box items-center gap-8 px-10 rounded-2xl py-6">
-              {/* icon */}
-              <div className="bg-purple/30 w-16 h-16 flex items-center flex-shrink-0 justify-center rounded-full">
-                <img className="w-9" src={ProjectIcon} alt="" />
+
+              <div className="flex z-10 justify-center items-center gap-8 bg-white w-80 py-6 rounded-2xl">
+                <div className="w-16 h-16 rounded-full grid place-items-center bg-lime/30"><img className="w-10" src={Shortlist} alt="" /></div>
+                <div>
+                  <h2 className="text-3xl">{admininfo.shortlisted}</h2>
+                  <h3 className="text-xl opacity-60">Users Shortlisted</h3>
+                </div>
               </div>
-              {/* info */}
-              <div>
-                <p className="text-4xl text-purple font-bold">
-                  {admininfo.total_projects}
-                </p>
-                <p className="text-2xl text-grey">Projects&nbsp;Submitted</p>
+
+              <div className="flex z-10 justify-center items-center gap-8 bg-white w-80 py-6 rounded-2xl">
+                <div className="w-16 h-16 rounded-full grid place-items-center bg-red/30"><img className="w-8" src={QuizIcon} alt="" /></div>
+                <div>
+                  <h3 className="text-2xl underline">Manage Quiz</h3>
+                </div>
               </div>
-              <img className="ml-auto" src={Arrow_right} alt="" />
             </div>
-            {/* shortlisted card */}
-            <div className="dashboard-card flex bg-text-box items-center gap-8 px-10 rounded-2xl py-6">
-              {/* icon */}
-              <div className="bg-lime/30 w-16 h-16 flex items-center flex-shrink-0 justify-center rounded-full">
-                <img className="w-9" src={Shortlist} alt="" />
-              </div>
-              {/* info */}
-              <div>
-                <p className="text-4xl text-lime font-bold">
-                  {admininfo.shortlisted}
-                </p>
-                <p className="text-2xl text-grey">Users&nbsp;Shortlisted</p>
-              </div>
-              <img className="ml-auto" src={Arrow_right} alt="" />
-            </div>
-            {/* quiz card */}
-            <div className="dashboard-card flex bg-text-box items-center gap-8 px-10 rounded-2xl py-6">
-              {/* icon */}
-              <div className="bg-red/30 w-16 h-16 flex items-center flex-shrink-0 justify-center rounded-full">
-                <img className="w-8" src={QuizIcon} alt="" />
-              </div>
-              {/* info */}
-              <div>
-                {admininfo.quizCreated ? (
-                  <>
-                    <p className="text-4xl text-red font-bold">
-                      {admininfo.quiz_taken}
-                    </p>
-                    <p className="text-2xl text-grey">Quiz&nbsp;Taken</p>
-                  </>
-                ) : (
-                  <p className="text-3xl text-grey">Create Quiz</p>
-                )}
-              </div>
-              <img className="ml-auto" src={Arrow_right} alt="" />
-            </div>
+
           </div>
         </div>
       </div>

@@ -1,6 +1,5 @@
-import Navbar from "../../components/Navbar";
+// import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import Header from "../../components/Header";
 import Arrow_right from "../../assets/arrRight.svg?react";
 import Project from "../../assets/project.svg?react";
 import Error from "../../assets/error.svg?react";
@@ -26,11 +25,11 @@ const Profile = () => {
     admNumber: "23AIML069",
     domian: "Machine Learning",
     project: "https://something.com/project/f43uhf38",
-    resume:
-      "https://cdn.enhancv.com/simple_double_column_resume_template_aecca5d139.png",
+    resume: "https://cdn.enhancv.com/simple_double_column_resume_template_aecca5d139.png",
     quizResults: "18/20",
     interviewStatus: "Scheduled",
     shortlisted: true,
+    reviewmarked: false,
     links: {
       github: "https://github.com/funinkina",
       hackerrank: "",
@@ -41,6 +40,9 @@ const Profile = () => {
     },
   });
 
+
+  const totalshortlisted = 134;
+
   const toggleShortlisted = () => {
     setUser({
       ...users,
@@ -48,23 +50,24 @@ const Profile = () => {
     });
   };
 
-  const totalshortlisted = 134;
+  const toggleReview = () => {
+    setUser({
+      ...users,
+      reviewmarked: !users.reviewmarked,
+    });
+  };
 
   return (
     <>
       <div className=" flex flex-col justify-start mb-20">
-        <Navbar />
-        <div className="mx-40">
-          <Header>
-            <h1 className="text-6xl font-bold text-grey">User Profile</h1>
-          </Header>
-        </div>
+        {/* <Navbar /> */}
+
         {/* navigation bar */}
-        <div className="mx-40 flex justify-between text-2xl text-grey">
+        <div className="mx-40 mt-12 flex justify-between text-2xl text-grey">
           <Link to="/admin/users">
-            <div className="flex gap-2 items-center hover:underline">
-              <Arrow_right className="rotate-180 w-6" />
-              <p>All Users</p>
+            <div className="flex items-center hover:underline">
+              <span className="material-symbols-rounded text-xl">arrow_back_ios</span>
+              <p className="text-2xl">All Users</p>
             </div>
           </Link>
           <p>
@@ -94,7 +97,7 @@ const Profile = () => {
             </div>
             {/* user details (name and such) */}
             <div className="flex flex-col text-grey text-xl justify-start gap-2 items-start">
-              <p className="text-5xl font-bold">{users.name}</p>
+              <p className="text-4xl font-bold">{users.name}</p>
               <a href={`mailto:${users.email}`}>{users.email}</a>
               <p className="">{users.contactnumber}</p>
               <p className="">
@@ -106,35 +109,26 @@ const Profile = () => {
                 className="flex flex-row items-center mt-6 px-4 py-2 gap-4 rounded-lg bg-lime"
               >
                 {users.shortlisted ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="19"
-                    height="18"
-                    viewBox="0 0 19 18"
-                    fill="none"
-                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
                     <path
                       d="M5.47852 4.21912L8.04518 0.896208C8.22852 0.651763 8.44622 0.472249 8.69831 0.357666C8.95039 0.243083 9.21393 0.185791 9.48893 0.185791C9.76393 0.185791 10.0275 0.243083 10.2796 0.357666C10.5316 0.472249 10.7493 0.651763 10.9327 0.896208L13.4993 4.21912L17.3952 5.52537C17.7924 5.6476 18.1056 5.87294 18.3348 6.20142C18.5639 6.52989 18.6785 6.89274 18.6785 7.28996C18.6785 7.47329 18.6518 7.65662 18.5983 7.83996C18.5448 8.02329 18.457 8.19899 18.3348 8.36704L15.8139 11.942L15.9056 15.7004C15.9209 16.2351 15.7452 16.6858 15.3785 17.0525C15.0118 17.4191 14.5841 17.6025 14.0952 17.6025C14.0646 17.6025 13.8966 17.5795 13.591 17.5337L9.48893 16.3879L5.38685 17.5337C5.31046 17.5643 5.22643 17.5834 5.13477 17.591C5.0431 17.5986 4.95907 17.6025 4.88268 17.6025C4.39379 17.6025 3.96602 17.4191 3.59935 17.0525C3.23268 16.6858 3.05699 16.2351 3.07227 15.7004L3.16393 11.9191L0.666016 8.36704C0.543793 8.19899 0.455946 8.02329 0.402474 7.83996C0.349002 7.65662 0.322266 7.47329 0.322266 7.28996C0.322266 6.90801 0.43303 6.5528 0.654557 6.22433C0.876085 5.89586 1.18546 5.66287 1.58268 5.52537L5.47852 4.21912Z"
-                      fill="#353535"
-                    />
+                      fill="#353535" />
                   </svg>
                 ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="19"
-                    height="19"
-                    viewBox="0 0 19 19"
-                    fill="solid"
+                  <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="solid"
                   >
                     <path
                       d="M5.27735 4.82508L7.84401 1.50216C8.02735 1.25772 8.24505 1.07821 8.49714 0.963623C8.74922 0.84904 9.01276 0.791748 9.28776 0.791748C9.56276 0.791748 9.8263 0.84904 10.0784 0.963623C10.3305 1.07821 10.5482 1.25772 10.7315 1.50216L13.2982 4.82508L17.194 6.13133C17.5912 6.25355 17.9044 6.4789 18.1336 6.80737C18.3628 7.13585 18.4773 7.49869 18.4773 7.89592C18.4773 8.07925 18.4506 8.26258 18.3971 8.44592C18.3437 8.62925 18.2558 8.80494 18.1336 8.973L15.6128 12.548L15.7044 16.3063C15.7197 16.8411 15.544 17.2918 15.1773 17.6584C14.8107 18.0251 14.3829 18.2084 13.894 18.2084C13.8635 18.2084 13.6954 18.1855 13.3898 18.1397L9.28776 16.9938L5.18568 18.1397C5.10929 18.1702 5.02526 18.1893 4.9336 18.197C4.84193 18.2046 4.7579 18.2084 4.68151 18.2084C4.19262 18.2084 3.76484 18.0251 3.39818 17.6584C3.03151 17.2918 2.85582 16.8411 2.87109 16.3063L2.96276 12.5251L0.464844 8.973C0.342622 8.80494 0.254774 8.62925 0.201302 8.44592C0.14783 8.26258 0.121094 8.07925 0.121094 7.89592C0.121094 7.51397 0.231858 7.15876 0.453386 6.83029C0.674913 6.50182 0.984288 6.26883 1.38151 6.13133L5.27735 4.82508ZM6.40026 6.40633L1.95443 7.873L4.79609 11.9751L4.70443 16.3522L9.28776 15.0918L13.8711 16.3751L13.7794 11.9751L16.6211 7.91883L12.1753 6.40633L9.28776 2.62508L6.40026 6.40633Z"
-                      fill="#353535"
-                    />
+                      fill="#353535" />
                   </svg>
                 )}
                 <p className="text-2xl text-grey">
                   {users.shortlisted ? "Shortlisted" : "Shortlist"}
                 </p>
+              </button>
+              <button onClick={toggleReview}>
+                {users.reviewmarked ? <p className="flex gap-2 items-center"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m424-396.308-99.846-99.846q-5.615-5.615-13.769-6-8.154-.385-14.539 6T289.461-482q0 7.769 6.385 14.154l105.539 105.538q9.692 9.693 22.615 9.693 12.923 0 22.615-9.693l219.077-219.077q5.616-5.615 6-13.769.385-8.154-6-14.538-6.384-6.385-14.154-6.385-7.769 0-14.153 6.385L424-396.308ZM224.615-160Q197-160 178.5-178.5 160-197 160-224.615v-510.77Q160-763 178.5-781.5 197-800 224.615-800h510.77Q763-800 781.5-781.5 800-763 800-735.385v510.77Q800-197 781.5-178.5 763-160 735.385-160h-510.77Z"/></svg>Marked for Review</p> :
+                <p className="flex gap-2 items-center"><span className="material-symbols-rounded">add_box</span>Mark for Review</p>}
               </button>
             </div>
           </div>
@@ -142,11 +136,13 @@ const Profile = () => {
           <div className="w-72">
               <div className="">
                 {validator.isURL(users.resume) ? (
-                  <img
-                    className=" border-2 border-light-blue rounded-t-lg h-32 w-72 object-cover"
-                    src={users.resume}
-                    alt=""
-                  />
+                  <a href={users.resume} target="_blank" rel="noreferrer">
+                    <img
+                      className=" border-2 border-light-blue rounded-t-lg h-32 w-72 object-cover"
+                      src={users.resume}
+                      alt=""
+                    />
+                  </a>
                 ) : (
                   <div className="flex h-30 border-2 border-light-blue rounded-t-xl w-72 justify-center items-center flex-col text-red text-xl py-2">
                     <Warning />
@@ -160,36 +156,36 @@ const Profile = () => {
               </div>
           </div>
         </div>
-        <h2 className="mt-16 mx-60 font-bold text-purple text-4xl">Submissions</h2>
+        <h2 className="mt-16 mb-4 mx-60 font-bold text-purple text-4xl">Submissions</h2>
         {/* links and project section */}
         <div className="flex items-center mx-60 justify-between">
-          <div className="grid grid-cols-3 grid-rows-2 gap-3">
-            <div className="flex gap-4 items-center">
+          <div className="grid grid-cols-3 grid-rows-2 gap-3 bg-text-box py-7 px-4 rounded-xl w-fit">
+            <div className="flex w-60 gap-4 items-center">
               <Github className="w-8" />
               {users.links.github ? <a className="overflow-hidden w-60 underline text-grey text-xl line-clamp-1 text-ellipsis"
                 href={users.links.github}>{users.links.github}</a> : <p className="text-grey/50 text-xl">Not submitted</p>}
             </div>
-            <div className="flex gap-4 items-center">
+            <div className="flex w-56 gap-4 items-center">
               <Linkedin className="w-7" />
-              {users.links.linkedin ? <a className="overflow-hidden w-60 underline text-grey text-xl line-clamp-1 text-ellipsis"
+              {users.links.linkedin ? <a className="overflow-hidden underline text-grey text-xl line-clamp-1 text-ellipsis"
                 href={users.links.linkedin}>{users.links.linkedin}</a> : <p className="text-grey/50 text-xl">Not submitted</p>}
             </div>
-            <div className="flex gap-4 items-center">
+            <div className="flex w-60 gap-4 items-center">
               <Hackerrank className="w-8" />
               {users.links.hackerrank ? <a className="overflow-hidden w-60 underline text-grey text-xl line-clamp-1 text-ellipsis"
                 href={users.links.hackerrank}>{users.links.hackerrank}</a> : <p className="text-grey/50 text-xl">Not submitted</p>}
             </div>
-            <div className="flex gap-4 items-center">
+            <div className="flex w-60 gap-4 items-center">
               <Dribbble className="w-7" />
               {users.links.dribble ? <a className="overflow-hidden w-60 underline text-grey text-xl line-clamp-1 text-ellipsis"
                 href={users.links.dribble}>{users.links.dribble}</a> : <p className="text-grey/50 text-xl">Not submitted</p>}
             </div>
-            <div className="flex gap-4 items-center">
+            <div className="flex w-60 gap-4 items-center">
               <Behance className="w-8" />
               {users.links.behance ? <a className="overflow-hidden w-60 underline text-grey text-xl line-clamp-1 text-ellipsis"
                 href={users.links.behance}>{users.links.behance}</a> : <p className="text-grey/50 text-xl">Not submitted</p>}
             </div>
-            <div className="flex gap-4 items-center">
+            <div className="flex w-60 gap-4 items-center">
               <Customlink className="w-8" />
               {users.links.custom ? <a className="overflow-hidden w-60 underline text-grey text-xl line-clamp-1 text-ellipsis"
                 href={users.links.custom}>{users.links.custom}</a> : <p className="text-grey/50 text-xl">Not submitted</p>}
