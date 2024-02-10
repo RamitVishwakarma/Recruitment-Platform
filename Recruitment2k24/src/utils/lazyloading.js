@@ -39,6 +39,7 @@ export {
   QuizHome,
   QuizPage,
   ProtectedRoute,
+  AdminProtectedRoute,
   AdminLogin,
   Dashboard,
   AllUsers,
