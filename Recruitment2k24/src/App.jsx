@@ -47,7 +47,9 @@ export default function App() {
 
         {/* admin routes */}
         <Route path="admin/" element={<Layout NavButtonType={"back"} />}>
+          {/* //? add in the admin protected route */}
           <Route path="login" element={<AdminLogin />} />
+          <Route path="" element={<AdminProtectedRoute />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="users" element={<AllUsers />} />
           <Route path="profile" element={<AdminProfile />} />
