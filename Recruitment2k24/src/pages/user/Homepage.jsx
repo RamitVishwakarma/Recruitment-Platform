@@ -279,7 +279,7 @@ export default function Homepage() {
         </div>
 
         {/* admin login */}
-        <Link href="/admin/login">
+        <Link to="admin/login">
           <button className="flex gap-4 rounded-full bg-text-box py-1 px-4 hover:bg-grey/5">
             <p>Admin Login</p>
             <span className="material-symbols-rounded">arrow_circle_right</span>

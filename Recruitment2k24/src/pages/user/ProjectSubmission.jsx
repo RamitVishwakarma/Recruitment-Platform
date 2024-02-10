@@ -84,6 +84,7 @@ export default function ProjectSubmission() {
           </div>
         </div>
         <div className="flex items-center justify-center">
+          {/* //? If project submitted disable */}
           <button
             form="projectLink"
             type="submit"

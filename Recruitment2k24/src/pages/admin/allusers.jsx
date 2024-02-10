@@ -1,5 +1,3 @@
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Back from "../../assets/arrRight.svg";
 import Close from "../../assets/close.svg?react";
@@ -88,7 +86,6 @@ const AllUsers = () => {
 
   return (
     <>
-      <Navbar />
       <div className="mx-40">
         <Header>
           <h1 className="text-6xl font-bold text-grey">Design Candidates</h1>
@@ -220,7 +217,6 @@ const AllUsers = () => {
           ))}
         </table>
       </div>
-      <Footer />
     </>
   );
 };

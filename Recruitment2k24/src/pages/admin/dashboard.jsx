@@ -1,5 +1,3 @@
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Arrow_right from "../../assets/arrRight.svg";
 import Edit_icon from "../../assets/edit-icon.svg";
@@ -23,7 +21,6 @@ const Dashboard = () => {
   return (
     <>
       <div className="h-screen bg-admin-dashboard-bg bg-no-repeat bg-left-bottom">
-        <Navbar />
         <div className="mx-40">
           <Header>
             <div className="flex items-center gap-4">
@@ -122,7 +119,6 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

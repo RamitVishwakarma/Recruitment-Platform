@@ -1,5 +1,3 @@
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Email from "../../assets/input-email.svg";
 import Password from "../../assets/input-password.svg";
@@ -8,7 +6,6 @@ const AdminLogin = () => {
   return (
     <>
       <div className="h-screen bg-admin-bg bg-no-repeat bg-left-bottom">
-        <Navbar />
         <div className="mx-40">
           <Header>
             <h1 className="text-6xl font-bold text-grey">Admin Login</h1>
@@ -17,7 +14,11 @@ const AdminLogin = () => {
         <div className="mx-60 mt-48 flex items-center justify-between">
           {/* side text */}
           <div>
-            <h1 className="text-8xl font-bold leading-normal text-grey">Welcome<br />Admin</h1>
+            <h1 className="text-8xl font-bold leading-normal text-grey">
+              Welcome
+              <br />
+              Admin
+            </h1>
           </div>
 
           <div className="w-96 flex flex-col gap-4 justify-end items-end">
@@ -59,7 +60,6 @@ const AdminLogin = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
