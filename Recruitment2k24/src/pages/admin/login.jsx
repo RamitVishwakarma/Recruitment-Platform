@@ -1,8 +1,42 @@
 import Header from "../../components/Header";
 import Email from "../../assets/input-email.svg";
 import Password from "../../assets/input-password.svg";
+import { Input } from "../user/Auth";
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AdminLogin = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const loginHandler = () => {
+    const data = {
+      email,
+      password,
+    };
+    axios
+      .post(`${import.meta.env.VITE_URL}api/admin/auth/login`, data)
+      .then((res) => {
+        sessionStorage.setItem("Authorization", res.headers.authorization);
+        navigate("/admin/dashboard");
+      })
+      .catch((e) => {
+        // ? Change to toast
+        if (e.response.data.message) alert(e.response.data.message);
+        else alert(e.response.data.error);
+      });
+  };
+
   return (
     <>
       <div className="h-screen bg-admin-bg bg-no-repeat bg-left-bottom">
@@ -27,42 +61,30 @@ const AdminLogin = () => {
               Welcome&nbsp;Admin
             </h3>
             <div className="flex z-10 flex-col items-end">
-              {/* email */}
-              <div className="mb-6">
-                <label className="ml-12 text-lg" htmlFor="email">
-                  Email
-                </label>
-                <div className="flex gap-3 items-center">
-                  <img className="w-8" src={Email} />
-                  <input
-                    className="border p-3 w-80 rounded-lg border-grey"
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="example@gmail.com"
-                  />
-                </div>
-              </div>
-              {/* password */}
-              <div>
-                <label className="ml-12 text-lg" htmlFor="password">
-                  Password
-                </label>
-                <div className="flex gap-3 items-center">
-                  <img className="w-8" src={Password} />
-                  <input
-                    className="border p-3 w-80 rounded-lg border-grey"
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="8 characters or more"
-                  />
-                </div>
-              </div>
+              {/* Email */}
+              <Input
+                id="email"
+                label="Email ID"
+                icon={Email}
+                type="text"
+                placeholder="someone@gmail.com"
+                onChangeHandler={handleEmail}
+              />
+              {/* Password */}
+              <Input
+                id="password"
+                label="Set Password"
+                icon={Password}
+                type="password"
+                placeholder="6 characters or more"
+                onChangeHandler={handlePassword}
+              />
               <p className="mt-4 text-light-blue hover:underline">
                 Forgot Password?
               </p>
-              <button className="mt-10 w-80 font-bold text-2xl text-button-text bg-lime rounded-lg hover:bg-button-hover py-4">
+              <button
+                onClick={loginHandler}
+                className="mt-10 w-80 font-bold text-2xl text-button-text bg-lime rounded-lg hover:bg-button-hover py-4">
                 Log In
               </button>
             </div>
