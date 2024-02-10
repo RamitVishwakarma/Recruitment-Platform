@@ -1,12 +1,7 @@
-<<<<<<< HEAD
 import Header from "../../components/Header";
 import Back from "../../assets/arrRight.svg";
 import Close from "../../assets/close.svg?react";
 import search from "../../assets/search.svg";
-=======
-// import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
->>>>>>> b5474ea185adab0d15079e43ea40cbdecb5ffcd8
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import validator from "validator";
@@ -18,7 +13,7 @@ const AllUsers = () => {
     projects: 18,
     shortlisted: 10,
     interviewed: 25,
-  }
+  };
   const users = [
     {
       name: "Bodhan Kapoor",
@@ -179,36 +174,27 @@ const AllUsers = () => {
 
   return (
     <>
-<<<<<<< HEAD
       <div className="mx-40">
         <Header>
           <h1 className="text-6xl font-bold text-grey">Design Candidates</h1>
         </Header>
-=======
-      {/* <Navbar /> */}
-      <div className="mx-40 flex my-6 justify-between">
-        <Link to="/admin/dashboard">
-            <div className="flex items-center hover:underline">
-              <span className="material-symbols-rounded text-xl">arrow_back_ios</span>
-              <p className="text-2xl">Dashboard</p>
-            </div>
-          </Link>
-          <h2 className="text-4xl">{domain.domain} Candidates</h2>
->>>>>>> b5474ea185adab0d15079e43ea40cbdecb5ffcd8
       </div>
 
       <div className="flex justify-between mx-40">
         <div className="flex items-center gap-5 text-button-text text-2xl">
-
           {/* searchbar */}
           <div className="relative">
             <input
-              className={"pl-10 pr-3 py-2 text-sm rounded-full border border-grey"}
+              className={
+                "pl-10 pr-3 py-2 text-sm rounded-full border border-grey"
+              }
               type="text"
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
             />
-            <span className="material-symbols-rounded icon absolute left-2 top-1/2 transform -translate-y-1/2 text-grey">search</span>
+            <span className="material-symbols-rounded icon absolute left-2 top-1/2 transform -translate-y-1/2 text-grey">
+              search
+            </span>
           </div>
         </div>
 
@@ -234,7 +220,11 @@ const AllUsers = () => {
             className={`flex items-center px-5 py-1 gap-2 border rounded-full border-grey ${
               project ? "bg-purple/30" : ""
             }`}>
-            {project ? <span className="material-symbols-rounded">close</span> : ""}
+            {project ? (
+              <span className="material-symbols-rounded">close</span>
+            ) : (
+              ""
+            )}
             <p>Projects&nbsp;Submitted:&nbsp;</p>
             <span className="font-bold">{domain.projects}</span>
           </button>
@@ -244,7 +234,11 @@ const AllUsers = () => {
             className={`flex items-center px-5 py-1 gap-2 border rounded-full border-grey ${
               interviewed ? "bg-red/30" : ""
             }`}>
-            {interviewed ? <span className="material-symbols-rounded">close</span> : ""}
+            {interviewed ? (
+              <span className="material-symbols-rounded">close</span>
+            ) : (
+              ""
+            )}
             <p>Interviewed:&nbsp;</p>
             <span className="font-bold">{domain.interviewed}</span>
           </button>
@@ -254,7 +248,11 @@ const AllUsers = () => {
             className={`flex items-center px-5 py-1 gap-2 border rounded-full border-grey ${
               shortlist ? "bg-text-green/10" : ""
             }`}>
-            {shortlist ? <span className="material-symbols-rounded">close</span> : ""}
+            {shortlist ? (
+              <span className="material-symbols-rounded">close</span>
+            ) : (
+              ""
+            )}
             <p>Shortlisted&nbsp;Users:&nbsp;</p>
             <span className="font-bold">{domain.shortlisted}</span>
           </button>
