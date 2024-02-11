@@ -16,6 +16,7 @@ import {
   Dashboard,
   AllUsers,
   AdminProfile,
+  RealAdminProfile,
 } from "./utils/lazyloading";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -51,8 +52,9 @@ export default function App() {
           <Route path="login" element={<AdminLogin />} />
           <Route path="" element={<AdminProtectedRoute />}>
             <Route path="dashboard" element={<Dashboard />} />
+            <Route path="profile" element={<RealAdminProfile />} />
             <Route path="users" element={<AllUsers />} />
-            <Route path="profile" element={<AdminProfile />} />
+            <Route path="user_profile" element={<AdminProfile />} />
           </Route>
         </Route>
       </Routes>

@@ -696,7 +696,7 @@ function UpdatePassword({ user, changeActiveButtonToProfile }) {
           onChangeHandler={handleNewPassword}
         />
         <Input
-          id="RepeatPassword"
+          id="repeatPassword"
           label="Repeat New Password"
           icon={Password}
           type="password"

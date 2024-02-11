@@ -1,6 +1,4 @@
 import Header from "../../components/Header";
-import Email from "../../assets/input-email.svg";
-import Password from "../../assets/input-password.svg";
 import { Input } from "../user/Auth";
 import { useState } from "react";
 import axios from "axios";
@@ -65,7 +63,7 @@ const AdminLogin = () => {
               <Input
                 id="email"
                 label="Email ID"
-                icon={Email}
+                icon="alternate_email"
                 type="text"
                 placeholder="someone@gmail.com"
                 onChangeHandler={handleEmail}
@@ -74,7 +72,7 @@ const AdminLogin = () => {
               <Input
                 id="password"
                 label="Set Password"
-                icon={Password}
+                icon="key"
                 type="password"
                 placeholder="6 characters or more"
                 onChangeHandler={handlePassword}

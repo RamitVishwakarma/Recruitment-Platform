@@ -1,5 +1,5 @@
 import loadable from "@loadable/component";
-
+// ? add nav in loadable
 // User pages import
 const Homepage = loadable(() => import("../pages/user/Homepage"));
 const Layout = loadable(() => import("../components/Layout"));
@@ -25,6 +25,8 @@ const AdminLogin = loadable(() => import("../pages/admin/login"));
 const Dashboard = loadable(() => import("../pages/admin/dashboard"));
 const AllUsers = loadable(() => import("../pages/admin/allusers"));
 const AdminProfile = loadable(() => import("../pages/admin/profile"));
+// ? Need to change the name later
+const RealAdminProfile = loadable(() => import("../pages/admin/adminProfile"));
 
 export {
   Homepage,
@@ -44,4 +46,5 @@ export {
   Dashboard,
   AllUsers,
   AdminProfile,
+  RealAdminProfile,
 };
