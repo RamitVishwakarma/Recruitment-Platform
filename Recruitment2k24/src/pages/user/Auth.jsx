@@ -45,7 +45,7 @@ function Auth() {
           {/* ToolTip */}
           {activeBtn === "register" && toolTip ? (
             // ToolTip Start
-            <div className="max-lg:hidden absolute z-30 lg:right-10 top-[9.45rem] xl:right-28 flex justify-between items-center w-44 px-4 py-2 bg-nav-hover rounded-lg z-10">
+            <div className="max-lg:hidden z-30 absolute lg:right-10 top-[9.45rem] xl:right-28 flex justify-between items-center w-44 px-4 py-2 bg-nav-hover rounded-lg">
               <div className="absolute bottom-14 w-0 h-0 border-l-[12px] border-l-white/0 border-b-[12px] border-b-nav-hover border-r-[12px] border-r-white/0"></div>
               <div className="text-grey text-sm">
                 Already registered?
@@ -226,13 +226,13 @@ function Registration() {
   };
   return (
     <>
-      <div className="bg-text-box relative z-10 overflow-hidden pl-6 mx-auto py-8 rounded-3xl mb-16">
+      <div className="bg-text-box relative z-10 w-full md:w-10/12 overflow-hidden pl-6 mx-auto py-8 rounded-3xl mb-16">
         <h1 className={`text-grey text-2xl font-bold text-center mb-8 md:text-4xl lg:text-5xl lg:my-6`}>
           Fill your details correctly!
         </h1>
         {toast && <Toast text={toastText} />}
         <form onSubmit={formSubmitHandler}>
-          <div className={`flex pl-4 pr-2 md:pl-0 m-auto flex-wrap gap-x-8 gap-y-4 items-center justify-center`}>
+          <div className={`flex pr-2 w-full md:pl-0 m-auto flex-wrap gap-x-8 gap-y-4 items-center justify-center`}>
             {/* NAME */}
             <Input
               id="name"
@@ -265,7 +265,6 @@ function Registration() {
               onChangeHandler={handleYear}
               errorHandler={yearError}
               errorMessage={"Select an Year"}
-              className='bg-text-box'
             />
             {/* Domain */}
             <Select
@@ -277,7 +276,6 @@ function Registration() {
               data={domainOptions}
               errorHandler={domainError}
               errorMessage={"Select a Domain"}
-              className='bg-text-box'
             />
             {/* Email */}
             <Input
@@ -299,7 +297,7 @@ function Registration() {
               placeholder="8 characters or more"
               onChangeHandler={handlePassword}
               errorHandler={passwordError}
-              errorMessage={"Password must be strong"}
+              errorMessage={"Weak Password"}
             />
           </div>
           <div className="flex max-lg:flex-col-reverse justify-center items-center my-10">
@@ -574,13 +572,13 @@ function Input({
   value,
 }) {
   return (
-    <div className={`min-w-96 ${grow ? "xl:w-4/12" : ""} `}>
+    <div className={`min-w-80 ${grow ? "xl:w-4/12" : ""} `}>
       <div className="flex justify-between">
         <label className="ml-12" htmlFor={id}>
           {label}
         </label>
         {errorHandler && (
-          <div className="text-red sm:mr-6 xl:mr-2 2xl:mr-4">
+          <div className="text-red sm:mr-3 xl:mr-0 ">
             {errorMessage}
           </div>
         )}
@@ -592,7 +590,7 @@ function Input({
           ${
             errorHandler ? "outline outline-2 outline-red border-red" : ""
           } bg-text-box border p-3 md:min-w-80 min-w-72 ${
-            grow ? " xl:w-full" : ""
+            grow ? " xl:w-10/12" : ""
           } rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
           type={type}
           id={id}
@@ -618,7 +616,7 @@ function Select({
   selectedValue,
 }) {
   return (
-    <div className={"min-w-96 xl:w-4/12 "}>
+    <div className={"min-w-80 xl:w-4/12 "}>
       <div className="flex justify-between ">
         <label className="ml-12" htmlFor={id}>
           {label}
@@ -632,7 +630,7 @@ function Select({
         <select
           className={`${
             errorHandler ? "outline outline-2 outline-red border-red" : ""
-          } md:min-w-80 min-w-72 xl:w-11/12 h-12 bg-text-box border p-3 rounded-lg text-grey border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}
+          } md:min-w-80 min-w-72 xl:w-10/12 h-12 bg-text-box border p-3 rounded-lg text-grey border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}
           name={id}
           onChange={onChangeHandler}
           defaultValue={selectedValue}>

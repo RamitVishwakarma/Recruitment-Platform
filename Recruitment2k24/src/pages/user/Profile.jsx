@@ -389,7 +389,7 @@ function EditProfile({ user, changeActiveButtonToPass }) {
           <Input
             id="name"
             label="Name"
-            icon={Name}
+            icon='account_box'
             type="text"
             placeholder="Enter Your Name"
             onChangeHandler={handleName}
@@ -398,7 +398,7 @@ function EditProfile({ user, changeActiveButtonToPass }) {
           <Input
             id="contact"
             label="Contact Number"
-            icon={Contact}
+            icon='call'
             type="text"
             placeholder="+91 XXXXXXXXXX"
             onChangeHandler={handlePhoneNumber}
@@ -407,7 +407,7 @@ function EditProfile({ user, changeActiveButtonToPass }) {
           <Input
             id="admission number"
             label="Admission Number"
-            icon={Admission}
+            icon='badge'
             type="text"
             placeholder="Enter Your Admission Number"
             onChangeHandler={handleAdmissionNumber}
@@ -418,7 +418,7 @@ function EditProfile({ user, changeActiveButtonToPass }) {
           <Select
             id="year"
             label="Year"
-            icon={Year}
+            icon='school'
             selected={"Select Year"}
             selectedValue={year}
             data={yearOptions}
@@ -428,7 +428,7 @@ function EditProfile({ user, changeActiveButtonToPass }) {
           <Select
             id="domain"
             label="Domain"
-            icon={DomainIco}
+            icon='cards'
             selected={"Select Year"}
             selectedValue={domain}
             onChangeHandler={handleDomain}
