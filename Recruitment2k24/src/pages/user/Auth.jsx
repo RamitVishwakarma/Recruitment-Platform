@@ -227,12 +227,12 @@ function Registration() {
   return (
     <>
       <div className="bg-text-box relative z-10 overflow-hidden mx-auto py-8 rounded-3xl mt-16">
-        <h1 className={`text-grey text-2xl font-bold text-center md:text-4xl lg:text-5xl lg:my-6`}>
+        <h1 className={`text-grey text-2xl font-bold text-center mb-8 md:text-4xl lg:text-5xl lg:my-6`}>
           Fill your details correctly!
         </h1>
         {toast && <Toast text={toastText} />}
         <form onSubmit={formSubmitHandler}>
-          <div className={`flex w-fit m-auto flex-wrap gap-x-8 gap-y-4 items-center justify-center`}>
+          <div className={`flex pl-4 pr-2 md:pl-0 w-fit m-auto flex-wrap gap-x-8 gap-y-4 items-center justify-center`}>
             {/* NAME */}
             <Input
               id="name"
@@ -317,7 +317,7 @@ function Registration() {
             <hr className="max-lg:hidden w-16 rotate-90 mr-2 ml-8 border-grey/40" />
             <button
               type="submit"
-              className="px-20 py-4 text-grey font-bold text-2xl rounded-lg bg-lime hover:bg-button-hover">
+              className="px-20 w-11/12 md:w-fit py-4 text-grey font-bold text-2xl rounded-lg bg-lime hover:bg-button-hover">
               Register
             </button>
           </div>
@@ -591,7 +591,7 @@ function Input({
           className={`
           ${
             errorHandler ? "outline outline-2 outline-red border-red" : ""
-          } bg-text-box border p-3 min-w-80 ${
+          } bg-text-box border p-3 min-w-72 ${
             grow ? " xl:w-11/12" : ""
           } rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
           type={type}
@@ -632,7 +632,7 @@ function Select({
         <select
           className={`${
             errorHandler ? "outline outline-2 outline-red border-red" : ""
-          } min-w-80 xl:w-11/12 h-12 bg-text-box border p-3 rounded-lg text-grey border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}
+          } min-w-72 xl:w-11/12 h-12 bg-text-box border p-3 rounded-lg text-grey border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}
           name={id}
           onChange={onChangeHandler}
           defaultValue={selectedValue}>
@@ -644,7 +644,7 @@ function Select({
               //cant figure out how to change he border styles
               // Need to use map and filter and create my own one.
               <option
-                className="text-grey bg-text-box border-light-blue"
+                className="text-grey divide-y-2 bg-text-box border-light-blue"
                 key={option}
                 value={option}>
                 {option}
