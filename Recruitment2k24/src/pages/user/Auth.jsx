@@ -3,15 +3,7 @@ import Toast from "../../components/Toast.jsx";
 import Popup from "../../components/Popup.jsx";
 import app from "../../utils/firebase.js";
 // Svgs
-import Name from "../../assets/input-name.svg";
-import Admission from "../../assets/input-admission.svg";
-import Year from "../../assets/input-year.svg";
-import DomainIco from "../../assets/input-domain.svg";
-import Email from "../../assets/input-email.svg";
-import Password from "../../assets/input-password.svg";
 import Google from "../../assets/google-logo.svg";
-import Close from "../../assets/close.svg";
-import ForgotEmail from "../../assets/forgot-email.svg?react";
 
 import { z } from "zod";
 import axios from "axios";
@@ -32,12 +24,7 @@ function Auth() {
   return (
     <>
       {/* Header section */}
-      <div
-        className={`lg:h-screen max-lg:bg-none bg-no-repeat ${
-          activeBtn === "register"
-            ? "bg-reg-bg bg-right-bottom"
-            : "bg-login-bg bg-left-bottom"
-        }`}>
+      <div className='lg:h-[90vh] max-lg:bg-none bg-no-repeat'>
         <div className="mx-5 md:mx-20 xl:mx-40">
           <Header>
             <div className="min-w-80 max-md:mt-10">
@@ -68,7 +55,7 @@ function Auth() {
                 onClick={() => {
                   setToolTip(false);
                 }}>
-                <img className="w-3" src={Close} />
+                <span className="material-symbols-rounded">close</span>
               </button>
             </div>
           ) : (
@@ -239,104 +226,105 @@ function Registration() {
   };
   return (
     <>
-      <h1
-        className={`text-grey text-3xl font-bold text-center md:text-4xl lg:text-5xl m-8 md:mt-10 lg:mt-16 xl:mt-[8vh]`}>
-        Fill your details correctly!
-      </h1>
-
-      {toast && <Toast text={toastText} />}
-
-      <form onSubmit={formSubmitHandler}>
-        <div
-          className={`flex m-auto flex-wrap gap-4 items-center justify-center`}>
-          {/* NAME */}
-          <Input
-            id="name"
-            label="Name"
-            icon={Name}
-            type="text"
-            placeholder="Enter Your Name"
-            onChangeHandler={handleName}
-            errorHandler={nameError}
-            errorMessage={"Name is required"}
-          />
-          {/* Admission number */}
-          <Input
-            id="admission number"
-            label="Admission Number"
-            icon={Admission}
-            type="text"
-            placeholder="Enter Your Admission Number"
-            onChangeHandler={handleAdmissionNumber}
-            errorHandler={admissionNumberError}
-            errorMessage={"Invalid Number"}
-          />
-          {/* Year */}
-          <Select
-            id="year"
-            label="Year"
-            icon={Year}
-            selected="Select your year"
-            data={yearOptions}
-            onChangeHandler={handleYear}
-            errorHandler={yearError}
-            errorMessage={"Select an Year"}
-          />
-          {/* Domain */}
-          <Select
-            id="domain"
-            label="Domain"
-            icon={DomainIco}
-            onChangeHandler={handleDomain}
-            selected="Select your preferred domain"
-            data={domainOptions}
-            errorHandler={domainError}
-            errorMessage={"Select a Domain"}
-          />
-          {/* Email */}
-          <Input
-            id="email"
-            label="Email ID"
-            icon={Email}
-            type="text"
-            placeholder="someone@gmail.com"
-            onChangeHandler={handleEmail}
-            errorHandler={emailError}
-            errorMessage={"Invalid Email"}
-          />
-          {/* Password */}
-          <Input
-            id="password"
-            label="Set Password"
-            icon={Password}
-            type="password"
-            placeholder="6 characters or more"
-            onChangeHandler={handlePassword}
-            errorHandler={passwordError}
-            errorMessage={"Password must be strong"}
-          />
-        </div>
-        <div className="flex max-lg:flex-col-reverse justify-center items-center my-10">
-          <GoogleAuthentication
-            text="Sign Up with Google"
-            btnStyle={
-              "px-10 py-3 bg-[#fff] flex gap-4 items-center justify-center rounded-lg shadow-sm hover:shadow-md"
-            }
-          />
-
-          <hr className="lg:hidden w-52 mt-3 mb-6 border-grey/40" />
-          <div className="lg:hidden relative top-5 text-grey/60 px-3 bg-white">
-            OR
+      <div className="bg-text-box relative z-10 overflow-hidden mx-auto py-8 rounded-3xl mt-16">
+        <h1 className={`text-grey text-2xl font-bold text-center md:text-4xl lg:text-5xl lg:my-6`}>
+          Fill your details correctly!
+        </h1>
+        {toast && <Toast text={toastText} />}
+        <form onSubmit={formSubmitHandler}>
+          <div className={`flex w-fit m-auto flex-wrap gap-x-8 gap-y-4 items-center justify-center`}>
+            {/* NAME */}
+            <Input
+              id="name"
+              label="Name"
+              icon="account_box"
+              type="text"
+              placeholder="Enter Your Name"
+              onChangeHandler={handleName}
+              errorHandler={nameError}
+              errorMessage={"Name is required"}
+            />
+            {/* Admission number */}
+            <Input
+              id="admission number"
+              label="Admission Number"
+              icon="badge"
+              type="text"
+              placeholder="Enter Your Admission Number"
+              onChangeHandler={handleAdmissionNumber}
+              errorHandler={admissionNumberError}
+              errorMessage={"Invalid Number"}
+            />
+            {/* Year */}
+            <Select
+              id="year"
+              label="Year"
+              icon="school"
+              selected="Select your year"
+              data={yearOptions}
+              onChangeHandler={handleYear}
+              errorHandler={yearError}
+              errorMessage={"Select an Year"}
+              className='bg-text-box'
+            />
+            {/* Domain */}
+            <Select
+              id="domain"
+              label="Domain"
+              icon="cards"
+              onChangeHandler={handleDomain}
+              selected="Select your preferred domain"
+              data={domainOptions}
+              errorHandler={domainError}
+              errorMessage={"Select a Domain"}
+              className='bg-text-box'
+            />
+            {/* Email */}
+            <Input
+              id="email"
+              label="Email ID"
+              icon="alternate_email"
+              type="text"
+              placeholder="someone@gmail.com"
+              onChangeHandler={handleEmail}
+              errorHandler={emailError}
+              errorMessage={"Invalid Email"}
+            />
+            {/* Password */}
+            <Input
+              id="password"
+              label="Set Password"
+              icon="key"
+              type="password"
+              placeholder="8 characters or more"
+              onChangeHandler={handlePassword}
+              errorHandler={passwordError}
+              errorMessage={"Password must be strong"}
+            />
           </div>
-
-          <hr className="max-lg:hidden w-16 rotate-90 mr-2 ml-8 border-grey/40" />
-          <button
-            type="submit"
-            className="px-20 py-4 text-button-text font-bold text-2xl rounded-lg bg-lime hover:bg-button-hover">
-            Register
-          </button>
-        </div>
-      </form>
+          <div className="flex max-lg:flex-col-reverse justify-center items-center my-10">
+            <GoogleAuthentication
+              text="Sign Up with Google"
+              btnStyle={
+                "px-10 py-3 bg-[#fff] flex gap-4 items-center justify-center rounded-lg shadow-sm hover:shadow-md"
+              }
+            />
+            <div className="flex md:hidden gap-4 my-3 justify-center opacity-40">
+                <p>----------------------</p>
+                <p>OR</p>
+                <p>----------------------</p>
+              </div>
+            <hr className="max-lg:hidden w-16 rotate-90 mr-2 ml-8 border-grey/40" />
+            <button
+              type="submit"
+              className="px-20 py-4 text-grey font-bold text-2xl rounded-lg bg-lime hover:bg-button-hover">
+              Register
+            </button>
+          </div>
+        </form>
+        <div className="absolute w-96 h-96 -z-10 -right-20 -bottom-40 rounded-full blur-2xl bg-light-blue/10"></div>
+        <div className="absolute w-96 h-96 -z-10 -left-20 -top-40 rounded-full blur-2xl bg-light-blue/10"></div>
+      </div>
       {/* <GoogleAuthentication text="Sign Up with Google" /> */}
     </>
   );
@@ -444,65 +432,55 @@ function Login() {
         }
       });
   };
+
+  // login
   return (
     <>
-      <div className="lg:flex lg:justify-between">
+      <div className={`bg-text-box md:w-fit mb-10 z-10 mx-auto rounded-3xl px-4 md:px-10 ${popup ? 'overflow-visible static' : 'overflow-hidden relative'}`}>
         {/* Toast */}
         {toast && <Toast text={toastText} />}
-        <div
-          className={`text-grey font-bold text-center mt-8 md:mt-10 lg:mt-32 text-3xl md:text-4xl lg:ml-10 lg:text-8xl xl:text-8xl 2xl:text-9xl`}>
-          Welcome
-          <br className="max-lg:hidden" /> back!
+        <div className="text-grey font-bold text-center mt-2 md:mt-4 pt-8 text-3xl md:text-4xl lg:ml-4 lg:text-3xl">
+          Welcome back!
         </div>
-        <div>
+        <div className="z-10 pb-10">
           <form
-            className="w-96 mx-auto flex flex-wrap mt-5 lg:mt-20 gap-4 items-center justify-center"
+            className="md:w-full flex-col mx-auto flex flex-wrap mt-8 gap-4 items-center justify-center"
             onSubmit={formSubmitHandler}>
             {/* Email */}
             <Input
               grow={false}
               id="email"
               label="Email ID"
-              icon={Email}
+              icon="alternate_email"
               type="text"
               placeholder="someone@gmail.com"
               onChangeHandler={handleEmail}
               errorHandler={emailError}
               errorMessage={"Invalid Email"}
+              className="w-1/2 md:w-full"
             />
             {/* Password */}
             <Input
               grow={false}
               id="password"
               label="Password"
-              icon={Password}
+              icon="key"
               type="password"
-              placeholder="6 characters or more"
+              placeholder="8 characters or more"
               onChangeHandler={handlePassword}
             />
-            <div className="max-lg:hidden flex mr-5 mt-2 items-center justify-end">
-              <button
-                onClick={() => setPopup(true)}
-                type="button"
-                className=" text-light-blue text-sm ml-8">
-                Forgot Password?
-              </button>
-            </div>
-            <div className="flex flex-col justify-center items-center my-8">
+            <button
+              onClick={() => setPopup(true)}
+              type="button"
+              className=" text-light-blue text-base mr-5 hover:underline self-end justify-self-end">
+              Forgot Password?
+            </button>
+            <div className="flex w-10/12 ml-4 flex-col justify-center items-center mb-8 md:my-4">
               <button
                 type="submit"
-                className="px-24 py-4 text-button-text font-bold text-2xl rounded-lg bg-lime hover:bg-button-hover">
+                className="px-16 md:px-24 w-full py-4 text-button-text font-bold text-2xl rounded-lg bg-lime hover:bg-button-hover">
                 Log In
               </button>
-
-              <div className="lg:hidden flex mt-5 items-center justify-center">
-                <button
-                  type="button"
-                  onClick={() => setPopup(true)}
-                  className="lg:mr-8 text-light-blue text-sm">
-                  Forgot Password?
-                </button>
-              </div>
               {/* When button is clicked this will appear */}
               {popup && (
                 <Popup>
@@ -510,22 +488,22 @@ function Login() {
                   <button
                     type="button"
                     onClick={() => setPopup(false)}
-                    className="absolute w-6 right-5 top-5">
-                    <img className="w-full" src={Close} />
+                    className="absolute right-5 top-5">
+                    <span className="material-symbols-rounded text-5xl">close</span>
                   </button>
-                  <div className="text-grey mt-5 max-md:w-8/12 font-bold text-center text-4xl">
+                  <div className="text-grey mt-10 max-md:w-8/12 font-bold text-center text-4xl">
                     Reset your password
                   </div>
-                  <div className="text-light-blue mt-5 font-bold text-center text-2xl">
+                  <div className="text-light-blue mt-8 font-bold text-center text-2xl">
                     Enter your registered Email ID
                   </div>
                   {/* Input box */}
-                  <div className=" relative w-11/12 mt-5 flex items-center justify-center">
-                    <div className="absolute left-6 lg:left-8 xl:left-10 2xl:left-11 mx-2 2xl:mx-3 w-9 h-9 bg-light-blue/30 rounded-full flex items-center justify-center">
-                      <ForgotEmail className="w-6" />
+                  <div className=" relative w-96 mt-2 flex items-center justify-center">
+                    <div className="absolute left-2 w-8 h-8 bg-light-blue/30 grid place-items-center rounded-full">
+                      <span className="material-symbols-rounded text-2xl">alternate_email</span>
                     </div>
                     <input
-                      className={` bg-text-box border p-3 pl-16 w-11/12 rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
+                      className={` bg-text-box border p-3 w-full pl-14 rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
                       type="text"
                       id="email"
                       name="email"
@@ -562,19 +540,22 @@ function Login() {
               )}
               {/* Popup end */}
 
-              <hr className="w-52 mt-6 mb-3 border-grey/40" />
-              <div className="relative bottom-6 text-grey/60 px-3 bg-white">
-                OR
+              <div className="flex gap-4 my-3 justify-center opacity-40">
+                <p>----------------------</p>
+                <p>OR</p>
+                <p>----------------------</p>
               </div>
               <GoogleAuthentication
                 text="Log in with Google"
                 btnStyle={
-                  "relative bg-[#fff] bottom-4 px-10 py-3 flex gap-4 items-center justify-center rounded-lg shadow-sm hover:shadow-md"
+                  "bg-[#fff] bottom-4 px-10 py-3 flex gap-4 items-center justify-center rounded-lg shadow-sm hover:shadow-md"
                 }
               />
             </div>
           </form>
         </div>
+        <div className="absolute w-96 h-96 -z-10 left-60 top-64 rounded-full blur-2xl bg-purple/10"></div>
+        <div className="absolute w-96 h-96 -z-10 right-60 bottom-64 rounded-full blur-2xl bg-purple/10"></div>
       </div>
     </>
   );
@@ -605,7 +586,7 @@ function Input({
         )}
       </div>
       <div className="flex gap-3 flex-auto items-center">
-        <img className="w-8" src={icon} />
+        <span className="material-symbols-rounded text-4xl">{icon}</span>
         <input
           className={`
           ${
@@ -647,11 +628,11 @@ function Select({
         )}
       </div>
       <div className="flex gap-3 items-center">
-        <img className="w-8" src={icon} />
+      <span className="material-symbols-rounded text-4xl">{icon}</span>
         <select
           className={`${
             errorHandler ? "outline outline-2 outline-red border-red" : ""
-          } min-w-80 xl:w-11/12 h-12 border p-3  rounded-lg text-grey border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}
+          } min-w-80 xl:w-11/12 h-12 bg-text-box border p-3 rounded-lg text-grey border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}
           name={id}
           onChange={onChangeHandler}
           defaultValue={selectedValue}>
@@ -663,7 +644,7 @@ function Select({
               //cant figure out how to change he border styles
               // Need to use map and filter and create my own one.
               <option
-                className="text-grey bg-white border-light-blue"
+                className="text-grey bg-text-box border-light-blue"
                 key={option}
                 value={option}>
                 {option}
