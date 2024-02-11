@@ -23,6 +23,8 @@ import Password from "../../assets/input-password.svg";
 // ? Haven't added any client side validations in this page will do it If we have to
 export default function Profile() {
   const user = JSON.parse(sessionStorage.getItem("user"));
+
+  // ? Use effect call the myProfile api and set the user state to the response
   // Updating user prof
   const [popup, setPopup] = useState(false);
   const [activeBtn, setactiveBtn] = useState("profile");
@@ -90,7 +92,7 @@ export default function Profile() {
               <div className="text-grey">+91 {user.phoneNumber} </div>
               <div className="flex gap-2  text-grey">
                 <div>{user.year}1st Year</div> &#x2022;{" "}
-                <div>{user.admissionNumber}22CSDS064</div>
+                <div>{user.admissionNumber}</div>
               </div>
               {/*  This needs to be dynamic */}
               <div className="text-purple font-bold">

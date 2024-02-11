@@ -82,10 +82,14 @@ export default function Homepage() {
   return (
     <>
       <div className="flex flex-col gap-20 items-center mb-2 md:mb-20 text-grey">
-        <img className="mt-52 w-11/12 mx-auto md:w-fit" src={Recruitments}></img>
+        <img
+          className="mt-52 w-11/12 mx-auto md:w-fit"
+          src={Recruitments}></img>
 
         <div className="flex flex-col justify-center items-center gap-12">
-          <h2 className="text-2xl mx-10 text-center md:text-2xl md:whitespace-nowrap">Your journey into GDSC begins here.</h2>
+          <h2 className="text-2xl mx-10 text-center md:text-2xl md:whitespace-nowrap">
+            Your journey into GDSC begins here.
+          </h2>
           <Link to="/auth">
             <button className="bg-lime px-10 rounded-xl py-4">
               <h5 className="text-3xl">Register Now</h5>
@@ -268,8 +272,8 @@ export default function Homepage() {
         </div>
 
         {/* admin login */}
-        <Link href="/admin/login">
-          <button className="hidden md:flex gap-4 rounded-full bg-text-box py-1 px-4 hover:bg-grey/5">
+        <Link to="admin/login">
+          <button className="flex gap-4 rounded-full bg-text-box py-1 px-4 hover:bg-grey/5">
             <p>Admin Login</p>
             <span className="material-symbols-rounded">arrow_circle_right</span>
           </button>

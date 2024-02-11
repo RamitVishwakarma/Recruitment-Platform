@@ -18,6 +18,9 @@ const QuizHome = loadable(() => import("../pages/user/QuizHome"));
 const QuizPage = loadable(() => import("../pages/user/QuizPage"));
 const ProtectedRoute = loadable(() => import("../utils/ProtectedRoute"));
 // Admin pages import
+const AdminProtectedRoute = loadable(() =>
+  import("../utils/AdminProtectedRoute")
+);
 const AdminLogin = loadable(() => import("../pages/admin/login"));
 const Dashboard = loadable(() => import("../pages/admin/dashboard"));
 const AllUsers = loadable(() => import("../pages/admin/allusers"));
@@ -36,6 +39,7 @@ export {
   QuizHome,
   QuizPage,
   ProtectedRoute,
+  AdminProtectedRoute,
   AdminLogin,
   Dashboard,
   AllUsers,

@@ -11,6 +11,7 @@ import {
   QuizHome,
   QuizPage,
   ProtectedRoute,
+  AdminProtectedRoute,
   AdminLogin,
   Dashboard,
   AllUsers,
@@ -46,10 +47,13 @@ export default function App() {
         </Route>
 
         {/* admin routes */}
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin/dashboard" element={<Dashboard />} />
-        <Route path="/admin/users" element={<AllUsers />} />
-        <Route path="/admin/profile" element={<AdminProfile />} />
+        <Route path="admin/" element={<Layout NavButtonType={"back"} />}>
+          <Route path="login" element={<AdminLogin />} />
+          <Route path="" element={<AdminProtectedRoute />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="users" element={<AllUsers />} />
+          <Route path="profile" element={<AdminProfile />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
