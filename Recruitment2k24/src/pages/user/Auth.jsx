@@ -24,7 +24,7 @@ function Auth() {
   return (
     <>
       {/* Header section */}
-      <div className='lg:h-[90vh] max-lg:bg-none bg-no-repeat'>
+      <div>
         <div className="mx-5 md:mx-20 xl:mx-40">
           <Header>
             <div className="min-w-80 max-md:mt-10">
