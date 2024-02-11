@@ -1,7 +1,9 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import loadable from "@loadable/component";
+
+const Navbar = loadable(() => import("./Navbar"));
+const Footer = loadable(() => import("./Footer"));
 
 const Layout = ({ NavButtonType }) => {
   return (
