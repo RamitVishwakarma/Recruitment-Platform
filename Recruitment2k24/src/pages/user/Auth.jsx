@@ -24,7 +24,7 @@ function Auth() {
   return (
     <>
       {/* Header section */}
-      <div className='lg:h-[90vh] max-lg:bg-none bg-no-repeat'>
+      <div>
         <div className="mx-5 md:mx-20 xl:mx-40">
           <Header>
             <div className="min-w-80 max-md:mt-10">
@@ -45,7 +45,7 @@ function Auth() {
           {/* ToolTip */}
           {activeBtn === "register" && toolTip ? (
             // ToolTip Start
-            <div className="max-lg:hidden absolute lg:right-10 top-[9.45rem] xl:right-28 flex justify-between items-center w-44 px-4 py-2 bg-nav-hover rounded-lg z-10">
+            <div className="max-lg:hidden absolute z-30 lg:right-10 top-[9.45rem] xl:right-28 flex justify-between items-center w-44 px-4 py-2 bg-nav-hover rounded-lg z-10">
               <div className="absolute bottom-14 w-0 h-0 border-l-[12px] border-l-white/0 border-b-[12px] border-b-nav-hover border-r-[12px] border-r-white/0"></div>
               <div className="text-grey text-sm">
                 Already registered?
@@ -226,13 +226,13 @@ function Registration() {
   };
   return (
     <>
-      <div className="bg-text-box relative z-10 overflow-hidden mx-auto py-8 rounded-3xl mt-16">
-        <h1 className={`text-grey text-2xl font-bold text-center md:text-4xl lg:text-5xl lg:my-6`}>
+      <div className="bg-text-box relative z-10 overflow-hidden pl-6 mx-auto py-8 rounded-3xl mb-16">
+        <h1 className={`text-grey text-2xl font-bold text-center mb-8 md:text-4xl lg:text-5xl lg:my-6`}>
           Fill your details correctly!
         </h1>
         {toast && <Toast text={toastText} />}
         <form onSubmit={formSubmitHandler}>
-          <div className={`flex w-fit m-auto flex-wrap gap-x-8 gap-y-4 items-center justify-center`}>
+          <div className={`flex pl-4 pr-2 md:pl-0 m-auto flex-wrap gap-x-8 gap-y-4 items-center justify-center`}>
             {/* NAME */}
             <Input
               id="name"
@@ -317,7 +317,7 @@ function Registration() {
             <hr className="max-lg:hidden w-16 rotate-90 mr-2 ml-8 border-grey/40" />
             <button
               type="submit"
-              className="px-20 py-4 text-grey font-bold text-2xl rounded-lg bg-lime hover:bg-button-hover">
+              className="px-20 w-11/12 md:w-fit max-w-72 py-3 text-grey font-bold text-2xl rounded-lg bg-lime hover:bg-button-hover">
               Register
             </button>
           </div>
@@ -472,14 +472,14 @@ function Login() {
             <button
               onClick={() => setPopup(true)}
               type="button"
-              className=" text-light-blue text-base mr-5 hover:underline self-end justify-self-end">
+              className=" text-light-blue text-base hover:underline self-end max-sm:mr-12 md:mr-4">
               Forgot Password?
             </button>
-            <div className="flex w-10/12 ml-4 flex-col justify-center items-center mb-8 md:my-4">
+            <div className="flex w-10/12 ml-4 flex-col justify-center items-center mb-6 md:my-4">
               <button
                 type="submit"
-                className="px-16 md:px-24 w-full py-4 text-button-text font-bold text-2xl rounded-lg bg-lime hover:bg-button-hover">
-                Log In
+                className="px-16 md:px-24 w-full py-3 mr-5 text-button-text font-bold max-w-72 text-2xl rounded-lg bg-lime hover:bg-button-hover">
+                Log&nbsp;In
               </button>
               {/* When button is clicked this will appear */}
               {popup && (
@@ -540,7 +540,7 @@ function Login() {
               )}
               {/* Popup end */}
 
-              <div className="flex gap-4 my-3 justify-center opacity-40">
+              <div className="flex gap-4 mr-5 my-3 justify-center opacity-40">
                 <p>----------------------</p>
                 <p>OR</p>
                 <p>----------------------</p>
@@ -548,7 +548,7 @@ function Login() {
               <GoogleAuthentication
                 text="Log in with Google"
                 btnStyle={
-                  "bg-[#fff] bottom-4 px-10 py-3 flex gap-4 items-center justify-center rounded-lg shadow-sm hover:shadow-md"
+                  "bg-[#fff] bottom-4 mr-6 px-10 py-3 flex gap-4 items-center justify-center rounded-lg shadow-sm hover:shadow-md"
                 }
               />
             </div>
@@ -591,8 +591,8 @@ function Input({
           className={`
           ${
             errorHandler ? "outline outline-2 outline-red border-red" : ""
-          } bg-text-box border p-3 min-w-80 ${
-            grow ? " xl:w-11/12" : ""
+          } bg-text-box border p-3 md:min-w-80 min-w-72 ${
+            grow ? " xl:w-full" : ""
           } rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
           type={type}
           id={id}
@@ -632,7 +632,7 @@ function Select({
         <select
           className={`${
             errorHandler ? "outline outline-2 outline-red border-red" : ""
-          } min-w-80 xl:w-11/12 h-12 bg-text-box border p-3 rounded-lg text-grey border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}
+          } md:min-w-80 min-w-72 xl:w-11/12 h-12 bg-text-box border p-3 rounded-lg text-grey border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}
           name={id}
           onChange={onChangeHandler}
           defaultValue={selectedValue}>
@@ -644,7 +644,7 @@ function Select({
               //cant figure out how to change he border styles
               // Need to use map and filter and create my own one.
               <option
-                className="text-grey bg-text-box border-light-blue"
+                className="text-grey divide-y-2 bg-text-box border-light-blue"
                 key={option}
                 value={option}>
                 {option}
