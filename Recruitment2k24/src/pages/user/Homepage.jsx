@@ -205,7 +205,7 @@ export default function Homepage() {
         </div>
 
         {/* ready? */}
-        <div className="mt-10">
+        <div className="pt-10" id="timeline">
           <p className="text-4xl md:text-5xl lg:text-6xl w-3/5 mx-auto text-center">
             Ready to be a part of a thriving community of geeks?
           </p>
