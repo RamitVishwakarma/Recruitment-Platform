@@ -81,7 +81,7 @@ export default function Homepage() {
 
   return (
     <>
-      <div className="flex flex-col gap-20 items-center mb-20 text-grey">
+      <div className="flex flex-col gap-20 items-center mb-2 md:mb-20 text-grey">
         <img
           className="mt-52 w-11/12 mx-auto md:w-fit"
           src={Recruitments}></img>
@@ -99,16 +99,16 @@ export default function Homepage() {
         {/* flame */}
         <div className="mt-36 flex justify-center text-center relative">
           <img src={Flame} className="w-3/4 md:w-fit" alt="" />
-          <p className="text1 text-4xl md:text-6xl md:whitespace-nowrap absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            Every&nbsp;talent&nbsp;is precious&nbsp;to us
+          <p className="text1 text-5xl md:text-6xl whitespace-nowrap absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            Every talent is <br className="md:hidden" /> precious to us
           </p>
         </div>
 
         {/* sapling */}
         <div className="mt-48 flex justify-center text-center mb-4 relative">
           <img src={Sapling} className="w-3/4 md:w-fit" alt="" />
-          <p className="text2 text-4xl md:text-6xl md:whitespace-nowrap absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            A place to hone&nbsp;your skills&nbsp;and grow
+          <p className="text2 text-5xl md:text-6xl whitespace-nowrap absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            A place to <br className="md:hidden" /> hone your <br className="lg:hidden" /> skills and grow
           </p>
         </div>
 
@@ -211,9 +211,9 @@ export default function Homepage() {
           </p>
         </div>
         {/* timeline */}
-        <div className="flex items-stretch md:items-end gap-4 md:gap-8">
+        <div className="flex items-stretch md:items-end gap-12 md:gap-8">
           <div className="flex">
-            <img src={Timeline} className="w-[4vh] md:w-full" alt="" />
+            <img src={Timeline} className="w-[3.8vh] md:w-full" alt="" />
             <img
               className="absolute mt-2 -translate-x-2"
               src={Pointer}
@@ -265,10 +265,10 @@ export default function Homepage() {
         </div>
 
         {/* easter */}
-        <div className="flex text-xl gap-8 opacity-40 mt-12">
-          <p>------------------------------</p>
+        <div className="flex text-xl gap-8 opacity-40 mt-4 md:mt-6 lg:mt-12">
+          <p className="hidden md:block">------------------------------</p>
           <p>May the force be with you</p>
-          <p>------------------------------</p>
+          <p className="hidden md:block">------------------------------</p>
         </div>
 
         {/* admin login */}
