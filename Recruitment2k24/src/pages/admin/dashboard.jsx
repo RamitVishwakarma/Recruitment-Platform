@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const admininfo = {
-    domain: "Design",
-    photo: "https://cdn-icons-png.flaticon.com/512/3607/3607444.png",
+    domain: sessionStorage.getItem("Domain"),
+    photo: sessionStorage.getItem("Photo"),
     total_users: 234,
     shortlisted: 34,
     total_projects: 92,
@@ -54,11 +54,7 @@ const Dashboard = () => {
               <a href="/admin/users">
                 <div className="flex z-10 justify-center items-center gap-8 bg-white w-80 py-6 rounded-2xl">
                   <div className="w-16 h-16 rounded-full grid place-items-center bg-light-blue/30">
-                    <img
-                      className="w-10 h-10 object-cover"
-                      src={UserIcon}
-                      alt=""
-                    />
+                    <img className="w-10" src={UserIcon} alt="" />
                   </div>
                   <div>
                     <h2 className="text-3xl">{admininfo.total_users}</h2>

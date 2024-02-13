@@ -25,7 +25,10 @@ const AdminLogin = () => {
     axios
       .post(`${import.meta.env.VITE_URL}api/admin/auth/login`, data)
       .then((res) => {
+        console.log(res.data);
         sessionStorage.setItem("Admin Token", res.headers.authorization);
+        sessionStorage.setItem("Domain", res.data.Domain);
+        sessionStorage.setItem("Photo", res.data.photo);
         navigate("/admin/dashboard");
       })
       .catch((e) => {

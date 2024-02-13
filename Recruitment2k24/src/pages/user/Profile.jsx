@@ -4,12 +4,6 @@ import { useState } from "react";
 import { Input, Select } from "./Auth";
 import axios from "axios";
 
-import Name from "../../assets/input-name.svg";
-import Admission from "../../assets/input-admission.svg";
-import Year from "../../assets/input-year.svg";
-import DomainIco from "../../assets/input-domain.svg";
-import Contact from "../../assets/contact.svg";
-
 import LinkIco from "../../assets/link.svg";
 import LinkedIN from "../../assets/footer-li.svg";
 import Behance from "../../assets/behance.svg";
@@ -272,9 +266,11 @@ function EditProfile({ user, changeActiveButtonToPass }) {
     document.querySelector(".imgfile").click();
   };
   const handleFileChange = (e) => {
-    console.log(e);
-    console.log(e.target.files[0]);
-    setFile(e.target.files[0]);
+    if (e.target.files[0].size > 2000000) {
+      alert("File should be below 2MB im size");
+    } else {
+      setFile(e.target.files[0]);
+    }
   };
 
   const handleName = (e) => {
@@ -323,7 +319,7 @@ function EditProfile({ user, changeActiveButtonToPass }) {
       .catch((e) => {
         console.log(e);
         // ? Add toast in here
-        alert("SOme error occured, please try again later");
+        alert("Some error occured, please try again later");
       });
   };
 

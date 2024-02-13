@@ -7,12 +7,6 @@ import Header from "../../components/Header";
 import Popup from "../../components/Popup";
 // SVGS
 import Close from "../../assets/close.svg";
-import Name from "../../assets/input-name.svg";
-import Contact from "../../assets/contact.svg";
-import Year from "../../assets/input-year.svg";
-import Email from "../../assets/input-email.svg";
-import DomainIco from "../../assets/input-domain.svg";
-import Password from "../../assets/input-password.svg";
 
 function AdminProfile() {
   const [admin, setAdmin] = useState("");
@@ -22,7 +16,6 @@ function AdminProfile() {
         headers: { Authorization: sessionStorage.getItem("Admin Token") },
       })
       .then((res) => {
-        console.log(res.data);
         setAdmin(res.data);
       })
       .catch((e) => console.log(e));
@@ -173,9 +166,14 @@ const EditProfile = ({ admin, changeActiveButtonToPass }) => {
   const handleDomain = (e) => {
     setDomain(e.target.value);
   };
+  // Handle image upload
   const handleFileChange = (e) => {
     console.log(e.target.files[0]);
-    setFile(e.target.files[0]);
+    if (e.target.files[0].size > 2000000) {
+      alert("File should be below 2MB in size");
+    } else {
+      setFile(e.target.files[0]);
+    }
   };
   const handleFileUploadButton = () => {
     document.querySelector(".imgfile").click();
@@ -185,7 +183,10 @@ const EditProfile = ({ admin, changeActiveButtonToPass }) => {
       <div className="text-4xl font-bold text-light-red">Edit Profile</div>
       <form className="flex flex-col gap-6" encType="multipart/form-data">
         {/* Image Section */}
-        <img className="w-32 h-32 rounded-full" src={file} />
+        <img
+          className="w-32 h-32 object-cover rounded-full"
+          src={file === admin.photo ? file : URL.createObjectURL(file)}
+        />
         <input
           id="imgFile"
           type="file"
