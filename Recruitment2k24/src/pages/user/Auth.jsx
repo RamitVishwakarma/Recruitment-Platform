@@ -15,6 +15,7 @@ function Auth() {
   const [activeBtn, setactiveBtn] = useState("register");
   const [toolTip, setToolTip] = useState(true);
 
+  // Checking if the user comes after clicking on login button
   let { state } = useLocation();
   if (state === "login") {
     useEffect(() => {
@@ -24,8 +25,8 @@ function Auth() {
   return (
     <>
       {/* Header section */}
-      <div>
-        <div className="mx-5 md:mx-20 xl:mx-40">
+      <div className="lg:h-[90vh]">
+        <div className="mx-5 md:mx-20 xl:mx-40 relative">
           <Header>
             <div className="min-w-80 max-md:mt-10">
               <button
@@ -45,18 +46,21 @@ function Auth() {
           {/* ToolTip */}
           {activeBtn === "register" && toolTip ? (
             // ToolTip Start
-            <div className="max-lg:hidden z-30 absolute lg:right-10 top-[9.45rem] xl:right-28 flex justify-between items-center w-44 px-4 py-2 bg-nav-hover rounded-lg">
-              <div className="absolute bottom-14 w-0 h-0 border-l-[12px] border-l-white/0 border-b-[12px] border-b-nav-hover border-r-[12px] border-r-white/0"></div>
-              <div className="text-grey text-sm">
-                Already registered?
-                <br /> Log in here
+            <div className="absolute -right-20 -top-20">
+              <div className="absolute max-lg:hidden z-30 lg:right-10 top-[9.45rem] xl:right-28 flex justify-between items-center w-44 px-4 py-2 bg-nav-hover rounded-lg">
+                <div className="absolute bottom-14 w-0 h-0 border-l-[12px] border-l-white/0 border-b-[12px] border-b-nav-hover border-r-[12px] border-r-white/0"></div>
+                <div className="text-grey text-sm">
+                  Already registered?
+                  <br /> Log in here
+                </div>
+                <button
+                  onClick={() => {
+                    setToolTip(false);
+                  }}
+                  className="flex items-center">
+                  <span className="material-symbols-rounded">close</span>
+                </button>
               </div>
-              <button
-                onClick={() => {
-                  setToolTip(false);
-                }}>
-                <span className="material-symbols-rounded">close</span>
-              </button>
             </div>
           ) : (
             // ToolTip End
@@ -227,12 +231,14 @@ function Registration() {
   return (
     <>
       <div className="bg-text-box relative z-10 w-full md:w-10/12 overflow-hidden pl-6 mx-auto py-8 rounded-3xl mb-16">
-        <h1 className={`text-grey text-2xl font-bold text-center mb-8 md:text-4xl lg:text-5xl lg:my-6`}>
+        <h1
+          className={`text-grey text-2xl font-bold text-center mb-8 md:text-4xl lg:text-5xl lg:my-6`}>
           Fill your details correctly!
         </h1>
         {toast && <Toast text={toastText} />}
         <form onSubmit={formSubmitHandler}>
-          <div className={`flex pr-2 w-full md:pl-0 m-auto flex-wrap gap-x-8 gap-y-4 items-center justify-center`}>
+          <div
+            className={`flex pr-2 w-full md:pl-0 m-auto flex-wrap gap-x-8 gap-y-4 items-center justify-center`}>
             {/* NAME */}
             <Input
               id="name"
@@ -308,10 +314,10 @@ function Registration() {
               }
             />
             <div className="flex md:hidden gap-4 my-3 justify-center opacity-40">
-                <p>----------------------</p>
-                <p>OR</p>
-                <p>----------------------</p>
-              </div>
+              <p>----------------------</p>
+              <p>OR</p>
+              <p>----------------------</p>
+            </div>
             <hr className="max-lg:hidden w-16 rotate-90 mr-2 ml-8 border-grey/40" />
             <button
               type="submit"
@@ -434,7 +440,10 @@ function Login() {
   // login
   return (
     <>
-      <div className={`bg-text-box md:w-fit mb-10 z-10 mx-auto rounded-3xl px-4 md:px-10 ${popup ? 'overflow-visible static' : 'overflow-hidden relative'}`}>
+      <div
+        className={`bg-text-box md:w-fit mb-10 z-10 mx-auto rounded-3xl px-4 md:px-10 ${
+          popup ? "overflow-visible static" : "overflow-hidden relative"
+        }`}>
         {/* Toast */}
         {toast && <Toast text={toastText} />}
         <div className="text-grey font-bold text-center mt-2 md:mt-4 pt-8 text-3xl md:text-4xl lg:ml-4 lg:text-3xl">
@@ -487,7 +496,9 @@ function Login() {
                     type="button"
                     onClick={() => setPopup(false)}
                     className="absolute right-5 top-5">
-                    <span className="material-symbols-rounded text-5xl">close</span>
+                    <span className="material-symbols-rounded text-5xl">
+                      close
+                    </span>
                   </button>
                   <div className="text-grey mt-10 max-md:w-8/12 font-bold text-center text-4xl">
                     Reset your password
@@ -498,7 +509,9 @@ function Login() {
                   {/* Input box */}
                   <div className=" relative w-96 mt-2 flex items-center justify-center">
                     <div className="absolute left-2 w-8 h-8 bg-light-blue/30 grid place-items-center rounded-full">
-                      <span className="material-symbols-rounded text-2xl">alternate_email</span>
+                      <span className="material-symbols-rounded text-2xl">
+                        alternate_email
+                      </span>
                     </div>
                     <input
                       className={` bg-text-box border p-3 w-full pl-14 rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
@@ -572,15 +585,15 @@ function Input({
   value,
 }) {
   return (
-    <div className={`min-w-80 ${grow ? "xl:w-4/12" : ""} `}>
+    <div
+      className={`min-w-96
+     ${grow ? "xl:w-4/12" : ""} `}>
       <div className="flex justify-between">
         <label className="ml-12" htmlFor={id}>
           {label}
         </label>
         {errorHandler && (
-          <div className="text-red sm:mr-3 xl:mr-0 ">
-            {errorMessage}
-          </div>
+          <div className="text-red sm:mr-3 xl:mr-0 ">{errorMessage}</div>
         )}
       </div>
       <div className="flex gap-3 flex-auto items-center">
@@ -616,7 +629,7 @@ function Select({
   selectedValue,
 }) {
   return (
-    <div className={"min-w-80 xl:w-4/12 "}>
+    <div className={"min-w-96 xl:w-4/12 "}>
       <div className="flex justify-between ">
         <label className="ml-12" htmlFor={id}>
           {label}
@@ -626,7 +639,7 @@ function Select({
         )}
       </div>
       <div className="flex gap-3 items-center">
-      <span className="material-symbols-rounded text-4xl">{icon}</span>
+        <span className="material-symbols-rounded text-4xl">{icon}</span>
         <select
           className={`${
             errorHandler ? "outline outline-2 outline-red border-red" : ""

@@ -29,23 +29,29 @@ export default function Navbar({ buttonType }) {
     <>
       <div className="sticky z-40 top-0 bg-white/70 backdrop-blur-lg">
         <div className="flex">
-          <div className="border-t-4 border-red w-[25vw]"></div>
-          <div className="border-t-4 border-purple w-[25vw]"></div>
-          <div className="border-t-4 border-lime w-[25vw]"></div>
-          <div className="border-t-4 border-light-blue w-[25vw]"></div>
+          <div className="border-t-[6px] border-red w-[25vw]"></div>
+          <div className="border-t-[6px] border-purple w-[25vw]"></div>
+          <div className="border-t-[6px] border-lime w-[25vw]"></div>
+          <div className="border-t-[6px] border-light-blue w-[25vw]"></div>
         </div>
-        <div className="h-16 min-h-14 text-lg mx-5 md:mx-20 xl:mx-40 flex items-center justify-between">
+        <div className="h-[8vh] min-h-14 text-lg mx-5 md:mx-20 xl:mx-40 flex items-center justify-between">
           <div className="flex">
             {/* Need to do hamburger logic The design is not available */}
             <button className="lg:hidden md:block mr-5">
               <span className="material-symbols-rounded text-4xl">menu</span>
             </button>
-            
+
             <Link to="/" className="flex items-center gap-2">
               <img src={`${logo}`} alt="Logo" />
-              <div className="text-grey text-base md:text-lg font-bold">GDSC&nbsp;JSSATEN</div>
+              <div className="text-grey md:text-lg font-bold">
+                GDSC&nbsp;JSSATEN
+              </div>
             </Link>
-            <img src={separator} alt="separator" className="ml-6 mr-3 max-lg:hidden" />
+            <img
+              src={separator}
+              alt="separator"
+              className="ml-6 mr-3 max-lg:hidden"
+            />
             <Link
               to="/#domains"
               className="text-grey flex items-center gap-2 px-4 text-base rounded-full hover:bg-nav-hover max-lg:hidden">
@@ -61,7 +67,9 @@ export default function Navbar({ buttonType }) {
             <Link
               to="/tasks"
               className="text-grey flex items-center gap-2 px-4 text-base rounded-full hover:bg-nav-hover max-lg:hidden">
-              <span className="material-symbols-rounded text-md">editor_choice</span>
+              <span className="material-symbols-rounded text-md">
+                editor_choice
+              </span>
               <div>Tasks</div>
             </Link>
             <Link
@@ -74,7 +82,9 @@ export default function Navbar({ buttonType }) {
             <Link
               href="/"
               className="text-grey flex items-center gap-2 px-4 text-base rounded-full opacity-40 max-lg:hidden">
-              <span className="material-symbols-rounded text-md">bar_chart</span>
+              <span className="material-symbols-rounded text-md">
+                bar_chart
+              </span>
               <div>Results</div>
             </Link>
           </div>

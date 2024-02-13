@@ -134,7 +134,7 @@ function AdminProfile() {
                 ) : (
                   <UpdatePassword
                     admin={admin}
-                    changeActiveButtonToProfile={changeActiveButtonToPass}
+                    changeActiveButtonToProfile={changeActiveButtonToProfile}
                   />
                 )}
               </Popup>
@@ -150,7 +150,6 @@ const EditProfile = ({ admin, changeActiveButtonToPass }) => {
   const [name, setName] = useState(admin.name);
   const [phoneNumber, setPhoneNumber] = useState(admin.phoneNumber);
   const [email, setEmail] = useState(admin.email);
-  const [year, setYear] = useState(admin.year);
   const [domain, setDomain] = useState(admin.domain);
   const [file, setFile] = useState(admin.photo);
   const domainOptions = [
@@ -168,9 +167,6 @@ const EditProfile = ({ admin, changeActiveButtonToPass }) => {
   const handlePhoneNumber = (e) => {
     setPhoneNumber(e.target.value);
   };
-  const handleYear = (e) => {
-    setYear(e.target.value);
-  };
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -187,7 +183,7 @@ const EditProfile = ({ admin, changeActiveButtonToPass }) => {
   return (
     <>
       <div className="text-4xl font-bold text-light-red">Edit Profile</div>
-      <form className="flex flex-col gap-6">
+      <form className="flex flex-col gap-6" encType="multipart/form-data">
         {/* Image Section */}
         <img className="w-32 h-32 rounded-full" src={file} />
         <input
@@ -219,7 +215,7 @@ const EditProfile = ({ admin, changeActiveButtonToPass }) => {
         <Input
           id="name"
           label="Name"
-          icon={Name}
+          icon="account_box"
           type="text"
           placeholder="Enter Your Name"
           onChangeHandler={handleName}
@@ -229,27 +225,17 @@ const EditProfile = ({ admin, changeActiveButtonToPass }) => {
         <Input
           id="phoneNumber"
           label="Phone Number"
-          icon={Contact}
+          icon="call"
           type="text"
           placeholder="+91 XXXXXXXXXX"
           onChangeHandler={handlePhoneNumber}
           value={phoneNumber}
         />
-        {/* Year */}
-        <Input
-          id="year"
-          label="Year"
-          icon={Year}
-          type="text"
-          placeholder="20XX"
-          onChangeHandler={handleYear}
-          value={year}
-        />
         {/* Email */}
         <Input
           id="email"
           label="Email ID"
-          icon={Email}
+          icon="alternate_email"
           type="text"
           placeholder="someone@gmail.com"
           onChangeHandler={handleEmail}
@@ -260,7 +246,7 @@ const EditProfile = ({ admin, changeActiveButtonToPass }) => {
         <Select
           id="domain"
           label="Domain"
-          icon={DomainIco}
+          icon="cards"
           selected={"Select Year"}
           selectedValue={domain}
           onChangeHandler={handleDomain}
@@ -296,6 +282,7 @@ const EditProfile = ({ admin, changeActiveButtonToPass }) => {
 };
 
 function UpdatePassword({ admin, changeActiveButtonToProfile }) {
+  // Input field states
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setnewPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -364,7 +351,7 @@ function UpdatePassword({ admin, changeActiveButtonToProfile }) {
         <Input
           id="oldPassword"
           label="Old Password"
-          icon={Password}
+          icon="key"
           type="password"
           placeholder="Enter your old password"
           onChangeHandler={handleOldPassword}
@@ -372,7 +359,7 @@ function UpdatePassword({ admin, changeActiveButtonToProfile }) {
         <Input
           id="newPassword"
           label="New Password"
-          icon={Password}
+          icon="key"
           type="password"
           placeholder="6 characters or more"
           onChangeHandler={handleNewPassword}
@@ -380,7 +367,7 @@ function UpdatePassword({ admin, changeActiveButtonToProfile }) {
         <Input
           id="repeatPassword"
           label="Repeat New Password"
-          icon={Password}
+          icon="key"
           type="password"
           placeholder="Re-enter your new password"
           onChangeHandler={handleRepeatPassword}

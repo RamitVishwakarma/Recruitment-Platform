@@ -8,7 +8,7 @@ export default function HeaderProfile({ name, photo }) {
         </div>
         <div>
           <img
-            className="w-16 h-16 min-w-16 min-h-16 rounded-full"
+            className="w-16 h-16 object-cover min-w-16 min-h-16 rounded-full"
             src={photo}
           />
         </div>

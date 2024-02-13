@@ -80,7 +80,7 @@ export default function Profile() {
                 />
               </svg>
               <img
-                className="absolute w-[223px] z-10 rounded-full"
+                className="absolute w-[223px] h-[223px] object-cover z-10 rounded-full"
                 src={user.photo}
               />
             </div>
@@ -272,6 +272,7 @@ function EditProfile({ user, changeActiveButtonToPass }) {
     document.querySelector(".imgfile").click();
   };
   const handleFileChange = (e) => {
+    console.log(e);
     console.log(e.target.files[0]);
     setFile(e.target.files[0]);
   };
@@ -308,7 +309,10 @@ function EditProfile({ user, changeActiveButtonToPass }) {
         `${import.meta.env.VITE_URL}api/user/profile/Updateprofile`,
         updatedUser,
         {
-          headers: { Authorization: sessionStorage.getItem("Authorization") },
+          headers: {
+            Authorization: sessionStorage.getItem("Authorization"),
+            "content-type": "multipart/form-data",
+          },
         }
       )
       .then((res) => {
@@ -359,8 +363,11 @@ function EditProfile({ user, changeActiveButtonToPass }) {
   return (
     <div>
       <div className="flex flex-col items-center">
-        <form onSubmit={editProfileFormHandler}>
-          <img className="w-32 h-32 rounded-full" src={file} />
+        <form onSubmit={editProfileFormHandler} encType="multipart/form-data">
+          <img
+            className="w-32 h-32 object-cover rounded-full"
+            src={file === user.photo ? file : URL.createObjectURL(file)}
+          />
           <input
             id="imgFile"
             type="file"
@@ -389,7 +396,7 @@ function EditProfile({ user, changeActiveButtonToPass }) {
           <Input
             id="name"
             label="Name"
-            icon='account_box'
+            icon="account_box"
             type="text"
             placeholder="Enter Your Name"
             onChangeHandler={handleName}
@@ -398,7 +405,7 @@ function EditProfile({ user, changeActiveButtonToPass }) {
           <Input
             id="contact"
             label="Contact Number"
-            icon='call'
+            icon="call"
             type="text"
             placeholder="+91 XXXXXXXXXX"
             onChangeHandler={handlePhoneNumber}
@@ -407,7 +414,7 @@ function EditProfile({ user, changeActiveButtonToPass }) {
           <Input
             id="admission number"
             label="Admission Number"
-            icon='badge'
+            icon="badge"
             type="text"
             placeholder="Enter Your Admission Number"
             onChangeHandler={handleAdmissionNumber}
@@ -418,7 +425,7 @@ function EditProfile({ user, changeActiveButtonToPass }) {
           <Select
             id="year"
             label="Year"
-            icon='school'
+            icon="school"
             selected={"Select Year"}
             selectedValue={year}
             data={yearOptions}
@@ -428,7 +435,7 @@ function EditProfile({ user, changeActiveButtonToPass }) {
           <Select
             id="domain"
             label="Domain"
-            icon='cards'
+            icon="cards"
             selected={"Select Year"}
             selectedValue={domain}
             onChangeHandler={handleDomain}
