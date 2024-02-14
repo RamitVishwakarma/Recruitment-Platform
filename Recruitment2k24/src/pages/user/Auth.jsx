@@ -587,7 +587,7 @@ function Input({
   return (
     <div
       className={`min-w-96
-     ${grow ? "xl:w-4/12" : ""} `}>
+    ${grow ? "xl:w-4/12" : ""} `}>
       <div className="flex justify-between">
         <label className="ml-12" htmlFor={id}>
           {label}

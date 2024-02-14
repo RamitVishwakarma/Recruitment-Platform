@@ -1,154 +1,44 @@
 import Header from "../../components/Header";
-import Back from "../../assets/arrRight.svg";
-import Close from "../../assets/close.svg?react";
-import search from "../../assets/search.svg";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import validator from "validator";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const AllUsers = () => {
-  const domain = {
-    domain: "Machine Learning",
-    total: 120,
-    projects: 18,
-    shortlisted: 10,
-    interviewed: 25,
+  const domainName = sessionStorage.getItem("Domain");
+  const [users, setUser] = useState("");
+  const [domain, setDomain] = useState(domainName);
+
+  // ? Get user data acc to the domain
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_URL}api/admin/profile/listUsers`, {
+        headers: {
+          Authorization: sessionStorage.getItem("Admin Token"),
+        },
+      })
+      .then((res) => {
+        setUser(res.data.userList);
+      })
+      .catch((e) => {
+        console.log("error", e);
+      });
+  }, []);
+  // Export to Excel Handler
+  // ? Cant figure out what the data is :: ) need to ask how to make it downloadable
+  const exportToExcelHandler = () => {
+    axios
+      .get(`${import.meta.env.VITE_URL}api/admin/project/export-to-excel`, {
+        headers: {
+          Authorization: sessionStorage.getItem("Admin Token"),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.log("error", e);
+      });
   };
-  const users = [
-    {
-      name: "Bodhan Kapoor",
-      year: "1st",
-      project:
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
-      quizResults: "19/20",
-      interviewStatus: "Scheduled",
-      shortlisted: false,
-    },
-    {
-      name: "Nimit Mukhopadhyay",
-      year: "2nd",
-      project:
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
-      quizResults: "20/20",
-      interviewStatus: "Cleared",
-      shortlisted: true,
-    },
-    {
-      name: "Umang Jha",
-      year: "1st",
-      project: "",
-      quizResults: "19/20",
-      interviewStatus: "PR Scheduled",
-      shortlisted: false,
-    },
-    {
-      name: "Balachandra Singh",
-      year: "1st",
-      project:
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
-      quizResults: "20/20",
-      interviewStatus: "Cleared",
-      shortlisted: false,
-    },
-    {
-      name: "Jagdeep Panicker",
-      year: "1st",
-      project: "",
-      quizResults: "14/20",
-      interviewStatus: "Cleared",
-      shortlisted: true,
-    },
-    {
-      name: "Elakshi Gandhi",
-      year: "1st",
-      project:
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
-      quizResults: "17/20",
-      interviewStatus: "PR Scheduled",
-      shortlisted: false,
-    },
-    {
-      name: "Elakshi Gandhi",
-      year: "1st",
-      project:
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
-      quizResults: "17/20",
-      interviewStatus: "PR Scheduled",
-      shortlisted: false,
-    },
-    {
-      name: "Elakshi Gandhi",
-      year: "1st",
-      project:
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
-      quizResults: "17/20",
-      interviewStatus: "PR Scheduled",
-      shortlisted: false,
-    },
-    {
-      name: "Elakshi Gandhi",
-      year: "1st",
-      project:
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
-      quizResults: "17/20",
-      interviewStatus: "PR Scheduled",
-      shortlisted: false,
-    },
-    {
-      name: "Elakshi Gandhi",
-      year: "1st",
-      project:
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
-      quizResults: "17/20",
-      interviewStatus: "PR Scheduled",
-      shortlisted: false,
-    },
-    {
-      name: "Elakshi Gandhi",
-      year: "1st",
-      project:
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
-      quizResults: "17/20",
-      interviewStatus: "PR Scheduled",
-      shortlisted: false,
-    },
-    {
-      name: "Elakshi Gandhi",
-      year: "1st",
-      project:
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
-      quizResults: "17/20",
-      interviewStatus: "PR Scheduled",
-      shortlisted: false,
-    },
-    {
-      name: "Elakshi Gandhi",
-      year: "1st",
-      project:
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
-      quizResults: "17/20",
-      interviewStatus: "PR Scheduled",
-      shortlisted: false,
-    },
-    {
-      name: "Elakshi Gandhi",
-      year: "1st",
-      project:
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
-      quizResults: "17/20",
-      interviewStatus: "PR Scheduled",
-      shortlisted: false,
-    },
-    {
-      name: "Elakshi Gandhi",
-      year: "1st",
-      project:
-        "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D",
-      quizResults: "17/20",
-      interviewStatus: "PR Scheduled",
-      shortlisted: false,
-    },
-  ];
 
   const [shortlist, setshortlist] = useState(false);
   const toggleShortlist = () => {
@@ -176,13 +66,16 @@ const AllUsers = () => {
     <>
       <div className="mx-40">
         <Header>
-          <h1 className="text-6xl font-bold text-grey">Design Candidates</h1>
+          <h1 className="text-6xl font-bold text-grey">
+            {domainName} Candidates
+          </h1>
         </Header>
       </div>
 
       <div className="flex justify-between mx-40">
         <div className="flex items-center gap-5 text-button-text text-2xl">
           {/* searchbar */}
+          {/* //? Need to use debouncing here to get in the data from the backend using search */}
           <div className="relative">
             <input
               className={
@@ -190,8 +83,10 @@ const AllUsers = () => {
               }
               type="text"
               value={searchValue}
+              placeholder="Search by name"
               onChange={(e) => setSearchValue(e.target.value)}
             />
+
             <span className="material-symbols-rounded icon absolute left-2 top-1/2 transform -translate-y-1/2 text-grey">
               search
             </span>
@@ -258,56 +153,70 @@ const AllUsers = () => {
           </button>
           <p className="text-grey text-xl">
             Total&nbsp;Users:&nbsp;
-            <span className="font-bold">{domain.total}</span>
+            <span className="font-bold">{users.length}</span>
           </p>
         </div>
       </div>
 
+      {/* Table */}
       <div className="mx-40 mt-5 text-2xl mb-20">
         <table className="w-full text-center">
-          <tr className="bg-light-blue text-text-box">
-            <th className="py-4 px-2">#</th>
-            <th className=" text-left">Name</th>
-            <th className="w-12">Year</th>
-            <th>Project Status</th>
-            <th>Quiz Results</th>
-            <th>Interview Status</th>
-            <th className="w-1/12 pr-4">Shortlisted</th>
-          </tr>
-          {users.map((user, index) => (
-            <tr
-              key={index}
-              className={`text-grey ${
-                index % 2 == 0 ? "bg-light-blue/5" : "bg-light-blue/15"
-              }`}>
-              <td className="py-4">{index + 1}</td>
-              <td className="text-left">{user.name}</td>
-              <td>{user.year}</td>
-              {/* <td className="overflow-hidden line-clamp-1 text-ellipsis w-[15vw]">{user.project}</td> */}
-              <td>
-                {validator.isURL(user.project) ? (
-                  <td className="overflow-hidden line-clamp-1 text-ellipsis">
-                    <a
-                      target="_blank"
-                      rel="noreferrer"
-                      className="underline"
-                      href={user.project}>
-                      Submitted
-                      <span className="ml-2 material-symbols-rounded">
-                        open_in_new
-                      </span>
-                    </a>
-                  </td>
-                ) : (
-                  <p className="text-grey/60">Not Submitted</p>
-                )}
-              </td>
-              <td>{user.quizResults}</td>
-              <td>{user.interviewStatus}</td>
-              <td className="w-1/12">{user.shortlisted ? "Yes" : "No"}</td>
+          <thead>
+            <tr className="bg-light-blue text-text-box">
+              <th className="py-4 px-2">#</th>
+              <th className=" text-left w-60">Name</th>
+              <th>Year</th>
+              {/*//? Data doesnt give in project link*/}
+              <th>Project Status</th>
+              {/* //? The data doesnt send in quiz results maybe : ) */}
+              <th>Quiz Results</th>
+              <th>Interview Status</th>
+              <th className="w-1/12 pr-4">Shortlisted</th>
             </tr>
-          ))}
+          </thead>
+          <tbody>
+            {!users ? (
+              <tr>
+                <td> Loading </td>
+              </tr>
+            ) : (
+              users.map((user, index) => {
+                return (
+                  <tr
+                    key={index}
+                    className={`text-grey ${
+                      index % 2 == 0 ? "bg-[#C4CDFF]" : "bg-white"
+                    }`}>
+                    <td className="py-4">{index + 1}</td>
+                    <td className="text-left">
+                      <Link to={`/admin/user/${user._id}`}>{user.name}</Link>
+                    </td>
+                    <td>{user.year}</td>
+                    <td>
+                      {user.projectStatus ? "Submitted" : "Not Submitted"}
+                    </td>
+                    <td>{user.quizTaken ? user.quizTaken : "Not taken"}</td>
+                    <td>
+                      {user.interviewStatus
+                        ? user.interviewStatus
+                        : "Not interviewed"}
+                    </td>
+                    <td>{user.Shortlist ? "Yes" : "No"}</td>
+                  </tr>
+                );
+              })
+            )}
+          </tbody>
         </table>
+        {/* Export List */}
+        <div className="flex mt-10 justify-end">
+          <button
+            onClick={exportToExcelHandler}
+            className="bg-purple text-white p-2 rounded-xl flex items-center gap-2">
+            <span className="material-symbols-rounded">system_update_alt</span>
+            Export List
+          </button>
+        </div>
       </div>
     </>
   );

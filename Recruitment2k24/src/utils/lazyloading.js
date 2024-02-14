@@ -26,6 +26,7 @@ const Dashboard = loadable(() => import("../pages/admin/dashboard"));
 const AllUsers = loadable(() => import("../pages/admin/allusers"));
 const AdminProfile = loadable(() => import("../pages/admin/profile"));
 // ? Need to change the name later
+const UserDetail = loadable(() => import("../pages/admin/userDetail"));
 const RealAdminProfile = loadable(() => import("../pages/admin/adminProfile"));
 
 export {
@@ -47,4 +48,5 @@ export {
   AllUsers,
   AdminProfile,
   RealAdminProfile,
+  UserDetail,
 };

@@ -20,8 +20,7 @@ export default function Navbar({ buttonType }) {
 
   const navigate = useNavigate();
   const logoutHandler = (e) => {
-    sessionStorage.removeItem("Authorization");
-    sessionStorage.removeItem("user");
+    sessionStorage.clear();
     navigate("/");
   };
 

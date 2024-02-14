@@ -178,10 +178,40 @@ const EditProfile = ({ admin, changeActiveButtonToPass }) => {
   const handleFileUploadButton = () => {
     document.querySelector(".imgfile").click();
   };
+
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
+    const formData = {
+      name: name,
+      phoneNumber: phoneNumber,
+      email: email,
+      domain: domain,
+      photo: file,
+    };
+    axios
+      .put(
+        `${import.meta.env.VITE_URL}api/admin/profile/Updateprofile`,
+        formData,
+        {
+          headers: { Authorization: sessionStorage.getItem("Admin Token") },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        alert("Profile Updated Successfully");
+      })
+      .catch((e) => {
+        console.log(e);
+        alert("Some error occured, please try again later");
+      });
+  };
   return (
     <>
       <div className="text-4xl font-bold text-light-red">Edit Profile</div>
-      <form className="flex flex-col gap-6" encType="multipart/form-data">
+      <form
+        className="flex flex-col gap-6"
+        encType="multipart/form-data"
+        onSubmit={formSubmitHandler}>
         {/* Image Section */}
         <img
           className="w-32 h-32 object-cover rounded-full"

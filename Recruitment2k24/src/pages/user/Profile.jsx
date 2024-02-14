@@ -1,6 +1,6 @@
 import Header from "../../components/Header";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Input, Select } from "./Auth";
 import axios from "axios";
 
@@ -17,6 +17,23 @@ import Password from "../../assets/input-password.svg";
 // ? Haven't added any client side validations in this page will do it If we have to
 export default function Profile() {
   const user = JSON.parse(sessionStorage.getItem("user"));
+  // ? meed to do this later
+  // const [user, setUser] = useState("");
+  //   useEffect(() => {
+  //     axios
+  //       .get(`${import.meta.env.VITE_URL}api/user/profile/myProfile`, {
+  //         headers: {
+  //           Authorization: sessionStorage.getItem("Authorization"),
+  //         },
+  //       })
+  //       .then((res) => {
+  //         console.log(res);
+  //         setUser(res.data.user);
+  //       })
+  //       .catch((e) => {
+  //         console.log(e);
+  //       });
+  //   }, []);
 
   // ? Use effect call the myProfile api and set the user state to the response
   // Updating user prof
