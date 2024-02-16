@@ -2,6 +2,7 @@ import Header from "../../components/Header";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { saveAs } from "file-saver";
 
 const AllUsers = () => {
   const domainName = sessionStorage.getItem("Domain");
@@ -24,19 +25,24 @@ const AllUsers = () => {
       });
   }, []);
   // Export to Excel Handler
-  // ? Cant figure out what the data is :: ) need to ask how to make it downloadable
   const exportToExcelHandler = () => {
     axios
       .get(`${import.meta.env.VITE_URL}api/admin/project/export-to-excel`, {
+        responseType: "blob", // specify response type as blob
         headers: {
           Authorization: sessionStorage.getItem("Admin Token"),
         },
       })
-      .then((res) => {
-        console.log(res);
+      .then((response) => {
+        // Create a blob from the response data
+        const blob = new Blob([response.data], {
+          type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        });
+        // Use FileSaver.js to save the blob as a file
+        saveAs(blob, "UserDetailsAndSubmissions.xlsx");
       })
-      .catch((e) => {
-        console.log("error", e);
+      .catch((error) => {
+        console.error("Error exporting to Excel:", error);
       });
   };
 

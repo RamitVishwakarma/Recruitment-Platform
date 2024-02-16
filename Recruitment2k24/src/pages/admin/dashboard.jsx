@@ -6,8 +6,25 @@ import ProjectIcon from "../../assets/project.svg";
 import QuizIcon from "../../assets/quiz.svg";
 import Shortlist from "../../assets/shortlist.svg";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
 
 const Dashboard = () => {
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_URL}api/admin/profile/statistics`, {
+        headers: {
+          Authorization: sessionStorage.getItem("Admin Token"),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.log("error", e);
+      });
+  }, []);
+
   const admininfo = {
     domain: sessionStorage.getItem("Domain"),
     photo: sessionStorage.getItem("Photo"),

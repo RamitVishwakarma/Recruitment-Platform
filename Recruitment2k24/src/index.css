@@ -87,12 +87,12 @@ select:focus {
 } */
 
 .icon {
-    user-drag: none;
-    -webkit-user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .project-icon-svg path {
@@ -246,7 +246,6 @@ select:focus {
   transform: translateX(1.5rem);
 }
 
-
 @media (max-width: 768px) {
   .card {
     width: 18rem;
@@ -263,18 +262,18 @@ select:focus {
     width: 4rem;
   }
 
-  .card:hover img{
+  .card:hover img {
     top: 35%;
     left: 50%;
     width: 4rem;
   }
 
-  .card:hover h2{
+  .card:hover h2 {
     top: 59%;
     font-size: 2rem;
   }
 
-  .card:hover p{
+  .card:hover p {
     display: none;
   }
 }
