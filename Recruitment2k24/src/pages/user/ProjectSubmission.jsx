@@ -12,6 +12,8 @@ export default function ProjectSubmission() {
   const linkSchema = z.string().url();
   // getting user data  from session storage
   const userId = sessionStorage.getItem("userId");
+  const userName = sessionStorage.getItem("name");
+  const userPhoto = sessionStorage.getItem("photo");
   // Handelling project link change
   const projectLinkOnChangeHandler = (e) => {
     setProjectLink(e.target.value);
@@ -25,6 +27,7 @@ export default function ProjectSubmission() {
       const projectData = {
         submissionLink: projectLink,
       };
+
       axios
         .post(
           `${import.meta.env.VITE_URL}api/user/project/submission/${userId}`,
@@ -56,7 +59,7 @@ export default function ProjectSubmission() {
       <div className="h-screen">
         <div className="mx-40">
           <Header>
-            <HeaderProfile />
+            <HeaderProfile name={userName} photo={userPhoto} />
           </Header>
         </div>
         <div className="flex justify-center items-center">
@@ -66,7 +69,6 @@ export default function ProjectSubmission() {
             </div>
             <div className="flex items-center gap-6">
               <Project />
-              {/* form action to be changed */}
               <form id="projectLink" onSubmit={projectSubmissionHandler}>
                 <Input
                   id={"projectLink"}
@@ -81,7 +83,6 @@ export default function ProjectSubmission() {
           </div>
         </div>
         <div className="flex items-center justify-center">
-          {/* //? If project submitted disable */}
           <button
             form="projectLink"
             type="submit"

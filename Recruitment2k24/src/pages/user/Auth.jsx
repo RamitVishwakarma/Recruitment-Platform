@@ -414,6 +414,8 @@ function Login() {
           console.log(res);
           sessionStorage.setItem("Authorization", res.headers["authorization"]);
           sessionStorage.setItem("userId", res.data._id);
+          sessionStorage.setItem("name", res.data.name);
+          sessionStorage.setItem("photo", res.data.photo);
           navigate("/user");
         }
       })
@@ -698,6 +700,8 @@ function GoogleAuthentication({ text, btnStyle }) {
                 res.headers["authorization"]
               );
               sessionStorage.setItem("userId", res.data._id);
+              sessionStorage.setItem("name", res.data.name);
+              sessionStorage.setItem("photo", res.data.photo);
 
               navigate("/user/");
             }
