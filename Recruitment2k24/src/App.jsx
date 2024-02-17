@@ -58,7 +58,6 @@ export default function App() {
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="profile" element={<RealAdminProfile />} />
               <Route path="users" element={<AllUsers />} />
-              <Route path="user_profile" element={<AdminProfile />} />
               <Route path="user/:id" element={<UserDetail />}></Route>
             </Route>
           </Route>
