@@ -596,7 +596,11 @@ function Input({
         )}
       </div>
       <div className="flex gap-3 flex-auto items-center">
-        <span className="material-symbols-rounded text-4xl">{icon}</span>
+        {!icon.includes("/") ? (
+          <span className="material-symbols-rounded text-4xl">{icon}</span>
+        ) : (
+          <img src={icon} className="w-4 h-4" />
+        )}
         <input
           className={`
           ${

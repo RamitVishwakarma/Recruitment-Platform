@@ -13,12 +13,14 @@ import Dribble from "../../assets/dribble.svg";
 import Popup from "../../components/Popup";
 import Close from "../../assets/close.svg";
 import Password from "../../assets/input-password.svg";
+import { set } from "zod";
 
 // ? Haven't added any client side validations in this page will do it If we have to
 export default function Profile() {
   // ? meed to do this later
   const [user, setUser] = useState("");
   const [file, setFile] = useState("");
+  const [refresh, setRefresh] = useState(false);
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_URL}api/user/profile/myProfile`, {
@@ -33,7 +35,7 @@ export default function Profile() {
       .catch((e) => {
         console.log(e);
       });
-  }, [user]);
+  }, [refresh]);
 
   // ? Use effect call the myProfile api and set the user state to the response
   // Updating user prof
@@ -74,6 +76,7 @@ export default function Profile() {
           .then((res) => {
             console.log(res);
             setFile(e.target.files[0]);
+            setRefresh(!refresh);
             // ? Add toast in here
             alert("Resume Uploaded Successfully");
           })
@@ -88,6 +91,7 @@ export default function Profile() {
 
   return (
     <>
+      {console.log("update")}
       {!user ? (
         <div>Loading...</div>
       ) : (
