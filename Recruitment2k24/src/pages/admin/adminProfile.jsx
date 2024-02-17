@@ -218,7 +218,6 @@ const EditProfile = ({ admin, changeActiveButtonToPass }) => {
           src={file === admin.photo ? file : URL.createObjectURL(file)}
         />
         <input
-          id="imgFile"
           type="file"
           accept=".jpg,.png"
           className="imgfile absolute invisible bg-lime w-44 h-12 "

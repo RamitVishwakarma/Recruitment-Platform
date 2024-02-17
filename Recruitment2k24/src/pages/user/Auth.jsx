@@ -412,7 +412,6 @@ function Login() {
       .then((res) => {
         if (res.status == 200) {
           sessionStorage.setItem("Authorization", res.headers["authorization"]);
-          sessionStorage.setItem("user", JSON.stringify(res.data));
           navigate("/user");
         }
       })
@@ -690,7 +689,6 @@ function GoogleAuthentication({ text, btnStyle }) {
                 "Authorization",
                 res.headers["authorization"]
               );
-              sessionStorage.setItem("user", JSON.stringify(res.data));
               navigate("/user/");
             }
           })
