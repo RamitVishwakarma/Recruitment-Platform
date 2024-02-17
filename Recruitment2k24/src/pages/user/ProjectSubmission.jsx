@@ -11,8 +11,8 @@ export default function ProjectSubmission() {
   const [projectLinkError, setProjectLinkError] = useState(false);
   const linkSchema = z.string().url();
   // getting user data  from session storage
-  const user = JSON.parse(sessionStorage.getItem("user"));
-
+  const userId = sessionStorage.getItem("userId");
+  // Handelling project link change
   const projectLinkOnChangeHandler = (e) => {
     setProjectLink(e.target.value);
   };
@@ -27,7 +27,7 @@ export default function ProjectSubmission() {
       };
       axios
         .post(
-          `${import.meta.env.VITE_URL}api/user/project/submission/${user._id}`,
+          `${import.meta.env.VITE_URL}api/user/project/submission/${userId}`,
           projectData,
           {
             headers: { Authorization: sessionStorage.getItem("Authorization") },
@@ -36,9 +36,6 @@ export default function ProjectSubmission() {
         .then((res) => {
           //? add toast in here
           alert("Project link submitted successfully");
-          console.log(res);
-          // * Redirect to the dashboard ????
-          // ? save the data in session storage as well if the link needs to be used somewhere
         })
         .catch((e) => {
           if (e.response.status === 400) {

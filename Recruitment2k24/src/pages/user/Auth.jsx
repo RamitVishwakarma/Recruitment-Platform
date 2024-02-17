@@ -411,7 +411,9 @@ function Login() {
       })
       .then((res) => {
         if (res.status == 200) {
+          console.log(res);
           sessionStorage.setItem("Authorization", res.headers["authorization"]);
+          sessionStorage.setItem("userId", res.data._id);
           navigate("/user");
         }
       })
@@ -596,11 +598,13 @@ function Input({
         )}
       </div>
       <div className="flex gap-3 flex-auto items-center">
-        {!icon.includes("/") ? (
-          <span className="material-symbols-rounded text-4xl">{icon}</span>
-        ) : (
-          <img src={icon} className="w-4 h-4" />
-        )}
+        {icon ? (
+          !icon.includes("/") ? (
+            <span className="material-symbols-rounded text-4xl">{icon}</span>
+          ) : (
+            <img src={icon} className="w-4 h-4" />
+          )
+        ) : null}
         <input
           className={`
           ${
@@ -693,6 +697,8 @@ function GoogleAuthentication({ text, btnStyle }) {
                 "Authorization",
                 res.headers["authorization"]
               );
+              sessionStorage.setItem("userId", res.data._id);
+
               navigate("/user/");
             }
           })
