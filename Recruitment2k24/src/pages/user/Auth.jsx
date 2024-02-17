@@ -14,7 +14,6 @@ import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 function Auth() {
   const [activeBtn, setactiveBtn] = useState("register");
   const [toolTip, setToolTip] = useState(true);
-
   // Checking if the user comes after clicking on login button
   let { state } = useLocation();
   if (state === "login") {
@@ -62,10 +61,7 @@ function Auth() {
                 </button>
               </div>
             </div>
-          ) : (
-            // ToolTip End
-            ""
-          )}
+          ) : null}
           {/* Register and Login Section */}
           {activeBtn === "register" ? <Registration /> : <Login />}
         </div>

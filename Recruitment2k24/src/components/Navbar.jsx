@@ -2,6 +2,7 @@ import logo from "../assets/logo.svg";
 import separator from "../assets/separator.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { Login, Logout, LetsGo, Back } from "../data/Navbar";
+import axios from "axios";
 
 export default function Navbar({ buttonType }) {
   let buttonState;
@@ -19,8 +20,23 @@ export default function Navbar({ buttonType }) {
   }
 
   const navigate = useNavigate();
-  const logoutHandler = (e) => {
-    sessionStorage.clear();
+  const logoutHandler = () => {
+    axios
+      .post(
+        `${import.meta.env.VITE_URL}api/user/auth/logout`,
+        {},
+        {
+          headers: {
+            Authorization: sessionStorage.getItem("Authorization"),
+          },
+        }
+      )
+      .then((res) => {
+        sessionStorage.clear();
+      })
+      .catch((e) => {
+        console.log(e);
+      });
     navigate("/");
   };
 
