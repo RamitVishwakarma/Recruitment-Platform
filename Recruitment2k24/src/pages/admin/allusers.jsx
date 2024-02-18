@@ -112,13 +112,29 @@ const AllUsers = () => {
         console.error("Error exporting to Excel:", error);
       });
   };
-
+  // *Shortlisted Users
   const [shortlist, setshortlist] = useState(false);
-  const toggleShortlist = () => {
+  const showShortlistedUsers = () => {
     setshortlist(!shortlist);
+    if (!shortlist) {
+      axios
+        .get(`${import.meta.env.VITE_URL}api/admin/profile/shortlistedUsers`, {
+          headers: {
+            Authorization: sessionStorage.getItem("Admin Token"),
+          },
+        })
+        .then((res) => {
+          setUser(res.data.shortlistedUsers);
+        })
+        .catch((e) => {
+          console.log("error", e);
+        });
+    } else {
+      setRefresh(!refresh);
+    }
   };
   // Year Filter
-  const [year_filter, setFilter] = useState("");
+  const [yearFilter, setFilter] = useState("");
   const handleChangeFilter = (event) => {
     setFilter(event.target.value);
     if (event.target.value) {
@@ -173,17 +189,16 @@ const AllUsers = () => {
             </span>
           </div>
         </div>
-
-        {/* filters */}
+        {/* Filters */}
         <div className="flex flex-row text-base text-grey items-center gap-6">
           {/*  Year filter */}
           <div>
             <select
               className={`border rounded-full border-grey py-1 px-5 ${
-                year_filter ? "bg-light-blue/30" : "bg-white"
+                yearFilter ? "bg-light-blue/30" : "bg-white"
               }`}
-              name="year-filter"
-              value={year_filter}
+              name="yearFilter"
+              value={yearFilter}
               onChange={handleChangeFilter}>
               <option value="">Year</option>
               <option value="1">1st</option>
@@ -206,7 +221,7 @@ const AllUsers = () => {
           </button>
           {/* shortlist filter */}
           <button
-            onClick={toggleShortlist}
+            onClick={showShortlistedUsers}
             className={`flex items-center px-5 py-1 gap-2 border rounded-full border-grey ${
               shortlist ? "bg-text-green/10" : ""
             }`}>
@@ -216,14 +231,15 @@ const AllUsers = () => {
               ""
             )}
             <p>Shortlisted&nbsp;Users:&nbsp;</p>
-            <span className="font-bold">{domain.shortlisted}</span>
           </button>
+          {/* Total users */}
           <p className="text-grey text-xl">
             Total&nbsp;Users:&nbsp;
             <span className="font-bold">{users.length}</span>
           </p>
         </div>
       </div>
+
       {/* Users List */}
       <div className="mx-40 mt-5 text-2xl mb-20">
         <table className="w-full text-center">

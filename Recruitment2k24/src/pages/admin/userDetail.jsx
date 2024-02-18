@@ -10,16 +10,16 @@ import Behance from "../../assets/behance.svg";
 import Hackerrank from "../../assets/hackerrank.svg";
 import Github from "../../assets/footer-git.svg";
 import Dribble from "../../assets/dribble.svg";
+import { set } from "zod";
 
 export default function userDetail() {
-  // call in user details from backend
   // get id from params
   const params = useParams();
 
   const [user, setUser] = useState("");
-  // populate user details
+  const [shortList, setShortList] = useState();
+  // Fetching user details
   useEffect(() => {
-    // fetch user details
     axios
       .get(
         `${import.meta.env.VITE_URL}api/admin/profile/findUser/${params.id}`,
@@ -30,14 +30,37 @@ export default function userDetail() {
         }
       )
       .then((res) => {
+        console.log(res.data);
         setUser(res.data.userProfileDetails);
+        setShortList(res.data.userProfileDetails.user.ShortList);
       })
       .catch((e) => {
         console.log("error", e);
       });
   }, []);
+  // Shortlist handler
+  const shortlistHandler = () => {
+    axios
+      .put(
+        `${import.meta.env.VITE_URL}api/admin/profile/shortlistUser/${
+          params.id
+        }`,
+        { ShortList: !shortList },
+        {
+          headers: {
+            Authorization: sessionStorage.getItem("Admin Token"),
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        setShortList(!shortList);
+      })
+      .catch((e) => {
+        console.log("error", e);
+      });
+  };
 
-  console.log(user);
   return (
     <div>
       <div className="mx-5 md:mx-20 xl:mx-40">
@@ -114,12 +137,35 @@ export default function userDetail() {
                     {user.user.Domain}
                   </div>
                   {/* Shortlist btn */}
-                  {/* Shortlist button not working */}
-                  <button className="px-6 py-2 bg-lime text-button-text flex items-center gap-4 rounded-lg">
-                    <span class="material-symbols-rounded text-grey">
-                      kid_star
-                    </span>
-                    Shortlist
+                  <button
+                    onClick={shortlistHandler}
+                    className="px-6 py-2 bg-lime text-button-text flex items-center justify-center gap-4 rounded-lg">
+                    {shortList ? (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="19"
+                        height="18"
+                        viewBox="0 0 19 18"
+                        fill="none">
+                        <path
+                          d="M5.47852 4.21912L8.04518 0.896208C8.22852 0.651763 8.44622 0.472249 8.69831 0.357666C8.95039 0.243083 9.21393 0.185791 9.48893 0.185791C9.76393 0.185791 10.0275 0.243083 10.2796 0.357666C10.5316 0.472249 10.7493 0.651763 10.9327 0.896208L13.4993 4.21912L17.3952 5.52537C17.7924 5.6476 18.1056 5.87294 18.3348 6.20142C18.5639 6.52989 18.6785 6.89274 18.6785 7.28996C18.6785 7.47329 18.6518 7.65662 18.5983 7.83996C18.5448 8.02329 18.457 8.19899 18.3348 8.36704L15.8139 11.942L15.9056 15.7004C15.9209 16.2351 15.7452 16.6858 15.3785 17.0525C15.0118 17.4191 14.5841 17.6025 14.0952 17.6025C14.0646 17.6025 13.8966 17.5795 13.591 17.5337L9.48893 16.3879L5.38685 17.5337C5.31046 17.5643 5.22643 17.5834 5.13477 17.591C5.0431 17.5986 4.95907 17.6025 4.88268 17.6025C4.39379 17.6025 3.96602 17.4191 3.59935 17.0525C3.23268 16.6858 3.05699 16.2351 3.07227 15.7004L3.16393 11.9191L0.666016 8.36704C0.543793 8.19899 0.455946 8.02329 0.402474 7.83996C0.349002 7.65662 0.322266 7.47329 0.322266 7.28996C0.322266 6.90801 0.43303 6.5528 0.654557 6.22433C0.876085 5.89586 1.18546 5.66287 1.58268 5.52537L5.47852 4.21912Z"
+                          fill="#2F3B00"
+                        />
+                      </svg>
+                    ) : (
+                      <span className="material-symbols-rounded font-bold text-button-text">
+                        kid_star
+                      </span>
+                    )}
+                    {shortList ? (
+                      <div className="font-bold text-button-text">
+                        Shortlisted
+                      </div>
+                    ) : (
+                      <div className="font-bold text-button-text">
+                        ShortList
+                      </div>
+                    )}
                   </button>
                 </div>
               </div>
@@ -243,7 +289,9 @@ export default function userDetail() {
                             .concat("...")
                         : "Not Submitted"}
                     </a>
-                    <span class="material-symbols-rounded">open_in_new</span>
+                    <span className="material-symbols-rounded">
+                      open_in_new
+                    </span>
                   </div>
                   <div className="h-1/2 bg-purple flex items-center justify-between px-3 rounded-b-xl">
                     <div className="text-white text-xl ">Submitted Project</div>
@@ -254,8 +302,8 @@ export default function userDetail() {
                       viewBox="0 0 23 23"
                       fill="none">
                       <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
                         d="M10.8947 0L21.7895 5.75V12.604H19.3684V8.17777L12.1052 12.0111V22.3611L10.8947 23L0 17.25V5.75L10.8947 0ZM19.3684 13.7106L19.3684 17.0304H23V19.2436L19.3684 19.2435L19.3684 22.5633H16.9474L16.9473 19.2435L13.3158 19.2436V17.0304H16.9473L16.9474 13.7106H19.3684ZM2.42101 8.17772L2.42105 15.9722L9.68417 19.8055V12.0111L2.42101 8.17772ZM10.8947 2.55556L3.75263 6.325L10.8947 10.0944L18.0368 6.325L10.8947 2.55556Z"
                         fill="#F5F5F5"
                       />
@@ -290,8 +338,8 @@ export default function userDetail() {
                       viewBox="0 0 23 23"
                       fill="none">
                       <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
                         d="M10.8947 0L21.7895 5.75V12.604H19.3684V8.17777L12.1052 12.0111V22.3611L10.8947 23L0 17.25V5.75L10.8947 0ZM19.3684 13.7106L19.3684 17.0304H23V19.2436L19.3684 19.2435L19.3684 22.5633H16.9474L16.9473 19.2435L13.3158 19.2436V17.0304H16.9473L16.9474 13.7106H19.3684ZM2.42101 8.17772L2.42105 15.9722L9.68417 19.8055V12.0111L2.42101 8.17772ZM10.8947 2.55556L3.75263 6.325L10.8947 10.0944L18.0368 6.325L10.8947 2.55556Z"
                         fill="#F5F5F5"
                       />
@@ -304,12 +352,12 @@ export default function userDetail() {
             {/* Prev and next Candidate Not working right now */}
             <div className="flex justify-center mt-20">
               <button className=" flex items-center rounded-l-xl p-1 px-3 outline-2 outline outline-grey">
-                <span class="material-symbols-rounded">chevron_left</span>
+                <span className="material-symbols-rounded">chevron_left</span>
                 Prev Candidate
               </button>
               <button className=" flex items-center rounded-r-xl p-1 px-3 outline-2 outline outline-grey">
                 Next Candidate
-                <span class="material-symbols-rounded">chevron_right</span>
+                <span className="material-symbols-rounded">chevron_right</span>
               </button>
             </div>
           </div>
