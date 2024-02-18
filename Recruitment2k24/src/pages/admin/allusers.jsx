@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { saveAs } from "file-saver";
 import useDebounce from "../../hooks/useDebouce";
+import { set } from "zod";
 
 const AllUsers = () => {
   const domainName = sessionStorage.getItem("Domain");
@@ -50,13 +51,15 @@ const AllUsers = () => {
         },
       })
       .then((res) => {
+        console.log(res.data);
         setUser(res.data.userList);
       })
       .catch((e) => {
         console.log("error", e);
       });
   }, [refresh]);
-  // Export to Excel Handler
+
+  // * Export to Excel Handler
   const exportToExcelHandler = () => {
     axios
       .get(`${import.meta.env.VITE_URL}api/admin/project/export-to-excel`, {
@@ -78,6 +81,10 @@ const AllUsers = () => {
       });
   };
 
+  const searchHandler = (e) => {
+    setSearchUser(e.target.value);
+  };
+
   const [shortlist, setshortlist] = useState(false);
   const toggleShortlist = () => {
     setshortlist(!shortlist);
@@ -88,9 +95,30 @@ const AllUsers = () => {
     setinterviewed(!interviewed);
   };
 
-  const [project, setproject] = useState(false);
-  const toggleProject = () => {
-    setproject(!project);
+  const [project, setProject] = useState(false);
+  const showUserByProject = () => {
+    setProject(!project);
+    if (!project) {
+      axios
+        .get(
+          `${import.meta.env.VITE_URL}api/admin/project/SubmittedprojectsList`,
+          {
+            headers: {
+              Authorization: sessionStorage.getItem("Admin Token"),
+            },
+          }
+        )
+        .then((res) => {
+          // ? This needs to send all the users in like an object with only the users
+          // console.log(res.data);
+          setUser(res.data.userDetailsWithSubmissions);
+        })
+        .catch((e) => {
+          console.log("error", e);
+        });
+    } else {
+      setRefresh(!refresh);
+    }
   };
 
   const [year_filter, setFilter] = useState("");
@@ -109,9 +137,8 @@ const AllUsers = () => {
       </div>
 
       <div className="flex justify-between mx-40">
+        {/* SearchBar */}
         <div className="flex items-center gap-5 text-button-text text-2xl">
-          {/* searchbar */}
-          {/* //? Need to use debouncing here to get in the data from the backend using search */}
           <div className="relative">
             <input
               className={
@@ -120,9 +147,8 @@ const AllUsers = () => {
               type="text"
               value={searchUser}
               placeholder="Search by name"
-              onChange={(e) => setSearchUser(e.target.value)}
+              onChange={searchHandler}
             />
-
             <span className="material-symbols-rounded icon absolute left-2 top-1/2 transform -translate-y-1/2 text-grey">
               search
             </span>
@@ -147,7 +173,7 @@ const AllUsers = () => {
           </div>
           {/* projects filter */}
           <button
-            onClick={toggleProject}
+            onClick={showUserByProject}
             className={`flex items-center px-5 py-1 gap-2 border rounded-full border-grey ${
               project ? "bg-purple/30" : ""
             }`}>
@@ -157,7 +183,7 @@ const AllUsers = () => {
               ""
             )}
             <p>Projects&nbsp;Submitted:&nbsp;</p>
-            <span className="font-bold">{domain.projects}</span>
+            <span className="font-bold"></span>
           </button>
           {/* interview filter */}
           <button
