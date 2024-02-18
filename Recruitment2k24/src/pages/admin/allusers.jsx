@@ -3,13 +3,45 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { saveAs } from "file-saver";
+import useDebounce from "../../hooks/useDebouce";
 
 const AllUsers = () => {
   const domainName = sessionStorage.getItem("Domain");
   const [users, setUser] = useState("");
   const [domain, setDomain] = useState(domainName);
+  //Getting user data using search
+  const [searchUser, setSearchUser] = useState("");
+  const debouncedSearchUser = useDebounce(searchUser, 500);
 
-  // ? Get user data acc to the domain
+  // adding a refresh mech to refresh when the search user is empty
+  const [refresh, setRefresh] = useState(false);
+  // * Getting user on search
+  useEffect(() => {
+    if (debouncedSearchUser) {
+      axios
+        .get(
+          `${
+            import.meta.env.VITE_URL
+          }api/admin/profile/search?name=${debouncedSearchUser}`,
+          {
+            headers: {
+              Authorization: sessionStorage.getItem("Admin Token"),
+            },
+          }
+        )
+        .then((res) => {
+          // ? Need to add what happens when no user is found with the name
+          setUser(res.data);
+        })
+        .catch((e) => {
+          console.log("error", e);
+        });
+    } else {
+      setRefresh(!refresh);
+    }
+  }, [debouncedSearchUser]);
+
+  // * Getting user data acc to the domain
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_URL}api/admin/profile/listUsers`, {
@@ -23,7 +55,7 @@ const AllUsers = () => {
       .catch((e) => {
         console.log("error", e);
       });
-  }, []);
+  }, [refresh]);
   // Export to Excel Handler
   const exportToExcelHandler = () => {
     axios
@@ -66,8 +98,6 @@ const AllUsers = () => {
     setFilter(event.target.value);
   };
 
-  const [searchValue, setSearchValue] = useState("");
-
   return (
     <>
       <div className="mx-40">
@@ -88,9 +118,9 @@ const AllUsers = () => {
                 "pl-10 pr-3 py-2 text-sm rounded-full border border-grey"
               }
               type="text"
-              value={searchValue}
+              value={searchUser}
               placeholder="Search by name"
-              onChange={(e) => setSearchValue(e.target.value)}
+              onChange={(e) => setSearchUser(e.target.value)}
             />
 
             <span className="material-symbols-rounded icon absolute left-2 top-1/2 transform -translate-y-1/2 text-grey">

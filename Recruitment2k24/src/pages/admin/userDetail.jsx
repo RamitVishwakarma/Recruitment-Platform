@@ -62,9 +62,6 @@ export default function userDetail() {
               All Users
             </button>
           </Link>
-          <div className="text-3xl">
-            Shorlisted Users:&nbsp;<b>23</b>
-          </div>
         </div>
         {/* User details */}
         {!user ? (
@@ -242,16 +239,14 @@ export default function userDetail() {
                       target="_blank">
                       {user.ProjectSubmission[0].submissionLink
                         ? user.ProjectSubmission[0].submissionLink
-                            .slice(0, 30)
+                            .slice(0, 25)
                             .concat("...")
                         : "Not Submitted"}
                     </a>
                     <span class="material-symbols-rounded">open_in_new</span>
                   </div>
-                  <div className="h-1/2 bg-purple flex items-center justify-between px-3">
-                    <div className="text-white text-xl rounded-b-xl">
-                      Submitted Project
-                    </div>
+                  <div className="h-1/2 bg-purple flex items-center justify-between px-3 rounded-b-xl">
+                    <div className="text-white text-xl ">Submitted Project</div>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="23"
