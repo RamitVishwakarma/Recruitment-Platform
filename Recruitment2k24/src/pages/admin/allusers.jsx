@@ -13,34 +13,10 @@ const AllUsers = () => {
   //Getting user data using search
   const [searchUser, setSearchUser] = useState("");
   const debouncedSearchUser = useDebounce(searchUser, 500);
-
   // adding a refresh mech to refresh when the search user is empty
   const [refresh, setRefresh] = useState(false);
-  // * Getting user on search
-  useEffect(() => {
-    if (debouncedSearchUser) {
-      axios
-        .get(
-          `${
-            import.meta.env.VITE_URL
-          }api/admin/profile/search?name=${debouncedSearchUser}`,
-          {
-            headers: {
-              Authorization: sessionStorage.getItem("Admin Token"),
-            },
-          }
-        )
-        .then((res) => {
-          // ? Need to add what happens when no user is found with the name
-          setUser(res.data);
-        })
-        .catch((e) => {
-          console.log("error", e);
-        });
-    } else {
-      setRefresh(!refresh);
-    }
-  }, [debouncedSearchUser]);
+  // project submitted users
+  const [project, setProject] = useState(false);
 
   // * Getting user data acc to the domain
   useEffect(() => {
@@ -59,43 +35,8 @@ const AllUsers = () => {
       });
   }, [refresh]);
 
-  // * Export to Excel Handler
-  const exportToExcelHandler = () => {
-    axios
-      .get(`${import.meta.env.VITE_URL}api/admin/project/export-to-excel`, {
-        responseType: "blob", // specify response type as blob
-        headers: {
-          Authorization: sessionStorage.getItem("Admin Token"),
-        },
-      })
-      .then((response) => {
-        // Create a blob from the response data
-        const blob = new Blob([response.data], {
-          type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        });
-        // Use FileSaver.js to save the blob as a file
-        saveAs(blob, "UserDetailsAndSubmissions.xlsx");
-      })
-      .catch((error) => {
-        console.error("Error exporting to Excel:", error);
-      });
-  };
+  // Project Submitted Users
 
-  const searchHandler = (e) => {
-    setSearchUser(e.target.value);
-  };
-
-  const [shortlist, setshortlist] = useState(false);
-  const toggleShortlist = () => {
-    setshortlist(!shortlist);
-  };
-
-  const [interviewed, setinterviewed] = useState(false);
-  const toggleInterviewed = () => {
-    setinterviewed(!interviewed);
-  };
-
-  const [project, setProject] = useState(false);
   const showUserByProject = () => {
     setProject(!project);
     if (!project) {
@@ -121,9 +62,87 @@ const AllUsers = () => {
     }
   };
 
+  // * Getting user on search
+  const searchHandler = (e) => {
+    setSearchUser(e.target.value);
+  };
+  useEffect(() => {
+    if (debouncedSearchUser) {
+      axios
+        .get(
+          `${
+            import.meta.env.VITE_URL
+          }api/admin/profile/search?name=${debouncedSearchUser}`,
+          {
+            headers: {
+              Authorization: sessionStorage.getItem("Admin Token"),
+            },
+          }
+        )
+        .then((res) => {
+          // ? Need to add what happens when no user is found with the name
+          setUser(res.data);
+        })
+        .catch((e) => {
+          console.log("error", e);
+        });
+    } else {
+      setRefresh(!refresh);
+    }
+  }, [debouncedSearchUser]);
+
+  // * Export to Excel Handler
+  const exportToExcelHandler = () => {
+    axios
+      .get(`${import.meta.env.VITE_URL}api/admin/project/export-to-excel`, {
+        responseType: "blob", // specify response type as blob
+        headers: {
+          Authorization: sessionStorage.getItem("Admin Token"),
+        },
+      })
+      .then((response) => {
+        // Create a blob from the response data
+        const blob = new Blob([response.data], {
+          type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        });
+        // Use FileSaver.js to save the blob as a file
+        saveAs(blob, "UserDetailsAndSubmissions.xlsx");
+      })
+      .catch((error) => {
+        console.error("Error exporting to Excel:", error);
+      });
+  };
+
+  const [shortlist, setshortlist] = useState(false);
+  const toggleShortlist = () => {
+    setshortlist(!shortlist);
+  };
+  // Year Filter
   const [year_filter, setFilter] = useState("");
   const handleChangeFilter = (event) => {
     setFilter(event.target.value);
+    if (event.target.value) {
+      console.log(event.target.value);
+      axios
+        .get(
+          `${import.meta.env.VITE_URL}api/admin/profile/listUsersByYear?year=${
+            event.target.value
+          }`,
+          {
+            headers: {
+              Authorization: sessionStorage.getItem("Admin Token"),
+            },
+          }
+        )
+        .then((res) => {
+          setUser(res.data.userList);
+        })
+        .catch((e) => {
+          console.log("error", e);
+        });
+    } else {
+      setRefresh(!refresh);
+    }
   };
 
   return (
@@ -157,7 +176,7 @@ const AllUsers = () => {
 
         {/* filters */}
         <div className="flex flex-row text-base text-grey items-center gap-6">
-          {/* year filter */}
+          {/*  Year filter */}
           <div>
             <select
               className={`border rounded-full border-grey py-1 px-5 ${
@@ -167,11 +186,11 @@ const AllUsers = () => {
               value={year_filter}
               onChange={handleChangeFilter}>
               <option value="">Year</option>
-              <option value="1st">1st</option>
-              <option value="2nd">2nd</option>
+              <option value="1">1st</option>
+              <option value="2">2nd</option>
             </select>
           </div>
-          {/* projects filter */}
+          {/* Projects filter */}
           <button
             onClick={showUserByProject}
             className={`flex items-center px-5 py-1 gap-2 border rounded-full border-grey ${
@@ -184,20 +203,6 @@ const AllUsers = () => {
             )}
             <p>Projects&nbsp;Submitted:&nbsp;</p>
             <span className="font-bold"></span>
-          </button>
-          {/* interview filter */}
-          <button
-            onClick={toggleInterviewed}
-            className={`flex items-center px-5 py-1 gap-2 border rounded-full border-grey ${
-              interviewed ? "bg-red/30" : ""
-            }`}>
-            {interviewed ? (
-              <span className="material-symbols-rounded">close</span>
-            ) : (
-              ""
-            )}
-            <p>Interviewed:&nbsp;</p>
-            <span className="font-bold">{domain.interviewed}</span>
           </button>
           {/* shortlist filter */}
           <button
@@ -219,8 +224,7 @@ const AllUsers = () => {
           </p>
         </div>
       </div>
-
-      {/* Table */}
+      {/* Users List */}
       <div className="mx-40 mt-5 text-2xl mb-20">
         <table className="w-full text-center">
           <thead>
@@ -228,9 +232,8 @@ const AllUsers = () => {
               <th className="py-4 px-2">#</th>
               <th className=" text-left w-60">Name</th>
               <th>Year</th>
-              {/*//? Data doesnt give in project link*/}
               <th>Project Status</th>
-              {/* //? The data doesnt send in quiz results maybe : ) */}
+              {/* //? The data doesnt send in quiz results maybe */}
               <th>Quiz Results</th>
               <th>Interview Status</th>
               <th className="w-1/12 pr-4">Shortlisted</th>
@@ -270,7 +273,7 @@ const AllUsers = () => {
             )}
           </tbody>
         </table>
-        {/* Export List */}
+        {/* Export List to Excel*/}
         <div className="flex mt-10 justify-end">
           <button
             onClick={exportToExcelHandler}
