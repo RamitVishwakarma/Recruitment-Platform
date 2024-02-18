@@ -13,7 +13,6 @@ import Dribble from "../../assets/dribble.svg";
 import Popup from "../../components/Popup";
 import Close from "../../assets/close.svg";
 import Password from "../../assets/input-password.svg";
-import { set } from "zod";
 
 // ? Haven't added any client side validations in this page will do it If we have to
 export default function Profile() {
