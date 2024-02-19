@@ -9,13 +9,11 @@ import { set } from "zod";
 const AllUsers = () => {
   const domainName = sessionStorage.getItem("Domain");
   const [users, setUser] = useState("");
-  const [domain, setDomain] = useState(domainName);
   //Getting user data using search
   const [searchUser, setSearchUser] = useState("");
   const debouncedSearchUser = useDebounce(searchUser, 500);
   // adding a refresh mech to refresh when the search user is empty
   const [refresh, setRefresh] = useState(false);
-  // project submitted users
   const [project, setProject] = useState(false);
 
   // * Getting user data acc to the domain
@@ -133,7 +131,7 @@ const AllUsers = () => {
       setRefresh(!refresh);
     }
   };
-  // Year Filter
+  // *Year Filter
   const [yearFilter, setFilter] = useState("");
   const handleChangeFilter = (event) => {
     setFilter(event.target.value);
@@ -262,6 +260,13 @@ const AllUsers = () => {
               </tr>
             ) : (
               users.map((user, index) => {
+                // ?Prev users and next user wont work until the ids are sent from backend as it wil send static user ids and those wont change until backend is hit
+                // console.log(user);
+                // console.log(users[index]);
+                // let prevUsers = users.slice(0, index);
+                // let nextUsers = users.slice(index, users.length - 1);
+                // console.log("prev", prevUsers);
+                // console.log("next", nextUsers);
                 return (
                   <tr
                     key={index}
