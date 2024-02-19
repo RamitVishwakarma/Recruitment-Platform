@@ -11,7 +11,7 @@ const AllUsers = () => {
   const [users, setUser] = useState("");
   //Getting user data using search
   const [searchUser, setSearchUser] = useState("");
-  const debouncedSearchUser = useDebounce(searchUser, 500);
+  const debouncedSearchUser = useDebounce(searchUser, 50);
   // adding a refresh mech to refresh when the search user is empty
   const [refresh, setRefresh] = useState(false);
   const [project, setProject] = useState(false);
@@ -287,7 +287,7 @@ const AllUsers = () => {
                         ? user.interviewStatus
                         : "Not interviewed"}
                     </td>
-                    <td>{user.Shortlist ? "Yes" : "No"}</td>
+                    <td>{user.ShortList ? "Yes" : "No"}</td>
                   </tr>
                 );
               })
