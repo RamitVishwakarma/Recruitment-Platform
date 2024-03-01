@@ -17,6 +17,7 @@ import {
   AllUsers,
   AdminProfile,
   UserDetail,
+  CreateQuiz,
 } from "./utils/lazyloading";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -57,7 +58,8 @@ export default function App() {
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="profile" element={<AdminProfile />} />
               <Route path="users" element={<AllUsers />} />
-              <Route path="user/:id" element={<UserDetail />}></Route>
+              <Route path="user/:id" element={<UserDetail />} />
+              <Route path="createQuiz" element={<CreateQuiz />} />
             </Route>
           </Route>
         </Route>

@@ -11,7 +11,7 @@ import axios from "axios";
 const Dashboard = () => {
   const domain = sessionStorage.getItem("Domain");
   const photo = sessionStorage.getItem("Photo");
-  const [adminInfo, setAdminInfo] = useState("");
+  const [userStatistics, setuserStatistics] = useState("");
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_URL}api/admin/profile/statistics`, {
@@ -20,7 +20,7 @@ const Dashboard = () => {
         },
       })
       .then((res) => {
-        setAdminInfo(res.data);
+        setuserStatistics(res.data);
       })
       .catch((e) => {
         console.log("error", e);
@@ -29,7 +29,7 @@ const Dashboard = () => {
 
   return (
     <>
-      {!adminInfo ? (
+      {!userStatistics ? (
         <div>Loading...</div>
       ) : (
         <div className="h-screen bg-admin-dashboard-bg bg-no-repeat bg-left-bottom">
@@ -61,7 +61,7 @@ const Dashboard = () => {
               </h1>
             </div>
             {/* cards */}
-            <div className="bg-text-box relative overflow-hidden w-fit mt-28 mx-auto px-16 py-16 rounded-3xl">
+            <div className="bg-text-box relative  w-fit mt-28 mx-auto px-16 py-16 rounded-3xl">
               <div className="grid grid-cols-2 grid-rows-2 place-content-center gap-16">
                 <a href="/admin/users">
                   <div className="flex z-10 justify-center items-center gap-8 bg-white w-80 py-6 rounded-2xl">
@@ -70,7 +70,7 @@ const Dashboard = () => {
                     </div>
                     <div>
                       <h2 className="text-3xl">
-                        {adminInfo.registeredUsersCount}
+                        {userStatistics.registeredUsersCount}
                       </h2>
                       <h3 className="text-xl opacity-60">Registered Users</h3>
                     </div>
@@ -83,7 +83,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <h2 className="text-3xl">
-                      {adminInfo.submittedProjectsCount}
+                      {userStatistics.submittedProjectsCount}
                     </h2>
                     <h3 className="text-xl opacity-60">Projects Submitted</h3>
                   </div>
@@ -95,7 +95,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <h2 className="text-3xl">
-                      {adminInfo.shortlistedUsersCount}
+                      {userStatistics.shortlistedUsersCount}
                     </h2>
                     <h3 className="text-xl opacity-60">Users Shortlisted</h3>
                   </div>
@@ -105,9 +105,9 @@ const Dashboard = () => {
                   <div className="w-16 h-16 rounded-full grid place-items-center bg-red/30">
                     <img className="w-8" src={QuizIcon} alt="" />
                   </div>
-                  <div>
-                    <h3 className="text-2xl underline">Manage Quiz</h3>
-                  </div>
+                  <Link to="/admin/createQuiz">
+                    <h3 className="text-2xl underline">Create Quiz</h3>
+                  </Link>
                 </div>
               </div>
             </div>

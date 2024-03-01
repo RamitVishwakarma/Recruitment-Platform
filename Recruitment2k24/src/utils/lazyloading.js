@@ -24,9 +24,9 @@ const AdminProtectedRoute = loadable(() =>
 const AdminLogin = loadable(() => import("../pages/admin/login"));
 const Dashboard = loadable(() => import("../pages/admin/dashboard"));
 const AllUsers = loadable(() => import("../pages/admin/allusers"));
-// ? Need to change the name later
 const UserDetail = loadable(() => import("../pages/admin/userDetail"));
 const AdminProfile = loadable(() => import("../pages/admin/adminProfile"));
+const CreateQuiz = loadable(() => import("../pages/admin/createQuiz"));
 
 export {
   Homepage,
@@ -47,4 +47,5 @@ export {
   AllUsers,
   AdminProfile,
   UserDetail,
+  CreateQuiz,
 };
