@@ -76,7 +76,7 @@ function Registration() {
 
   const yearOptions = ["1", "2"];
   const domainOptions = [
-    "Programmming",
+    "Programming",
     "Web Club",
     "Android Club",
     "Flutter Dev",

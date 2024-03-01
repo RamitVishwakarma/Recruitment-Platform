@@ -1,0 +1,186 @@
+{
+  "First Year": {
+    "Programming": {
+      "Heading": "Do any one of the following",
+      "Tasks": {
+        "Task1": {
+          "Title": "Create a simple calculator",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple calculator using any programming language of your choice. The calculator should be able to perform basic arithmetic operations like addition, subtraction, multiplication, and division."
+        },
+        "Task2": {
+          "Title": "Create a simple chat application",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple chat application using any programming language of your choice. The chat application should be able to send and receive messages between two users."
+        }
+      }
+    },
+    "Web Club": {
+      "Heading": "Do any one of the following",
+      "Tasks": {
+        "Task1": {
+          "Title": "Create a web Page",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple calculator using any programming language of your choice. The calculator should be able to perform basic arithmetic operations like addition, subtraction, multiplication, and division."
+        },
+        "Task2": {
+          "Title": "Create a simple chat application",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple chat application using any programming language of your choice. The chat application should be able to send and receive messages between two users."
+        }
+      }
+    },
+    "Android Club": {
+      "Heading": "Do any one of the following",
+      "Tasks": {
+        "Task1": {
+          "Title": "Create an app",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple calculator using any programming language of your choice. The calculator should be able to perform basic arithmetic operations like addition, subtraction, multiplication, and division."
+        },
+        "Task2": {
+          "Title": "Create a simple chat application",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple chat application using any programming language of your choice. The chat application should be able to send and receive messages between two users."
+        }
+      }
+    },
+    "Flutter Dev": {
+      "Heading": "Do any one of the following",
+      "Tasks": {
+        "Task1": {
+          "Title": "Create a simple calculator",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple calculator using any programming language of your choice. The calculator should be able to perform basic arithmetic operations like addition, subtraction, multiplication, and division."
+        },
+        "Task2": {
+          "Title": "Create a simple chat application",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple chat application using any programming language of your choice. The chat application should be able to send and receive messages between two users."
+        }
+      }
+    },
+    "Design Club": {
+      "Heading": "Do any one of the following",
+      "Tasks": {
+        "Task1": {
+          "Title": "Create a simple calculator",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple calculator using any programming language of your choice. The calculator should be able to perform basic arithmetic operations like addition, subtraction, multiplication, and division."
+        },
+        "Task2": {
+          "Title": "Create a simple chat application",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple chat application using any programming language of your choice. The chat application should be able to send and receive messages between two users."
+        }
+      }
+    },
+    "ML Club": {
+      "Heading": "Do any one of the following",
+      "Tasks": {
+        "Task1": {
+          "Title": "Create a simple calculator",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple calculator using any programming language of your choice. The calculator should be able to perform basic arithmetic operations like addition, subtraction, multiplication, and division."
+        },
+        "Task2": {
+          "Title": "Create a simple chat application",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple chat application using any programming language of your choice. The chat application should be able to send and receive messages between two users."
+        }
+      }
+    }
+  },
+  "Second Year": {
+    "Programming": {
+      "Heading": "Do any one of the following",
+      "Tasks": {
+        "Task1": {
+          "Title": "Create a simple calculator 2nd year",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple calculator using any programming language of your choice. The calculator should be able to perform basic arithmetic operations like addition, subtraction, multiplication, and division."
+        },
+        "Task2": {
+          "Title": "Create a simple chat application",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple chat application using any programming language of your choice. The chat application should be able to send and receive messages between two users."
+        }
+      }
+    },
+    "Web Club": {
+      "Heading": "Do any one of the following",
+      "Tasks": {
+        "Task1": {
+          "Title": "Create Web page 2nd year",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple calculator using any programming language of your choice. The calculator should be able to perform basic arithmetic operations like addition, subtraction, multiplication, and division."
+        },
+        "Task2": {
+          "Title": "Create a simple chat application",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple chat application using any programming language of your choice. The chat application should be able to send and receive messages between two users."
+        }
+      }
+    },
+    "Android Club": {
+      "Heading": "Do any one of the following",
+      "Tasks": {
+        "Task1": {
+          "Title": "Create an app 2nd yr",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple calculator using any programming language of your choice. The calculator should be able to perform basic arithmetic operations like addition, subtraction, multiplication, and division."
+        },
+        "Task2": {
+          "Title": "Create a simple chat application",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple chat application using any programming language of your choice. The chat application should be able to send and receive messages between two users."
+        }
+      }
+    },
+    "Flutter Dev": {
+      "Heading": "Do any one of the following",
+      "Tasks": {
+        "Task1": {
+          "Title": "Create a simple calculator",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple calculator using any programming language of your choice. The calculator should be able to perform basic arithmetic operations like addition, subtraction, multiplication, and division."
+        },
+        "Task2": {
+          "Title": "Create a simple chat application",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple chat application using any programming language of your choice. The chat application should be able to send and receive messages between two users."
+        }
+      }
+    },
+    "Design Club": {
+      "Heading": "Do any one of the following",
+      "Tasks": {
+        "Task1": {
+          "Title": "Create a simple calculator",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple calculator using any programming language of your choice. The calculator should be able to perform basic arithmetic operations like addition, subtraction, multiplication, and division."
+        },
+        "Task2": {
+          "Title": "Create a simple chat application",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple chat application using any programming language of your choice. The chat application should be able to send and receive messages between two users."
+        }
+      }
+    },
+    "ML Club": {
+      "Heading": "Do any one of the following",
+      "Tasks": {
+        "Task1": {
+          "Title": "Create a simple calculator",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple calculator using any programming language of your choice. The calculator should be able to perform basic arithmetic operations like addition, subtraction, multiplication, and division."
+        },
+        "Task2": {
+          "Title": "Create a simple chat application",
+          "Image": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "Description": "Create a simple chat application using any programming language of your choice. The chat application should be able to send and receive messages between two users."
+        }
+      }
+    }
+  }
+}
