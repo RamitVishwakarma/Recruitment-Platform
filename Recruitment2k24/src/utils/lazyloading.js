@@ -29,4 +29,5 @@ export const AdminProfile = loadable(() =>
   import("../pages/admin/adminProfile")
 );
 export const CreateQuiz = loadable(() => import("../pages/admin/createQuiz"));
+export const GetAllQuiz = loadable(() => import("../pages/admin/getAllQuiz"));
 export const UpdateQuiz = loadable(() => import("../pages/admin/updateQuiz"));
