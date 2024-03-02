@@ -12,13 +12,17 @@ import design from "../../assets/design.svg";
 
 import { Link } from "react-router-dom";
 const Quizes = () => {
+  const name = sessionStorage.getItem("name");
+  const photo = sessionStorage.getItem("photo");
+  const domain = sessionStorage.getItem("Domain");
+
   return (
     <>
       <div className="h-[88vh]">
         <div className="mx-40mx-5 md:mx-20 xl:mx-40">
           <Header>
             <div className="min-w-80 max-md:mt-10">
-              <HeaderProfile />
+              <HeaderProfile name={name} photo={photo} />
             </div>
           </Header>
           <div className="flex">
