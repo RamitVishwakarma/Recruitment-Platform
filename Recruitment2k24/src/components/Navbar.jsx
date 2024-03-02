@@ -21,22 +21,16 @@ export default function Navbar({ buttonType }) {
 
   const navigate = useNavigate();
   const logoutHandler = () => {
-    axios
-      .post(
-        `${import.meta.env.VITE_URL}api/user/auth/logout`,
-        {},
-        {
-          headers: {
-            Authorization: sessionStorage.getItem("Authorization"),
-          },
-        }
-      )
-      .then((res) => {
-        sessionStorage.clear();
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    axios.post(
+      `${import.meta.env.VITE_URL}api/user/auth/logout`,
+      {},
+      {
+        headers: {
+          Authorization: sessionStorage.getItem("Authorization"),
+        },
+      }
+    );
+    sessionStorage.clear();
     navigate("/");
   };
 

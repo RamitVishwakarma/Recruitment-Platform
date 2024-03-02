@@ -198,7 +198,7 @@ const EditProfile = ({ admin, changeActiveButtonToPass }) => {
       )
       .then((res) => {
         //? After the profile is upadted in backend i need to update the photo in the sessions storage
-        // console.log(res).data.user.;
+        console.log(res.data.user);
         alert("Profile Updated Successfully");
       })
       .catch((e) => {

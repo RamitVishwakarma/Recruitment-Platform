@@ -8,6 +8,7 @@ export default function CreateQuiz() {
   const [title, setTitle] = useState("");
   const [duration, setDuration] = useState("");
   const [explaination, setExplaination] = useState("");
+  const [year, setYear] = useState();
 
   const [questions, setQuestions] = useState([]);
   const [questionNumber, setQuestionNumber] = useState(0);
@@ -65,6 +66,7 @@ export default function CreateQuiz() {
       domain: sessionStorage.getItem("Domain"),
       questions: questions,
       duration: duration,
+      year: year,
     };
     axios
       .post(`${import.meta.env.VITE_URL}api/admin/Quiz/createQuiz`, formData, {
@@ -104,6 +106,12 @@ export default function CreateQuiz() {
             type="text"
             placeholder="Title of the Quiz"
             onChange={(e) => setTitle(e.target.value)}
+          />
+          <input
+            className="w-80 h-12"
+            type="text"
+            placeholder="Year of the Quiz(1/2)"
+            onChange={(e) => setYear(e.target.value)}
           />
           <input
             className="w-80 h-12"
