@@ -168,7 +168,7 @@ const EditProfile = ({ admin, changeActiveButtonToPass }) => {
   };
   // Handle image upload
   const handleFileChange = (e) => {
-    console.log(e.target.files[0]);
+    // console.log(e.target.files[0]);
     if (e.target.files[0].size > 2000000) {
       alert("File should be below 2MB in size");
     } else {
@@ -197,7 +197,8 @@ const EditProfile = ({ admin, changeActiveButtonToPass }) => {
         }
       )
       .then((res) => {
-        console.log(res);
+        //? After the profile is upadted in backend i need to update the photo in the sessions storage
+        // console.log(res).data.user.;
         alert("Profile Updated Successfully");
       })
       .catch((e) => {
