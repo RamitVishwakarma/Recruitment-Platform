@@ -3,13 +3,16 @@ import HeaderProfile from "../../components/HeaderProfile";
 import { Link } from "react-router-dom";
 
 export default function QuizHome() {
+  const name = sessionStorage.getItem("name");
+  const photo = sessionStorage.getItem("photo");
   return (
     <>
       <div className="h-full">
         <div className="mx-40">
           <Header>
-            {/* REMOVE THE COMPLETE PROFILE LINK FROM HERE */}
-            <HeaderProfile />
+            <div className="min-w-80 max-md:mt-10">
+              <HeaderProfile name={name} photo={photo} />
+            </div>
           </Header>
           <h1 className="text-5xl font-bold text-center pb-2">
             Lets start the Quiz!
