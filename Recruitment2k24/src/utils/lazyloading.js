@@ -1,51 +1,32 @@
 import loadable from "@loadable/component";
 // ? add nav in loadable
 // User pages import
-const Homepage = loadable(() => import("../pages/user/Homepage"));
-const Layout = loadable(() => import("../components/Layout"));
-const Auth = loadable(() => import("../pages/user/Auth"), {
+export const Homepage = loadable(() => import("../pages/user/Homepage"));
+export const Layout = loadable(() => import("../components/Layout"));
+export const Auth = loadable(() => import("../pages/user/Auth"), {
   resolveComponent: (component) => component.Auth,
 });
-const Tasks = loadable(() => import("../pages/user/Tasks"));
-const ResetPass = loadable(() => import("../pages/user/ResetPass"));
-const UserHome = loadable(() => import("../pages/user/UserHome"));
-const ProjectSubmission = loadable(() =>
+export const Tasks = loadable(() => import("../pages/user/Tasks"));
+export const ResetPass = loadable(() => import("../pages/user/ResetPass"));
+export const UserHome = loadable(() => import("../pages/user/UserHome"));
+export const ProjectSubmission = loadable(() =>
   import("../pages/user/ProjectSubmission")
 );
-const Profile = loadable(() => import("../pages/user/Profile"));
-const Quizes = loadable(() => import("../pages/user/Quizes"));
-const QuizHome = loadable(() => import("../pages/user/QuizHome"));
-const QuizPage = loadable(() => import("../pages/user/QuizPage"));
-const ProtectedRoute = loadable(() => import("../utils/ProtectedRoute"));
+export const Profile = loadable(() => import("../pages/user/Profile"));
+export const Quizes = loadable(() => import("../pages/user/Quizes"));
+export const QuizHome = loadable(() => import("../pages/user/QuizHome"));
+export const QuizPage = loadable(() => import("../pages/user/QuizPage"));
+export const ProtectedRoute = loadable(() => import("../utils/ProtectedRoute"));
 // Admin pages import
-const AdminProtectedRoute = loadable(() =>
+export const AdminProtectedRoute = loadable(() =>
   import("../utils/AdminProtectedRoute")
 );
-const AdminLogin = loadable(() => import("../pages/admin/login"));
-const Dashboard = loadable(() => import("../pages/admin/dashboard"));
-const AllUsers = loadable(() => import("../pages/admin/allusers"));
-const UserDetail = loadable(() => import("../pages/admin/userDetail"));
-const AdminProfile = loadable(() => import("../pages/admin/adminProfile"));
-const CreateQuiz = loadable(() => import("../pages/admin/createQuiz"));
-
-export {
-  Homepage,
-  Layout,
-  Auth,
-  Tasks,
-  ResetPass,
-  UserHome,
-  ProjectSubmission,
-  Profile,
-  Quizes,
-  QuizHome,
-  QuizPage,
-  ProtectedRoute,
-  AdminProtectedRoute,
-  AdminLogin,
-  Dashboard,
-  AllUsers,
-  AdminProfile,
-  UserDetail,
-  CreateQuiz,
-};
+export const AdminLogin = loadable(() => import("../pages/admin/login"));
+export const Dashboard = loadable(() => import("../pages/admin/dashboard"));
+export const AllUsers = loadable(() => import("../pages/admin/allusers"));
+export const UserDetail = loadable(() => import("../pages/admin/userDetail"));
+export const AdminProfile = loadable(() =>
+  import("../pages/admin/adminProfile")
+);
+export const CreateQuiz = loadable(() => import("../pages/admin/createQuiz"));
+export const UpdateQuiz = loadable(() => import("../pages/admin/updateQuiz"));
