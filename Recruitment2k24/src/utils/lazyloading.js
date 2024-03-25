@@ -3,9 +3,7 @@ import loadable from "@loadable/component";
 // User pages import
 export const Homepage = loadable(() => import("../pages/user/Homepage"));
 export const Layout = loadable(() => import("../components/Layout"));
-export const Auth = loadable(() => import("../pages/user/Auth"), {
-  resolveComponent: (component) => component.Auth,
-});
+export const Auth = loadable(() => import("../pages/user/Authentication/Auth"));
 export const Tasks = loadable(() => import("../pages/user/Tasks"));
 export const ResetPass = loadable(() => import("../pages/user/ResetPass"));
 export const UserHome = loadable(() => import("../pages/user/UserHome"));
