@@ -57,36 +57,35 @@ export default function Registration() {
     year === "" ? error[year](true) : error[year](false);
     domain === "" ? error[domain](true) : error[domain](false);
     // Validation of form data
-    const useAxiosResponse = useAxios("post", "api/user/auth/signup", data);
-    console.log(useAxiosResponse);
-    //   axios
-    //     .post(`${import.meta.env.VITE_URL}api/user/auth/signup`, data)
-    //     .then((res) => {
-    //       if (res.status === 201) {
-    //         alert("Successfull Signup kindly login");
-    //         setToast(true);
-    //         setToastText("Successfully registered!  You can login now.");
-    //         setTimeout(() => {
-    //           setToast(false);
-    //         }, 4500);
-    //       }
-    //     })
-    //     .catch((e) => {
-    //       console.log(e);
-    //       if (e.response.status === 409) {
-    //         setToast(true);
-    //         setToastText("User already exists!  Please login.");
-    //         setTimeout(() => {
-    //           setToast(false);
-    //         }, 4500);
-    //       } else {
-    //         setToast(true);
-    //         setToastText("Something went wrong!  Please try again.");
-    //         setTimeout(() => {
-    //           setToast(false);
-    //         }, 4500);
-    //       }
-    //     });
+
+    axios
+      .post(`${import.meta.env.VITE_URL}api/user/auth/signup`, data)
+      .then((res) => {
+        if (res.status === 201) {
+          alert("Successfull Signup kindly login");
+          setToast(true);
+          setToastText("Successfully registered!  You can login now.");
+          setTimeout(() => {
+            setToast(false);
+          }, 4500);
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+        if (e.response.status === 409) {
+          setToast(true);
+          setToastText("User already exists!  Please login.");
+          setTimeout(() => {
+            setToast(false);
+          }, 4500);
+        } else {
+          setToast(true);
+          setToastText("Something went wrong!  Please try again.");
+          setTimeout(() => {
+            setToast(false);
+          }, 4500);
+        }
+      });
   };
   return (
     <>
