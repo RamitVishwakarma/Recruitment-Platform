@@ -91,7 +91,6 @@ export default function Profile() {
 
   return (
     <>
-      {console.log("update")}
       {!user ? (
         <div>Loading...</div>
       ) : (
@@ -342,14 +341,15 @@ function Links({ ico, text }) {
 
 function EditProfile({ user, changeActiveButtonToPass }) {
   // Edit profile logic
-
-  const [name, SetName] = useState(user.name);
-  const [admissionNumber, SetAdmissionNumber] = useState(user.admissionNumber);
-  const [year, SetYear] = useState(user.year);
-  const [domain, SetDomain] = useState(user.domain);
-  const [phoneNumber, SetPhoneNumber] = useState(user.phoneNumber);
-  const [file, setFile] = useState(user.photo);
-
+  const [updatedData, setUpdatedData] = useState({
+    name: user.name,
+    admissionNumber: user.admissionNumber,
+    year: user.year,
+    domain: user.domain,
+    phoneNumber: user.phoneNumber,
+    photo: user.photo,
+  });
+  //File upload
   const handleFileUploadButton = () => {
     document.querySelector(".imgfile").click();
   };
@@ -360,38 +360,21 @@ function EditProfile({ user, changeActiveButtonToPass }) {
       setFile(e.target.files[0]);
     }
   };
-
-  const handleName = (e) => {
-    SetName(e.target.value);
+  // data change
+  const dropDownHandler = (value, name) => {
+    setUpdatedData({ ...updatedData, [name]: value });
   };
-  const handleAdmissionNumber = (e) => {
-    SetAdmissionNumber(e.target.value);
-  };
-  const handleYear = (e) => {
-    SetYear(e.target.value);
-  };
-  const handleDomain = (e) => {
-    SetDomain(e.target.value);
-  };
-  const handlePhoneNumber = (e) => {
-    SetPhoneNumber(e.target.value);
+  const handleFormData = (e) => {
+    setUpdatedData({ ...updatedData, [e.target.name]: e.target.value });
   };
 
   const editProfileFormHandler = (e) => {
     e.preventDefault();
-    const updatedUser = {
-      name: name,
-      phoneNumber: phoneNumber,
-      photo: file,
-      year: year,
-      domain: domain,
-      admissionNumber: admissionNumber,
-    };
-    // Need to ask how to go about the photo part
+    console.log(updatedData);
     axios
       .put(
         `${import.meta.env.VITE_URL}api/user/profile/Updateprofile`,
-        updatedUser,
+        updatedData,
         {
           headers: {
             Authorization: sessionStorage.getItem("Authorization"),
@@ -410,16 +393,6 @@ function EditProfile({ user, changeActiveButtonToPass }) {
         alert("Some error occured, please try again later");
       });
   };
-
-  const yearOptions = ["1", "2"];
-  const domainOptions = [
-    "Programmming",
-    "Web Club",
-    "Android Club",
-    "Flutter Dev",
-    "Design Club",
-    "ML Club",
-  ];
 
   // deleting the user's account
   // ? Thinking about a comfirmation popup
@@ -450,7 +423,11 @@ function EditProfile({ user, changeActiveButtonToPass }) {
         <form onSubmit={editProfileFormHandler} encType="multipart/form-data">
           <img
             className="w-32 h-32 object-cover rounded-full"
-            src={file === user.photo ? file : URL.createObjectURL(file)}
+            src={
+              updatedData.photo === user.photo
+                ? updatedData.photo
+                : URL.createObjectURL(file)
+            }
           />
           <input
             id="imgFile"
@@ -483,8 +460,8 @@ function EditProfile({ user, changeActiveButtonToPass }) {
             icon="account_box"
             type="text"
             placeholder="Enter Your Name"
-            onChangeHandler={handleName}
-            value={name}
+            onChangeHandler={handleFormData}
+            value={updatedData.name}
           />
           <Input
             id="contact"
@@ -492,8 +469,8 @@ function EditProfile({ user, changeActiveButtonToPass }) {
             icon="call"
             type="text"
             placeholder="+91 XXXXXXXXXX"
-            onChangeHandler={handlePhoneNumber}
-            value={phoneNumber}
+            onChangeHandler={handleFormData}
+            value={updatedData.phoneNumber}
           />
           <Input
             id="admission number"
@@ -501,8 +478,8 @@ function EditProfile({ user, changeActiveButtonToPass }) {
             icon="badge"
             type="text"
             placeholder="Enter Your Admission Number"
-            onChangeHandler={handleAdmissionNumber}
-            value={admissionNumber}
+            onChangeHandler={handleFormData}
+            value={updatedData.admissionNumber}
           />
           {/* Year */}
           {/* //? Will need to select the year and domain again untill I figure out the select thing  */}
@@ -512,8 +489,6 @@ function EditProfile({ user, changeActiveButtonToPass }) {
             icon="school"
             label="Year"
             onChangeOptionHandler={dropDownHandler}
-            error={error.year}
-            errorMessage={"Select an Year"}
           />
           {/* Domain */}
           <Dropdown
@@ -530,8 +505,6 @@ function EditProfile({ user, changeActiveButtonToPass }) {
             icon="cards"
             label="Domain"
             onChangeOptionHandler={dropDownHandler}
-            error={error.domain}
-            errorMessage={"Select a Domain"}
           />
           {/* Save Button */}
           <button
