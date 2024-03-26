@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Listbox } from "@headlessui/react";
 import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
-import { set } from "zod";
 
 export default function DropDown({
   options,
@@ -9,6 +8,8 @@ export default function DropDown({
   label,
   name,
   onChangeOptionHandler,
+  error,
+  errorMessage,
 }) {
   const [option, setOption] = useState(options[0]);
 
@@ -22,8 +23,16 @@ export default function DropDown({
       <Listbox value={option} onChange={setOption}>
         <div className="relative mt-1">
           <div className="flex flex-col">
-            <span>{label}</span>
-            <Listbox.Button className="relative h-12 w-80  bg-white min-w-72 cursor-pointer rounded-lg  py-2 pl-3 pr-10 text-left outline outline-1 hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue">
+            <div className="flex justify-between">
+              <span>{label}</span>
+              {error ? (
+                <span className="text-red sm:mr-3 xl:mr-0">{errorMessage}</span>
+              ) : null}
+            </div>
+            <Listbox.Button
+              className={` ${
+                error ? "outline outline-2 outline-red border-red" : ""
+              } relative h-12 w-80  bg-white min-w-72 cursor-pointer rounded-lg  py-2 pl-3 pr-10 text-left outline outline-1 hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}>
               <span className="block truncate">{option}</span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                 <ChevronUpDownIcon

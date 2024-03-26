@@ -52,16 +52,20 @@ export default function Registration() {
       : setError({ ...error, [e.target.name]: true });
   };
   const dropDownHandler = (value, name) => {
+    console.log(value, name);
     setData({ ...data, [name]: value });
-    console.log(data);
   };
 
   const formSubmitHandler = async (e) => {
     e.preventDefault();
     // setToast(false);
     // On click of submit button, check if any of the fields are empty, if yes, set the error state to true, else false.
-    // year === "" ? error[year](true) : error[year](false);
-    // domain === "" ? error[domain](true) : error[domain](false);
+    data.year === "" || "Select an Year"
+      ? setError({ ...error, year: true })
+      : setError({ ...error, year: false });
+    data.domain === "" || "Select an Year"
+      ? setError({ ...error, domain: true })
+      : setError({ ...error, domain: false });
 
     axios
       .post(`${import.meta.env.VITE_URL}api/user/auth/signup`, data)
@@ -119,6 +123,8 @@ export default function Registration() {
               icon="school"
               label="Year"
               onChangeOptionHandler={dropDownHandler}
+              error={error.year}
+              errorMessage={"Select an Year"}
             />
             <Dropdown
               options={domainOptions}
@@ -126,6 +132,8 @@ export default function Registration() {
               icon="cards"
               label="Domain"
               onChangeOptionHandler={dropDownHandler}
+              error={error.domain}
+              errorMessage={"Select a Domain"}
             />
             {/* <Dropdown options={["Option 1", "Option 2", "Option 3"]} /> */}
             {/* Year
