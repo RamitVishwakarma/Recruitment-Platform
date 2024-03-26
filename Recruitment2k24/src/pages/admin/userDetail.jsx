@@ -10,7 +10,6 @@ import Behance from "../../assets/behance.svg";
 import Hackerrank from "../../assets/hackerrank.svg";
 import Github from "../../assets/footer-git.svg";
 import Dribble from "../../assets/dribble.svg";
-import { set } from "zod";
 
 export default function userDetail() {
   // get id from params

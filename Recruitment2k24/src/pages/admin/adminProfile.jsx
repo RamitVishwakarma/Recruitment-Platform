@@ -2,7 +2,8 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Input, Select } from "../user/Auth";
+import Input from "../../components/Input";
+import Dropdown from "../../components/DropDown";
 import Header from "../../components/Header";
 import Popup from "../../components/Popup";
 // SVGS
@@ -140,32 +141,14 @@ function AdminProfile() {
 }
 
 const EditProfile = ({ admin, changeActiveButtonToPass }) => {
-  const [name, setName] = useState(admin.name);
-  const [phoneNumber, setPhoneNumber] = useState(admin.phoneNumber);
-  const [email, setEmail] = useState(admin.email);
-  const [domain, setDomain] = useState(admin.domain);
-  const [file, setFile] = useState(admin.photo);
-  const domainOptions = [
-    "Programmming",
-    "Web Club",
-    "Android Club",
-    "Flutter Dev",
-    "Design Club",
-    "ML Club",
-  ];
-
-  const handleName = (e) => {
-    setName(e.target.value);
-  };
-  const handlePhoneNumber = (e) => {
-    setPhoneNumber(e.target.value);
-  };
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  };
-  const handleDomain = (e) => {
-    setDomain(e.target.value);
-  };
+  // Input field states
+  const [data, setData] = useState({
+    name: admin.name,
+    phoneNumber: admin.phoneNumber,
+    email: admin.email,
+    domain: admin.domain,
+    photo: admin.photo,
+  });
   // Handle image upload
   const handleFileChange = (e) => {
     // console.log(e.target.files[0]);
@@ -178,24 +161,19 @@ const EditProfile = ({ admin, changeActiveButtonToPass }) => {
   const handleFileUploadButton = () => {
     document.querySelector(".imgfile").click();
   };
+  const dropDownHandler = (value, name) => {
+    setData({ ...data, [name]: value });
+  };
+  const handleFormData = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    const formData = {
-      name: name,
-      phoneNumber: phoneNumber,
-      email: email,
-      domain: domain,
-      photo: file,
-    };
     axios
-      .put(
-        `${import.meta.env.VITE_URL}api/admin/profile/Updateprofile`,
-        formData,
-        {
-          headers: { Authorization: sessionStorage.getItem("Admin Token") },
-        }
-      )
+      .put(`${import.meta.env.VITE_URL}api/admin/profile/Updateprofile`, data, {
+        headers: { Authorization: sessionStorage.getItem("Admin Token") },
+      })
       .then((res) => {
         //? After the profile is upadted in backend i need to update the photo in the sessions storage
         console.log(res.data.user);
@@ -216,7 +194,9 @@ const EditProfile = ({ admin, changeActiveButtonToPass }) => {
         {/* Image Section */}
         <img
           className="w-32 h-32 object-cover rounded-full"
-          src={file === admin.photo ? file : URL.createObjectURL(file)}
+          src={
+            data.photo === admin.photo ? data.photo : URL.createObjectURL(file)
+          }
         />
         <input
           type="file"
@@ -249,8 +229,8 @@ const EditProfile = ({ admin, changeActiveButtonToPass }) => {
           icon="account_box"
           type="text"
           placeholder="Enter Your Name"
-          onChangeHandler={handleName}
-          value={name}
+          onChangeHandler={handleFormData}
+          value={data.name}
         />
         {/* Phone number */}
         <Input
@@ -259,8 +239,8 @@ const EditProfile = ({ admin, changeActiveButtonToPass }) => {
           icon="call"
           type="text"
           placeholder="+91 XXXXXXXXXX"
-          onChangeHandler={handlePhoneNumber}
-          value={phoneNumber}
+          onChangeHandler={handleFormData}
+          value={data.phoneNumber}
         />
         {/* Email */}
         <Input
@@ -269,19 +249,24 @@ const EditProfile = ({ admin, changeActiveButtonToPass }) => {
           icon="alternate_email"
           type="text"
           placeholder="someone@gmail.com"
-          onChangeHandler={handleEmail}
-          value={email}
+          onChangeHandler={handleFormData}
+          value={data.email}
         />
-        {/* //? Will need to select the year and domain again untill I figure out the select thing  */}
         {/* Domain */}
-        <Select
-          id="domain"
-          label="Domain"
+        <Dropdown
+          options={[
+            "Select a Domain",
+            "Programming",
+            "Web Club",
+            "Android Club",
+            "Flutter Dev",
+            "Design Club",
+            "ML Club",
+          ]}
+          name="domain"
           icon="cards"
-          selected={"Select Year"}
-          selectedValue={domain}
-          onChangeHandler={handleDomain}
-          data={domainOptions}
+          label="Domain"
+          onChangeOptionHandler={dropDownHandler}
         />
         {/* Save Button */}
         <button

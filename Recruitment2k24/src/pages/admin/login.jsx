@@ -1,5 +1,5 @@
 import Header from "../../components/Header";
-import { Input } from "../user/Auth";
+import Input from "../../components/Input";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
