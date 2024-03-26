@@ -6,16 +6,6 @@ import GoogleAuthentication from "./GoogleAuthentication";
 import axios from "axios";
 
 export default function Registration() {
-  const yearOptions = ["Select an Year", "1", "2"];
-  const domainOptions = [
-    "Select a Domain",
-    "Programming",
-    "Web Club",
-    "Android Club",
-    "Flutter Dev",
-    "Design Club",
-    "ML Club",
-  ];
   // form data
   const [data, setData] = useState({
     name: "",
@@ -43,6 +33,7 @@ export default function Registration() {
     email: false,
     password: false,
   });
+  // handle form data
   const handleFormData = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
     formSchema
@@ -51,37 +42,53 @@ export default function Registration() {
       ? setError({ ...error, [e.target.name]: false })
       : setError({ ...error, [e.target.name]: true });
   };
+  // handling domain and year selection
   const dropDownHandler = (value, name) => {
-    console.log(value, name);
     setData({ ...data, [name]: value });
   };
 
   const formSubmitHandler = async (e) => {
     e.preventDefault();
-    // setToast(false);
-    // On click of submit button, check if any of the fields are empty, if yes, set the error state to true, else false.
-    data.year === "" || "Select an Year"
-      ? setError({ ...error, year: true })
-      : setError({ ...error, year: false });
-    data.domain === "" || "Select an Year"
-      ? setError({ ...error, domain: true })
-      : setError({ ...error, domain: false });
+    let invalidData = false;
+    // On click of submit button, check if any of the fields are empty, if yes, set the error state to true, else false and continue.
+    if (data.domain === "" || data.domain === "Select a Domain") {
+      setError((prevError) => ({ ...prevError, domain: true }));
+      invalidData = true;
+    } else {
+      setError((prevError) => ({ ...prevError, domain: false }));
+    }
 
-    axios
-      .post(`${import.meta.env.VITE_URL}api/user/auth/signup`, data)
-      .then((res) => {
-        if (res.status === 201) {
-          alert("Successfull Signup kindly login");
-        }
-      })
-      .catch((e) => {
-        console.log(e);
-        if (e.response.status === 409) {
-          alert("User already exists!  Please login.");
-        } else {
-          alert("Something went wrong!  Please try again.");
-        }
-      });
+    if (data.year === "" || data.year === "Select an Year") {
+      setError((prevError) => ({ ...prevError, year: true }));
+      invalidData = true;
+    } else {
+      setError((prevError) => ({ ...prevError, year: false }));
+    }
+    // ? Parsing the data and validating
+    if (!invalidData) {
+      let validation = formSchema.safeParse(data);
+      if (!validation.success) {
+        invalidData = true;
+      }
+    }
+    console.log(data);
+    if (!invalidData) {
+      axios
+        .post(`${import.meta.env.VITE_URL}api/user/auth/signup`, data)
+        .then((res) => {
+          if (res.status === 201) {
+            alert("Successfull Signup kindly login");
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+          if (e.response.status === 409) {
+            alert("User already exists!  Please login.");
+          } else {
+            alert("Something went wrong!  Please try again.");
+          }
+        });
+    }
   };
   return (
     <>
@@ -116,9 +123,9 @@ export default function Registration() {
               errorHandler={error.admissionNumber}
               errorMessage={"Invalid Number"}
             />
-
+            {/* Year */}
             <Dropdown
-              options={yearOptions}
+              options={["Select an Year", "1", "2"]}
               name="year"
               icon="school"
               label="Year"
@@ -126,8 +133,17 @@ export default function Registration() {
               error={error.year}
               errorMessage={"Select an Year"}
             />
+            {/* Domain */}
             <Dropdown
-              options={domainOptions}
+              options={[
+                "Select a Domain",
+                "Programming",
+                "Web Club",
+                "Android Club",
+                "Flutter Dev",
+                "Design Club",
+                "ML Club",
+              ]}
               name="domain"
               icon="cards"
               label="Domain"

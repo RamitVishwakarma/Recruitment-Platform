@@ -25,9 +25,7 @@ export default function DropDown({
           <div className="flex flex-col">
             <div className="flex justify-between">
               <span>{label}</span>
-              {error ? (
-                <span className="text-red sm:mr-3 xl:mr-0">{errorMessage}</span>
-              ) : null}
+              {error ? <span className="text-red">{errorMessage}</span> : null}
             </div>
             <Listbox.Button
               className={` ${
@@ -42,7 +40,7 @@ export default function DropDown({
               </span>
             </Listbox.Button>
           </div>
-          <Listbox.Options className="custom-scrollbar absolute mt-1 max-h-60 w-full overflow-auto rounded-md outline outline-2 outline-light-blue bg-white py-1 text-base sm:text-sm">
+          <Listbox.Options className="z-10 custom-scrollbar absolute mt-1 max-h-60 w-full overflow-auto rounded-md outline outline-2 outline-light-blue bg-white py-1 text-base sm:text-sm">
             {options.map((option, index) => (
               <Listbox.Option
                 key={index}
