@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { z } from "zod";
+import { set, z } from "zod";
 import Input from "../../../components/Input";
 import Dropdown from "../../../components/DropDown";
 import GoogleAuthentication from "./GoogleAuthentication";
@@ -51,15 +51,11 @@ export default function Registration() {
       ? setError({ ...error, [e.target.name]: false })
       : setError({ ...error, [e.target.name]: true });
   };
-  const dropDownHandler = (e) => {
-    console.log(e);
-    setData({ ...data, [e.target.name]: e.target.value });
-    formSchema
-      .pick({ [e.target.name]: true })
-      .safeParse({ [e.target.name]: e.target.value }).success
-      ? setError({ ...error, [e.target.name]: false })
-      : setError({ ...error, [e.target.name]: true });
+  const dropDownHandler = (value, name) => {
+    setData({ ...data, [name]: value });
+    console.log(data);
   };
+
   const formSubmitHandler = async (e) => {
     e.preventDefault();
     // setToast(false);
@@ -117,8 +113,20 @@ export default function Registration() {
               errorMessage={"Invalid Number"}
             />
 
-            <Dropdown options={yearOptions} icon="school" label="Year" />
-            <Dropdown options={domainOptions} icon="cards" label="Domain" />
+            <Dropdown
+              options={yearOptions}
+              name="year"
+              icon="school"
+              label="Year"
+              onChangeOptionHandler={dropDownHandler}
+            />
+            <Dropdown
+              options={domainOptions}
+              name="domain"
+              icon="cards"
+              label="Domain"
+              onChangeOptionHandler={dropDownHandler}
+            />
             {/* <Dropdown options={["Option 1", "Option 2", "Option 3"]} /> */}
             {/* Year
             <Select

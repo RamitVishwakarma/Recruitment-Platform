@@ -1,18 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Listbox } from "@headlessui/react";
 import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import { set } from "zod";
 
-export default function DropDown({ options, icon, label }) {
-  const [option, setoption] = useState(options[0]);
+export default function DropDown({
+  options,
+  icon,
+  label,
+  name,
+  onChangeOptionHandler,
+}) {
+  const [option, setOption] = useState(options[0]);
+
+  useEffect(() => {
+    onChangeOptionHandler(option, name);
+  }, [option]);
 
   return (
     <div className="min-w-96 flex items-center gap-3">
       <span className="material-symbols-rounded text-4xl mt-7">{icon}</span>
-      <Listbox value={option} onChange={setoption}>
+      <Listbox value={option} onChange={setOption}>
         <div className="relative mt-1">
           <div className="flex flex-col">
             <span>{label}</span>
-            <Listbox.Button className="relative h-12 w-80 outline outline-1 bg-white min-w-72 cursor-pointer rounded-lg  py-2 pl-3 pr-10 text-left">
+            <Listbox.Button className="relative h-12 w-80  bg-white min-w-72 cursor-pointer rounded-lg  py-2 pl-3 pr-10 text-left outline outline-1 hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue">
               <span className="block truncate">{option}</span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                 <ChevronUpDownIcon
