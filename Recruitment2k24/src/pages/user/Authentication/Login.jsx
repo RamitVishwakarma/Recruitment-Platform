@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { z } from "zod";
@@ -24,6 +24,7 @@ export default function Login() {
   const handlePopupEmail = (e) => {
     setPopupEmail(e.target.value);
   };
+  // Forgot password
   const handleForgotPassword = (e) => {
     e.preventDefault();
     const forgetPassData = {
@@ -36,13 +37,7 @@ export default function Login() {
       )
       .then((res) => {
         if (res.status === 200) {
-          setToastText("Reset link sent to your email ID");
-          setToast(true);
-          if (Toast) {
-            setTimeout(() => {
-              setToast(false);
-            }, 4500);
-          }
+          alert("Password reset link has been sent to your email");
         }
       })
       .catch((e) => {
@@ -64,11 +59,8 @@ export default function Login() {
   // Login
   const formSubmitHandler = async (e) => {
     e.preventDefault();
-    const loginData = {
-      email,
-      password,
-    };
     // Validation of form data
+    console.log(loginData);
     const validate = emailSchema.safeParse(loginData.email);
     if (!validate.success) {
       setEmailError(true);
@@ -94,17 +86,9 @@ export default function Login() {
           e.response.status === 404 ||
           e.response.status === 400
         ) {
-          setToast(true);
-          setToastText("Invalid Credentials! Please try again.");
-          setTimeout(() => {
-            setToast(false);
-          }, 4500);
+          alert("Invalid Credentials");
         } else {
-          setToast(true);
-          setToastText("Something went wrong! Please Try again. ");
-          setTimeout(() => {
-            setToast(false);
-          }, 4500);
+          alert("Something went wrong");
         }
       });
   };
@@ -116,8 +100,6 @@ export default function Login() {
         className={`bg-text-box md:w-fit mb-10 z-10 mx-auto rounded-3xl px-4 md:px-10 ${
           popup ? "overflow-visible static" : "overflow-hidden relative"
         }`}>
-        {/* Toast */}
-        {toast && <Toast text={toastText} />}
         <div className="text-grey font-bold text-center mt-2 md:mt-4 pt-8 text-3xl md:text-4xl lg:ml-4 lg:text-3xl">
           Welcome back!
         </div>
