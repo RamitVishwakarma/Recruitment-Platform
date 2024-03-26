@@ -5,7 +5,7 @@ import { z } from "zod";
 import axios from "axios";
 
 import { useState } from "react";
-import { Input } from "./Auth";
+import Input from "../../components/Input";
 export default function ProjectSubmission() {
   const [projectLink, setProjectLink] = useState("");
   const [projectLinkError, setProjectLinkError] = useState(false);

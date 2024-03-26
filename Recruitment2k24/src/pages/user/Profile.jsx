@@ -1,7 +1,8 @@
 import Header from "../../components/Header";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Input, Select } from "./Auth";
+import Input from "../../components/Input";
+import Dropdown from "../../components/DropDown";
 import axios from "axios";
 
 import LinkIco from "../../assets/link.svg";
@@ -505,24 +506,32 @@ function EditProfile({ user, changeActiveButtonToPass }) {
           />
           {/* Year */}
           {/* //? Will need to select the year and domain again untill I figure out the select thing  */}
-          <Select
-            id="year"
-            label="Year"
+          <Dropdown
+            options={["Select an Year", "1", "2"]}
+            name="year"
             icon="school"
-            selected={"Select Year"}
-            selectedValue={year}
-            data={yearOptions}
-            onChangeHandler={handleYear}
+            label="Year"
+            onChangeOptionHandler={dropDownHandler}
+            error={error.year}
+            errorMessage={"Select an Year"}
           />
           {/* Domain */}
-          <Select
-            id="domain"
-            label="Domain"
+          <Dropdown
+            options={[
+              "Select a Domain",
+              "Programming",
+              "Web Club",
+              "Android Club",
+              "Flutter Dev",
+              "Design Club",
+              "ML Club",
+            ]}
+            name="domain"
             icon="cards"
-            selected={"Select Year"}
-            selectedValue={domain}
-            onChangeHandler={handleDomain}
-            data={domainOptions}
+            label="Domain"
+            onChangeOptionHandler={dropDownHandler}
+            error={error.domain}
+            errorMessage={"Select a Domain"}
           />
           {/* Save Button */}
           <button
