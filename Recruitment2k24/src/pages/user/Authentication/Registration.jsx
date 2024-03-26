@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import useAxios from "../../../hooks/useAxios";
 import { z } from "zod";
 import Input from "../../../components/Input";
 import Dropdown from "../../../components/DropDown";
 import GoogleAuthentication from "./GoogleAuthentication";
+import axios from "axios";
 
 export default function Registration() {
-  const yearOptions = ["1", "2"];
+  const yearOptions = ["Select an Year", "1", "2"];
   const domainOptions = [
+    "Select a Domain",
     "Programming",
     "Web Club",
     "Android Club",
@@ -15,7 +16,7 @@ export default function Registration() {
     "Design Club",
     "ML Club",
   ];
-
+  // form data
   const [data, setData] = useState({
     name: "",
     admissionNumber: "",
@@ -24,7 +25,7 @@ export default function Registration() {
     email: "",
     password: "",
   });
-
+  // schema for validation
   const formSchema = z.object({
     name: z.string().min(1),
     admissionNumber: z.string().min(6),
@@ -33,7 +34,7 @@ export default function Registration() {
     email: z.string().email(),
     password: z.string().min(6),
   });
-
+  // error states
   const [error, setError] = useState({
     name: false,
     admissionNumber: false,
@@ -42,48 +43,43 @@ export default function Registration() {
     email: false,
     password: false,
   });
-
   const handleFormData = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
-    formSchema.safeParse({ [e.target.name]: e.target.value }).success
+    formSchema
+      .pick({ [e.target.name]: true })
+      .safeParse({ [e.target.name]: e.target.value }).success
       ? setError({ ...error, [e.target.name]: false })
       : setError({ ...error, [e.target.name]: true });
   };
-
+  const dropDownHandler = (e) => {
+    console.log(e);
+    setData({ ...data, [e.target.name]: e.target.value });
+    formSchema
+      .pick({ [e.target.name]: true })
+      .safeParse({ [e.target.name]: e.target.value }).success
+      ? setError({ ...error, [e.target.name]: false })
+      : setError({ ...error, [e.target.name]: true });
+  };
   const formSubmitHandler = async (e) => {
     e.preventDefault();
     // setToast(false);
     // On click of submit button, check if any of the fields are empty, if yes, set the error state to true, else false.
-    year === "" ? error[year](true) : error[year](false);
-    domain === "" ? error[domain](true) : error[domain](false);
-    // Validation of form data
+    // year === "" ? error[year](true) : error[year](false);
+    // domain === "" ? error[domain](true) : error[domain](false);
 
     axios
       .post(`${import.meta.env.VITE_URL}api/user/auth/signup`, data)
       .then((res) => {
         if (res.status === 201) {
           alert("Successfull Signup kindly login");
-          setToast(true);
-          setToastText("Successfully registered!  You can login now.");
-          setTimeout(() => {
-            setToast(false);
-          }, 4500);
         }
       })
       .catch((e) => {
         console.log(e);
         if (e.response.status === 409) {
-          setToast(true);
-          setToastText("User already exists!  Please login.");
-          setTimeout(() => {
-            setToast(false);
-          }, 4500);
+          alert("User already exists!  Please login.");
         } else {
-          setToast(true);
-          setToastText("Something went wrong!  Please try again.");
-          setTimeout(() => {
-            setToast(false);
-          }, 4500);
+          alert("Something went wrong!  Please try again.");
         }
       });
   };
@@ -121,8 +117,8 @@ export default function Registration() {
               errorMessage={"Invalid Number"}
             />
 
-            <Dropdown options={yearOptions} />
-            <Dropdown options={domainOptions} />
+            <Dropdown options={yearOptions} icon="school" label="Year" />
+            <Dropdown options={domainOptions} icon="cards" label="Domain" />
             {/* <Dropdown options={["Option 1", "Option 2", "Option 3"]} /> */}
             {/* Year
             <Select
