@@ -57,7 +57,6 @@ export default function Registration() {
     } else {
       setError((prevError) => ({ ...prevError, domain: false }));
     }
-
     if (data.year === "" || data.year === "Select an Year") {
       setError((prevError) => ({ ...prevError, year: true }));
       invalidData = true;
@@ -71,7 +70,7 @@ export default function Registration() {
         invalidData = true;
       }
     }
-    console.log(data);
+    // ? If all the data is valid, then send the data to the backend
     if (!invalidData) {
       axios
         .post(`${import.meta.env.VITE_URL}api/user/auth/signup`, data)
@@ -97,7 +96,6 @@ export default function Registration() {
           className={`text-grey text-2xl font-bold text-center mb-8 md:text-4xl lg:text-5xl lg:my-6`}>
           Fill your details correctly!
         </h1>
-        {/* {toast && <Toast text={toastText} />} */}
         <form onSubmit={formSubmitHandler}>
           <div
             className={`flex pr-2 w-full md:pl-0 m-auto flex-wrap gap-x-8 gap-y-4 items-center justify-center`}>
@@ -151,29 +149,6 @@ export default function Registration() {
               error={error.domain}
               errorMessage={"Select a Domain"}
             />
-            {/* <Dropdown options={["Option 1", "Option 2", "Option 3"]} /> */}
-            {/* Year
-            <Select
-              id="year"
-              label="Year"
-              icon="school"
-              selected="Select your year"
-              data={yearOptions}
-              onChangeHandler={handleFormData}
-              errorHandler={handleFormData}
-              errorMessage={"Select an Year"}
-            />
-
-            <Select
-              id="domain"
-              label="Domain"
-              icon="cards"
-              onChangeHandler={handleDomain}
-              selected="Select your preferred domain"
-              data={domainOptions}
-              errorHandler={handleFormData}
-              errorMessage={"Select a Domain"}
-            /> */}
             {/* Email */}
             <Input
               id="email"

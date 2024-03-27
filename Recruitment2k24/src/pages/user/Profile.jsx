@@ -15,12 +15,10 @@ import Popup from "../../components/Popup";
 import Close from "../../assets/close.svg";
 import Password from "../../assets/input-password.svg";
 
-// ? Haven't added any client side validations in this page will do it If we have to
 export default function Profile() {
-  // ? meed to do this later
   const [user, setUser] = useState("");
   const [file, setFile] = useState("");
-  const [refresh, setRefresh] = useState(false);
+  // Getting user profile
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_URL}api/user/profile/myProfile`, {
@@ -35,9 +33,8 @@ export default function Profile() {
       .catch((e) => {
         console.log(e);
       });
-  }, [refresh]);
+  }, []);
 
-  // ? Use effect call the myProfile api and set the user state to the response
   // Updating user prof
   const [popup, setPopup] = useState(false);
   const [activeBtn, setactiveBtn] = useState("profile");
@@ -49,7 +46,6 @@ export default function Profile() {
   const changeActiveButtonToProfile = () => {
     setactiveBtn("profile");
   };
-
   // resume upload
   const handleFileUploadButton = () => {
     document.querySelector(".imgfile").click();
@@ -74,9 +70,7 @@ export default function Profile() {
             }
           )
           .then((res) => {
-            console.log(res);
-            setFile(e.target.files[0]);
-            setRefresh(!refresh);
+            setFile(res.data.user.resume);
             // ? Add toast in here
             alert("Resume Uploaded Successfully");
           })
@@ -250,9 +244,7 @@ export default function Profile() {
                 className="flex flex-col justify-between items-center w-60 h-52 outline outline-2 outline-light-blue rounded-xl ">
                 <div className="flex items-center justify-center">
                   <img
-                    src={
-                      file === user.resume ? file : URL.createObjectURL(file)
-                    }
+                    src={file}
                     className="w-60 h-52 rounded-xl object-cover object-top"
                   />
                 </div>
@@ -332,9 +324,13 @@ function Links({ ico, text }) {
   return (
     <div className="flex w-60 gap-2">
       <img className="w-4" src={ico} />
-      <a href={text} target="_blank">
-        <div className="text-lg">{text.slice(0, 30).concat("...")}</div>
-      </a>
+      {text === "Not Submitted" ? (
+        <div className="text-lg">{text}</div>
+      ) : (
+        <a href={text} target="_blank">
+          <div className="text-lg">{text.slice(0, 30).concat("...")}</div>
+        </a>
+      )}
     </div>
   );
 }
@@ -357,7 +353,8 @@ function EditProfile({ user, changeActiveButtonToPass }) {
     if (e.target.files[0].size > 2000000) {
       alert("File should be below 2MB im size");
     } else {
-      setFile(e.target.files[0]);
+      setUpdatedData({ ...updatedData, [photo]: e.target.files[0] });
+      console.log(e.target.files[0]);
     }
   };
   // data change

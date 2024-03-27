@@ -44,7 +44,6 @@ export default function Login() {
         if (e.response.status === 404) {
           setPopupEmailError(true);
         }
-        console.log(e);
       });
   };
   // login logic
@@ -60,12 +59,12 @@ export default function Login() {
   const formSubmitHandler = async (e) => {
     e.preventDefault();
     // Validation of form data
-    console.log(loginData);
     const validate = emailSchema.safeParse(loginData.email);
     if (!validate.success) {
       setEmailError(true);
       return;
     }
+    // Sending data to backend
     axios
       .post(`${import.meta.env.VITE_URL}api/user/auth/login`, loginData, {
         withCredentials: true,
