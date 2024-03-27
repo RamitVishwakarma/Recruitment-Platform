@@ -14,8 +14,15 @@ import { Link } from "react-router-dom";
 const Quizes = () => {
   const name = sessionStorage.getItem("name");
   const photo = sessionStorage.getItem("photo");
-  const domain = sessionStorage.getItem("Domain");
+  const domain = sessionStorage.getItem("domain");
 
+  const allDomains = {
+    Programming: programming,
+    "Web Club": web,
+    Android: android,
+    "Machine Learning": ml,
+    Design: design,
+  };
   return (
     <>
       <div className="h-[88vh]">

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 export default function QuizPage() {
   const [questions, setQuestions] = useState([]);
   let questionId = "65e325f9611125494f62001e";
-  const [questionNumber, setQuestionNumber] = useState(1);
+  const [questionNumber, setQuestionNumber] = useState(2);
 
   useEffect(() => {
     // Fetch the questions from the server
@@ -23,6 +23,7 @@ export default function QuizPage() {
       )
       .then((res) => {
         setQuestions(res.data.question);
+        console.log(res.data.question);
       });
   }, [questionNumber]);
 
@@ -39,13 +40,13 @@ export default function QuizPage() {
             </div>
           </Header>
           {/* Questions */}
-          {questions ? (
+          {questions.questionText ? (
             <div>
               <div>{questions.questionText}</div>
               {/* Options */}
-              {questions.options.map((option) => {
+              {questions.options.map((option, index) => {
                 return (
-                  <div className="flex gap-2">
+                  <div key={index} className="flex gap-2">
                     <input
                       type="radio"
                       id={option.optionText}
@@ -59,7 +60,9 @@ export default function QuizPage() {
                 );
               })}
             </div>
-          ) : null}
+          ) : (
+            "Loading..."
+          )}
         </div>
       </div>
     </>

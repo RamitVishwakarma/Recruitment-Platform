@@ -10,9 +10,7 @@ import {
   ProjectNotSubmitted,
 } from "../../data/UserHome.jsx";
 import axios from "axios";
-
 import { Link } from "react-router-dom";
-
 // Images
 import profile from "../../assets/User_Home/ProfileIco.svg";
 import quiz from "../../assets/quiz.svg";
@@ -20,6 +18,7 @@ import project from "../../assets/project.svg";
 import arrRight from "../../assets/arrRight.svg";
 // imports
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function UserHome() {
   // State manager
@@ -29,6 +28,9 @@ export default function UserHome() {
   // * fetching user from session storage
   // const user = JSON.parse(sessionStorage.getItem("user"));
   const [user, setUser] = useState("");
+  //getting domain just to check if the domain is provided or not for quiz
+  const domain = sessionStorage.getItem("domain");
+  const navigate = useNavigate();
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_URL}api/user/profile/myProfile`, {
@@ -89,6 +91,16 @@ export default function UserHome() {
     }
   }, [user.projectStatus]);
 
+  // On click handler for quiz
+  const onClickQuizHandler = (e) => {
+    e.preventDefault();
+    console.log(domain);
+    if (domain === null) {
+      alert("Please select a domain in the profile section to take the quiz");
+    } else {
+      navigate("/user/quizes");
+    }
+  };
   return (
     <>
       {!user ? (
@@ -115,7 +127,7 @@ export default function UserHome() {
                     state={profileState}
                   />
                 </Link>
-                <Link to="/user/quizes">
+                <Link to="/user/quizes" onClick={onClickQuizHandler}>
                   <HomePageComponents
                     img={quiz}
                     imgBgColor={"bg-light-red/30"}

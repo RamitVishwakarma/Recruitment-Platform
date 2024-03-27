@@ -76,6 +76,7 @@ export default function Login() {
           sessionStorage.setItem("userId", res.data._id);
           sessionStorage.setItem("name", res.data.name);
           sessionStorage.setItem("photo", res.data.photo);
+          sessionStorage.setItem("domain", res.data.domain);
           navigate("/user");
         }
       })
