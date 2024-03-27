@@ -10,7 +10,7 @@ export const UserHome = loadable(() => import("../pages/user/UserHome"));
 export const ProjectSubmission = loadable(() =>
   import("../pages/user/ProjectSubmission")
 );
-export const Profile = loadable(() => import("../pages/user/Profile"));
+export const Profile = loadable(() => import("../pages/user/Profile/Profile"));
 export const Quizes = loadable(() => import("../pages/user/Quizes"));
 export const QuizHome = loadable(() => import("../pages/user/QuizHome"));
 export const QuizPage = loadable(() => import("../pages/user/QuizPage"));

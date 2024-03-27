@@ -1,4 +1,13 @@
-export default function EditProfile({ user, changeActiveButtonToPass }) {
+import React, { useState } from "react";
+import axios from "axios";
+import Input from "../../../components/Input";
+import Dropdown from "../../../components/DropDown";
+
+export default function EditProfile({
+  user,
+  changeActiveButtonToPass,
+  updateDataFunc,
+}) {
   // Edit profile logic
   const [updatedData, setUpdatedData] = useState({
     name: user.name,
@@ -27,10 +36,9 @@ export default function EditProfile({ user, changeActiveButtonToPass }) {
   const handleFormData = (e) => {
     setUpdatedData({ ...updatedData, [e.target.name]: e.target.value });
   };
-
+  //    Edit profile form handler
   const editProfileFormHandler = (e) => {
     e.preventDefault();
-    console.log(updatedData);
     axios
       .put(
         `${import.meta.env.VITE_URL}api/user/profile/Updateprofile`,
@@ -44,6 +52,7 @@ export default function EditProfile({ user, changeActiveButtonToPass }) {
       )
       .then((res) => {
         console.log(res);
+        updateDataFunc();
         // ? Add toast in here
         alert("Profile Updated Successfully");
       })

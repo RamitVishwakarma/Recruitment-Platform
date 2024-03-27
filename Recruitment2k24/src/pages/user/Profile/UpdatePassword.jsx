@@ -1,4 +1,13 @@
-function UpdatePassword({ user, changeActiveButtonToProfile }) {
+import React, { useState } from "react";
+import Input from "../../../components/Input";
+import Password from "../../../assets/input-password.svg";
+import axios from "axios";
+
+export default function UpdatePassword({
+  user,
+  changeActiveButtonToProfile,
+  updateDataFunc,
+}) {
   const [newPassword, setnewPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
@@ -26,6 +35,7 @@ function UpdatePassword({ user, changeActiveButtonToProfile }) {
         )
         .then((res) => {
           console.log(res);
+          updateDataFunc();
           // ? Add toast in here
           alert("Password Updated Successfully");
         })

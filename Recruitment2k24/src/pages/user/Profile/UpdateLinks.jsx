@@ -1,4 +1,14 @@
-export default function UpdateLinks({ user }) {
+import React, { useState } from "react";
+import Input from "../../../components/Input";
+import LinkIco from "../../../assets/link.svg";
+import LinkedIN from "../../../assets/footer-li.svg";
+import Behance from "../../../assets/behance.svg";
+import Hackerrank from "../../../assets/hackerrank.svg";
+import Github from "../../../assets/footer-git.svg";
+import Dribble from "../../../assets/dribble.svg";
+import axios from "axios";
+
+export default function UpdateLinks({ user, updateDataFunc }) {
   // Update links logic
   const [github, setGithub] = useState(user.socialLinks.github);
   const [linkedIN, setLinkedIN] = useState(user.socialLinks.linkedIN);
@@ -28,7 +38,6 @@ export default function UpdateLinks({ user }) {
 
   const linkSubmitHandler = (e) => {
     e.preventDefault();
-    console.log("In form submit handler");
     const updatedLinks = {
       socialLinks: {
         github: github,
@@ -49,6 +58,7 @@ export default function UpdateLinks({ user }) {
       )
       .then((res) => {
         console.log(res);
+        updateDataFunc();
         // ? Add toast in here
         alert("Links Updated Successfully");
       })

@@ -1,23 +1,32 @@
-import Links from "./SocialLinks";
-import { Link } from "react-router-dom";
 import EditProfile from "./EditProfile";
 import UpdateLinks from "./UpdateLinks";
 import UpdatePassword from "./UpdatePassword";
-import Header from "../../components/Header";
+import Links from "./SocialLinks";
+import Header from "../../../components/Header";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import Popup from "../../components/Popup";
-import Close from "../../assets/close.svg";
-import LinkIco from "../../assets/link.svg";
-import LinkedIN from "../../assets/footer-li.svg";
-import Behance from "../../assets/behance.svg";
-import Hackerrank from "../../assets/hackerrank.svg";
-import Github from "../../assets/footer-git.svg";
-import Dribble from "../../assets/dribble.svg";
+// svgs
+import Popup from "../../../components/Popup";
+import Close from "../../../assets/close.svg";
+import LinkIco from "../../../assets/link.svg";
+import LinkedIN from "../../../assets/footer-li.svg";
+import Behance from "../../../assets/behance.svg";
+import Hackerrank from "../../../assets/hackerrank.svg";
+import Github from "../../../assets/footer-git.svg";
+import Dribble from "../../../assets/dribble.svg";
 
 export default function Profile() {
   const [user, setUser] = useState("");
   const [file, setFile] = useState("");
+
+  // changing data if the user updates the profile
+  const [updateData, setUpdateData] = useState(false);
+  // update data if any data changes from the update profile
+  const updateDataFunc = () => {
+    setUpdateData(!updateData);
+  };
+
   // Getting user profile
   useEffect(() => {
     axios
@@ -32,19 +41,22 @@ export default function Profile() {
       })
       .catch((e) => {
         console.log(e);
+        alert("Some error occured, please try again later");
       });
-  }, []);
+  }, [updateData]);
+
   // Updating user prof
   const [popup, setPopup] = useState(false);
   const [activeBtn, setactiveBtn] = useState("profile");
 
+  // active button changing
   const changeActiveButtonToPassword = () => {
     setactiveBtn("password");
   };
-
   const changeActiveButtonToProfile = () => {
     setactiveBtn("profile");
   };
+
   // resume upload
   const handleFileUploadButton = () => {
     document.querySelector(".imgfile").click();
@@ -69,6 +81,7 @@ export default function Profile() {
             }
           )
           .then((res) => {
+            setUser(res.data.user);
             setFile(res.data.user.resume);
             // ? Add toast in here
             alert("Resume Uploaded Successfully");
@@ -79,6 +92,8 @@ export default function Profile() {
             alert("Some error occured, please try again later");
           });
       }
+    } else {
+      alert("Please select a file");
     }
   };
 
@@ -214,6 +229,7 @@ export default function Profile() {
                           changeActiveButtonToPass={
                             changeActiveButtonToPassword
                           }
+                          updateDataFunc={updateDataFunc}
                         />
                       ) : activeBtn === "links" ? (
                         <UpdateLinks user={user} />
