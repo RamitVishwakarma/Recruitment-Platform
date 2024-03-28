@@ -18,7 +18,7 @@ export default function Auth() {
   return (
     <>
       {/* Header section */}
-      <div className="lg:h-[90vh]">
+      <div className="lg:h-[90vh] bg-background">
         <div className="mx-5 md:mx-20 xl:mx-40 relative">
           <Header>
             <div className="min-w-80 max-md:mt-10">
@@ -57,9 +57,9 @@ export default function Auth() {
             </div>
           ) : // ToolTip End
           null}
-          {/* Toggle through Registration and Login section */}
-          {activeBtn === "register" ? <Registration /> : <Login />}
         </div>
+        {/* Toggle through Registration and Login section */}
+        {activeBtn === "register" ? <Registration /> : <Login />}
       </div>
     </>
   );

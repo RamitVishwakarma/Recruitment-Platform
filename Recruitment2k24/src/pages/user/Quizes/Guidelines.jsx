@@ -1,5 +1,5 @@
-import Header from "../../../../components/Header";
-import HeaderProfile from "../../../../components/HeaderProfile";
+import Header from "../../../components/Header";
+import HeaderProfile from "../../../components/HeaderProfile";
 import { Link } from "react-router-dom";
 
 export default function Guidelines() {

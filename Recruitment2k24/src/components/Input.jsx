@@ -40,7 +40,7 @@ export default function Input({
             errorHandler ? "outline outline-2 outline-red border-red" : ""
           } bg-text-box border p-3 md:min-w-80 min-w-72 ${
             grow ? " xl:w-10/12" : ""
-          } rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
+          }  rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
           type={type}
           id={id}
           name={id}

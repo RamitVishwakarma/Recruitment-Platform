@@ -11,7 +11,7 @@ import Ytb from "../assets/footer-ytb.svg?react";
 const Footer = () => {
   return (
     <>
-      <div className="bg-footer w-full md:h-{30vh}">
+      <div className="bg-footer w-full md:h-{30%}">
         <div className="flex justify-between items-center max-md:flex-col ">
           {/* left */}
           <div className="mx-5 md:mx-20 xl:mx-40 mt-8">

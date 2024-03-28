@@ -91,110 +91,110 @@ export default function Registration() {
   };
   return (
     <>
-      <div className="bg-text-box relative z-10 w-full md:w-10/12 overflow-hidden pl-6 mx-auto py-8 rounded-3xl mb-16">
-        <h1
-          className={`text-grey text-2xl font-bold text-center mb-8 md:text-4xl lg:text-5xl lg:my-6`}>
-          Fill your details correctly!
-        </h1>
-        <form onSubmit={formSubmitHandler}>
-          <div
-            className={`flex pr-2 w-full md:pl-0 m-auto flex-wrap gap-x-8 gap-y-4 items-center justify-center`}>
-            {/* NAME */}
-            <Input
-              id="name"
-              label="Name"
-              icon="account_box"
-              type="text"
-              placeholder="Enter Your Name"
-              onChangeHandler={handleFormData}
-              errorHandler={error.name}
-              errorMessage={"Name is required"}
-            />
-            {/* Admission number */}
-            <Input
-              id="admissionNumber"
-              label="Admission Number"
-              icon="badge"
-              type="text"
-              placeholder="Enter Your Admission Number"
-              onChangeHandler={handleFormData}
-              errorHandler={error.admissionNumber}
-              errorMessage={"Invalid Number"}
-            />
-            {/* Year */}
-            <Dropdown
-              options={["Select an Year", "1", "2"]}
-              name="year"
-              icon="school"
-              label="Year"
-              onChangeOptionHandler={dropDownHandler}
-              error={error.year}
-              errorMessage={"Select an Year"}
-            />
-            {/* Domain */}
-            <Dropdown
-              options={[
-                "Select a Domain",
-                "Programming",
-                "Web Club",
-                "Android Club",
-                "Flutter Dev",
-                "Design Club",
-                "ML Club",
-              ]}
-              name="domain"
-              icon="cards"
-              label="Domain"
-              onChangeOptionHandler={dropDownHandler}
-              error={error.domain}
-              errorMessage={"Select a Domain"}
-            />
-            {/* Email */}
-            <Input
-              id="email"
-              label="Email ID"
-              icon="alternate_email"
-              type="text"
-              placeholder="someone@gmail.com"
-              onChangeHandler={handleFormData}
-              errorHandler={error.email}
-              errorMessage={"Invalid Email"}
-            />
-            {/* Password */}
-            <Input
-              id="password"
-              label="Set Password"
-              icon="key"
-              type="password"
-              placeholder="8 characters or more"
-              onChangeHandler={handleFormData}
-              errorHandler={error.password}
-              errorMessage={"Weak Password"}
-            />
-          </div>
-          <div className="flex max-lg:flex-col-reverse justify-center items-center my-10">
-            {/* Google Auth */}
-            <GoogleAuthentication
-              text="Sign Up with Google"
-              btnStyle={
-                "px-10 py-3 bg-[#fff] flex gap-4 items-center justify-center rounded-lg shadow-sm hover:shadow-md"
-              }
-            />
-            <div className="flex md:hidden gap-4 my-3 justify-center opacity-40">
-              <p>----------------------</p>
-              <p>OR</p>
-              <p>----------------------</p>
+      <div className="mx-5 md:mx-20 xl:mx-40 relative">
+        <div className="h-full relative z-10 w-full md:w-10/12 overflow-hidden pl-6 mx-auto py-8 rounded-3xl mb-16">
+          <h1
+            className={`text-grey text-2xl font-bold text-center mb-8 md:text-4xl lg:text-5xl lg:my-6`}>
+            Fill your details correctly!
+          </h1>
+          <form onSubmit={formSubmitHandler}>
+            <div
+              className={`flex pr-2 w-full md:pl-0 m-auto flex-wrap gap-x-8 gap-y-4 items-center justify-center`}>
+              {/* NAME */}
+              <Input
+                id="name"
+                label="Name"
+                icon="account_box"
+                type="text"
+                placeholder="Enter Your Name"
+                onChangeHandler={handleFormData}
+                errorHandler={error.name}
+                errorMessage={"Name is required"}
+              />
+              {/* Admission number */}
+              <Input
+                id="admissionNumber"
+                label="Admission Number"
+                icon="badge"
+                type="text"
+                placeholder="Enter Your Admission Number"
+                onChangeHandler={handleFormData}
+                errorHandler={error.admissionNumber}
+                errorMessage={"Invalid Number"}
+              />
+              {/* Year */}
+              <Dropdown
+                options={["Select an Year", "1", "2"]}
+                name="year"
+                icon="school"
+                label="Year"
+                onChangeOptionHandler={dropDownHandler}
+                error={error.year}
+                errorMessage={"Select an Year"}
+              />
+              {/* Domain */}
+              <Dropdown
+                options={[
+                  "Select a Domain",
+                  "Programming",
+                  "Web Club",
+                  "Android Club",
+                  "Flutter Dev",
+                  "Design Club",
+                  "ML Club",
+                ]}
+                name="domain"
+                icon="cards"
+                label="Domain"
+                onChangeOptionHandler={dropDownHandler}
+                error={error.domain}
+                errorMessage={"Select a Domain"}
+              />
+              {/* Email */}
+              <Input
+                id="email"
+                label="Email ID"
+                icon="alternate_email"
+                type="text"
+                placeholder="someone@gmail.com"
+                onChangeHandler={handleFormData}
+                errorHandler={error.email}
+                errorMessage={"Invalid Email"}
+              />
+              {/* Password */}
+              <Input
+                id="password"
+                label="Set Password"
+                icon="key"
+                type="password"
+                placeholder="8 characters or more"
+                onChangeHandler={handleFormData}
+                errorHandler={error.password}
+                errorMessage={"Weak Password"}
+              />
             </div>
-            <hr className="max-lg:hidden w-16 rotate-90 mr-2 ml-8 border-grey/40" />
-            <button
-              type="submit"
-              className="px-20 w-11/12 md:w-fit max-w-72 py-3 text-grey font-bold text-2xl rounded-lg bg-lime hover:bg-button-hover">
-              Register
-            </button>
-          </div>
-        </form>
-        <div className="absolute w-96 h-96 -z-10 -right-20 -bottom-40 rounded-full blur-2xl bg-light-blue/10"></div>
-        <div className="absolute w-96 h-96 -z-10 -left-20 -top-40 rounded-full blur-2xl bg-light-blue/10"></div>
+            <div className="flex max-lg:flex-col-reverse justify-center items-center my-10">
+              {/* Google Auth */}
+              <GoogleAuthentication
+                text="Sign Up with Google"
+                btnStyle={
+                  "px-10 py-3 bg-[#fff] flex gap-4 items-center justify-center rounded-lg shadow-xl hover:shadow-2xl"
+                }
+              />
+              <div className="flex md:hidden gap-4 my-3 justify-center opacity-40">
+                <p>----------------------</p>
+                <p>OR</p>
+                <p>----------------------</p>
+              </div>
+              <hr className="max-lg:hidden w-16 rotate-90 mr-2 ml-8 border-grey/40" />
+              <button
+                type="submit"
+                className="px-20 w-11/12 md:w-fit max-w-72 py-3 text-grey font-bold text-2xl rounded-lg bg-lime hover:bg-button-hover">
+                Register
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </>
   );

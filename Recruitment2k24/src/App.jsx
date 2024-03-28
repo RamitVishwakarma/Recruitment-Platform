@@ -8,7 +8,7 @@ import {
   ProjectSubmission,
   Profile,
   QuizesDisplay,
-  QuizHome,
+  Guidelines,
   QuizPage,
   ProtectedRoute,
   AdminProtectedRoute,
@@ -45,7 +45,7 @@ export default function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="project" element={<ProjectSubmission />} />
             <Route path="quizes" element={<QuizesDisplay />} />
-            <Route path="quiz_guidelines" element={<QuizHome />} />
+            <Route path="quiz_guidelines" element={<Guidelines />} />
             <Route path="quiz" element={<QuizPage />} />
           </Route>
         </Route>

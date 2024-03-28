@@ -97,7 +97,7 @@ export default function Login() {
   return (
     <>
       <div
-        className={`bg-text-box md:w-fit mb-10 z-10 mx-auto rounded-3xl px-4 md:px-10 ${
+        className={`w-fit mb-10 z-10 mx-auto rounded-3xl px-4 md:px-10 ${
           popup ? "overflow-visible static" : "overflow-hidden relative"
         }`}>
         <div className="text-grey font-bold text-center mt-2 md:mt-4 pt-8 text-3xl md:text-4xl lg:ml-4 lg:text-3xl">
@@ -133,7 +133,7 @@ export default function Login() {
             <button
               onClick={() => setPopup(true)}
               type="button"
-              className=" text-light-blue text-base hover:underline self-end max-sm:mr-12 md:mr-4">
+              className=" text-light-blue text-base hover:underline self-end mr-4 max-sm:mr-12">
               Forgot Password?
             </button>
             <div className="flex w-10/12 ml-4 flex-col justify-center items-center mb-6 md:my-4">
@@ -168,7 +168,7 @@ export default function Login() {
                       </span>
                     </div>
                     <input
-                      className={` bg-text-box border p-3 w-full pl-14 rounded-lg border-grey hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue `}
+                      className={` bg-text-box shadow-xl p-3 w-full pl-14 rounded-lg focus:outline focus:outline-2 focus:outline-light-blue `}
                       type="text"
                       id="email"
                       name="email"
@@ -213,14 +213,12 @@ export default function Login() {
               <GoogleAuthentication
                 text="Log in with Google"
                 btnStyle={
-                  "bg-[#fff] bottom-4 mr-6 px-10 py-3 flex gap-4 items-center justify-center rounded-lg shadow-sm hover:shadow-md"
+                  "bg-[#fff] bottom-4 mr-6 px-10 py-3 flex gap-4 items-center justify-center rounded-lg shadow-xl hover:shadow-2xl"
                 }
               />
             </div>
           </form>
         </div>
-        <div className="absolute w-96 h-96 -z-10 left-60 top-64 rounded-full blur-2xl bg-purple/10"></div>
-        <div className="absolute w-96 h-96 -z-10 right-60 bottom-64 rounded-full blur-2xl bg-purple/10"></div>
       </div>
     </>
   );

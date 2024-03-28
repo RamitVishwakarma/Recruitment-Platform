@@ -18,7 +18,7 @@ export const QuizesDisplay = loadable(() =>
 export const Guidelines = loadable(() =>
   import("../pages/user/Quizes/Guidelines")
 );
-export const QuizPage = loadable(() => import("../pages/user/QuizPage"));
+export const QuizPage = loadable(() => import("../pages/user/Quizes/Quiz"));
 export const ProtectedRoute = loadable(() => import("../utils/ProtectedRoute"));
 // Admin pages import
 export const AdminProtectedRoute = loadable(() =>

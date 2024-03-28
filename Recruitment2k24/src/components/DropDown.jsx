@@ -30,7 +30,7 @@ export default function DropDown({
             <Listbox.Button
               className={` ${
                 error ? "outline outline-2 outline-red border-red" : ""
-              } relative h-12 w-80  bg-white min-w-72 cursor-pointer rounded-lg  py-2 pl-3 pr-10 text-left outline outline-1 hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}>
+              } container xl:w-full md:min-w-80 min-w-72 relative h-12 w-80  bg-text-box  cursor-pointer rounded-lg  py-2 pl-3 pr-10 text-left outline outline-1 hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}>
               <span className="block truncate">{option}</span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                 <ChevronUpDownIcon
