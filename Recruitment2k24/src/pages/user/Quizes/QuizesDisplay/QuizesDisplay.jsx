@@ -15,14 +15,20 @@ const Quizes = () => {
   const name = sessionStorage.getItem("name");
   const photo = sessionStorage.getItem("photo");
   const domain = sessionStorage.getItem("domain");
+  let mainDomain = {};
 
   const allDomains = {
-    Programming: programming,
-    "Web Club": web,
-    Android: android,
-    "Machine Learning": ml,
-    Design: design,
+    1: {
+      img: programming,
+      imgBgColor: "bg-light-purple/30",
+      text: "Programming",
+    },
+    2: { img: web, imgBgColor: "bg-light-red/30", text: "Web Club" },
+    3: { img: android, imgBgColor: "bg-lime/30", text: "Android" },
+    4: { img: ml, imgBgColor: "bg-light-yellow/30", text: "Machine Learning" },
+    5: { img: design, imgBgColor: "bg-light-blue/30", text: "Design" },
   };
+
   return (
     <>
       <div className="h-[88vh]">
@@ -50,26 +56,26 @@ const Quizes = () => {
                 Click to view quizzes of other domains
               </div>
               <div className="flex flex-col gap-4">
-                <Components
-                  img={programming}
-                  imgBgColor="bg-light-purple/30"
-                  text="Programming"
-                />
-                <Components
-                  img={web}
-                  imgBgColor="bg-light-red/30"
-                  text="Web Club"
-                />
-                <Components
-                  img={android}
-                  imgBgColor="bg-lime/30"
-                  text="Android"
-                />
-                <Components
-                  img={ml}
-                  imgBgColor="bg-light-yellow/30"
-                  text="Machine Learning"
-                />
+                {Object.values(allDomains).map((domains, index) => {
+                  // Check if the domain matches the one stored in a variable
+                  if (domains.text === domain) {
+                    mainDomain = {
+                      img: domains.img,
+                      imgBgColor: domains.imgBgColor,
+                      text: domains.text,
+                    };
+                    return null;
+                  }
+                  // If the domain doesn't match, proceed with rendering the component
+                  return (
+                    <Components
+                      key={index}
+                      img={domains.img}
+                      imgBgColor={domains.imgBgColor}
+                      text={domains.text}
+                    />
+                  );
+                })}
               </div>
             </div>
 
@@ -79,10 +85,11 @@ const Quizes = () => {
                 <br /> domain quiz
               </div>
               <div className=" shadowCard w-80 mt-5 flex flex-col items-center justify-center p-8 rounded-xl outline outline-1 outline-light-blue shadow-light-blue  ">
-                <div className="w-32 h-32 rounded-full bg-light-blue/30 flex items-center justify-center">
-                  <img className="w-20 h-20" src={design} />
+                <div
+                  className={`w-32 h-32 rounded-full ${mainDomain.imgBgColor} flex items-center justify-center`}>
+                  <img className="w-20 h-20" src={mainDomain.img} />
                 </div>
-                <div className="font-bold text-4xl p-4">Design</div>
+                <div className="font-bold text-4xl p-4">{mainDomain.text}</div>
                 <Link to="/user/quiz_guidelines">
                   <button className="rounded-full bg-light-blue p-1 px-7 text-white">
                     Start now
@@ -97,20 +104,4 @@ const Quizes = () => {
   );
 };
 
-function Components({ img, imgBgColor, text }) {
-  return (
-    <div className="flex gap-4 cursor-pointer homePageComponent">
-      <div
-        className={`w-12 h-12 rounded-full ${imgBgColor} flex items-center justify-center`}>
-        <img className="w-6 h-6" src={img} />
-      </div>
-      <div className="flex font-bold w-40 items-center">
-        <div>{text}</div>
-      </div>
-      <button className="pl-5 flex items-center cursor-pointer ">
-        <img className="w-6" src={arrRight} />
-      </button>
-    </div>
-  );
-}
 export default Quizes;

@@ -11,7 +11,9 @@ export const ProjectSubmission = loadable(() =>
   import("../pages/user/ProjectSubmission")
 );
 export const Profile = loadable(() => import("../pages/user/Profile/Profile"));
-export const Quizes = loadable(() => import("../pages/user/Quizes"));
+export const QuizesDisplay = loadable(() =>
+  import("../pages/user/Quizes/QuizesDisplay/QuizesDisplay")
+);
 export const QuizHome = loadable(() => import("../pages/user/QuizHome"));
 export const QuizPage = loadable(() => import("../pages/user/QuizPage"));
 export const ProtectedRoute = loadable(() => import("../utils/ProtectedRoute"));

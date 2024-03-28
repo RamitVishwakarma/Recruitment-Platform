@@ -7,7 +7,7 @@ import {
   UserHome,
   ProjectSubmission,
   Profile,
-  Quizes,
+  QuizesDisplay,
   QuizHome,
   QuizPage,
   ProtectedRoute,
@@ -44,7 +44,7 @@ export default function App() {
             <Route path="" element={<UserHome />} />
             <Route path="profile" element={<Profile />} />
             <Route path="project" element={<ProjectSubmission />} />
-            <Route path="quizes" element={<Quizes />} />
+            <Route path="quizes" element={<QuizesDisplay />} />
             <Route path="quiz_guidelines" element={<QuizHome />} />
             <Route path="quiz" element={<QuizPage />} />
           </Route>
