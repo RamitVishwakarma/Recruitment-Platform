@@ -30,13 +30,13 @@ const Quizes = () => {
 
   return (
     <>
-      <div className="h-[88vh]">
+      <div className="h-[88vh] bg-background">
         <div className="mx-40mx-5 md:mx-20 xl:mx-40">
-          <Header>
+          {/* <Header>
             <div className="min-w-80 max-md:mt-10">
               <HeaderProfile name={name} photo={photo} />
             </div>
-          </Header>
+          </Header> */}
           <div className="flex">
             <div className="w-1/2">
               <div className="font-bold text-grey text-4xl">Qther Quizes</div>

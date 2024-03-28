@@ -3,7 +3,7 @@ import arrRight from "../../../../assets/arrRight.svg";
 
 export default function Components({ img, imgBgColor, text }) {
   return (
-    <div className="flex gap-4 cursor-pointer homePageComponent">
+    <div className="flex w-7/12 bg-text-box gap-4 cursor-pointer homePageComponent">
       <div
         className={`w-12 h-12 rounded-full ${imgBgColor} flex items-center justify-center`}>
         <img className="w-6 h-6" src={img} />

@@ -65,26 +65,6 @@ body {
 .shadowCard {
   box-shadow: 3px 3px 5px 2px #6b83ff80, -3px -3px 5px 2px #6b83ff80;
 }
-/* input,
-select {
-  outline: none;
-}
-
-input:active,
-select:active {
-  outline: none;
-}
-
-input:hover,
-select:hover {
-  outline: 2px solid var(--color-grey);
-}
-
-input:focus,
-select:focus {
-  outline: solid 2px var(--color-light-blue);
-  border: 1px solid var(--color-light-blue);
-} */
 
 .icon {
   user-drag: none;
