@@ -1,11 +1,12 @@
 import loadable from "@loadable/component";
-// ? add nav in loadable
 // User pages import
 export const Homepage = loadable(() => import("../pages/user/Homepage"));
 export const Layout = loadable(() => import("../components/Layout"));
 export const Auth = loadable(() => import("../pages/user/Authentication/Auth"));
 export const Tasks = loadable(() => import("../pages/user/Tasks"));
-export const ResetPass = loadable(() => import("../pages/user/ResetPass"));
+export const ResetPass = loadable(() =>
+  import("../pages/user/Authentication/ResetPass")
+);
 export const UserHome = loadable(() => import("../pages/user/UserHome"));
 export const ProjectSubmission = loadable(() =>
   import("../pages/user/ProjectSubmission")
@@ -14,7 +15,9 @@ export const Profile = loadable(() => import("../pages/user/Profile/Profile"));
 export const QuizesDisplay = loadable(() =>
   import("../pages/user/Quizes/QuizesDisplay/QuizesDisplay")
 );
-export const QuizHome = loadable(() => import("../pages/user/QuizHome"));
+export const Guidelines = loadable(() =>
+  import("../pages/user/Quizes/Guidelines")
+);
 export const QuizPage = loadable(() => import("../pages/user/QuizPage"));
 export const ProtectedRoute = loadable(() => import("../utils/ProtectedRoute"));
 // Admin pages import

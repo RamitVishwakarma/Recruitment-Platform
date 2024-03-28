@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "../../components/Header";
-import Toast from "../../components/Toast";
-import Password from "../../assets/input-password.svg";
+import Header from "../../../components/Header";
+import Toast from "../../../components/Toast";
+import Password from "../../../assets/input-password.svg";
 import { useState } from "react";
-import Input from "../../components/Input";
+import Input from "../../../components/Input";
 import { useNavigate, useParams } from "react-router-dom";
 import { z } from "zod";
 import axios from "axios";

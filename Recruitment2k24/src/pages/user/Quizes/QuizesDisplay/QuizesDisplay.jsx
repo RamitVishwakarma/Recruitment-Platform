@@ -1,14 +1,13 @@
 import React from "react";
-import arrRight from "../../assets/arrRight.svg";
-import Header from "../../components/Header";
-import HeaderProfile from "../../components/HeaderProfile";
-
-// Images
-import programming from "../../assets/programming.svg";
-import web from "../../assets/webclub.svg";
-import android from "../../assets/android.svg";
-import ml from "../../assets/machinelearning.svg";
-import design from "../../assets/design.svg";
+import Header from "../../../../components/Header";
+import HeaderProfile from "../../../../components/HeaderProfile";
+import Components from "./CardComponent";
+//Svgs
+import programming from "../../../../assets/programming.svg";
+import web from "../../../../assets/webclub.svg";
+import android from "../../../../assets/android.svg";
+import ml from "../../../../assets/machinelearning.svg";
+import design from "../../../../assets/design.svg";
 
 import { Link } from "react-router-dom";
 const Quizes = () => {
