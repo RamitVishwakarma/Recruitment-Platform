@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "../../../../components/Header";
-import HeaderProfile from "../../../../components/HeaderProfile";
 import Components from "./CardComponent";
 //Svgs
 import programming from "../../../../assets/programming.svg";
