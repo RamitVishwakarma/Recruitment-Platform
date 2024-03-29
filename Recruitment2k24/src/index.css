@@ -266,3 +266,7 @@ body {
   background: rgba(107, 131, 255, 0.5);
   border-radius: 10px;
 }
+
+.blueRadio:hover .radioHover {
+  background: var(--color-light-blue);
+}

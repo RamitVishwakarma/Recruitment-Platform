@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Components from "./CardComponent";
 //Svgs
 import programming from "../../../../assets/programming.svg";
@@ -13,6 +13,8 @@ const Quizes = () => {
   const photo = sessionStorage.getItem("photo");
   const domain = sessionStorage.getItem("domain");
   let mainDomain = {};
+
+  // need to get all the domains now and render them
 
   const allDomains = {
     1: {

@@ -30,6 +30,7 @@ export default function GoogleAuthentication({ text, btnStyle }) {
               sessionStorage.setItem("name", res.data.name);
               sessionStorage.setItem("photo", res.data.photo);
               sessionStorage.setItem("domain", res.data.domain);
+              sessionStorage.setItem("year", res.data.year);
               navigate("/user/");
             }
           })

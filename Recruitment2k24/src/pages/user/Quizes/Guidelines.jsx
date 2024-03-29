@@ -1,10 +1,6 @@
-import Header from "../../../components/Header";
-import HeaderProfile from "../../../components/HeaderProfile";
 import { Link } from "react-router-dom";
 
 export default function Guidelines() {
-  const name = sessionStorage.getItem("name");
-  const photo = sessionStorage.getItem("photo");
   return (
     <>
       <div className="h-full bg-background">
@@ -36,7 +32,7 @@ export default function Guidelines() {
           </div>
           <Link to="/user/quiz">
             <div className="flex justify-center">
-              <button className="mx-auto my-6 mb-[6vh] font-bold text-xl text-button-text bg-lime rounded-lg hover:bg-button-hover px-10 py-3">
+              <button className="mx-auto my-[7vh] font-bold text-xl text-button-text bg-lime rounded-lg hover:bg-button-hover px-20 py-3">
                 Begin
               </button>
             </div>
