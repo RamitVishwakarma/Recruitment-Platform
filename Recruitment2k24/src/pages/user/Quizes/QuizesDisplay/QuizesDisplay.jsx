@@ -19,17 +19,61 @@ const Quizes = () => {
       img: programming,
       imgBgColor: "bg-light-purple/30",
       text: "Programming",
+      buttonColor: "bg-light-purple",
     },
-    2: { img: web, imgBgColor: "bg-light-red/30", text: "Web Club" },
-    3: { img: android, imgBgColor: "bg-lime/30", text: "Android" },
-    4: { img: ml, imgBgColor: "bg-light-yellow/30", text: "Machine Learning" },
-    5: { img: design, imgBgColor: "bg-light-blue/30", text: "Design" },
+    2: {
+      img: web,
+      imgBgColor: "bg-light-red/30",
+      text: "Web Club",
+      buttonColor: "bg-light-red",
+    },
+    3: {
+      img: android,
+      imgBgColor: "bg-lime/30",
+      text: "Android",
+      buttonColor: "bg-lime",
+    },
+    4: {
+      img: ml,
+      imgBgColor: "bg-light-yellow/30",
+      text: "Machine Learning",
+      buttonColor: "bg-light-yellow",
+    },
+    5: {
+      img: design,
+      imgBgColor: "bg-light-blue/30",
+      text: "Design",
+      buttonColor: "bg-light-blue",
+    },
   };
 
   return (
     <>
       <div className="h-[88vh] bg-background">
         <div className="mx-40mx-5 md:mx-20 xl:mx-40">
+          {/* Header section */}
+          <div className="my-6 h-[6vh] flex max-md:flex-col items-center justify-between">
+            <Link to="/admin/dashboard" className="text-2xl">
+              <button className="ctaback flex gap-2 items-center text-grey">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="8"
+                  height="32"
+                  viewBox="0 0 9 16"
+                  fill="none">
+                  <path
+                    d="M8 1C5.44171 2.85861 3.15026 5.03738 1.18514 7.47872C0.938285 7.7854 0.938285 8.2146 1.18514 8.52128C3.15026 10.9626 5.44171 13.1414 8 15"
+                    stroke="#353535"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                Dashboard
+              </button>
+            </Link>
+            <div className="text-2xl mr-4">Quiz</div>
+          </div>
           {/* <Header>
             <div className="min-w-80 max-md:mt-10">
               <HeaderProfile name={name} photo={photo} />
@@ -52,7 +96,7 @@ const Quizes = () => {
                 </svg>
                 Click to view quizzes of other domains
               </div>
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-4 mt-4">
                 {Object.values(allDomains).map((domains, index) => {
                   // Check if the domain matches the one stored in a variable
                   if (domains.text === domain) {
@@ -60,6 +104,7 @@ const Quizes = () => {
                       img: domains.img,
                       imgBgColor: domains.imgBgColor,
                       text: domains.text,
+                      buttonColor: domains.buttonColor,
                     };
                     return null;
                   }
@@ -81,14 +126,15 @@ const Quizes = () => {
                 Start your
                 <br /> domain quiz
               </div>
-              <div className=" shadowCard w-80 mt-5 flex flex-col items-center justify-center p-8 rounded-xl outline outline-1 outline-light-blue shadow-light-blue  ">
+              <div className=" bg-text-box shadow-xl w-80 py-11 mt-5 flex flex-col items-center justify-center p-8 rounded-xl  ">
                 <div
                   className={`w-32 h-32 rounded-full ${mainDomain.imgBgColor} flex items-center justify-center`}>
                   <img className="w-20 h-20" src={mainDomain.img} />
                 </div>
                 <div className="font-bold text-4xl p-4">{mainDomain.text}</div>
                 <Link to="/user/quiz_guidelines">
-                  <button className="rounded-full bg-light-blue p-1 px-7 text-white">
+                  <button
+                    className={`rounded-full ${mainDomain.buttonColor} p-1 py-2 px-7 mt-2 text-white`}>
                     Start now
                   </button>
                 </Link>
