@@ -81,6 +81,7 @@ export default function CreateQuiz() {
         inputElements.forEach((element) => {
           element.value = "";
         });
+        setQuestionNumber(0);
         alert("Quiz added");
       })
       .catch((e) => {
