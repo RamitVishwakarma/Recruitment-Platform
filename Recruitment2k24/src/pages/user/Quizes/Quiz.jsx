@@ -1,19 +1,20 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { set } from "zod";
 export default function QuizPage() {
   const domain = sessionStorage.getItem("domain");
   const year = sessionStorage.getItem("year");
-  // const quizId = sessionStorage.getItem("quizId");
-  // ? need to change the quizid
-  let quizId = "6609a1df105fa3e7c64d7fd6";
+  const [quizId, setQuizId] = useState();
   const [questionNumber, setQuestionNumber] = useState(1);
   const [questions, setQuestions] = useState({});
 
   const [totalQuestions, setTotalQuestions] = useState(0);
   const [arrayWithQuestionNumbers, setArrayWithQuestionNumbers] = useState([]);
 
-  const [quizData, setQuizData] = useState([]);
+  const [timeInSec, setTimeInSec] = useState(60);
+  const [timeInMin, setTimeInMin] = useState();
 
+  const [quizData, setQuizData] = useState([]);
   // Fetching the total number of questions in the quiz
   useEffect(() => {
     axios
@@ -28,13 +29,15 @@ export default function QuizPage() {
         }
       )
       .then((res) => {
+        console.log(res);
         setTotalQuestions(res.data.quizzes[0].questions.length);
+        setQuizId(res.data.quizzes[0]._id);
+        setTimeInMin(res.data.quizzes[0].duration - 1);
       })
       .catch(() => {
         console.log("error in fetching total questions");
       });
   }, []);
-
   // Creating an array from 1 to the total number of questions in the quiz
   useEffect(() => {
     let arr = [];
@@ -69,7 +72,7 @@ export default function QuizPage() {
           ]);
         }
       });
-  }, [questionNumber]);
+  }, [questionNumber, quizId]);
 
   // Option Click Handler
   const optionClickHandler = (optionSelected) => {
@@ -96,8 +99,6 @@ export default function QuizPage() {
   };
 
   // Timer Logic
-  const [timeInSec, setTimeInSec] = useState(59);
-  const [timeInMin, setTimeInMin] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
       if (timeInMin === 0 && timeInSec === 0) {
@@ -135,7 +136,13 @@ export default function QuizPage() {
       .then((res) => {
         console.log(res);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        if (err.response.status === 400) {
+          alert("You already submitted the quiz");
+        } else {
+          console.log(err);
+        }
+      });
   };
 
   return (

@@ -9,8 +9,6 @@ import design from "../../../../assets/design.svg";
 
 import { Link } from "react-router-dom";
 const Quizes = () => {
-  const name = sessionStorage.getItem("name");
-  const photo = sessionStorage.getItem("photo");
   const domain = sessionStorage.getItem("domain");
   let mainDomain = {};
 
@@ -76,11 +74,6 @@ const Quizes = () => {
             </Link>
             <div className="text-2xl mr-4">Quiz</div>
           </div>
-          {/* <Header>
-            <div className="min-w-80 max-md:mt-10">
-              <HeaderProfile name={name} photo={photo} />
-            </div>
-          </Header> */}
           <div className="flex">
             <div className="w-1/2">
               <div className="font-bold text-grey text-4xl">Qther Quizes</div>
