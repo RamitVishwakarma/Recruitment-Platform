@@ -15,10 +15,14 @@ export const Profile = loadable(() => import("../pages/user/Profile/Profile"));
 export const QuizesDisplay = loadable(() =>
   import("../pages/user/Quizes/QuizesDisplay/QuizesDisplay")
 );
+export const ShowQuiz = loadable(() =>
+  import("../pages/user/Quizes/QuizesDisplay/ShowQuiz")
+);
 export const Guidelines = loadable(() =>
   import("../pages/user/Quizes/Guidelines")
 );
 export const QuizPage = loadable(() => import("../pages/user/Quizes/Quiz"));
+export const ThankYou = loadable(() => import("../pages/user/Quizes/ThankYou"));
 export const ProtectedRoute = loadable(() => import("../utils/ProtectedRoute"));
 // Admin pages import
 export const AdminProtectedRoute = loadable(() =>

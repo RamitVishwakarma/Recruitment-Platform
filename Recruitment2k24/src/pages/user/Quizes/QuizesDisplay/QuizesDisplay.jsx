@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 const Quizes = () => {
   const domain = sessionStorage.getItem("domain");
   let mainDomain = {};
-
   // need to get all the domains now and render them
 
   const allDomains = {
@@ -110,6 +109,7 @@ const Quizes = () => {
                       img={domains.img}
                       imgBgColor={domains.imgBgColor}
                       text={domains.text}
+                      domain={domains.text}
                     />
                   );
                 })}

@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { set } from "zod";
 export default function QuizPage() {
   const domain = sessionStorage.getItem("domain");
   const year = sessionStorage.getItem("year");
