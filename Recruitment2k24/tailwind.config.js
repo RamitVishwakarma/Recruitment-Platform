@@ -27,7 +27,7 @@ export default {
     },
     extend: {
       backgroundImage: {
-        background: "url('/src/assets/Backgrounds/background.svg')",
+        background: "url('/src/assets/Backgrounds/Background.svg')",
         "admin-dashboard-bg": "url('/src/assets/admin-dashboard-bg.svg')",
         "reg-bg": "url('/src/assets/registration-bg.svg')",
         "login-bg": "url('/src/assets/login-bg.svg')",
