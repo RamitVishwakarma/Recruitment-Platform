@@ -1,6 +1,6 @@
 import HeaderProfile from "../../components/HeaderProfile";
 import Header from "../../components/Header";
-import Project from "../../assets/projectLink.svg?react";
+import Project from "../../assets/projectLink.svg";
 import { z } from "zod";
 import axios from "axios";
 import { useState } from "react";
@@ -67,7 +67,7 @@ export default function ProjectSubmission() {
               Paste your project link here
             </div>
             <div className="flex items-center gap-6">
-              <Project />
+              <img src={Project} />
               <form id="projectLink" onSubmit={projectSubmissionHandler}>
                 <Input
                   id={"projectLink"}
