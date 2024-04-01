@@ -1,6 +1,6 @@
 import HeaderProfile from "../../components/HeaderProfile";
 import Header from "../../components/Header";
-import Project from "../../assets/projectLink.svg";
+import Project from "../../assets/ProjectLink.svg";
 import { z } from "zod";
 import axios from "axios";
 import { useState } from "react";
