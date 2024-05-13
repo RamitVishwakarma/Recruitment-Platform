@@ -216,7 +216,7 @@ export default function Homepage() {
           <div className="flex">
             <img src={Timeline} className="w-[3.8vh] md:w-full" alt="" />
             <img
-              className="absolute mt-[25rem] -translate-x-2"
+              className="absolute md:mt-[25rem] mt-[32rem] -translate-x-2"
               src={Pointer}
               alt=""
             />
