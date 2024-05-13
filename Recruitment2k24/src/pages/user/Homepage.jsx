@@ -92,7 +92,7 @@ export default function Homepage() {
           </h2>
           <Link to="/auth">
             <button className="bg-lime px-10 rounded-xl py-4">
-              <h5 className="text-3xl">Register Now</h5>
+              <h5 className="text-3xl text-button-text">Register Now</h5>
             </button>
           </Link>
         </div>
@@ -108,7 +108,8 @@ export default function Homepage() {
         <div className="mt-48 flex justify-center text-center mb-4 relative">
           <img src={Sapling} className="w-3/4 md:w-fit" alt="" />
           <p className="text2 text-5xl md:text-6xl whitespace-nowrap absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            A place to <br className="md:hidden" /> hone your <br className="lg:hidden" /> skills and grow
+            A place to <br className="md:hidden" /> hone your{" "}
+            <br className="lg:hidden" /> skills and grow
           </p>
         </div>
 
@@ -215,7 +216,7 @@ export default function Homepage() {
           <div className="flex">
             <img src={Timeline} className="w-[3.8vh] md:w-full" alt="" />
             <img
-              className="absolute mt-2 -translate-x-2"
+              className="absolute mt-[25rem] -translate-x-2"
               src={Pointer}
               alt=""
             />
