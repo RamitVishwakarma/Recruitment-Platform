@@ -63,19 +63,19 @@ export default function Navbar({ buttonType }) {
             />
             <Link
               to="/#domains"
-              className="text-grey flex items-center gap-2 px-4 text-base rounded-full hover:bg-nav-hover max-lg:hidden">
+              className="text-para-blue flex items-center gap-2 px-4 text-base rounded-full hover:bg-nav-hover max-lg:hidden">
               <span className="material-symbols-rounded text-md">cards</span>
               <div>Domains</div>
             </Link>
             <Link
               to="/#timeline"
-              className="text-grey flex items-center gap-2 px-4 text-base rounded-full hover:bg-nav-hover max-lg:hidden">
+              className="text-para-blue flex items-center gap-2 px-4 text-base rounded-full hover:bg-nav-hover max-lg:hidden">
               <span className="material-symbols-rounded text-md">timeline</span>
               <div>Timeline</div>
             </Link>
             <Link
               to="/tasks"
-              className="text-grey flex items-center gap-2 px-4 text-base rounded-full hover:bg-nav-hover max-lg:hidden">
+              className="text-para-blue flex items-center gap-2 px-4 text-base rounded-full hover:bg-nav-hover max-lg:hidden">
               <span className="material-symbols-rounded text-md">
                 editor_choice
               </span>
@@ -84,13 +84,13 @@ export default function Navbar({ buttonType }) {
             <Link
               to="https://gdscjss.in/"
               target="_blank"
-              className="text-grey flex items-center gap-2 px-4 text-base rounded-full hover:bg-nav-hover max-lg:hidden">
+              className="text-para-blue flex items-center gap-2 px-4 text-base rounded-full hover:bg-nav-hover max-lg:hidden">
               <span className="material-symbols-rounded text-md">language</span>
               <div>Website</div>
             </Link>
             <Link
               href="/"
-              className="text-grey flex items-center gap-2 px-4 text-base rounded-full opacity-40 max-lg:hidden">
+              className="text-para-blue flex items-center gap-2 px-4 text-base rounded-full opacity-40 max-lg:hidden">
               <span className="material-symbols-rounded text-md">
                 bar_chart
               </span>
@@ -103,7 +103,7 @@ export default function Navbar({ buttonType }) {
                 <button
                   className={`${
                     buttonType === "back" ? "ctaback" : "cta"
-                  } flex items-center justify-center px-8 py-1 rounded-lg bg-lime text-grey hover:bg-button-hover`}>
+                  } flex items-center justify-center px-8 py-1 rounded-lg bg-lime text-para-blue hover:bg-button-hover`}>
                   <div className="p-1 text-xl flex items-center justify-center gap-4 text-button-text">
                     {buttonState.style}
                   </div>
@@ -113,7 +113,7 @@ export default function Navbar({ buttonType }) {
             {buttonType === "logout" && (
               <button
                 onClick={logoutHandler}
-                className="cta flex items-center justify-center px-8 py-1 rounded-lg bg-lime text-grey hover:bg-button-hover">
+                className="cta flex items-center justify-center px-8 py-1 rounded-lg bg-lime text-para-blue hover:bg-button-hover">
                 <div className="p-1 text-xl flex items-center justify-center gap-4 text-button-text">
                   {buttonState.style}
                 </div>
