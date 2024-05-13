@@ -12,7 +12,7 @@ export default function Input({
 }) {
   return (
     <div
-      className={`min-w-96
+      className={`min-w-96 p-2
     ${grow ? "xl:w-4/12" : ""} `}>
       {/* Label Start */}
       <div className="flex justify-between">
@@ -21,7 +21,7 @@ export default function Input({
         </label>
         {/* Error */}
         {errorHandler ? (
-          <div className="text-red sm:mr-3 xl:mr-0 ">{errorMessage}</div>
+          <div className="text-red sm:mr-3 xl:mr-4 mr-12">{errorMessage}</div>
         ) : null}
       </div>
       {/* Label End */}

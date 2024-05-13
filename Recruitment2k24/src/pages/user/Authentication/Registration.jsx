@@ -101,77 +101,85 @@ export default function Registration() {
             <div
               className={`flex pr-2 w-full md:pl-0 m-auto flex-wrap gap-x-8 gap-y-4 items-center justify-center`}>
               {/* NAME */}
-              <Input
-                id="name"
-                label="Name"
-                icon="account_box"
-                type="text"
-                placeholder="Enter Your Name"
-                onChangeHandler={handleFormData}
-                errorHandler={error.name}
-                errorMessage={"Name is required"}
-              />
-              {/* Admission number */}
-              <Input
-                id="admissionNumber"
-                label="Admission Number"
-                icon="badge"
-                type="text"
-                placeholder="Enter Your Admission Number"
-                onChangeHandler={handleFormData}
-                errorHandler={error.admissionNumber}
-                errorMessage={"Invalid Number"}
-              />
-              {/* Year */}
-              <Dropdown
-                options={["Select an Year", "1", "2"]}
-                name="year"
-                icon="school"
-                label="Year"
-                onChangeOptionHandler={dropDownHandler}
-                error={error.year}
-                errorMessage={"Select an Year"}
-              />
-              {/* Domain */}
-              <Dropdown
-                options={[
-                  "Select a Domain",
-                  "Programming",
-                  "Web Club",
-                  "Android Club",
-                  "Flutter Dev",
-                  "Design Club",
-                  "ML Club",
-                ]}
-                name="domain"
-                icon="cards"
-                label="Domain"
-                onChangeOptionHandler={dropDownHandler}
-                error={error.domain}
-                errorMessage={"Select a Domain"}
-              />
-              {/* Email */}
-              <Input
-                id="email"
-                label="Email ID"
-                icon="alternate_email"
-                type="text"
-                placeholder="someone@gmail.com"
-                onChangeHandler={handleFormData}
-                errorHandler={error.email}
-                errorMessage={"Invalid Email"}
-              />
-              {/* Password */}
-              <Input
-                id="password"
-                label="Set Password"
-                icon="key"
-                type="password"
-                placeholder="8 characters or more"
-                onChangeHandler={handleFormData}
-                errorHandler={error.password}
-                errorMessage={"Weak Password"}
-              />
+              <div>
+                <div className="xl:flex gap-x-8 gap-y-4  ">
+                  <Input
+                    id="name"
+                    label="Name"
+                    icon="account_box"
+                    type="text"
+                    placeholder="Enter Your Name"
+                    onChangeHandler={handleFormData}
+                    errorHandler={error.name}
+                    errorMessage={"Name is required"}
+                  />
+                  {/* Admission number */}
+                  <Input
+                    id="admissionNumber"
+                    label="Admission Number"
+                    icon="badge"
+                    type="text"
+                    placeholder="Enter Your Admission Number"
+                    onChangeHandler={handleFormData}
+                    errorHandler={error.admissionNumber}
+                    errorMessage={"Invalid Number"}
+                  />
+                </div>
+                {/* Year */}
+                <div className="xl:flex gap-x-8 gap-y-4 ">
+                  <Dropdown
+                    options={["Select an Year", "1", "2"]}
+                    name="year"
+                    icon="school"
+                    label="Year"
+                    onChangeOptionHandler={dropDownHandler}
+                    error={error.year}
+                    errorMessage={"Select an Year"}
+                  />
+                  {/* Domain */}
+                  <Dropdown
+                    options={[
+                      "Select a Domain",
+                      "Programming",
+                      "Web Club",
+                      "Android Club",
+                      "Flutter Dev",
+                      "Design Club",
+                      "ML Club",
+                    ]}
+                    name="domain"
+                    icon="cards"
+                    label="Domain"
+                    onChangeOptionHandler={dropDownHandler}
+                    error={error.domain}
+                    errorMessage={"Select a Domain"}
+                  />
+                </div>
+                {/* Email */}
+                <div className="xl:flex gap-x-8 gap-y-4 ">
+                  <Input
+                    id="email"
+                    label="Email ID"
+                    icon="alternate_email"
+                    type="text"
+                    placeholder="someone@gmail.com"
+                    onChangeHandler={handleFormData}
+                    errorHandler={error.email}
+                    errorMessage={"Invalid Email"}
+                  />
+                  {/* Password */}
+                  <Input
+                    id="password"
+                    label="Set Password"
+                    icon="key"
+                    type="password"
+                    placeholder="8 characters or more"
+                    onChangeHandler={handleFormData}
+                    errorHandler={error.password}
+                    errorMessage={"Weak Password"}
+                  />
+                </div>
+              </div>
             </div>
             <div className="flex max-lg:flex-col-reverse justify-center items-center my-10">
               {/* Google Auth */}

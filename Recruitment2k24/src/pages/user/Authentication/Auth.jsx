@@ -40,7 +40,7 @@ export default function Auth() {
           {activeBtn === "register" && toolTip ? (
             // ToolTip Start
             <div className="absolute -right-20 -top-20">
-              <div className="absolute max-lg:hidden z-30 lg:right-10 top-[9.45rem] xl:right-28 flex justify-between items-center w-44 px-4 py-2 bg-nav-hover rounded-lg">
+              <div className="absolute max-lg:hidden z-30 lg:right-10 top-[9.45rem] xl:right-28 2xl:right-4 flex justify-between items-center w-44 px-4 py-2 bg-nav-hover rounded-lg">
                 <div className="absolute bottom-14 w-0 h-0 border-l-[12px] border-l-white/0 border-b-[12px] border-b-nav-hover border-r-[12px] border-r-white/0"></div>
                 <div className="text-grey text-sm">
                   Already registered?

@@ -44,7 +44,7 @@ export default function Navbar({ buttonType }) {
           <div className="border-t-[6px] border-light-blue w-[25vw]"></div>
         </div>
         <div className="h-[8vh] min-h-14 text-lg mx-5 md:mx-20 xl:mx-40 flex items-center justify-between">
-          <div className="flex">
+          <div className="flex ">
             {/* Need to do hamburger logic The design is not available */}
             <button className="lg:hidden md:block mr-5">
               <span className="material-symbols-rounded text-4xl">menu</span>
@@ -89,8 +89,9 @@ export default function Navbar({ buttonType }) {
               <div>Website</div>
             </Link>
             <Link
-              href="/"
-              className="text-para-blue flex items-center gap-2 px-4 text-base rounded-full opacity-40 max-lg:hidden">
+              to="https://www.instagram.com/p/C5vJ2f7Ry3o/"
+              target="_blank"
+              className="text-para-blue flex items-center gap-2 px-4 text-base rounded-full hover:bg-nav-hover max-lg:hidden">
               <span className="material-symbols-rounded text-md">
                 bar_chart
               </span>
