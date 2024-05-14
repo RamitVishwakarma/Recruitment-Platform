@@ -197,7 +197,7 @@ export default function Registration() {
               <hr className="max-lg:hidden w-16 rotate-90 mr-2 ml-8 border-grey/40" />
               <button
                 type="submit"
-                className="px-20 w-11/12 md:w-fit max-w-72 py-3 text-grey font-bold text-2xl rounded-lg bg-lime hover:bg-button-hover">
+                className="px-20 w-11/12 md:w-fit max-w-72 py-3 text-grey font-bold text-2xl rounded-lg bg-lime hover:bg-button-hover shadow-lg">
                 Register
               </button>
             </div>

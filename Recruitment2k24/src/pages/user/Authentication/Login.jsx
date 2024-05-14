@@ -200,7 +200,7 @@ export default function Login() {
             <div className="flex w-10/12 ml-4 p-2 flex-col justify-center items-center mb-6 md:my-4">
               <button
                 type="submit"
-                className="px-16 md:px-24 w-full py-3 -mr-5 text-button-text font-bold max-w-72 text-2xl rounded-lg bg-lime hover:bg-button-hover">
+                className="px-16 md:px-24 w-full py-3 -mr-5 text-button-text font-bold max-w-72 text-2xl rounded-lg bg-lime hover:bg-button-hover shadow-lg">
                 Log&nbsp;In
               </button>
               <div className="flex gap-4 -mr-5 my-3 justify-center opacity-40">
