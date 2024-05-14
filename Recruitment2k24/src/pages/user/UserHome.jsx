@@ -177,7 +177,7 @@ export default function UserHome() {
 
 function HomePageComponents({ img, imgBgColor, text, state }) {
   return (
-    <div className="bg-text-box w-64 h-64 mt-8 shadow-xl rounded-xl flex flex-col items-center gap-4 cursor-pointer homePageComponent ">
+    <div className="bg-text-box w-[20vw] h-[50vh] mt-8 shadow-xl rounded-xl flex flex-col items-center justify-center gap-4 cursor-pointer homePageComponent ">
       <div
         className={`w-32 h-32 mt-5 rounded-full ${imgBgColor} flex items-center justify-center`}>
         <img className="w-16 h-16" src={img} />
