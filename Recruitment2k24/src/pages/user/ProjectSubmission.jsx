@@ -56,18 +56,18 @@ export default function ProjectSubmission() {
   return (
     <>
       <div className="h-screen">
-        <div className="mx-40">
+        <div className="mx-5 md:mx-20 xl:mx-40">
           <Header>
             <HeaderProfile name={userName} photo={userPhoto} />
           </Header>
         </div>
         <div className="flex justify-center items-center">
-          <div className="w-3/5 h-64 bg-purple/20  border-2 rounded-xl border-purple/30 flex flex-col justify-center items-center">
-            <div className="text-purple text-4xl mb-6 ml-14 font-bold">
+          <div className="w-3/5 h-64 max-md:w-4/5 bg-purple/20  border-2 rounded-xl border-purple/30 flex flex-col justify-center items-center">
+            <div className="text-purple text-4xl mb-6 text-center font-bold">
               Paste your project link here
             </div>
-            <div className="flex items-center gap-6">
-              <img src={Project} />
+            <div className="flex items-center gap-6 max-md:gap-2">
+              <img className="max-md:ml-14" src={Project} />
               <form id="projectLink" onSubmit={projectSubmissionHandler}>
                 <Input
                   id={"projectLink"}
