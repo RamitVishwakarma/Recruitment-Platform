@@ -114,14 +114,14 @@ export default function Login() {
             Enter your registered Email ID
           </div>
           {/* Input box */}
-          <div className=" relative w-96 mt-2 flex items-center justify-center">
-            <div className="absolute left-2 w-8 h-8 bg-light-blue/30 grid place-items-center rounded-full">
+          <div className=" relative min-w-96 mt-2 flex items-center justify-center">
+            <div className="absolute left-2 w-8 h-8 max-sm:left-16 bg-light-blue/30 grid place-items-center rounded-full">
               <span className="material-symbols-rounded text-2xl">
                 alternate_email
               </span>
             </div>
             <input
-              className={` bg-text-box shadow-xl p-3 w-full pl-14 rounded-lg focus:outline focus:outline-2 focus:outline-light-blue `}
+              className={` bg-text-box shadow-xl p-3 sm:w-full pl-14 rounded-lg focus:outline focus:outline-2 focus:outline-light-blue `}
               type="text"
               id="email"
               name="email"

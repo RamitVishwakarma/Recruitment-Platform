@@ -106,7 +106,7 @@ export default function UserHome() {
       {!user ? (
         <div>Loading...</div>
       ) : (
-        <div className="h-[88vh] bg-background">
+        <div className="min-h-[88vh] bg-background">
           <div className="mx-40mx-5 md:mx-20 xl:mx-40">
             <div className="flex my-6 max-md:flex-col items-center justify-between">
               <div className="flex flex-col">
@@ -141,7 +141,7 @@ export default function UserHome() {
               <div className="text-3xl ">Your Dashboard</div>
             </div>
             <div className="flex justify-center items-center">
-              <div className=" flex gap-6 items-center">
+              <div className="flex gap-6 items-center max-lg:flex-col mb-12">
                 <Link to="/user/quizes" onClick={onClickQuizHandler}>
                   <HomePageComponents
                     img={quiz}
@@ -177,13 +177,13 @@ export default function UserHome() {
 
 function HomePageComponents({ img, imgBgColor, text, state }) {
   return (
-    <div className="bg-text-box w-[20vw] h-[50vh] mt-8 shadow-xl rounded-xl flex flex-col items-center justify-center gap-4 cursor-pointer homePageComponent ">
+    <div className="bg-text-box w-[20vw] h-[40vh] max-lg:w-[90vw] max-lg:flex-row max-lg:h-[10vh] min-w-64 min-h-64 mt-8 shadow-xl rounded-xl flex flex-col items-center justify-center gap-4 cursor-pointer homePageComponent  ">
       <div
-        className={`w-32 h-32 mt-5 rounded-full ${imgBgColor} flex items-center justify-center`}>
-        <img className="w-16 h-16" src={img} />
+        className={`w-32 h-32 mt-5 max-lg:w-24 max-lg:h-24 rounded-full ${imgBgColor} flex items-center justify-center`}>
+        <img className="w-16 h-16 max-lg:w-12 max-lg:h-12" src={img} />
       </div>
-      <div className="flex-col flex items-center">
-        <div className="text-xl">{text}</div>
+      <div className="flex-col flex items-center max-lg:mt-4">
+        <div className="text-xl ">{text}</div>
         <div className="flex gap-1 mt-2 items-center text-sm">
           <div>{state.img}</div>
           <div className={`${state.textColor}`}>{state.text}</div>

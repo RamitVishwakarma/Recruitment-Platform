@@ -94,7 +94,7 @@ export default function Registration() {
       <div className="mx-5 md:mx-20 xl:mx-40 relative">
         <div className="h-full relative z-10 w-full md:w-10/12 overflow-hidden pl-6 mx-auto py-8 rounded-3xl mb-16">
           <h1
-            className={`text-grey text-2xl font-bold text-center mb-8 md:text-4xl lg:text-5xl lg:my-6`}>
+            className={`text-grey text-3xl font-bold text-center mb-8 md:text-4xl lg:text-5xl lg:my-6`}>
             Fill your details correctly!
           </h1>
           <form onSubmit={formSubmitHandler}>
@@ -181,7 +181,7 @@ export default function Registration() {
                 </div>
               </div>
             </div>
-            <div className="flex max-lg:flex-col-reverse justify-center items-center my-10">
+            <div className="flex max-lg:flex-col-reverse gap-4 justify-center items-center my-10">
               {/* Google Auth */}
               <GoogleAuthentication
                 text="Sign Up with Google"
