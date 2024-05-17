@@ -70,7 +70,7 @@ export default function UpdateLinks({ user, updateDataFunc }) {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center ">
+    <div className="flex flex-col gap-5 justify-center items-center mb-20">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="95"

@@ -208,7 +208,7 @@ export default function Profile() {
                       <img className="w-6" src={Close} />
                     </button>
                     {/* Form Selector */}
-                    <div className="min-w-80 max-md:mt-10">
+                    <div className="min-w-80 mt-10">
                       <button
                         type="button"
                         className={`w-40 font-ProductSans duration-300 ease-in-out pr-2 h-12 rounded-full  text-white bg-light-red relative left-5
@@ -222,7 +222,7 @@ export default function Profile() {
                       </button>
                       <button
                         type="button"
-                        className={`w-40 font-ProductSans duration-300 ease-in-out h-12 rounded-full text-white bg-light-red relative right-5
+                        className={`w-44 font-ProductSans duration-300 ease-in-out h-12 rounded-full text-white bg-light-red relative right-5
               ${activeBtn === "links" ? "font-bold" : "opacity-60"}`}
                         onClick={() => setactiveBtn("links")}>
                         Update Links

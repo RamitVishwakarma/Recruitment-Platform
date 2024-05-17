@@ -87,11 +87,11 @@ export default function EditProfile({
   };
 
   return (
-    <div>
-      <div className="flex flex-col items-center">
-        <form onSubmit={editProfileFormHandler} encType="multipart/form-data">
+    <div className="flex flex-col items-center">
+      <form onSubmit={editProfileFormHandler} encType="multipart/form-data">
+        <div className="p-4">
           <img
-            className="w-32 h-32 object-cover rounded-full"
+            className="w-32 h-32 mx-auto object-cover rounded-full"
             src={
               updatedData.photo === user.photo
                 ? updatedData.photo
@@ -102,13 +102,13 @@ export default function EditProfile({
             id="imgFile"
             type="file"
             accept=".jpg,.png"
-            className="imgfile absolute invisible bg-lime w-44 h-12 "
+            className="imgfile absolute  invisible bg-lime w-44 h-12 "
             onChange={handleFileChange}
           />
           <button
             onClick={handleFileUploadButton}
             type="button"
-            className="bg-purple p-2 flex items-center gap-3 text-white rounded-full text-xl">
+            className="bg-purple p-2 mx-auto flex items-center gap-3 text-white rounded-full text-xl">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="15"
@@ -122,71 +122,78 @@ export default function EditProfile({
             </svg>
             Change Photo
           </button>
-          <span className="text-xs text-grey/60">.jpg/.png only</span>
-          <Input
-            id="name"
-            label="Name"
-            icon="account_box"
-            type="text"
-            placeholder="Enter Your Name"
-            onChangeHandler={handleFormData}
-            value={updatedData.name}
-          />
-          <Input
-            id="contact"
-            label="Contact Number"
-            icon="call"
-            type="text"
-            placeholder="+91 XXXXXXXXXX"
-            onChangeHandler={handleFormData}
-            value={updatedData.phoneNumber}
-          />
-          <Input
-            id="admission number"
-            label="Admission Number"
-            icon="badge"
-            type="text"
-            placeholder="Enter Your Admission Number"
-            onChangeHandler={handleFormData}
-            value={updatedData.admissionNumber}
-          />
-          {/* Year */}
-          {/* //? Will need to select the year and domain again untill I figure out the select thing  */}
-          <Dropdown
-            options={["Select an Year", "1", "2"]}
-            name="year"
-            icon="school"
-            label="Year"
-            onChangeOptionHandler={dropDownHandler}
-          />
-          {/* Domain */}
-          <Dropdown
-            options={[
-              "Select a Domain",
-              "Programming",
-              "Web Club",
-              "Android Club",
-              "Flutter Dev",
-              "Design Club",
-              "ML Club",
-            ]}
-            name="domain"
-            icon="cards"
-            label="Domain"
-            onChangeOptionHandler={dropDownHandler}
-          />
-          {/* Save Button */}
+          <div className="flex justify-center">
+            <span className="text-xs  text-grey/60">.jpg/.png only</span>
+          </div>
+        </div>
+
+        <Input
+          id="name"
+          label="Name"
+          icon="account_box"
+          type="text"
+          placeholder="Enter Your Name"
+          onChangeHandler={handleFormData}
+          value={updatedData.name}
+        />
+        <Input
+          id="contact"
+          label="Contact Number"
+          icon="call"
+          type="text"
+          placeholder="+91 XXXXXXXXXX"
+          onChangeHandler={handleFormData}
+          value={updatedData.phoneNumber}
+        />
+        <Input
+          id="admission number"
+          label="Admission Number"
+          icon="badge"
+          type="text"
+          placeholder="Enter Your Admission Number"
+          onChangeHandler={handleFormData}
+          value={updatedData.admissionNumber}
+        />
+        {/* Year */}
+        {/* //? Will need to select the year and domain again untill I figure out the select thing  */}
+        <Dropdown
+          options={["Select an Year", "1", "2"]}
+          name="year"
+          icon="school"
+          label="Year"
+          onChangeOptionHandler={dropDownHandler}
+        />
+        {/* Domain */}
+        <Dropdown
+          options={[
+            "Select a Domain",
+            "Programming",
+            "Web Club",
+            "Android Club",
+            "Flutter Dev",
+            "Design Club",
+            "ML Club",
+          ]}
+          name="domain"
+          icon="cards"
+          label="Domain"
+          onChangeOptionHandler={dropDownHandler}
+        />
+        {/* Save Button */}
+        <div className="flex justify-center ml-10 py-4">
           <button
             type="submit"
-            className="bg-lime p-2 px-12 rounded-lg text-button-text font-bold">
+            className="bg-lime  py-3 px-24 rounded-lg text-button-text font-bold">
             Save
           </button>
-        </form>
-        {/* Delete Acc button */}
+        </div>
+      </form>
+      {/* Delete Acc button */}
+      <div className="mb-20 max-lg:flex max-lg:flex-col max-lg:gap-4 max-lg:ml-10 ">
         <button
           onClick={handleDeleteAccount}
           type="button"
-          className="rounded-md flex items-center justify-center text-white text-sm p-2 gap-4 bg-light-red">
+          className="rounded-md lg:absolute  lg:left-12  flex items-center justify-center text-white text-sm py-2.5 px-10 max-lg:px-12  gap-4 bg-light-red">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="14"
@@ -204,7 +211,7 @@ export default function EditProfile({
         <button
           onClick={() => changeActiveButtonToPass()}
           type="button"
-          className="bg-light-blue text-white px-4 rounded-md flex items-center gap-4">
+          className="bg-light-blue lg:absolute right-12 text-white p-2 px-6 rounded-md flex items-center gap-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
