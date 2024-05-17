@@ -48,22 +48,22 @@ const Quizes = () => {
 
   return (
     <>
-      <div className="h-[88vh] bg-background">
+      <div className="min-h-[88vh] bg-background max-lg:mb-10">
         <div className="mx-40mx-5 md:mx-20 xl:mx-40">
           {/* Header section */}
-          <div className="my-6 h-[6vh] flex max-md:flex-col items-center justify-between">
-            <Link to="/admin/dashboard" className="text-2xl">
-              <button className="ctaback flex gap-2 items-center text-grey">
+          <div className="my-6 h-[6vh] flex max-lg:flex-col items-center justify-between">
+            <Link className="max-lg:hidden text-center" to="/user">
+              <button className="ctaback flex gap-2 items-center text-3xl text-grey">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="8"
-                  height="32"
+                  width="18"
+                  height="18"
                   viewBox="0 0 9 16"
                   fill="none">
                   <path
                     d="M8 1C5.44171 2.85861 3.15026 5.03738 1.18514 7.47872C0.938285 7.7854 0.938285 8.2146 1.18514 8.52128C3.15026 10.9626 5.44171 13.1414 8 15"
                     stroke="#353535"
-                    strokeWidth="2"
+                    strokeWidth={2}
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
@@ -71,10 +71,14 @@ const Quizes = () => {
                 Dashboard
               </button>
             </Link>
-            <div className="text-2xl mr-4">Quiz</div>
+            <div className="text-3xl max-lg:text-4xl mr-4 max-lg:font-bold">
+              Quiz
+            </div>
           </div>
-          <div className="flex">
-            <div className="w-1/2">
+
+          <div className="flex max-lg:flex-col-reverse max-lg:justify-center max-lg:items-center">
+            {/* OTHER QUIZES */}
+            <div className="w-1/2 mx-auto max-lg:mt-12">
               <div className="font-bold text-grey text-4xl">Qther Quizes</div>
               <div className="text-grey/50  text-sm flex gap-1 items-center">
                 <svg
@@ -90,7 +94,7 @@ const Quizes = () => {
                 </svg>
                 Click to view quizzes of other domains
               </div>
-              <div className="flex flex-col gap-4 mt-4">
+              <div className="flex flex-col gap-4 mt-4 justify-center max-lg:items-center">
                 {Object.values(allDomains).map((domains, index) => {
                   // Check if the domain matches the one stored in a variable
                   if (domains.text === domain) {
@@ -115,7 +119,7 @@ const Quizes = () => {
                 })}
               </div>
             </div>
-
+            {/* MY QUIZ */}
             <div className="w-1/2 flex flex-col items-center">
               <div className="text-center font-bold text-4xl">
                 Start your
@@ -135,6 +139,7 @@ const Quizes = () => {
                 </Link>
               </div>
             </div>
+            {/* My quiz end */}
           </div>
         </div>
       </div>
