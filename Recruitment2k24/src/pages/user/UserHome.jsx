@@ -140,8 +140,8 @@ export default function UserHome() {
               </div>
               <div className="text-3xl ">Your Dashboard</div>
             </div>
-            <div className="flex justify-center items-center">
-              <div className="flex gap-6 items-center max-lg:flex-col mb-12">
+            <div className="flex h-full justify-center items-center">
+              <div className="flex gap-6 items-center max-lg:flex-col mt-[5vh] mb-12">
                 <Link to="/user/quizes" onClick={onClickQuizHandler}>
                   <HomePageComponents
                     img={quiz}

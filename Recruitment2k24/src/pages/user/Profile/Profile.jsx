@@ -2,7 +2,6 @@ import EditProfile from "./EditProfile";
 import UpdateLinks from "./UpdateLinks";
 import UpdatePassword from "./UpdatePassword";
 import Links from "./SocialLinks";
-import Header from "../../../components/Header";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -15,10 +14,13 @@ import Behance from "../../../assets/behance.svg";
 import Hackerrank from "../../../assets/hackerrank.svg";
 import Github from "../../../assets/footer-git.svg";
 import Dribble from "../../../assets/dribble.svg";
+import ResumeOverlay from "../../../assets/resumeOverlay.svg";
 
 export default function Profile() {
   const [user, setUser] = useState("");
   const [file, setFile] = useState("");
+
+  const [hoverImage, setHoverImage] = useState(false);
 
   // changing data if the user updates the profile
   const [updateData, setUpdateData] = useState(false);
@@ -102,31 +104,33 @@ export default function Profile() {
       {!user ? (
         <div>Loading...</div>
       ) : (
-        <div className="mx-5 md:mx-20 xl:mx-40">
-          <Header>
-            <div className="min-w-80 max-md:mt-10">
-              <div className="text-6xl font-bold">Your Profile</div>
+        <div className="mx-5 md:mx-20 xl:mx-40 min-h-[89vh]">
+          {/* Header Start */}
+          <div className="flex my-6 max-md:flex-col items-center justify-between max-md:gap-4">
+            <Link className="max-lg:invisible" to="/user">
+              <button className="ctaback flex gap-2 items-center text-3xl text-grey">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 9 16"
+                  fill="none">
+                  <path
+                    d="M8 1C5.44171 2.85861 3.15026 5.03738 1.18514 7.47872C0.938285 7.7854 0.938285 8.2146 1.18514 8.52128C3.15026 10.9626 5.44171 13.1414 8 15"
+                    stroke="#353535"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                Dashboard
+              </button>
+            </Link>
+            <div className="max-md:mt-10">
+              <div className="text-3xl text-right">Your Profile</div>
             </div>
-          </Header>
-          <Link to="/user">
-            <button className="ctaback flex gap-2 items-center text-grey">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="6"
-                height="16"
-                viewBox="0 0 9 16"
-                fill="none">
-                <path
-                  d="M8 1C5.44171 2.85861 3.15026 5.03738 1.18514 7.47872C0.938285 7.7854 0.938285 8.2146 1.18514 8.52128C3.15026 10.9626 5.44171 13.1414 8 15"
-                  stroke="#353535"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              Dashboard
-            </button>
-          </Link>
+          </div>
+          {/* Header end */}
           <div className="mx-10 flex gap-6 justify-between">
             {/* Image section */}
             <div className="flex gap-6">
@@ -257,76 +261,114 @@ export default function Profile() {
               <button
                 onClick={handleFileUploadButton}
                 className="flex flex-col justify-between items-center w-60 h-52 outline outline-2 outline-light-blue rounded-xl ">
-                <div className="flex items-center justify-center">
+                <div
+                  onMouseLeave={() => setHoverImage(false)}
+                  onMouseEnter={() => setHoverImage(true)}
+                  className="flex items-center justify-center">
                   <img
                     src={file}
-                    className="w-60 h-52 rounded-xl object-cover object-top"
+                    className="relative w-60 h-52 rounded-xl object-cover object-top "
                   />
+                  {hoverImage &&
+                    (user.resume ? (
+                      <div className="absolute flex items-center justify-center">
+                        <div className="absolute text-white flex gap-2 flex-col mb-[5vh]">
+                          <span class=" material-symbols-rounded text-white text-5xl">
+                            upload
+                          </span>
+                          <span className="text-xl">Reupload Resume</span>
+                          <span className="text-xs">
+                            .jpg/.png only (under 2mb)
+                          </span>
+                        </div>
+                        <img
+                          src={ResumeOverlay}
+                          className=" w-60 h-52 rounded-xl object-cover object-top bg-black"
+                        />
+                      </div>
+                    ) : (
+                      <div className="absolute flex items-center justify-center">
+                        <div className="absolute text-white flex gap-2 flex-col mb-[5vh]">
+                          <span class=" material-symbols-rounded text-white text-5xl">
+                            upload
+                          </span>
+                          <span className="text-xl">Upload Resume</span>
+                          <span className="text-xs">
+                            .jpg/.png only (under 2mb)
+                          </span>
+                        </div>
+                        <img
+                          src={ResumeOverlay}
+                          className=" w-60 h-52 rounded-xl object-cover object-top bg-black"
+                        />
+                      </div>
+                    ))}
                 </div>
               </button>
-              <a
-                href={user.resume}
-                target="_blank"
-                className="relative bottom-12 flex justify-between items-center bg-light-blue w-full rounded-b-xl text-center text-white p-3">
+              <div className="relative bottom-12 flex justify-between items-center bg-light-blue w-full rounded-b-xl text-center text-white p-3">
                 {user.name}'s Resume
-                <span className="material-symbols-rounded">open_in_new</span>
-              </a>
+                <a href={user.resume} target="_blank">
+                  <span className="material-symbols-rounded">open_in_new</span>
+                </a>
+              </div>
             </div>
           </div>
           {/* Submitted links */}
-          <div className="flex flex-col gap-4 mb-20">
-            <div className="text-4xl text-center font-bold text-light-red">
-              Submitted Links
-            </div>
-            <div className="flex gap-4 mx-auto w-[31rem] flex-wrap">
-              <Links
-                ico={LinkIco}
-                text={
-                  user.socialLinks.portfolio
-                    ? user.socialLinks.portfolio
-                    : "Not Submitted"
-                }
-              />
-              <Links
-                ico={LinkedIN}
-                text={
-                  user.socialLinks.linkedin
-                    ? user.socialLinks.linkedin
-                    : "Not Submitted"
-                }
-              />
-              <Links
-                ico={Behance}
-                text={
-                  user.socialLinks.behance
-                    ? user.socialLinks.behance
-                    : "Not Submitted"
-                }
-              />
-              <Links
-                ico={Hackerrank}
-                text={
-                  user.socialLinks.hackerrank
-                    ? user.socialLinks.hackerrank
-                    : "Not Submitted"
-                }
-              />
-              <Links
-                ico={Github}
-                text={
-                  user.socialLinks.github
-                    ? user.socialLinks.github
-                    : "Not Submitted"
-                }
-              />
-              <Links
-                ico={Dribble}
-                text={
-                  user.socialLinks.dribble
-                    ? user.socialLinks.dribble
-                    : "Not Submitted"
-                }
-              />
+          <div className="flex items-center justify-center">
+            <div className="inline-flex flex-col gap-4 mb-20 mt-2 bg-text-box p-8 px-20 rounded-xl shadow-lg">
+              <div className="text-4xl text-center font-bold text-light-red">
+                Submitted Links
+              </div>
+              <div className="mx-auto grid grid-cols-2 gap-x-8 gap-5">
+                <Links
+                  ico={LinkIco}
+                  text={
+                    user.socialLinks.portfolio
+                      ? user.socialLinks.portfolio
+                      : "Not Submitted"
+                  }
+                />
+                <Links
+                  ico={LinkedIN}
+                  text={
+                    user.socialLinks.linkedin
+                      ? user.socialLinks.linkedin
+                      : "Not Submitted"
+                  }
+                />
+                <Links
+                  ico={Behance}
+                  text={
+                    user.socialLinks.behance
+                      ? user.socialLinks.behance
+                      : "Not Submitted"
+                  }
+                />
+                <Links
+                  ico={Hackerrank}
+                  text={
+                    user.socialLinks.hackerrank
+                      ? user.socialLinks.hackerrank
+                      : "Not Submitted"
+                  }
+                />
+                <Links
+                  ico={Github}
+                  text={
+                    user.socialLinks.github
+                      ? user.socialLinks.github
+                      : "Not Submitted"
+                  }
+                />
+                <Links
+                  ico={Dribble}
+                  text={
+                    user.socialLinks.dribble
+                      ? user.socialLinks.dribble
+                      : "Not Submitted"
+                  }
+                />
+              </div>
             </div>
           </div>
         </div>
