@@ -107,7 +107,7 @@ export default function Profile() {
         <div className="mx-5 md:mx-20 xl:mx-40 min-h-[89vh]">
           {/* Header Start */}
           <div className="flex my-6 max-md:flex-col items-center justify-between max-md:gap-4">
-            <Link className="max-lg:invisible" to="/user">
+            <Link className="max-lg:hidden" to="/user">
               <button className="ctaback flex gap-2 items-center text-3xl text-grey">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -126,14 +126,16 @@ export default function Profile() {
                 Dashboard
               </button>
             </Link>
-            <div className="max-md:mt-10">
-              <div className="text-3xl text-right">Your Profile</div>
+            <div className="max-md:mt-10 max-lg:mx-auto">
+              <div className="text-3xl text-right max-lg:text-4xl">
+                Your Profile
+              </div>
             </div>
           </div>
           {/* Header end */}
-          <div className="mx-10 flex gap-6 justify-between">
+          <div className="mx-10 flex gap-6 justify-between max-lg:flex-col max-lg:items-center">
             {/* Image section */}
-            <div className="flex gap-6">
+            <div className="flex gap-6 max-lg:flex-col max-lg:items-center">
               <div className="relative flex items-center justify-center ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -152,7 +154,7 @@ export default function Profile() {
                 />
               </div>
               {/* Details section */}
-              <div>
+              <div className="p-4">
                 <div className="text-grey text-3xl font-bold">{user.name}</div>
                 <div className="text-grey">{user.email}</div>
                 {/* Phone , */}
@@ -315,11 +317,11 @@ export default function Profile() {
           </div>
           {/* Submitted links */}
           <div className="flex items-center justify-center">
-            <div className="inline-flex flex-col gap-4 mb-20 mt-2 bg-text-box p-8 px-20 rounded-xl shadow-lg">
+            <div className="inline-flex flex-col gap-4 mb-20 mt-2 bg-text-box p-8 lg:px-20 max-lg:py-16 rounded-xl shadow-lg">
               <div className="text-4xl text-center font-bold text-light-red">
                 Submitted Links
               </div>
-              <div className="mx-auto grid grid-cols-2 gap-x-8 gap-5">
+              <div className="mx-auto grid grid-cols-2 gap-x-8 gap-5 max-lg:grid-cols-1">
                 <Links
                   ico={LinkIco}
                   text={
