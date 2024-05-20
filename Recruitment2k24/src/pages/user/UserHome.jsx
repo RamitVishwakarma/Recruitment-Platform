@@ -107,7 +107,7 @@ export default function UserHome() {
         <div>Loading...</div>
       ) : (
         <div className="min-h-[88vh] bg-background">
-          <div className="mx-40mx-5 md:mx-20 xl:mx-40">
+          <div className=" mx-5 md:mx-20 xl:mx-40">
             <div className="flex my-6 max-md:flex-col items-center justify-between">
               <div className="flex flex-col">
                 <div className="text-5xl text-grey font-bold">
