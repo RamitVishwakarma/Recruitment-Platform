@@ -157,7 +157,7 @@ export default function EditProfile({
         {/* Year */}
         {/* //? Will need to select the year and domain again untill I figure out the select thing  */}
         <Dropdown
-          options={["Select an Year", "1", "2"]}
+          options={["Select a Year", "1", "2"]}
           name="year"
           icon="school"
           label="Year"

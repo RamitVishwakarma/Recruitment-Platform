@@ -57,7 +57,7 @@ export default function Registration() {
     } else {
       setError((prevError) => ({ ...prevError, domain: false }));
     }
-    if (data.year === "" || data.year === "Select an Year") {
+    if (data.year === "" || data.year === "Select a Year") {
       setError((prevError) => ({ ...prevError, year: true }));
       invalidData = true;
     } else {
@@ -128,13 +128,13 @@ export default function Registration() {
                 {/* Year */}
                 <div className="xl:flex gap-x-8 gap-y-4 ">
                   <Dropdown
-                    options={["Select an Year", "1", "2"]}
+                    options={["Select a Year", "1", "2"]}
                     name="year"
                     icon="school"
                     label="Year"
                     onChangeOptionHandler={dropDownHandler}
                     error={error.year}
-                    errorMessage={"Select an Year"}
+                    errorMessage={"Select a Year"}
                   />
                   {/* Domain */}
                   <Dropdown
