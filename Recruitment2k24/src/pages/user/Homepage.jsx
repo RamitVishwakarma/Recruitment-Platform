@@ -17,6 +17,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Homepage() {
   const lenis = new Lenis({
