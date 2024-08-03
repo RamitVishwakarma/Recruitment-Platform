@@ -79,6 +79,10 @@ export default function Homepage() {
     });
   });
 
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_API_URL}`);
+  }, []);
+
   return (
     <>
       <div className="flex flex-col gap-20 items-center mb-2 md:mb-20 text-grey">
