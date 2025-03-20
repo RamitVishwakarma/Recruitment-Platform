@@ -194,24 +194,24 @@ export default function Login() {
             <button
               onClick={() => setPopup(true)}
               type="button"
-              className=" text-light-blue text-base hover:underline self-end mr-6 max-sm:mr-12">
+              className=" text-light-blue text-base hover:underline self-end mr-2">
               Forgot Password?
             </button>
-            <div className="flex w-10/12 ml-4 p-2 flex-col justify-center items-center mb-6 md:my-4">
+            <div className="flex px-4 max-[350px]:ml-0 ml-5 sm:pl-12 max-[350px]:p-0 flex-col justify-center items-center mb-6 md:my-4">
               <button
                 type="submit"
-                className="px-16 md:px-24 w-full py-3 -mr-5 text-button-text font-bold max-w-72 text-2xl rounded-lg bg-lime hover:bg-button-hover shadow-lg">
+                className="px-16 md:px-24 text-center py-3  text-button-text font-bold max-w-60 text-2xl rounded-lg bg-lime hover:bg-button-hover shadow-lg">
                 Log&nbsp;In
               </button>
-              <div className="flex gap-4 -mr-5 my-3 justify-center opacity-40">
-                <p>----------------------</p>
+              <div className="flex gap-4  my-3 justify-center opacity-40">
+                <p>--------------</p>
                 <p>OR</p>
-                <p>----------------------</p>
+                <p>--------------</p>
               </div>
               <GoogleAuthentication
                 text="Log in with Google"
                 btnStyle={
-                  "bg-[#fff] bottom-4 -mr-6 px-10 py-3 flex gap-4 items-center justify-center rounded-lg shadow-xl hover:shadow-2xl"
+                  "bg-[#fff] bottom-4  px-4 py-3 flex gap-4 items-center justify-center rounded-lg shadow-xl hover:shadow-2xl"
                 }
               />
             </div>

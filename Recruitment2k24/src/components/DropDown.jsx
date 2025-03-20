@@ -18,8 +18,10 @@ export default function DropDown({
   }, [option]);
 
   return (
-    <div className="md:min-w-80 min-w-72 flex items-center gap-3 p-2">
-      <span className="material-symbols-rounded text-4xl mt-7">{icon}</span>
+    <div className="md:min-w-80 min-w-60 flex items-center gap-3 p-2">
+      <span className="material-symbols-rounded text-4xl mt-7 max-[350px]:hidden">
+        {icon}
+      </span>
       <Listbox value={option} onChange={setOption}>
         <div className="relative mt-1">
           <div className="flex flex-col">
@@ -30,7 +32,7 @@ export default function DropDown({
             <Listbox.Button
               className={` ${
                 error ? "outline outline-2 outline-red border-red" : ""
-              } container xl:w-full md:min-w-80 min-w-72 relative h-12 w-60  bg-text-box  cursor-pointer rounded-lg  py-2 pl-3 pr-10 text-left outline outline-1 hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}>
+              } container xl:w-full md:min-w-80 min-w-60 relative h-12 w-56  bg-text-box  cursor-pointer rounded-lg  py-2 pl-3 pr-10 text-left outline outline-1 hover:outline hover:outline-grey hover:outline-2 focus:outline focus:outline-2 focus:outline-light-blue focus:border-light-blue`}>
               <span className="block truncate">{option}</span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                 <ChevronUpDownIcon

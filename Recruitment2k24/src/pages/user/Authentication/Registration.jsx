@@ -92,12 +92,14 @@ export default function Registration() {
   return (
     <>
       <div className="mx-5 md:mx-20 xl:mx-40 relative">
-        <div className="h-full relative z-10 w-full md:w-10/12 overflow-hidden pl-6 mx-auto py-8 rounded-3xl mb-16">
+        <div className="h-full relative z-10 w-full md:w-10/12 overflow-hidden mx-auto py-8 rounded-3xl mb-16">
           <h1
             className={`text-grey text-3xl font-bold text-center mb-8 md:text-4xl lg:text-5xl lg:my-6`}>
             Fill your details correctly!
           </h1>
-          <form onSubmit={formSubmitHandler}>
+          <form
+            onSubmit={formSubmitHandler}
+            className="flex flex-col items-center">
             <div
               className={`flex pr-2 w-full md:pl-0 m-auto flex-wrap gap-x-8 gap-y-4 items-center justify-center`}>
               {/* NAME */}
@@ -186,18 +188,18 @@ export default function Registration() {
               <GoogleAuthentication
                 text="Sign Up with Google"
                 btnStyle={
-                  "px-10 py-3 bg-[#fff] flex gap-4 items-center justify-center rounded-lg shadow-xl hover:shadow-2xl"
+                  "sm:px-10 px-6 py-3 bg-[#fff] flex gap-4 items-center justify-center rounded-lg shadow-xl hover:shadow-2xl"
                 }
               />
               <div className="flex md:hidden gap-4 my-3 justify-center opacity-40">
-                <p>----------------------</p>
+                <p className="w-full">-------------------</p>
                 <p>OR</p>
-                <p>----------------------</p>
+                <p className="w-full">-------------------</p>
               </div>
               <hr className="max-lg:hidden w-16 rotate-90 mr-2 ml-8 border-grey/40" />
               <button
                 type="submit"
-                className="px-20 w-11/12 md:w-fit max-w-72 py-3 text-grey font-bold text-2xl rounded-lg bg-lime hover:bg-button-hover shadow-lg">
+                className="sm:px-20 px-10 w-11/12 md:w-fit max-w-56 py-3 text-grey font-bold text-2xl rounded-lg bg-lime hover:bg-button-hover shadow-lg">
                 Register
               </button>
             </div>
