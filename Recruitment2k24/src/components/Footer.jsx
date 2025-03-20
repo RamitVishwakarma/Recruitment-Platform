@@ -23,11 +23,11 @@ const Footer = () => {
           {/* right */}
           <div className="mt-8 md:mt-[10vh]">
             <div>
-              <p className="text-xl text-grey md:text-right md:mr-20 xl:mr-40 max-md:text-center">
+              <p className="text-xl text-grey md:text-right md:mr-5 lg:mr-20 xl:mr-40 max-md:text-center">
                 Follow us on
               </p>
             </div>
-            <div className="mr-5 md:mr-20 xl:mr-40 flex gap-8 mt-4">
+            <div className="md:mr-5 lg:mr-20 xl:mr-40 flex gap-8 mt-4 max-md:gap-4">
               <a
                 href="https://www.linkedin.com/company/dsc-jssaten/"
                 target="__blank">

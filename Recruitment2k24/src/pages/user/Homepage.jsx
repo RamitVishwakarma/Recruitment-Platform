@@ -104,7 +104,7 @@ export default function Homepage() {
         {/* flame */}
         <div className="mt-36 flex justify-center text-center relative">
           <img src={Flame} className="w-3/4 md:w-fit" alt="" />
-          <p className="text1 text-5xl md:text-6xl whitespace-nowrap absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <p className="text1 text-4xl md:text-5xl lg:text-6xl whitespace-nowrap absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             Every talent is <br className="md:hidden" /> precious to us
           </p>
         </div>
@@ -112,7 +112,7 @@ export default function Homepage() {
         {/* sapling */}
         <div className="mt-48 flex justify-center text-center mb-4 relative">
           <img src={Sapling} className="w-3/4 md:w-fit" alt="" />
-          <p className="text2 text-5xl md:text-6xl whitespace-nowrap absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <p className="text2 text-4xl md:text-5xl lg:text-6xl whitespace-nowrap absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             A place to <br className="md:hidden" /> hone your{" "}
             <br className="lg:hidden" /> skills and grow
           </p>
@@ -134,7 +134,7 @@ export default function Homepage() {
 
         {/* club intro */}
         <div className="mt-4 flex text-center flex-col gap-6 items-center justify-center">
-          <h3 className="text-3xl md:text-4xl lg:text-5xl">Welcome to</h3>
+          <h3 className="text-2xl md:text-4xl lg:text-5xl">Welcome to</h3>
           <div className="md:relative flex justify-center my-4">
             <img src={Homebg} className="hidden md:block md:w-screen" alt="" />
             <img
@@ -143,7 +143,7 @@ export default function Homepage() {
               alt=""
             />
           </div>
-          <h3 className="text-3xl md:text-4xl lg:text-5xl" id="domains">
+          <h3 className="text-2xl md:text-4xl lg:text-5xl" id="domains">
             and find a place in our domains
           </h3>
         </div>
@@ -212,13 +212,13 @@ export default function Homepage() {
 
         {/* ready? */}
         <div className="pt-10" id="timeline">
-          <p className="text-4xl md:text-5xl lg:text-6xl w-3/5 mx-auto text-center">
+          <p className="text-2xl md:text-5xl lg:text-6xl w-3/5 mx-auto text-center">
             Ready to be a part of a thriving community of geeks?
           </p>
         </div>
         {/* timeline */}
         <div className="flex items-stretch md:items-end gap-12 md:gap-8">
-          <div className="flex">
+          <div className="flex max-[330px]:hidden">
             <img src={Timeline} className="w-[3.8vh] md:w-full" alt="" />
             <img
               className="absolute md:mt-[25rem] mt-[32rem] -translate-x-2"

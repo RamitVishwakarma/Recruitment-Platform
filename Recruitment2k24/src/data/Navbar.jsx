@@ -30,7 +30,7 @@ const Logout = {
 const LetsGo = {
   style: (
     <>
-      <div>Let's Go</div>
+      <div>Let&apos;s Go</div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
