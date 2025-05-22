@@ -41,7 +41,7 @@ export default function GoogleAuthentication({ text, btnStyle }) {
       })
       .catch((error) => {
         console.log(error);
-        alert("Cannot sign in with google try again later");
+        alert("Cannot sign in with google please try again later");
       });
   };
 
